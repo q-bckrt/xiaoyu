@@ -1,0 +1,258 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>啸宇 · Xiaoyu | Systems Architecture & Digital Craft</title>
+
+    <!-- Central Tokens & Fonts -->
+    <link rel="stylesheet" href="portfolio.css">
+
+    <!-- Zero-Flash Theme Initializer -->
+    <script>
+        (function () {
+            const saved = localStorage.getItem('xiaoyu_theme');
+            const pref = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', saved || pref);
+        })();
+    </script>
+</head>
+
+<body>
+
+    <!-- NAVIGATION HEADER -->
+    <header class="site-header">
+        <div class="page-wrap">
+            <div class="nav-inner">
+
+                <a href="#" class="brand-identity">
+                    <span class="brand-calligraphy-nav">啸宇</span>
+                    <span class="brand-tagline">Xiaoyu</span>
+                </a>
+
+                <nav class="nav-menu">
+                    <div class="status-badge">
+                        <span class="status-pulse"></span>
+                        <span>ENGAGEMENTS · OPEN</span>
+                    </div>
+                    <a href="#systems" class="nav-link">Systems</a>
+                    <a href="#codex" class="nav-link">Codex</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                    <a href="index.html" class="nav-link" style="color: var(--accent-cognac); font-weight: 700; border-left: 1px solid var(--border-hairline); padding-left: 16px;">Spec (v1.3) →</a>
+                    <a href="experiment.html" class="nav-link" style="color: var(--accent-sage); font-weight: 700; border-left: 1px solid var(--border-hairline); padding-left: 16px;">3D Fork ↗</a>
+                    <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle Theme Mode" title="Toggle Light / Dark Mode">
+                        <span class="theme-toggle-icon">☾</span>
+                        <span class="theme-toggle-label">DARK</span>
+                    </button>
+                </nav>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+        <div class="page-wrap">
+            <div class="hero-layout">
+
+                <div class="hero-text-side">
+                    <div class="eyebrow-tag">Discipline · Craft · Architecture</div>
+                    <h1 class="hero-title">
+                        Building resilient systems with <em>horological precision</em> and mindful flow.
+                    </h1>
+                    <p class="hero-summary">
+                        Software engineer and systems designer operating at the intersection of low-latency
+                        architecture, mechanical tactility, and bespoke digital craft. Guided by systematic restraint,
+                        high-velocity execution, and solarpunk vitality.
+                    </p>
+                    <div class="hero-cta-group">
+                        <a href="#systems" class="btn btn-primary">Explore Systems →</a>
+                        <a href="#codex" class="btn btn-secondary">Read Selected Codex</a>
+                    </div>
+                </div>
+
+                <div class="hero-calligraphy-monument" title="啸宇 · Xiaoyu">
+                    啸宇
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- WORK ARTIFACTS & CODEX -->
+    <main class="page-wrap">
+        <div class="content-grid">
+
+            <!-- LEFT COLUMN -->
+            <section class="work-column" id="systems">
+                <div class="section-header">
+                    <div class="section-title">
+                        <span class="section-num">01</span>
+                        <span>Selected Systems &amp; Artifacts</span>
+                    </div>
+                    <div class="section-meta">PROD · VERIFIED</div>
+                </div>
+
+                <div class="cards-stack">
+
+                    <article class="artifact-card featured">
+                        <div class="card-top">
+                            <h2 class="card-title">SEQTOR · Dynamic Telemetry Engine</h2>
+                            <span class="card-badge">2026 · WEB/CANVAS</span>
+                        </div>
+                        <p class="card-desc">
+                            Real-time race telemetry ingestion and predictive strategy simulation platform. Normalizes
+                            spatial coordinate data streams into lightweight interactive visualizations with minimal
+                            rendering drag.
+                        </p>
+                        <div class="tag-row">
+                            <span class="tech-pill">FASTAPI</span>
+                            <span class="tech-pill">TYPESCRIPT</span>
+                            <span class="tech-pill">CANVAS TELEMETRY</span>
+                            <span class="tech-pill">&lt;16MS SYNC</span>
+                        </div>
+                    </article>
+
+                    <article class="artifact-card">
+                        <div class="card-top">
+                            <h2 class="card-title">Project Lily · Optical MIDI Instrument</h2>
+                            <span class="card-badge">HARDWARE · FIRMWARE</span>
+                        </div>
+                        <p class="card-desc">
+                            Custom 12-note physical instrument engineered with bare-metal C firmware, infrared optical
+                            sensors, and zero-jitter event loops. Enclosed in a bespoke brushed chassis with tight
+                            tolerances.
+                        </p>
+                        <div class="tag-row">
+                            <span class="tech-pill">C / BARE METAL</span>
+                            <span class="tech-pill">OPTICAL SENSORS</span>
+                            <span class="tech-pill">MIDI PROTOCOL</span>
+                            <span class="tech-pill">CNC PRECISION</span>
+                        </div>
+                    </article>
+
+                    <article class="artifact-card">
+                        <div class="card-top">
+                            <h2 class="card-title">Qaya · Relational Ledger Architecture</h2>
+                            <span class="card-badge">FULL-STACK · CLOUD</span>
+                        </div>
+                        <p class="card-desc">
+                            Autonomous capital ledger designed around strict transactional integrity constraints,
+                            deterministic API contracts, and zero external tracking telemetry.
+                        </p>
+                        <div class="tag-row">
+                            <span class="tech-pill">SPRING BOOT</span>
+                            <span class="tech-pill">POSTGRESQL</span>
+                            <span class="tech-pill">ANGULAR</span>
+                            <span class="tech-pill">ALEMBIC</span>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+
+            <!-- RIGHT COLUMN -->
+            <aside class="codex-column" id="codex">
+                <div class="section-header">
+                    <div class="section-title">
+                        <span class="section-num">02</span>
+                        <span>The Codex</span>
+                    </div>
+                    <div class="section-meta">SPEC. V1.3</div>
+                </div>
+
+                <div class="codex-panel">
+
+                    <div class="manifesto-box">
+                        <div class="manifesto-quote">
+                            “Elegance is not the addition of ornament, but the quiet elimination of friction until only
+                            clarity remains.”
+                        </div>
+
+                        <div class="codex-subhead">Operational Benchmarks</div>
+
+                        <table class="telemetry-list">
+                            <tbody>
+                                <tr>
+                                    <td class="telemetry-key">IDENTITY MARK</td>
+                                    <td class="telemetry-val">啸宇 (Zhi Mang Xing Calligraphy)</td>
+                                </tr>
+                                <tr>
+                                    <td class="telemetry-key">CORE METHOD</td>
+                                    <td class="telemetry-val">Wu Wei · Systematic Restraint</td>
+                                </tr>
+                                <tr>
+                                    <td class="telemetry-key">TYPE SYSTEM</td>
+                                    <td class="telemetry-val">Satoshi (Sans) + Newsreader (Serif)</td>
+                                </tr>
+                                <tr>
+                                    <td class="telemetry-key">GRID CADENCE</td>
+                                    <td class="telemetry-val">8px Baseline / 1px Hairlines</td>
+                                </tr>
+                                <tr>
+                                    <td class="telemetry-key">VITALITY ACCENT</td>
+                                    <td class="telemetry-val">Matcha Sage (#768E65)</td>
+                                </tr>
+                                <tr>
+                                    <td class="telemetry-key">LATENCY TARGET</td>
+                                    <td class="telemetry-val">&lt; 16ms Interactive Render</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="commission-box" id="contact">
+                        <div class="commission-title">Engagement Status</div>
+                        <p class="commission-body">
+                            Accepting select architectural consultations, telemetry interface builds, and embedded
+                            systems engagements.
+                        </p>
+                        <a href="mailto:contact@xiaoyu.dev" class="btn-sage">Initiate Dialogue →</a>
+                    </div>
+
+                </div>
+            </aside>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="page-wrap">
+            <div class="footer-inner">
+                <div>
+                    &copy; 2026 啸宇 · All systems deliberate.
+                </div>
+                <div class="colophon-specs">
+                    CANVAS: WARM ALABASTER · TYPE: ZHI MANG XING + SATOSHI
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Theme Logic Script -->
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = themeToggle.querySelector('.theme-toggle-icon');
+        const themeLabel = themeToggle.querySelector('.theme-toggle-label');
+
+        function updateToggleDisplay(theme) {
+            const isDark = theme === 'dark';
+            themeIcon.textContent = isDark ? '☀' : '☾';
+            themeLabel.textContent = isDark ? 'LIGHT' : 'DARK';
+        }
+
+        const current = document.documentElement.getAttribute('data-theme') || 'light';
+        updateToggleDisplay(current);
+
+        themeToggle.addEventListener('click', () => {
+            const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem('xiaoyu_theme', next);
+            updateToggleDisplay(next);
+        });
+    </script>
+
+</body>
+
+</html>

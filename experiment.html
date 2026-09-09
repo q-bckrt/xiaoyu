@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>啸宇 · Xiaoyu | Experimental Fork · 3D Chrono-Kinetic Core</title>
+    <meta name="description" content="Experimental interactive fork of Xiaoyu's digital presence featuring a 3D Chrono-Kinetic Armillary Core, real-time telemetry HUD, and 3D perspective tilt cards.">
+
+    <!-- Design System & Experimental Styling -->
+    <link rel="stylesheet" href="experiment.css">
+
+    <!-- Zero-Flash Theme Initializer -->
+    <script>
+        (function () {
+            const saved = localStorage.getItem('xiaoyu_theme');
+            const pref = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', saved || pref);
+        })();
+    </script>
+
+    <!-- Three.js (r128 CDN) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Experimental Interactivity & Simulation -->
+    <script defer src="experiment.js"></script>
+</head>
+
+<body>
+
+    <!-- NAVIGATION HEADER -->
+    <header class="site-header">
+        <div class="page-wrap">
+            <div class="nav-inner">
+
+                <a href="#" class="brand-identity">
+                    <span class="brand-calligraphy-nav">啸宇</span>
+                    <span class="brand-tagline">Xiaoyu</span>
+                    <span class="fork-badge">3D · EXPERIMENT</span>
+                </a>
+
+                <nav class="nav-menu">
+                    <a href="#systems" class="nav-link">Systems</a>
+                    <a href="#codex" class="nav-link">Codex</a>
+                    <a href="portfolio.html" class="nav-link" style="color: var(--ink-primary); font-weight: 600;">← Stable Portfolio</a>
+                    <a href="index.html" class="nav-link" style="color: var(--accent-cognac); font-weight: 700; border-left: 1px solid var(--border-hairline); padding-left: 16px;">Spec (v1.3) →</a>
+                    
+                    <!-- Web Audio Micro-Haptics Toggle -->
+                    <button class="tool-control-btn" id="sound-toggle" title="Toggle Mechanical Watchmaker Audio Haptics">
+                        <span>♫</span>
+                        <span class="tool-label">HAPTICS · OFF</span>
+                    </button>
+
+                    <!-- Theme Toggle -->
+                    <button class="tool-control-btn" id="theme-toggle" aria-label="Toggle Light / Dark Mode" title="Toggle Light / Dark Mode">
+                        <span class="theme-toggle-icon">☾</span>
+                        <span class="theme-toggle-label">DARK</span>
+                    </button>
+                </nav>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO & 3D INTERACTIVE VIEWPORT SECTION -->
+    <section class="hero-spatial">
+        <div class="page-wrap">
+            <div class="hero-spatial-grid">
+
+                <!-- Left Column: Vision & Philosophy -->
+                <div class="hero-text-col">
+                    <div class="eyebrow-tag">Discipline · Craft · Experimental 3D Fork</div>
+                    <h1 class="hero-title">
+                        Building resilient systems with <em>horological precision</em> and kinetic flow.
+                    </h1>
+                    <p class="hero-summary">
+                        Software engineer and systems architect working at the intersection of low-latency
+                        infrastructure, mechanical tactility, and bespoke digital craft. Guided by mathematical restraint,
+                        deliberate execution, and solarpunk vitality.
+                    </p>
+                    <div class="hero-cta-group">
+                        <a href="#systems" class="btn btn-primary">Explore Systems →</a>
+                        <a href="#codex" class="btn btn-secondary">Inspect Telemetry</a>
+                    </div>
+                    <div class="quick-specs-row">
+                        <div class="spec-item">SIMULATION: <span>60 FPS // WebGL</span></div>
+                        <div class="spec-item">CORE: <span>Wu Wei Gyro</span></div>
+                        <div class="spec-item">LATENCY: <span>&lt;0.5ms</span></div>
+                    </div>
+                </div>
+
+                <!-- Right Column: 3D Chrono-Kinetic Armillary Core -->
+                <div class="armillary-stage-container" id="armillary-container">
+                    <!-- HUD Top Bar -->
+                    <div class="hud-top-bar">
+                        <div class="hud-title">
+                            <span class="hud-title-dot"></span>
+                            <span>CHRONO_ARMILLARY // REV_04</span>
+                        </div>
+                        <div class="hud-metrics">
+                            <span id="hud-euler-val">[φ:0° ψ:0°]</span>
+                            <span id="hud-fps-val" class="hud-metric-val">60 FPS · 16.6ms</span>
+                        </div>
+                    </div>
+
+                    <!-- WebGL Canvas -->
+                    <canvas id="armillary-canvas"></canvas>
+
+                    <!-- HUD Bottom Bar -->
+                    <div class="hud-bottom-bar">
+                        <div class="hud-mode-selector">
+                            <button class="hud-mode-btn active" data-mode="horology">HOROLOGY</button>
+                            <button class="hud-mode-btn" data-mode="wuwei">WU WEI</button>
+                            <button class="hud-mode-btn" data-mode="telemetry">TELEMETRY</button>
+                        </div>
+                        <div class="hud-hint">
+                            DRAG TO ROTATE · WHEEL ZOOM · DBL-CLICK RESET
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ARTIFACT SHOWCASE & CODEX -->
+    <main class="page-wrap">
+        <div class="content-grid">
+
+            <!-- LEFT COLUMN: 3D PERSPECTIVE TILT CARDS -->
+            <section class="work-column" id="systems">
+                <div class="section-header">
+                    <div class="section-title">
+                        <span class="section-num">01</span>
+                        <span>Selected Systems &amp; Artifacts</span>
+                    </div>
+                    <div class="section-meta">3D TILT · PERSPECTIVE INTERACTION</div>
+                </div>
+
+                <div class="cards-stack">
+
+                    <!-- Artifact 1 (Featured) -->
+                    <article class="tilt-card featured">
+                        <div class="tilt-card-glint"></div>
+                        <div class="card-top">
+                            <h2 class="card-title">SEQTOR · Dynamic Telemetry Engine</h2>
+                            <span class="card-badge">2026 · WEBGL/CANVAS</span>
+                        </div>
+                        <p class="card-desc">
+                            High-frequency telemetry visualizer for distributed systems with 60 FPS real-time rendering,
+                            nanosecond timestamp resolution, and zero memory leaks under sustained load.
+                        </p>
+                        <div class="tag-row">
+                            <span class="tech-pill">WebGL 2.0</span>
+                            <span class="tech-pill">TypeScript</span>
+                            <span class="tech-pill">Zero-Allocation Buffer</span>
+                            <span class="tech-pill">Web Workers</span>
+                        </div>
+                    </article>
+
+                    <!-- Artifact 2 -->
+                    <article class="tilt-card">
+                        <div class="tilt-card-glint"></div>
+                        <div class="card-top">
+                            <h2 class="card-title">AURA · Precision Audio Micro-Synthesizer</h2>
+                            <span class="card-badge">2025 · DSP / AUDIO WORKLET</span>
+                        </div>
+                        <p class="card-desc">
+                            Algorithmic sound synthesis workbench generating analog watchmaker escapement ticks, harmonic
+                            drones, and micro-haptic audio feedback using custom Web Audio DSP nodes.
+                        </p>
+                        <div class="tag-row">
+                            <span class="tech-pill">Web Audio API</span>
+                            <span class="tech-pill">AudioWorklet</span>
+                            <span class="tech-pill">DSP Mathematics</span>
+                            <span class="tech-pill">Horology</span>
+                        </div>
+                    </article>
+
+                    <!-- Artifact 3 -->
+                    <article class="tilt-card">
+                        <div class="tilt-card-glint"></div>
+                        <div class="card-top">
+                            <h2 class="card-title">KRONOS · Micro-Latency Order Gateway</h2>
+                            <span class="card-badge">2024 · SYSTEMS RIGOR</span>
+                        </div>
+                        <p class="card-desc">
+                            Lock-free messaging pipeline engineered for sub-millisecond telemetry routing, featuring
+                            strict horological timestamp integrity and memory-mapped persistence.
+                        </p>
+                        <div class="tag-row">
+                            <span class="tech-pill">Rust</span>
+                            <span class="tech-pill">Lock-Free Concurrency</span>
+                            <span class="tech-pill">Ring Buffers</span>
+                            <span class="tech-pill">Zero-Copy</span>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+
+            <!-- RIGHT COLUMN: CODEX & LIVE OSCILLOSCOPE -->
+            <aside class="codex-panel" id="codex">
+                <div class="section-header">
+                    <div class="section-title">
+                        <span class="section-num">02</span>
+                        <span>Codex &amp; Live Telemetry</span>
+                    </div>
+                    <div class="section-meta">REAL-TIME MONITOR</div>
+                </div>
+
+                <!-- Manifesto Quote Box -->
+                <div class="manifesto-box">
+                    <div class="manifesto-quote">
+                        “The highest machine requires no unnecessary motion. In stillness, velocity; in restraint, power.”
+                    </div>
+                    <div class="codex-subhead">Operational Principles</div>
+                    <table class="telemetry-list">
+                        <tbody>
+                            <tr>
+                                <td class="telemetry-key">ACTIVE SIMULATION MODE</td>
+                                <td class="telemetry-val" id="telemetry-mode-display">HOROLOGY</td>
+                            </tr>
+                            <tr>
+                                <td class="telemetry-key">ANGULAR MOMENTUM</td>
+                                <td class="telemetry-val" id="hud-vel-val">0.05 rad/s</td>
+                            </tr>
+                            <tr>
+                                <td class="telemetry-key">FRAME BUDGET</td>
+                                <td class="telemetry-val">16.6 ms (Target 60 FPS)</td>
+                            </tr>
+                            <tr>
+                                <td class="telemetry-key">ARCHITECTURAL DISCIPLINE</td>
+                                <td class="telemetry-val">1px Hairline Precision</td>
+                            </tr>
+                            <tr>
+                                <td class="telemetry-key">PHILOSOPHICAL ANCHOR</td>
+                                <td class="telemetry-val">Taoist Wu Wei / Minimal Mass</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Real-time Watchmaker Oscilloscope -->
+                <div class="oscilloscope-box">
+                    <div class="osc-header">
+                        <span>ESCAPEMENT BEAT PULSE // 4HZ</span>
+                        <span class="osc-live-badge">
+                            <span class="osc-live-dot"></span>
+                            <span>LIVE OSC</span>
+                        </span>
+                    </div>
+                    <canvas id="oscilloscope-canvas"></canvas>
+                </div>
+
+                <!-- Commission Box -->
+                <div class="commission-box">
+                    <div class="commission-title">Initiate Engagement</div>
+                    <div class="commission-body">
+                        Accepting selective advisory and principal engineering partnerships for complex digital systems,
+                        low-latency architectures, and high-craft interfaces.
+                    </div>
+                    <a href="mailto:contact@xiaoyu.dev" class="btn-sage">Transmit Signal →</a>
+                </div>
+
+            </aside>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="page-wrap">
+            <div class="footer-inner">
+                <div>
+                    &copy; 2026 啸宇 · Experimental 3D Fork · All systems deliberate.
+                </div>
+                <div class="colophon-specs">
+                    CANVAS: THREE.JS + SHADER COMPOSITE · TOKENS: SPEC V1.3
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

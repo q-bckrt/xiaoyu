@@ -1,0 +1,1558 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>啸宇 · Xiaoyu | Design Language System & Brand Styleguide (v1.3)</title>
+  <meta name="description" content="Official design language specification, tokens, typography scale, component library, and philosophical codex for Xiaoyu.">
+
+  <!-- Token Engine & Font Typography Stack -->
+  <link rel="stylesheet" href="styleguide.css?v=3.3">
+
+  <!-- Explicit 2x2 Quadrant Pillar Grid Force -->
+  <style>
+    .pillars-grid {
+      display: grid !important;
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      gap: var(--space-4) !important;
+      margin-bottom: var(--space-6) !important;
+    }
+    @media (max-width: 768px) {
+      .pillars-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
+  </style>
+
+  <!-- ApexCharts (v3.45 CDN) for Telemetry Graph Component -->
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+  <!-- Zero-Flash Theme Initializer -->
+  <script>
+    (function () {
+      const urlParams = new URLSearchParams(window.location.search);
+      const themeParam = urlParams.get('theme');
+      const saved = localStorage.getItem('xiaoyu_theme');
+      const pref = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', themeParam || saved || pref);
+    })();
+  </script>
+</head>
+
+<body>
+
+  <!-- Live 8px Grid Inspection Overlay -->
+  <div id="grid-inspector-overlay" aria-hidden="true"></div>
+
+  <!-- Telemetry Bar -->
+  <div class="telemetry-bar">
+    <div class="telemetry-left">
+      <a href="#" class="telemetry-mark" title="啸宇 · Xiaoyu">啸宇</a>
+      <span class="telemetry-tag">SPEC. V1.3 · DESIGN LANGUAGE MANUAL</span>
+    </div>
+    <div class="telemetry-tools">
+      <button class="tool-btn" id="btn-toggle-grid" title="Toggle 8px Baseline Cadence Overlay">
+        <span>GRID OVERLAY (8PX)</span>
+      </button>
+      <button class="tool-btn" id="btn-copy-tokens" title="Copy tokens.css import snippet">
+        <span>COPY TOKENS IMPORT</span>
+      </button>
+      <button class="tool-btn" id="theme-toggle" title="Toggle Light / Dark Surface Theme">
+        <span id="theme-indicator-icon">☾</span>
+        <span id="theme-indicator-text">DARK MODE</span>
+      </button>
+      <a href="portfolio.html" class="tool-btn" style="text-decoration:none;">
+        <span>PORTFOLIO →</span>
+      </a>
+      <a href="experiment.html" class="tool-btn" style="text-decoration:none; color: var(--accent-sage); font-weight: 600;">
+        <span>3D FORK ↗</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="spec-container">
+
+    <!-- Sticky Table of Contents -->
+    <aside class="spec-sidebar">
+      <div class="sidebar-header">
+        <h2 class="sidebar-title">啸宇 · Xiaoyu</h2>
+        <div class="sidebar-subtitle">Brand System &amp; Design Spec</div>
+      </div>
+
+      <nav class="spec-nav">
+        <a href="#overview" class="nav-item active">
+          <span class="nav-num">00</span>
+          <span>System Overview</span>
+        </a>
+        <a href="#pillars" class="nav-item">
+          <span class="nav-num">01</span>
+          <span>The Four Pillars</span>
+        </a>
+        <a href="#colors" class="nav-item">
+          <span class="nav-num">02</span>
+          <span>Color &amp; Surfaces</span>
+        </a>
+        <a href="#typography" class="nav-item">
+          <span class="nav-num">03</span>
+          <span>Quad-Tier Typography</span>
+        </a>
+        <a href="#spatial" class="nav-item">
+          <span class="nav-num">04</span>
+          <span>8px Grid &amp; Cadence</span>
+        </a>
+        <a href="#components" class="nav-item">
+          <span class="nav-num">05</span>
+          <span>Living Components</span>
+        </a>
+        <a href="#code-theme" class="nav-item">
+          <span class="nav-num">06</span>
+          <span>Code Environment</span>
+        </a>
+        <a href="#lexicon" class="nav-item">
+          <span class="nav-num">07</span>
+          <span>Verbal Identity</span>
+        </a>
+        <a href="#quickstart" class="nav-item">
+          <span class="nav-num">08</span>
+          <span>Project Quickstart</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="portfolio.html" class="sidebar-link-btn">
+          <span>Live Portfolio</span>
+          <span>↗</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Specification Document -->
+    <main class="spec-main">
+
+      <!-- COVER SECTION -->
+      <header class="spec-cover" id="overview">
+        <div class="cover-top">
+          <div class="identity-lockup">
+            <span class="unboxed-mark-lg">啸宇</span>
+            <div class="identity-meta">
+              <h1 class="brand-title">啸宇 · The Mindful Craftsman</h1>
+              <div class="brand-tagline">Where Horological Precision meets High-Tech Rigor and Taoist Flow</div>
+            </div>
+          </div>
+          <div class="release-badge">SPEC. V1.3 · RELEASE</div>
+        </div>
+
+        <div class="cover-statement">
+          “High performance stems from <em>steady composure</em>. Building resilient systems with <em>horological precision</em> and mindful flow.”
+        </div>
+
+        <p class="cover-description">
+          This document serves as the canonical design language specification and execution guardrails for all digital systems, interfaces, and architectures engineered by <strong>啸宇 (Xiaoyu)</strong>.
+        </p>
+      </header>
+
+      <!-- 01 · THE FOUR SYNTHESIZED PILLARS -->
+      <section class="spec-section" id="pillars">
+        <div class="section-header">
+          <div class="section-title">
+            <span class="section-idx">01</span>
+            <span>The Four Synthesized Pillars</span>
+          </div>
+          <div class="section-label">ARCHETYPE SPECIFICATION</div>
+        </div>
+
+        <p class="section-intro">
+          Our brand archetype is <strong>The Mindful Craftsman / High-Precision Modernist</strong>. We synthesize four distinct dimensions into a singular, cohesive aesthetic discipline.
+        </p>
+
+        <div class="pillars-grid" style="display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: var(--space-4) !important;">
+          <div class="pillar-card pillar-elegance">
+            <div class="pillar-number">PILLAR 01</div>
+            <h3 class="pillar-title">Understated Elegance</h3>
+            <p class="pillar-body">
+              Elimination of decorative clutter, marketing hyperbole, and vanity badges. Priority is given to essential typography, generous breathing room, and quiet structural balance.
+            </p>
+            <div class="pillar-tagline">EXPRESSION: Muted monochromatic canvas, tailored hierarchy, zero gratuitous ornament.</div>
+          </div>
+
+          <div class="pillar-card pillar-craft">
+            <div class="pillar-number">PILLAR 02</div>
+            <h3 class="pillar-title">High-Precision Craft</h3>
+            <p class="pillar-body">
+              Telemetry clarity, algorithmic rigor, mechanical precision, and sub-16ms latency paired with horological micro-finishes, 1px hairlines, and strict mathematical baseline alignment.
+            </p>
+            <div class="pillar-tagline">EXPRESSION: Monospace data strings, strict 1px hairlines, deterministic UI.</div>
+          </div>
+
+          <div class="pillar-card pillar-zen">
+            <div class="pillar-number">PILLAR 03</div>
+            <h3 class="pillar-title">Zen &amp; Taoism</h3>
+            <p class="pillar-body">
+              Effortless action (<em>Wu Wei</em>), mindful presence, and deliberate negative space (<em>Ma</em>). Digital elements breathe with natural equilibrium.
+            </p>
+            <div class="pillar-tagline">EXPRESSION: Zhi Mang Xing wet-ink signature, generous margins, frictionless transitions.</div>
+          </div>
+
+          <div class="pillar-card pillar-vitality">
+            <div class="pillar-number">PILLAR 04</div>
+            <h3 class="pillar-title">Solarpunk Vitality</h3>
+            <p class="pillar-body">
+              Warm, regenerative optimism and organic balance. Engineering lean, low-waste digital systems that respect human attention, device energy, and environmental longevity over disposable consumerism.
+            </p>
+            <div class="pillar-tagline">EXPRESSION: Matcha Sage (#768E65) accents, life-giving status pulses, tactile washi vellum.</div>
+          </div>
+        </div>
+
+        <!-- The Taoist Seal Philosophy Box -->
+        <div class="tao-callout-box">
+          <div class="tao-seal" title="啸宇">啸宇</div>
+          <div class="tao-content">
+            <h4>THE PHILOSOPHY OF THE UNBOXED CALLIGRAPHY (无为 · WU WEI)</h4>
+            <p>
+              The primary signature mark <strong>啸宇</strong> is rendered strictly in pure running-script (行书) without enclosing geometric boxes, badge borders, or artificial badges. It represents wet-ink calligraphic flow cutting effortlessly through the razor-sharp mechanical grid of the digital UI. Enclosing it in a box violates the core tenet of *Wu Wei*.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 02 · CALIBRATED COLOR PALETTE & SURFACES -->
+      <section class="spec-section" id="colors">
+        <div class="section-header">
+          <div class="section-title">
+            <span class="section-idx">02</span>
+            <span>Calibrated Color Palette &amp; Surfaces</span>
+          </div>
+          <div class="section-label">CHROMATIC SPECIFICATION</div>
+        </div>
+
+        <p class="section-intro">
+          Our palette pairs organic, archival tones (Warm Alabaster drafting paper) with deep technical slate (Graphite Slate) and two precise chromatic accents (Matcha Sage for vitality, Vintage Cognac for horology). Click any swatch to copy its token.
+        </p>
+
+        <div class="color-swatches-grid">
+          <!-- Warm Alabaster -->
+          <div class="swatch-card" onclick="copyTokenValue('--canvas-light: #F8F7F4;', 'Warm Alabaster token copied')">
+            <div class="swatch-preview with-border" style="background: #F8F7F4;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Warm Alabaster</div>
+              <div class="swatch-role">LIGHT CANVAS / VELLUM</div>
+              <div class="swatch-meta">
+                <span>#F8F7F4</span>
+                <span class="swatch-copy-hint">COPY</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Graphite Slate -->
+          <div class="swatch-card" onclick="copyTokenValue('--canvas-dark: #121417;', 'Graphite Slate token copied')">
+            <div class="swatch-preview" style="background: #121417;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Graphite Slate</div>
+              <div class="swatch-role">DEEP CANVAS / TERMINAL</div>
+              <div class="swatch-meta">
+                <span>#121417</span>
+                <span class="swatch-copy-hint">COPY</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Deep Ink -->
+          <div class="swatch-card" onclick="copyTokenValue('--ink-primary: #1C1E21;', 'Deep Ink token copied')">
+            <div class="swatch-preview" style="background: #1C1E21;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Deep Ink</div>
+              <div class="swatch-role">PRIMARY TYPOGRAPHY</div>
+              <div class="swatch-meta">
+                <span>#1C1E21</span>
+                <span class="swatch-copy-hint">COPY</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Secondary Ink -->
+          <div class="swatch-card" onclick="copyTokenValue('--ink-secondary: #555A64;', 'Secondary Ink token copied')">
+            <div class="swatch-preview" style="background: #555A64;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Balanced Charcoal</div>
+              <div class="swatch-role">BODY PROSE / CAPTIONS</div>
+              <div class="swatch-meta">
+                <span>#555A64</span>
+                <span class="swatch-copy-hint">COPY</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Matcha Sage -->
+          <div class="swatch-card" onclick="copyTokenValue('--accent-sage: #768E65;', 'Matcha Sage token copied')">
+            <div class="swatch-preview" style="background: #768E65;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Matcha Sage</div>
+              <div class="swatch-role">VITALITY / INTERACTIVE</div>
+              <div class="swatch-meta">
+                <span>#768E65</span>
+                <span class="swatch-copy-hint">COPY</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Vintage Cognac -->
+          <div class="swatch-card" onclick="copyTokenValue('--accent-cognac: #9A6735;', 'Vintage Cognac token copied')">
+            <div class="swatch-preview" style="background: var(--accent-cognac);"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Vintage Cognac</div>
+              <div class="swatch-role">HOROLOGY / CRAFT ACCENT</div>
+              <div class="swatch-meta">
+                <span>#9A6735 / #C68E56</span>
+                <span class="swatch-copy-hint">COPY</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Titanium Slate / Hairline -->
+          <div class="swatch-card" onclick="copyTokenValue('--border-hairline: #E2E4E9;', 'Titanium Slate token copied')">
+            <div class="swatch-preview with-border" style="background: #E2E4E9;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Titanium Slate</div>
+              <div class="swatch-role">1PX HAIRLINES / DIVIDERS</div>
+              <div class="swatch-meta">
+                <span>#E2E4E9</span>
+                <span class="swatch-copy-hint">COPY</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cartesian Grid Dot -->
+          <div class="swatch-card" onclick="copyTokenValue('--grid-dot-color: #DCD8CE;', 'Grid Dot token copied')">
+            <div class="swatch-preview with-border" style="background-color: #F8F7F4; background-image: radial-gradient(#DCD8CE 1.5px, transparent 0); background-size: 16px 16px;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Cartesian Dot Matrix</div>
+              <div class="swatch-role">16PX ARCHITECTURAL GRID</div>
+              <div class="swatch-meta">
+                <span>#DCD8CE</span>
+                <span class="swatch-copy-hint">COPY</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dual Surface Demonstration Sandbox -->
+        <h4 style="font-family: var(--font-sans); font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: var(--space-3);">
+          Surface Context Comparison: Light Drafting Sheet vs. Graphite Terminal
+        </h4>
+        <div class="surfaces-comparison">
+          <!-- Light Canvas Sample -->
+          <div class="surface-sample light-canvas">
+            <div class="surface-badge">Surface · Light (Warm Alabaster)</div>
+            <h3 style="font-family: var(--font-serif); font-size: 20px; font-weight: 400; color: #1C1E21; margin-bottom: 8px;">
+              Architectural Drafting Sheet
+            </h3>
+            <p style="font-size: 13.5px; color: #555A64; margin-bottom: 16px; line-height: 1.55;">
+              Tactile, natural washi cardstock depth rendered via 16px dot-matrix. Conveys thoughtful stillness, clarity, and deliberate composition.
+            </p>
+            <div style="display: flex; gap: 8px; align-items: center;">
+              <span class="status-pill">
+                <span class="status-pulse"></span>
+                <span>SYSTEM HEALTH: 100%</span>
+              </span>
+              <a href="#" class="btn-primary" style="font-size: 11px; padding: 6px 12px;">Explore →</a>
+            </div>
+          </div>
+
+          <!-- Dark Canvas Sample -->
+          <div class="surface-sample dark-canvas">
+            <div class="surface-badge">Surface · Deep (Graphite Slate)</div>
+            <h3 style="font-family: var(--font-serif); font-size: 20px; font-weight: 400; color: #F8F7F4; margin-bottom: 8px;">
+              Mechanical Terminal Console
+            </h3>
+            <p style="font-size: 13.5px; color: #A6ADBA; margin-bottom: 16px; line-height: 1.55;">
+              Deep, low-light execution mode for telemetry readouts, terminal streams, and high-frequency systems diagnostics with crisp 1px borders.
+            </p>
+            <div style="display: flex; gap: 8px; align-items: center;">
+              <span style="font-family: var(--font-mono); font-size: 11px; background: rgba(118, 142, 101, 0.15); color: #8DB976; border: 1px solid rgba(118, 142, 101, 0.4); padding: 4px 10px; border-radius: 2px;">
+                SYS::OK · 0.12ms
+              </span>
+              <button class="btn-secondary" style="font-size: 11px; padding: 6px 12px;">Inspect</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 03 · QUAD-TIER TYPOGRAPHIC SYSTEM -->
+      <section class="spec-section" id="typography">
+        <div class="section-header">
+          <div class="section-title">
+            <span class="section-idx">03</span>
+            <span>Quad-Tier Typographic System</span>
+          </div>
+          <div class="section-label">HIERARCHY SPECIFICATION</div>
+        </div>
+
+        <p class="section-intro">
+          Four typographic voices operate in strict concert. Each tier fulfills a distinct semantic role, creating a dynamic balance between calligraphic organic flow, editorial erudition, geometric modernism, and mechanical telemetry.
+        </p>
+
+        <div class="type-specimen-stack">
+          <!-- Tier 1: Identity Mark -->
+          <div class="type-specimen-box">
+            <div class="specimen-header">
+              <span class="tier-badge">TIER 1 · IDENTITY MARK</span>
+              <span class="tier-meta">Zhi Mang Xing (志莽行书) · Strictly Chinese Glyph Set</span>
+            </div>
+            <div style="display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap;">
+              <div class="specimen-display-calligraphy" style="font-size: 46px; line-height: 1;">啸宇</div>
+              <div style="font-family: var(--font-serif); font-style: italic; font-size: 18px; color: var(--ink-secondary);">
+                The Mindful Craftsman · High-Precision Modernist
+              </div>
+            </div>
+            <p style="font-size: 13px; color: var(--ink-secondary); margin: 0; margin-top: 8px;">
+              <strong>Application &amp; Scope:</strong> Strictly reserved for the Chinese signature mark (啸宇). Roman letters are completely excluded from this font to preserve authentic calligraphic flow, uncompromised legibility, and modern composure.
+            </p>
+          </div>
+
+          <!-- Tier 2: Editorial Serif -->
+          <div class="type-specimen-box">
+            <div class="specimen-header">
+              <span class="tier-badge">TIER 2 · EDITORIAL SERIF</span>
+              <span class="tier-meta">Newsreader (Canela Alternative) · Google Fonts</span>
+            </div>
+            <div class="specimen-display-serif">“Elegance is the quiet elimination of the unnecessary.”</div>
+            <p style="font-size: 13px; color: var(--ink-secondary); margin: 0;">
+              <strong>Application:</strong> Primary page headlines (H1/H2), philosophy callouts, manifesto quotes, pull statements.
+            </p>
+          </div>
+
+          <!-- Tier 3: Body & UI Sans -->
+          <div class="type-specimen-box">
+            <div class="specimen-header">
+              <span class="tier-badge">TIER 3 · BODY / UI SANS</span>
+              <span class="tier-meta">Satoshi (Grotesque) · Indian Type Foundry / Fontshare</span>
+            </div>
+            <div class="specimen-display-sans">
+              High performance stems from steady composure. When code, hardware, and intent converge without friction, work transitions from effort into effortless flow. Built with geometric rigor and subtle human warmth.
+            </div>
+            <p style="font-size: 13px; color: var(--ink-secondary); margin: 0;">
+              <strong>Application:</strong> Body prose, navigation links, button labels, form labels, card body copy.
+            </p>
+          </div>
+
+          <!-- Tier 4: Telemetry Mono -->
+          <div class="type-specimen-box">
+            <div class="specimen-header">
+              <span class="tier-badge">TIER 4 · TELEMETRY MONO</span>
+              <span class="tier-meta">JetBrains Mono · High-Contrast Terminal Mode</span>
+            </div>
+            <div class="specimen-display-mono">
+              <span style="color: #6C7280;">[SYS::BOOT]</span> &nbsp;<span style="color: #8DB477;">STATUS: OPTIMAL</span> &nbsp;·&nbsp; <span style="color: #C68E56;">LATENCY: 0.12ms</span> &nbsp;·&nbsp; <span style="color: #E2E8F0;">GRID_BASE: 8px</span> &nbsp;·&nbsp; <span style="color: #8DB477;">WU_WEI: TRUE</span>
+            </div>
+            <p style="font-size: 13px; color: var(--ink-secondary); margin: 0; margin-top: 10px;">
+              <strong>Application:</strong> Telemetry metrics, code snippets, timestamps, tech stack pills, status badges, log monitors. Rendered on high-contrast terminal black for maximum readability.
+            </p>
+          </div>
+        </div>
+
+        <!-- Typography Token Hierarchy Table -->
+        <div class="print-page-break"></div>
+        <table class="type-rules-table">
+          <thead>
+            <tr>
+              <th>ROLE / TOKEN</th>
+              <th>FONT FAMILY</th>
+              <th>SIZE / LINE HEIGHT</th>
+              <th>TRACKING</th>
+              <th>WEIGHT / STYLE</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="type-token-name">Brand Identity Mark</td>
+              <td>Zhi Mang Xing</td>
+              <td>32px – 72px / 1.0</td>
+              <td>0.04em</td>
+              <td>Regular (Calligraphy)</td>
+            </tr>
+            <tr>
+              <td class="type-token-name">Display Headline (H1)</td>
+              <td>Newsreader</td>
+              <td>36px – 54px / 1.15</td>
+              <td>-0.025em</td>
+              <td>400 / Italic accents</td>
+            </tr>
+            <tr>
+              <td class="type-token-name">Section Title (H2)</td>
+              <td>Newsreader</td>
+              <td>22px – 28px / 1.25</td>
+              <td>-0.015em</td>
+              <td>400 Regular</td>
+            </tr>
+            <tr>
+              <td class="type-token-name">Body Prose</td>
+              <td>Satoshi</td>
+              <td>15px / 1.6</td>
+              <td>Normal</td>
+              <td>400 Regular</td>
+            </tr>
+            <tr>
+              <td class="type-token-name">Interactive Buttons</td>
+              <td>Satoshi</td>
+              <td>13px / 1.0</td>
+              <td>0.08em (Uppercase)</td>
+              <td>700 Bold</td>
+            </tr>
+            <tr>
+              <td class="type-token-name">Telemetry &amp; Metadata</td>
+              <td>JetBrains Mono</td>
+              <td>10.5px – 12px / 1.5</td>
+              <td>0.06em</td>
+              <td>500 Medium</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- 04 · SPATIAL CADENCE & 8PX GRID -->
+      <section class="spec-section" id="spatial">
+        <div class="section-header">
+          <div class="section-title">
+            <span class="section-idx">04</span>
+            <span>8px Baseline Grid &amp; Spatial Cadence</span>
+          </div>
+          <div class="section-label">GEOMETRIC DISCIPLINE</div>
+        </div>
+
+        <p class="section-intro">
+          Every dimension adheres to an 8px base grid, subdivided into 4px micro-increments. Borders never exceed 1px solid. The canvas texture consists of an unshifting 16px Cartesian dot-matrix.
+        </p>
+
+        <div class="grid-demo-box">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="font-family: var(--font-mono); font-size: 12px; font-weight: 600; color: var(--ink-primary);">
+              SPATIAL PROGRESSION SCALE (BASE 8PX)
+            </div>
+            <div style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-sage);">
+              MICRO-SUBDIVISION: 4PX
+            </div>
+          </div>
+
+          <div class="space-scale-display">
+            <div class="space-scale-row">
+              <span style="color: var(--ink-primary); font-weight: 500;">--space-1</span>
+              <span style="color: var(--ink-muted);">4px</span>
+              <div class="space-bar" style="width: 4px;"></div>
+            </div>
+            <div class="space-scale-row">
+              <span style="color: var(--ink-primary); font-weight: 500;">--space-2</span>
+              <span style="color: var(--ink-muted);">8px</span>
+              <div class="space-bar" style="width: 8px;"></div>
+            </div>
+            <div class="space-scale-row">
+              <span style="color: var(--ink-primary); font-weight: 500;">--space-3</span>
+              <span style="color: var(--ink-muted);">12px</span>
+              <div class="space-bar" style="width: 12px;"></div>
+            </div>
+            <div class="space-scale-row">
+              <span style="color: var(--ink-primary); font-weight: 500;">--space-4</span>
+              <span style="color: var(--ink-muted);">16px</span>
+              <div class="space-bar" style="width: 16px;"></div>
+            </div>
+            <div class="space-scale-row">
+              <span style="color: var(--ink-primary); font-weight: 500;">--space-6</span>
+              <span style="color: var(--ink-muted);">24px</span>
+              <div class="space-bar" style="width: 24px;"></div>
+            </div>
+            <div class="space-scale-row">
+              <span style="color: var(--ink-primary); font-weight: 500;">--space-8</span>
+              <span style="color: var(--ink-muted);">32px</span>
+              <div class="space-bar" style="width: 32px;"></div>
+            </div>
+            <div class="space-scale-row">
+              <span style="color: var(--ink-primary); font-weight: 500;">--space-12</span>
+              <span style="color: var(--ink-muted);">48px</span>
+              <div class="space-bar" style="width: 48px;"></div>
+            </div>
+            <div class="space-scale-row">
+              <span style="color: var(--ink-primary); font-weight: 500;">--space-16</span>
+              <span style="color: var(--ink-muted);">64px</span>
+              <div class="space-bar" style="width: 64px;"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 05 · LIVING COMPONENT LIBRARY -->
+      <section class="spec-section" id="components">
+        <div class="section-header">
+          <div class="section-title">
+            <span class="section-idx">05</span>
+            <span>Living Component Library</span>
+          </div>
+          <div class="section-label">INTERACTIVE PATTERN LIBRARY</div>
+        </div>
+
+        <p class="section-intro">
+          Production-grade components engineered with 1px hairlines, sub-pixel rendering clarity, and strict semantic tokens. Toggle "VIEW CODE" on any component to copy its HTML/CSS.
+        </p>
+
+        <div class="component-showcase">
+          <!-- Component 1: Brand Header & Status Pill -->
+          <div class="component-group">
+            <div class="component-header">
+              <span class="component-title">01 · Navigational Lockup &amp; Status Pulse Pill</span>
+              <button class="snippet-toggle-btn" onclick="toggleSnippet('snippet-header')">VIEW CODE</button>
+            </div>
+            <div class="component-stage">
+              <div style="display: flex; justify-content: space-between; align-items: center; background: var(--canvas-header); padding: 14px 20px; border: 1px solid var(--border-hairline); border-radius: 2px;">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                  <span style="font-family: var(--font-calligraphy); font-size: 28px; line-height: 1; color: var(--accent-sage);">啸宇</span>
+                  <span style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-muted); border-left: 1px solid var(--border-hairline); padding-left: 12px;">XIAOYU</span>
+                </div>
+                <div class="status-pill">
+                  <span class="status-pulse"></span>
+                  <span>ENGAGEMENTS · OPEN</span>
+                </div>
+              </div>
+            </div>
+            <div class="component-code-block" id="snippet-header">
+              <button class="copy-code-btn" onclick="copySnippetText('snippet-header')">COPY HTML</button>
+              <pre>&lt;!-- Navigation Brand Identity Lockup --&gt;
+&lt;div class="brand-identity"&gt;
+  &lt;span class="brand-signature"&gt;啸宇&lt;/span&gt;
+  &lt;span class="brand-tagline"&gt;XIAOYU&lt;/span&gt;
+&lt;/div&gt;
+ 
+&lt;!-- Telemetry Status Pill --&gt;
+&lt;div class="status-pill"&gt;
+  &lt;span class="status-pulse"&gt;&lt;/span&gt;
+  &lt;span&gt;ENGAGEMENTS · OPEN&lt;/span&gt;
+&lt;/div&gt;</pre>
+            </div>
+          </div>
+
+          <!-- Component 2: Artifact Cards -->
+          <div class="component-group">
+            <div class="component-header">
+              <span class="component-title">02 · Artifact Cards (Standard &amp; Featured Sage)</span>
+              <button class="snippet-toggle-btn" onclick="toggleSnippet('snippet-cards')">VIEW CODE</button>
+            </div>
+            <div class="component-stage">
+              <div class="card-demo-grid">
+                <!-- Standard Card -->
+                <div class="demo-card">
+                  <div class="demo-card-top">
+                    <h3 class="demo-card-title">SEQTOR · Telemetry</h3>
+                    <span class="demo-card-badge">2026 · WEB</span>
+                  </div>
+                  <p class="demo-card-desc">
+                    Spatial coordinate stream normalizer and high-frequency race telemetry simulator.
+                  </p>
+                  <div class="demo-pill-row">
+                    <span class="demo-tech-pill">FASTAPI</span>
+                    <span class="demo-tech-pill">TYPESCRIPT</span>
+                    <span class="demo-tech-pill">&lt;16MS SYNC</span>
+                  </div>
+                </div>
+
+                <!-- Featured Card -->
+                <div class="demo-card featured">
+                  <div class="demo-card-top">
+                    <h3 class="demo-card-title">Project Lily · Optical MIDI</h3>
+                    <span class="demo-card-badge" style="color: var(--accent-sage);">HARDWARE</span>
+                  </div>
+                  <p class="demo-card-desc">
+                    Bare-metal C firmware and infrared optical keys enclosed in a bespoke brushed chassis.
+                  </p>
+                  <div class="demo-pill-row">
+                    <span class="demo-tech-pill">C / BARE METAL</span>
+                    <span class="demo-tech-pill">MIDI PROTOCOL</span>
+                    <span class="demo-tech-pill">CNC PRECISION</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="component-code-block" id="snippet-cards">
+              <button class="copy-code-btn" onclick="copySnippetText('snippet-cards')">COPY HTML</button>
+              <pre>&lt;!-- Standard Artifact Card --&gt;
+&lt;article class="artifact-card"&gt;
+  &lt;div class="card-top"&gt;
+    &lt;h3 class="card-title"&gt;Artifact Title&lt;/h3&gt;
+    &lt;span class="card-badge"&gt;METADATA&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;p class="card-desc"&gt;Brief empirical description of the system.&lt;/p&gt;
+  &lt;div class="tag-row"&gt;
+    &lt;span class="tech-pill"&gt;SPEC_1&lt;/span&gt;
+    &lt;span class="tech-pill"&gt;SPEC_2&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/article&gt;
+
+&lt;!-- Featured Card (Green Hairline Accent) --&gt;
+&lt;article class="artifact-card featured"&gt;
+  ...
+&lt;/article&gt;</pre>
+            </div>
+          </div>
+
+          <!-- Component 3: Telemetry Table -->
+          <div class="component-group">
+            <div class="component-header">
+              <span class="component-title">03 · Telemetry Benchmarks Table with Data Accents</span>
+              <button class="snippet-toggle-btn" onclick="toggleSnippet('snippet-table')">VIEW CODE</button>
+            </div>
+            <div class="component-stage">
+              <div class="demo-telemetry-box">
+                <table class="demo-telemetry-table">
+                  <tbody>
+                    <tr>
+                      <td class="demo-t-key">BRAND IDENTITY</td>
+                      <td class="demo-t-val">
+                        <span class="t-accent-pill t-accent-sage">啸宇</span> (Zhi Mang Xing Calligraphy)
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="demo-t-key">GRID CADENCE</td>
+                      <td class="demo-t-val">
+                        <span class="t-accent-pill t-accent-cognac">8PX BASELINE</span> / 1px Hairlines
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="demo-t-key">CORE METHOD</td>
+                      <td class="demo-t-val">Wu Wei · Systematic Restraint</td>
+                    </tr>
+                    <tr>
+                      <td class="demo-t-key">LATENCY BUDGET</td>
+                      <td class="demo-t-val">
+                        <span class="t-accent-pill t-accent-sage"><span class="t-pulse-dot"></span>&lt; 16.6ms</span> 60 FPS Target
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="demo-t-key">SARTORIAL ACCENT</td>
+                      <td class="demo-t-val">
+                        <span class="t-accent-pill t-accent-cognac">VINTAGE COGNAC</span> #9A6735
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="component-code-block" id="snippet-table">
+              <button class="copy-code-btn" onclick="copySnippetText('snippet-table')">COPY HTML</button>
+              <pre>&lt;table class="telemetry-table"&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td class="telemetry-key"&gt;LATENCY BUDGET&lt;/td&gt;
+      &lt;td class="telemetry-val"&gt;
+        &lt;span class="t-accent-pill t-accent-sage"&gt;&lt;span class="t-pulse-dot"&gt;&lt;/span&gt;&lt; 16.6ms&lt;/span&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</pre>
+            </div>
+          </div>
+
+          <!-- Component 4: Interactive Buttons & Form Controls -->
+          <div class="print-page-break"></div>
+          <div class="component-group">
+            <div class="component-header">
+              <span class="component-title">04 · Buttons, Links &amp; Horological Input Fields</span>
+              <button class="snippet-toggle-btn" onclick="toggleSnippet('snippet-controls')">VIEW CODE</button>
+            </div>
+            <div class="component-stage">
+              <div style="display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin-bottom: 24px;">
+                <button class="btn-primary">Primary Action →</button>
+                <button class="btn-secondary">Secondary Outline</button>
+                <a href="#" style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: #FFFFFF; background: var(--accent-sage); padding: 8px 14px; border-radius: 2px; text-decoration: none;">
+                  Sage Trigger →
+                </a>
+                <span style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-cognac); border-bottom: 1px solid var(--accent-cognac); padding-bottom: 1px; cursor: pointer;">
+                  Cognac Editorial Link ↗
+                </span>
+              </div>
+
+              <div class="demo-controls-grid">
+                <div class="demo-field-group">
+                  <label class="demo-label">TELEMETRY_ENDPOINT</label>
+                  <input type="text" class="demo-input" value="https://telemetry.xiaoyu.dev/v1" placeholder="Enter endpoint...">
+                </div>
+                <div class="demo-field-group">
+                  <label class="demo-label">DISCIPLINE_SELECT</label>
+                  <input type="text" class="demo-input" value="Systems Architecture" readonly>
+                </div>
+              </div>
+            </div>
+            <div class="component-code-block" id="snippet-controls">
+              <button class="copy-code-btn" onclick="copySnippetText('snippet-controls')">COPY HTML</button>
+              <pre>&lt;!-- Precision Buttons --&gt;
+&lt;button class="btn-primary"&gt;Primary Action →&lt;/button&gt;
+&lt;button class="btn-secondary"&gt;Secondary Outline&lt;/button&gt;
+
+&lt;!-- Precision Hairline Input --&gt;
+&lt;div class="field-group"&gt;
+  &lt;label class="brand-mono label"&gt;FIELD_LABEL&lt;/label&gt;
+  &lt;input type="text" class="demo-input" placeholder="Prompt..." /&gt;
+&lt;/div&gt;</pre>
+            </div>
+          </div>
+
+          <!-- Component 5: Precision Mechanical Switches & Micro-Toggles -->
+          <div class="component-group">
+            <div class="component-header">
+              <span class="component-title">05 · Precision Mechanical Switches &amp; Micro-Toggles</span>
+              <button class="snippet-toggle-btn" onclick="toggleSnippet('snippet-switches')">VIEW CODE</button>
+            </div>
+            <div class="component-stage">
+              <div class="switch-demo-row">
+                <label class="horo-switch-label">
+                  <input type="checkbox" checked style="display:none;" id="sw-telemetry">
+                  <span class="horo-switch"></span>
+                  <span>TELEMETRY_FEED</span>
+                </label>
+                <label class="horo-switch-label">
+                  <input type="checkbox" checked style="display:none;" id="sw-haptics">
+                  <span class="horo-switch"></span>
+                  <span>SUB_16MS_SYNC</span>
+                </label>
+                <label class="horo-switch-label">
+                  <input type="checkbox" style="display:none;" id="sw-overclock">
+                  <span class="horo-switch"></span>
+                  <span>OPTICAL_MIDI</span>
+                </label>
+              </div>
+            </div>
+            <div class="component-code-block" id="snippet-switches">
+              <button class="copy-code-btn" onclick="copySnippetText('snippet-switches')">COPY HTML</button>
+              <pre>&lt;label class="horo-switch-label"&gt;
+  &lt;input type="checkbox" checked style="display:none;"&gt;
+  &lt;span class="horo-switch"&gt;&lt;/span&gt;
+  &lt;span&gt;TELEMETRY_FEED&lt;/span&gt;
+&lt;/label&gt;</pre>
+            </div>
+          </div>
+
+          <!-- Component 6: Calibrated Range Slider -->
+          <div class="component-group">
+            <div class="component-header">
+              <span class="component-title">06 · Calibrated Range Slider (Interactive Telemetry)</span>
+              <button class="snippet-toggle-btn" onclick="toggleSnippet('snippet-slider')">VIEW CODE</button>
+            </div>
+            <div class="component-stage">
+              <div class="slider-demo-box">
+                <div class="slider-header">
+                  <span>DISPATCH_FREQUENCY_HZ</span>
+                  <span class="slider-val-readout" id="slider-fps-display">60 FPS · 16.6ms</span>
+                </div>
+                <input type="range" class="horo-range-input" min="15" max="144" value="60" id="telemetry-fps-slider">
+              </div>
+            </div>
+            <div class="component-code-block" id="snippet-slider">
+              <button class="copy-code-btn" onclick="copySnippetText('snippet-slider')">COPY HTML</button>
+              <pre>&lt;div class="slider-demo-box"&gt;
+  &lt;div class="slider-header"&gt;
+    &lt;span&gt;CADENCE_RATE&lt;/span&gt;
+    &lt;span class="slider-val-readout" id="readout"&gt;60 FPS&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;input type="range" class="horo-range-input" min="15" max="144" value="60"&gt;
+&lt;/div&gt;</pre>
+            </div>
+          </div>
+
+          <!-- Component 7: Live Systems Telemetry Graph (ApexCharts) -->
+          <div class="component-group">
+            <div class="component-header">
+              <span class="component-title">07 · Real-Time Systems Telemetry Graph (ApexCharts)</span>
+              <button class="snippet-toggle-btn" onclick="toggleSnippet('snippet-chart')">VIEW CODE</button>
+            </div>
+            <div class="component-stage">
+              <div class="chart-demo-stage">
+                <div class="chart-header">
+                  <div class="chart-title">
+                    <span class="t-pulse-dot"></span>
+                    <span>PIPELINE_THROUGHPUT_MONITOR // DUAL_STREAM</span>
+                  </div>
+                  <div class="chart-metrics">
+                    SAMPLING: 250MS · ZERO_ALLOCATION
+                  </div>
+                </div>
+                <div id="apex-telemetry-chart" style="min-height: 220px;"></div>
+              </div>
+            </div>
+            <div class="component-code-block" id="snippet-chart">
+              <button class="copy-code-btn" onclick="copySnippetText('snippet-chart')">COPY HTML</button>
+              <pre>&lt;!-- ApexCharts Telemetry Component Container --&gt;
+&lt;div id="telemetry-chart" style="min-height: 220px;"&gt;&lt;/div&gt;</pre>
+            </div>
+          </div>
+
+          <!-- Component 8: Audio Micro-Haptics Escapement Trigger -->
+          <div class="component-group">
+            <div class="component-header">
+              <span class="component-title">08 · Audio Micro-Haptic Escapement Trigger (Web Audio DSP)</span>
+              <button class="snippet-toggle-btn" onclick="toggleSnippet('snippet-audio')">VIEW CODE</button>
+            </div>
+            <div class="component-stage">
+              <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
+                <button class="audio-demo-btn" id="demo-audio-trigger">
+                  <span>♫</span>
+                  <span>PLAY HOROLOGICAL ESCAPEMENT TICK (4Hz / 1100Hz)</span>
+                </button>
+                <span style="font-family: var(--font-mono); font-size: 11px; color: var(--ink-secondary);">
+                  Synthesized in real-time via Web Audio API · Zero audio asset downloads
+                </span>
+              </div>
+            </div>
+            <div class="component-code-block" id="snippet-audio">
+              <button class="copy-code-btn" onclick="copySnippetText('snippet-audio')">COPY HTML</button>
+              <pre>&lt;!-- Web Audio API Micro-Haptics --&gt;
+&lt;button class="audio-demo-btn" onclick="playHapticTick()"&gt;
+  &lt;span&gt;♫&lt;/span&gt; &lt;span&gt;PLAY ESCAPEMENT TICK&lt;/span&gt;
+&lt;/button&gt;</pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 06 · SYNTAX HIGHLIGHTING & CODE ENVIRONMENT -->
+      <section class="spec-section" id="code-theme">
+        <div class="section-header">
+          <div class="section-title">
+            <span class="section-idx">06</span>
+            <span>Syntax Highlighting &amp; Code Theme</span>
+          </div>
+          <div class="section-label">ENGINEERING SPECIFICATION</div>
+        </div>
+
+        <p class="section-intro">
+          Our syntax palette applies horological precision to production code environments. Control structures are grounded in warm <strong>Vintage Cognac</strong> (<span style="color: var(--accent-cognac); font-weight: 600;">#9A6735 / #C68E56</span>), functions and invocation nodes in <strong>Matcha Sage</strong> (<span style="color: var(--accent-sage); font-weight: 600;">#768E65 / #8DB477</span>), types in Horizon Titanium, and strings in Warm Ocher. Tested across five primary engineering runtimes.
+        </p>
+
+        <!-- Interactive Code Terminal Stage -->
+        <div class="code-theme-card">
+          <div class="code-theme-header">
+            <div class="code-window-controls">
+              <span class="code-dot dot-close" title="Close"></span>
+              <span class="code-dot dot-min" title="Minimize"></span>
+              <span class="code-dot dot-max" title="Expand"></span>
+              <span class="code-file-badge" id="code-file-name" style="margin-left: 8px;">telemetry_pipeline.py</span>
+            </div>
+
+            <div class="code-lang-tabs" role="tablist">
+              <button class="lang-tab-btn active" id="tab-btn-python" onclick="switchCodeLang('python', 'telemetry_pipeline.py')">Python</button>
+              <button class="lang-tab-btn" id="tab-btn-javascript" onclick="switchCodeLang('javascript', 'escapement_audio.ts')">JavaScript / TS</button>
+              <button class="lang-tab-btn" id="tab-btn-css" onclick="switchCodeLang('css', 'tokens.css')">CSS</button>
+              <button class="lang-tab-btn" id="tab-btn-html" onclick="switchCodeLang('html', 'system_layout.html')">HTML</button>
+              <button class="lang-tab-btn" id="tab-btn-go" onclick="switchCodeLang('go', 'cadence_monitor.go')">Go</button>
+            </div>
+
+            <div>
+              <button class="copy-code-btn" onclick="copyActiveCode()">COPY CODE</button>
+            </div>
+          </div>
+
+          <!-- Python Snippet -->
+          <div class="code-snippet-panel active" id="code-panel-python">
+            <pre class="code-theme-body"><code><span class="syn-ln">01</span><span class="syn-c"># Telemetry Ingestion Pipeline · Xiaoyu Systems Engine</span>
+<span class="syn-ln">02</span><span class="syn-k">from</span> dataclasses <span class="syn-k">import</span> dataclass
+<span class="syn-ln">03</span><span class="syn-k">import</span> asyncio, time
+<span class="syn-ln">04</span>
+<span class="syn-ln">05</span><span class="syn-k">@dataclass</span>(slots=<span class="syn-n">True</span>)
+<span class="syn-ln">06</span><span class="syn-k">class</span> <span class="syn-t">TelemetryPacket</span>:
+<span class="syn-ln">07</span>    frame_idx: <span class="syn-t">int</span>
+<span class="syn-ln">08</span>    latency_budget_ms: <span class="syn-t">float</span> = <span class="syn-n">16.67</span>
+<span class="syn-ln">09</span>    is_synchronized: <span class="syn-t">bool</span> = <span class="syn-n">True</span>
+<span class="syn-ln">10</span>    stream_origin: <span class="syn-t">str</span> = <span class="syn-s">"wss://telemetry.xiaoyu.dev/v1"</span>
+<span class="syn-ln">11</span>
+<span class="syn-ln">12</span><span class="syn-k">async def</span> <span class="syn-f">monitor_cadence_stream</span>(target_hz: <span class="syn-t">int</span> = <span class="syn-n">60</span>) -&gt; <span class="syn-t">None</span>:
+<span class="syn-ln">13</span>    <span class="syn-s">"""Observe 60 FPS frame cadence with zero thread contention."""</span>
+<span class="syn-ln">14</span>    frame_interval = <span class="syn-n">1.0</span> / target_hz
+<span class="syn-ln">15</span>    <span class="syn-k">while</span> <span class="syn-n">True</span>:
+<span class="syn-ln">16</span>        tick_start = time.perf_counter()
+<span class="syn-ln">17</span>        packet = <span class="syn-f">TelemetryPacket</span>(frame_idx=<span class="syn-n">4096</span>)
+<span class="syn-ln">18</span>        delta = (time.perf_counter() - tick_start) * <span class="syn-n">1000.0</span>
+<span class="syn-ln">19</span>        <span class="syn-k">if</span> delta &gt; packet.latency_budget_ms:
+<span class="syn-ln">20</span>            <span class="syn-f">print</span>(<span class="syn-s">f"[CADENCE_WARN] Jitter excursion: {delta:.2f}ms"</span>)
+<span class="syn-ln">21</span>        <span class="syn-k">await</span> asyncio.<span class="syn-f">sleep</span>(frame_interval)</code></pre>
+          </div>
+
+          <!-- JavaScript / TS Snippet -->
+          <div class="code-snippet-panel" id="code-panel-javascript">
+            <pre class="code-theme-body"><code><span class="syn-ln">01</span><span class="syn-c">// Horological Escapement Audio Synthesizer (Web Audio API)</span>
+<span class="syn-ln">02</span><span class="syn-k">interface</span> <span class="syn-t">EscapementConfig</span> {
+<span class="syn-ln">03</span>  <span class="syn-p">frequencyHz</span>: <span class="syn-t">number</span>;
+<span class="syn-ln">04</span>  <span class="syn-p">decayDuration</span>: <span class="syn-t">number</span>;
+<span class="syn-ln">05</span>  <span class="syn-p">subHarmonic</span>: <span class="syn-t">boolean</span>;
+<span class="syn-ln">06</span>}
+<span class="syn-ln">07</span>
+<span class="syn-ln">08</span><span class="syn-k">export class</span> <span class="syn-t">EscapementHaptics</span> {
+<span class="syn-ln">09</span>  <span class="syn-k">private readonly</span> <span class="syn-p">ctx</span>: <span class="syn-t">AudioContext</span>;
+<span class="syn-ln">10</span>
+<span class="syn-ln">11</span>  <span class="syn-k">constructor</span>() {
+<span class="syn-ln">12</span>    <span class="syn-k">this</span>.ctx = <span class="syn-k">new</span> (<span class="syn-t">window</span>.<span class="syn-t">AudioContext</span> || (<span class="syn-t">window</span> <span class="syn-k">as any</span>).<span class="syn-t">webkitAudioContext</span>)();
+<span class="syn-ln">13</span>  }
+<span class="syn-ln">14</span>
+<span class="syn-ln">15</span>  <span class="syn-k">public</span> <span class="syn-f">triggerTick</span>(cfg: <span class="syn-t">EscapementConfig</span>): <span class="syn-t">void</span> {
+<span class="syn-ln">16</span>    <span class="syn-k">const</span> now = <span class="syn-k">this</span>.ctx.currentTime;
+<span class="syn-ln">17</span>    <span class="syn-k">const</span> osc = <span class="syn-k">this</span>.ctx.<span class="syn-f">createOscillator</span>();
+<span class="syn-ln">18</span>    <span class="syn-k">const</span> gain = <span class="syn-k">this</span>.ctx.<span class="syn-f">createGain</span>();
+<span class="syn-ln">19</span>
+<span class="syn-ln">20</span>    osc.type = <span class="syn-s">'triangle'</span>;
+<span class="syn-ln">21</span>    osc.frequency.<span class="syn-f">setValueAtTime</span>(cfg.frequencyHz, now);
+<span class="syn-ln">22</span>    gain.gain.<span class="syn-f">setValueAtTime</span>(<span class="syn-n">0.14</span>, now);
+<span class="syn-ln">23</span>    gain.gain.<span class="syn-f">exponentialRampToValueAtTime</span>(<span class="syn-n">0.0001</span>, now + cfg.decayDuration);
+<span class="syn-ln">24</span>
+<span class="syn-ln">25</span>    osc.<span class="syn-f">connect</span>(gain).<span class="syn-f">connect</span>(<span class="syn-k">this</span>.ctx.destination);
+<span class="syn-ln">26</span>    osc.<span class="syn-f">start</span>(now);
+<span class="syn-ln">27</span>    osc.<span class="syn-f">stop</span>(now + cfg.decayDuration);
+<span class="syn-ln">28</span>  }
+<span class="syn-ln">29</span>}</code></pre>
+          </div>
+
+          <!-- CSS Snippet -->
+          <div class="code-snippet-panel" id="code-panel-css">
+            <pre class="code-theme-body"><code><span class="syn-ln">01</span><span class="syn-c">/* Xiaoyu Spatial Engine &amp; Translucent Vellum Surfaces */</span>
+<span class="syn-ln">02</span><span class="syn-tag">:root</span> {
+<span class="syn-ln">03</span>  <span class="syn-p">--space-base</span>: <span class="syn-n">8px</span>;
+<span class="syn-ln">04</span>  <span class="syn-p">--accent-cognac</span>: <span class="syn-s">#9A6735</span>;  <span class="syn-c">/* Horological Heritage */</span>
+<span class="syn-ln">05</span>  <span class="syn-p">--accent-sage</span>: <span class="syn-s">#768E65</span>;    <span class="syn-c">/* Solarpunk Vitality */</span>
+<span class="syn-ln">06</span>  <span class="syn-p">--font-mono</span>: <span class="syn-s">'JetBrains Mono'</span>, monospace;
+<span class="syn-ln">07</span>}
+<span class="syn-ln">08</span>
+<span class="syn-ln">09</span><span class="syn-tag">.artifact-card</span><span class="syn-tag">.featured</span> {
+<span class="syn-ln">10</span>  <span class="syn-attr">display</span>: grid;
+<span class="syn-ln">11</span>  <span class="syn-attr">grid-template-columns</span>: minmax(<span class="syn-n">0</span>, <span class="syn-n">1fr</span>) auto;
+<span class="syn-ln">12</span>  <span class="syn-attr">gap</span>: calc(<span class="syn-f">var</span>(--space-base) * <span class="syn-n">3</span>);
+<span class="syn-ln">13</span>  <span class="syn-attr">background</span>: <span class="syn-f">var</span>(--canvas-card);
+<span class="syn-ln">14</span>  <span class="syn-attr">border</span>: <span class="syn-n">1px</span> solid <span class="syn-f">var</span>(--border-hairline);
+<span class="syn-ln">15</span>  <span class="syn-attr">border-top</span>: <span class="syn-n">3px</span> solid <span class="syn-f">var</span>(--accent-cognac);
+<span class="syn-ln">16</span>  <span class="syn-attr">backdrop-filter</span>: <span class="syn-f">blur</span>(<span class="syn-n">8px</span>);
+<span class="syn-ln">17</span>  <span class="syn-attr">transition</span>: transform <span class="syn-n">220ms</span> <span class="syn-f">cubic-bezier</span>(<span class="syn-n">0.16</span>, <span class="syn-n">1</span>, <span class="syn-n">0.3</span>, <span class="syn-n">1</span>);
+<span class="syn-ln">18</span>}
+<span class="syn-ln">19</span>
+<span class="syn-ln">20</span><span class="syn-tag">.artifact-card</span><span class="syn-tag">:hover</span> {
+<span class="syn-ln">21</span>  <span class="syn-attr">transform</span>: <span class="syn-f">translateY</span>(<span class="syn-n">-2px</span>);
+<span class="syn-ln">22</span>  <span class="syn-attr">box-shadow</span>: <span class="syn-n">0</span> <span class="syn-n">8px</span> <span class="syn-n">24px</span> <span class="syn-f">rgba</span>(<span class="syn-n">0</span>, <span class="syn-n">0</span>, <span class="syn-n">0</span>, <span class="syn-n">0.06</span>);
+<span class="syn-ln">23</span>}</code></pre>
+          </div>
+
+          <!-- HTML Snippet -->
+          <div class="code-snippet-panel" id="code-panel-html">
+            <pre class="code-theme-body"><code><span class="syn-ln">01</span><span class="syn-tag">&lt;!DOCTYPE</span> <span class="syn-attr">html</span><span class="syn-tag">&gt;</span>
+<span class="syn-ln">02</span><span class="syn-tag">&lt;html</span> <span class="syn-attr">lang</span>=<span class="syn-s">"en"</span> <span class="syn-attr">data-theme</span>=<span class="syn-s">"dark"</span><span class="syn-tag">&gt;</span>
+<span class="syn-ln">03</span>  <span class="syn-tag">&lt;head&gt;</span>
+<span class="syn-ln">04</span>    <span class="syn-tag">&lt;meta</span> <span class="syn-attr">charset</span>=<span class="syn-s">"UTF-8"</span> <span class="syn-tag">/&gt;</span>
+<span class="syn-ln">05</span>    <span class="syn-tag">&lt;title&gt;</span>啸宇 · Xiaoyu Architecture<span class="syn-tag">&lt;/title&gt;</span>
+<span class="syn-ln">06</span>    <span class="syn-tag">&lt;link</span> <span class="syn-attr">rel</span>=<span class="syn-s">"stylesheet"</span> <span class="syn-attr">href</span>=<span class="syn-s">"tokens.css"</span> <span class="syn-tag">/&gt;</span>
+<span class="syn-ln">07</span>  <span class="syn-tag">&lt;/head&gt;</span>
+<span class="syn-ln">08</span>  <span class="syn-tag">&lt;body&gt;</span>
+<span class="syn-ln">09</span>    <span class="syn-tag">&lt;header</span> <span class="syn-attr">class</span>=<span class="syn-s">"site-header"</span><span class="syn-tag">&gt;</span>
+<span class="syn-ln">10</span>      <span class="syn-tag">&lt;span</span> <span class="syn-attr">class</span>=<span class="syn-s">"brand-signature"</span><span class="syn-tag">&gt;</span>啸宇<span class="syn-tag">&lt;/span&gt;</span>
+<span class="syn-ln">11</span>      <span class="syn-tag">&lt;nav</span> <span class="syn-attr">aria-label</span>=<span class="syn-s">"Primary Cadence"</span><span class="syn-tag">&gt;</span>
+<span class="syn-ln">12</span>        <span class="syn-tag">&lt;a</span> <span class="syn-attr">href</span>=<span class="syn-s">"#systems"</span> <span class="syn-attr">class</span>=<span class="syn-s">"nav-anchor active"</span><span class="syn-tag">&gt;</span>SYSTEMS<span class="syn-tag">&lt;/a&gt;</span>
+<span class="syn-ln">13</span>        <span class="syn-tag">&lt;a</span> <span class="syn-attr">href</span>=<span class="syn-s">"#codex"</span> <span class="syn-attr">class</span>=<span class="syn-s">"nav-anchor"</span><span class="syn-tag">&gt;</span>CODEX<span class="syn-tag">&lt;/a&gt;</span>
+<span class="syn-ln">14</span>      <span class="syn-tag">&lt;/nav&gt;</span>
+<span class="syn-ln">15</span>    <span class="syn-tag">&lt;/header&gt;</span>
+<span class="syn-ln">16</span>    <span class="syn-tag">&lt;main</span> <span class="syn-attr">class</span>=<span class="syn-s">"main-deck"</span><span class="syn-tag">&gt;</span>
+<span class="syn-ln">17</span>      <span class="syn-tag">&lt;section</span> <span class="syn-attr">class</span>=<span class="syn-s">"telemetry-card"</span> <span class="syn-attr">data-rate</span>=<span class="syn-s">"60fps"</span><span class="syn-tag">&gt;</span>
+<span class="syn-ln">18</span>        <span class="syn-tag">&lt;span</span> <span class="syn-attr">class</span>=<span class="syn-s">"status-pill"</span><span class="syn-tag">&gt;</span>&lt; 16.6ms SYNC<span class="syn-tag">&lt;/span&gt;</span>
+<span class="syn-ln">19</span>        <span class="syn-tag">&lt;h2</span> <span class="syn-attr">class</span>=<span class="syn-s">"card-title"</span><span class="syn-tag">&gt;</span>SEQTOR Telemetry Engine<span class="syn-tag">&lt;/h2&gt;</span>
+<span class="syn-ln">20</span>      <span class="syn-tag">&lt;/section&gt;</span>
+<span class="syn-ln">21</span>    <span class="syn-tag">&lt;/main&gt;</span>
+<span class="syn-ln">22</span>  <span class="syn-tag">&lt;/body&gt;</span>
+<span class="syn-ln">23</span><span class="syn-tag">&lt;/html&gt;</span></code></pre>
+          </div>
+
+          <!-- Go Snippet -->
+          <div class="code-snippet-panel" id="code-panel-go">
+            <pre class="code-theme-body"><code><span class="syn-ln">01</span><span class="syn-c">// Package telemetry ingests zero-alloc frame buffer streams.</span>
+<span class="syn-ln">02</span><span class="syn-k">package</span> telemetry
+<span class="syn-ln">03</span>
+<span class="syn-ln">04</span><span class="syn-k">import</span> (
+<span class="syn-ln">05</span>	<span class="syn-s">"context"</span>
+<span class="syn-ln">06</span>	<span class="syn-s">"fmt"</span>
+<span class="syn-ln">07</span>	<span class="syn-s">"sync/atomic"</span>
+<span class="syn-ln">08</span>	<span class="syn-s">"time"</span>
+<span class="syn-ln">09</span>)
+<span class="syn-ln">10</span>
+<span class="syn-ln">11</span><span class="syn-k">type</span> <span class="syn-t">CadenceMonitor</span> <span class="syn-k">struct</span> {
+<span class="syn-ln">12</span>	targetBudget <span class="syn-t">time.Duration</span>
+<span class="syn-ln">13</span>	droppedTicks <span class="syn-t">atomic.Uint64</span>
+<span class="syn-ln">14</span>}
+<span class="syn-ln">15</span>
+<span class="syn-ln">16</span><span class="syn-k">func</span> <span class="syn-f">NewCadenceMonitor</span>(fps <span class="syn-t">int</span>) (*<span class="syn-t">CadenceMonitor</span>, <span class="syn-t">error</span>) {
+<span class="syn-ln">17</span>	<span class="syn-k">if</span> fps &lt;= <span class="syn-n">0</span> {
+<span class="syn-ln">18</span>		<span class="syn-k">return</span> <span class="syn-n">nil</span>, fmt.<span class="syn-f">Errorf</span>(<span class="syn-s">"invalid cadence target: %d"</span>, fps)
+<span class="syn-ln">19</span>	}
+<span class="syn-ln">20</span>	<span class="syn-k">return</span> &amp;<span class="syn-t">CadenceMonitor</span>{
+<span class="syn-ln">21</span>		targetBudget: time.Second / time.<span class="syn-t">Duration</span>(fps),
+<span class="syn-ln">22</span>	}, <span class="syn-n">nil</span>
+<span class="syn-ln">23</span>}
+<span class="syn-ln">24</span>
+<span class="syn-ln">25</span><span class="syn-k">func</span> (m *<span class="syn-t">CadenceMonitor</span>) <span class="syn-f">RunLoop</span>(ctx <span class="syn-t">context.Context</span>) <span class="syn-t">error</span> {
+<span class="syn-ln">26</span>	ticker := time.<span class="syn-f">NewTicker</span>(m.targetBudget)
+<span class="syn-ln">27</span>	<span class="syn-k">defer</span> ticker.<span class="syn-f">Stop</span>()
+<span class="syn-ln">28</span>	<span class="syn-k">for</span> {
+<span class="syn-ln">29</span>		<span class="syn-k">select</span> {
+<span class="syn-ln">30</span>		<span class="syn-k">case</span> &lt;-ctx.<span class="syn-f">Done</span>():
+<span class="syn-ln">31</span>			<span class="syn-k">return</span> ctx.<span class="syn-f">Err</span>()
+<span class="syn-ln">32</span>		<span class="syn-k">case</span> t := &lt;-ticker.C:
+<span class="syn-ln">33</span>			m.<span class="syn-f">processFrameTick</span>(t)
+<span class="syn-ln">34</span>		}
+<span class="syn-ln">35</span>	}
+<span class="syn-ln">36</span>}</code></pre>
+          </div>
+        </div>
+
+        <!-- Syntax Role Tokens Legend Grid -->
+        <div class="syntax-tokens-grid">
+          <div class="syntax-token-item">
+            <div class="syntax-color-chip" style="background: var(--syn-keyword);"></div>
+            <div class="syntax-token-info">
+              <span class="syntax-token-name">--syn-keyword</span>
+              <span class="syntax-token-desc">Vintage Cognac · Control, def, func, return</span>
+            </div>
+          </div>
+          <div class="syntax-token-item">
+            <div class="syntax-color-chip" style="background: var(--syn-function);"></div>
+            <div class="syntax-token-info">
+              <span class="syntax-token-name">--syn-function</span>
+              <span class="syntax-token-desc">Matcha Sage · Invocations, calls, tags</span>
+            </div>
+          </div>
+          <div class="syntax-token-item">
+            <div class="syntax-color-chip" style="background: var(--syn-type);"></div>
+            <div class="syntax-token-info">
+              <span class="syntax-token-name">--syn-type</span>
+              <span class="syntax-token-desc">Horizon Titanium · Structs, types, interfaces</span>
+            </div>
+          </div>
+          <div class="syntax-token-item">
+            <div class="syntax-color-chip" style="background: var(--syn-string);"></div>
+            <div class="syntax-token-info">
+              <span class="syntax-token-name">--syn-string</span>
+              <span class="syntax-token-desc">Warm Ocher · String literals &amp; constants</span>
+            </div>
+          </div>
+          <div class="syntax-token-item">
+            <div class="syntax-color-chip" style="background: var(--syn-number);"></div>
+            <div class="syntax-token-info">
+              <span class="syntax-token-name">--syn-number</span>
+              <span class="syntax-token-desc">Terracotta · Numbers, floats, booleans</span>
+            </div>
+          </div>
+          <div class="syntax-token-item">
+            <div class="syntax-color-chip" style="background: var(--syn-comment);"></div>
+            <div class="syntax-token-info">
+              <span class="syntax-token-name">--syn-comment</span>
+              <span class="syntax-token-desc">Titanium Slate · Non-distracting italic prose</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 07 · VERBAL IDENTITY & EDITORIAL LEXICON -->
+      <section class="spec-section" id="lexicon">
+        <div class="section-header">
+          <div class="section-title">
+            <span class="section-idx">07</span>
+            <span>Verbal Identity &amp; Editorial Guardrails</span>
+          </div>
+          <div class="section-label">VOICE &amp; LEXICON</div>
+        </div>
+
+        <p class="section-intro">
+          Our verbal posture reflects empirical clarity, architectural rigor, and quiet confidence. We celebrate technical depth and deliberate craftsmanship while rejecting hollow startup hype.
+        </p>
+
+        <div class="lexicon-comparison-grid">
+          <!-- Embrace -->
+          <div class="lexicon-card embrace">
+            <div class="lexicon-header">
+              <span>●</span>
+              <span>EMBRACE (HIGH RESONANCE &amp; SIGNAL)</span>
+            </div>
+            <div class="lexicon-chips">
+              <span class="lex-chip chip-embrace">Architecture</span>
+              <span class="lex-chip chip-embrace">Cadence</span>
+              <span class="lex-chip chip-embrace">Deliberate</span>
+              <span class="lex-chip chip-embrace">Telemetry</span>
+              <span class="lex-chip chip-embrace">Craft</span>
+              <span class="lex-chip chip-embrace">Flow (Wu Wei)</span>
+              <span class="lex-chip chip-embrace">Regenerative</span>
+              <span class="lex-chip chip-embrace">Refinement</span>
+              <span class="lex-chip chip-embrace">Integrity</span>
+              <span class="lex-chip chip-embrace">Equilibrium</span>
+            </div>
+          </div>
+
+          <!-- Discard -->
+          <div class="lexicon-card discard">
+            <div class="lexicon-header">
+              <span>✕</span>
+              <span>DISCARD (SYNTHETIC NOISE &amp; HYPE)</span>
+            </div>
+            <div class="lexicon-chips">
+              <span class="lex-chip chip-discard">Synergy</span>
+              <span class="lex-chip chip-discard">Growth-Hack</span>
+              <span class="lex-chip chip-discard">10x Rockstar</span>
+              <span class="lex-chip chip-discard">Hustle</span>
+              <span class="lex-chip chip-discard">Disruptive</span>
+              <span class="lex-chip chip-discard">Grindset</span>
+              <span class="lex-chip chip-discard">Guru</span>
+              <span class="lex-chip chip-discard">Crushing It</span>
+              <span class="lex-chip chip-discard">Superstar</span>
+              <span class="lex-chip chip-discard">Unicorn</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="background: var(--canvas-card); border: 1px solid var(--border-hairline); border-radius: var(--radius-card); padding: var(--space-5); backdrop-filter: blur(6px);">
+          <h4 style="font-family: var(--font-sans); font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-primary); margin-bottom: 8px;">
+            Copywriting Voice Cadence
+          </h4>
+          <p style="font-size: 13.5px; line-height: 1.6; color: var(--ink-secondary); margin: 0;">
+            Sentences are structured with classical balance and empirical precision. Active verbs lead, explanations remain concise, and statements avoid hyperbole. Where a technical metric exists (e.g. latency, bandwidth, tolerances), state the metric rather than using vague adjectives.
+          </p>
+        </div>
+      </section>
+
+      <!-- 08 · PROJECT QUICKSTART & INTEGRATION -->
+      <section class="spec-section" id="quickstart">
+        <div class="section-header">
+          <div class="section-title">
+            <span class="section-idx">08</span>
+            <span>Project Quickstart &amp; Integration Manual</span>
+          </div>
+          <div class="section-label">DEVELOPER QUICKSTART</div>
+        </div>
+
+        <p class="section-intro">
+          How to initiate any future project using the Xiaoyu design language. Follow these three steps to achieve 100% brand conformity.
+        </p>
+
+        <div class="quickstart-box">
+          <div class="quickstart-step">
+            <div class="step-title">
+              <span class="step-badge">STEP 1</span>
+              <span>Import the Central Token Engine in your HTML Header</span>
+            </div>
+            <p style="font-size: 13px; color: var(--ink-secondary); margin-bottom: 6px;">
+              Place this snippet inside your <code>&lt;head&gt;</code> element to load all fonts, tokens, and utility resets:
+            </p>
+            <pre class="code-terminal">&lt;link rel="stylesheet" href="tokens.css"&gt;</pre>
+          </div>
+
+          <div class="quickstart-step">
+            <div class="step-title">
+              <span class="step-badge">STEP 2</span>
+              <span>Apply the 16px Cartesian Dot Matrix to your Root / Body</span>
+            </div>
+            <p style="font-size: 13px; color: var(--ink-secondary); margin-bottom: 6px;">
+              Your <code>body</code> will automatically inherit the drafting paper texture defined in <code>tokens.css</code>:
+            </p>
+            <pre class="code-terminal">body {
+  background-color: var(--canvas-light);
+  background-image: var(--grid-dot-pattern);
+  background-size: var(--grid-dot-size) var(--grid-dot-size);
+  color: var(--ink-primary);
+  font-family: var(--font-sans);
+}</pre>
+          </div>
+
+          <div class="quickstart-step">
+            <div class="step-title">
+              <span class="step-badge">STEP 3</span>
+              <span>Enforce the Execution Guardrails Checklist</span>
+            </div>
+            <ul style="font-size: 13.5px; color: var(--ink-secondary); line-height: 1.7; padding-left: 20px; margin: 0;">
+              <li><strong>Zero Enclosures:</strong> Keep the calligraphic signature <code>啸宇</code> unboxed without badge frames.</li>
+              <li><strong>Hairline Discipline:</strong> Borders must never exceed <code>1px solid</code> (use <code>#E2E4E9</code> for light, <code>#23272F</code> for dark).</li>
+              <li><strong>8px Alignment:</strong> Pad and margin all elements strictly to multiples of 8px (with 4px for micro-increments).</li>
+              <li><strong>Intentional Negative Space (Ma):</strong> Let white space breathe; give cognitive weight to the content rather than filling space.</li>
+              <li><strong>Tonal Shadows:</strong> Rely on subtle background shifts and tonal contrast rather than heavy blurred drop shadows.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SPECIFICATION FOOTER -->
+      <footer style="border-top: 1px solid var(--border-hairline); padding-top: var(--space-6); display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 11px; color: var(--ink-muted);">
+        <div>&copy; 2026 啸宇 · Brand Style Guide &amp; Design Language System</div>
+        <div>RELEASE: SPEC. V1.3 · VERIFIED ARCHIVAL ARTIFACT</div>
+      </footer>
+    </main>
+  </div>
+
+  <!-- Clipboard Toast -->
+  <div id="copy-toast">Token copied to clipboard</div>
+
+  <!-- Interactive Logic -->
+  <script>
+    // Theme Engine
+    const themeBtn = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-indicator-icon');
+    const themeText = document.getElementById('theme-indicator-text');
+
+    function updateThemeUI(theme) {
+      const isDark = theme === 'dark';
+      if (themeIcon) themeIcon.textContent = isDark ? '☀' : '☾';
+      if (themeText) themeText.textContent = isDark ? 'LIGHT MODE' : 'DARK MODE';
+    }
+
+    const activeTheme = document.documentElement.getAttribute('data-theme') || 'light';
+    updateThemeUI(activeTheme);
+
+    themeBtn.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', current);
+      localStorage.setItem('xiaoyu_theme', current);
+      updateThemeUI(current);
+    });
+
+    // Grid Inspector Overlay Toggle
+    const gridOverlay = document.getElementById('grid-inspector-overlay');
+    const toggleGridBtn = document.getElementById('btn-toggle-grid');
+
+    toggleGridBtn.addEventListener('click', () => {
+      gridOverlay.classList.toggle('active');
+      toggleGridBtn.classList.toggle('active');
+    });
+
+    // Copy Token Value with Toast
+    const toast = document.getElementById('copy-toast');
+    function showToast(msg) {
+      toast.textContent = msg;
+      toast.classList.add('visible');
+      setTimeout(() => {
+        toast.classList.remove('visible');
+      }, 2000);
+    }
+
+    function copyTokenValue(tokenStr, msg) {
+      navigator.clipboard.writeText(tokenStr).then(() => {
+        showToast(msg || 'Token copied to clipboard');
+      }).catch(() => {
+        showToast('Copied: ' + tokenStr);
+      });
+    }
+
+    // Copy Tokens Import Snippet
+    document.getElementById('btn-copy-tokens').addEventListener('click', () => {
+      const snippet = '<link rel="stylesheet" href="tokens.css">';
+      navigator.clipboard.writeText(snippet).then(() => {
+        showToast('Copied <link rel="stylesheet" href="tokens.css">');
+      });
+    });
+
+    // Toggle Snippet View
+    function toggleSnippet(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.classList.toggle('visible');
+      }
+    }
+
+    // Copy Code Snippet Text
+    function copySnippetText(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        const pre = el.querySelector('pre');
+        if (pre) {
+          navigator.clipboard.writeText(pre.innerText).then(() => {
+            showToast('Code snippet copied to clipboard');
+          });
+        }
+      }
+    }
+
+    // Active Navigation Highlighting on Scroll
+    const sections = document.querySelectorAll('section.spec-section, header.spec-cover');
+    const navLinks = document.querySelectorAll('.spec-nav a');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (pageYOffset >= sectionTop - 120) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    /* =============================================================
+       05 · INTERACTIVE COMPONENT CONTROLS & LOGIC
+       ============================================================= */
+
+    // 1. Calibrated Range Slider Logic
+    const fpsSlider = document.getElementById('telemetry-fps-slider');
+    const fpsDisplay = document.getElementById('slider-fps-display');
+    if (fpsSlider && fpsDisplay) {
+      fpsSlider.addEventListener('input', (e) => {
+        const fps = e.target.value;
+        const ms = (1000 / fps).toFixed(1);
+        fpsDisplay.textContent = `${fps} FPS · ${ms}ms`;
+      });
+    }
+
+    // 2. Web Audio Micro-Haptics (Real-time 1100Hz Escapement Tick)
+    let specAudioCtx = null;
+    function playSpecHapticTick() {
+      try {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!specAudioCtx && AudioCtx) specAudioCtx = new AudioCtx();
+        if (specAudioCtx && specAudioCtx.state === 'suspended') specAudioCtx.resume();
+
+        const osc = specAudioCtx.createOscillator();
+        const gain = specAudioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(1100, specAudioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(160, specAudioCtx.currentTime + 0.025);
+
+        gain.gain.setValueAtTime(0.06, specAudioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, specAudioCtx.currentTime + 0.025);
+
+        osc.connect(gain);
+        gain.connect(specAudioCtx.destination);
+        osc.start();
+        osc.stop(specAudioCtx.currentTime + 0.025);
+      } catch (err) {}
+    }
+
+    const audioBtn = document.getElementById('demo-audio-trigger');
+    if (audioBtn) {
+      audioBtn.addEventListener('click', () => {
+        playSpecHapticTick();
+        showToast('Escapement Tick (1100Hz // 4Hz) Synthesized');
+      });
+    }
+
+    // 3. Live Telemetry Graph (ApexCharts)
+    let telemetryChart = null;
+    function initTelemetryChart() {
+      const chartEl = document.getElementById('apex-telemetry-chart');
+      if (!chartEl || typeof ApexCharts === 'undefined') return;
+
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      const sageColor = isDark ? '#8DB477' : '#768E65';
+      const cognacColor = isDark ? '#C68E56' : '#9A6735';
+
+      const options = {
+        chart: {
+          type: 'area',
+          height: 220,
+          toolbar: { show: false },
+          animations: { enabled: true, easing: 'easeinout', speed: 800 },
+          background: 'transparent',
+          fontFamily: 'var(--font-mono, monospace)'
+        },
+        series: [
+          {
+            name: 'Frame Rate (FPS)',
+            data: [58.2, 59.8, 60.0, 59.4, 60.1, 59.9, 60.0, 60.2, 59.7, 60.0, 60.1, 59.9]
+          },
+          {
+            name: 'Buffer Memory (MB)',
+            data: [12.4, 12.6, 12.8, 12.5, 12.9, 13.1, 12.8, 12.7, 12.9, 13.0, 12.8, 12.9]
+          }
+        ],
+        colors: [sageColor, cognacColor],
+        dataLabels: { enabled: false },
+        stroke: { curve: 'smooth', width: [2, 1.5] },
+        fill: {
+          type: 'gradient',
+          gradient: {
+            shadeIntensity: 1,
+            opacityFrom: 0.35,
+            opacityTo: 0.02,
+            stops: [0, 95, 100]
+          }
+        },
+        grid: {
+          borderColor: 'rgba(255, 255, 255, 0.07)',
+          strokeDashArray: 3,
+          xaxis: { lines: { show: false } },
+          yaxis: { lines: { show: true } }
+        },
+        xaxis: {
+          categories: ['T-11s', 'T-10s', 'T-9s', 'T-8s', 'T-7s', 'T-6s', 'T-5s', 'T-4s', 'T-3s', 'T-2s', 'T-1s', 'NOW'],
+          labels: {
+            style: { colors: '#6C7280', fontSize: '10px' }
+          },
+          axisBorder: { show: false },
+          axisTicks: { show: false }
+        },
+        yaxis: {
+          labels: {
+            style: { colors: '#6C7280', fontSize: '10px' },
+            formatter: (val) => val.toFixed(1)
+          }
+        },
+        tooltip: {
+          theme: 'dark',
+          style: { fontSize: '11px', fontFamily: 'var(--font-mono)' }
+        },
+        legend: {
+          position: 'top',
+          horizontalAlign: 'right',
+          labels: { colors: '#A6ADBA' },
+          fontFamily: 'var(--font-mono)',
+          fontSize: '11px',
+          markers: { radius: 2 }
+        }
+      };
+
+      telemetryChart = new ApexCharts(chartEl, options);
+      telemetryChart.render();
+    }
+
+    // Re-render chart colors on theme toggle
+    themeBtn.addEventListener('click', () => {
+      setTimeout(() => {
+        if (telemetryChart) {
+          const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+          telemetryChart.updateOptions({
+            colors: [isDark ? '#8DB477' : '#768E65', isDark ? '#C68E56' : '#9A6735']
+          });
+        }
+      }, 100);
+    });
+
+    // 4. Code Theme Language Switcher & Copy
+    function switchCodeLang(lang, filename) {
+      document.querySelectorAll('.lang-tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.code-snippet-panel').forEach(p => p.classList.remove('active'));
+      
+      const btn = document.getElementById('tab-btn-' + lang);
+      const panel = document.getElementById('code-panel-' + lang);
+      const fileBadge = document.getElementById('code-file-name');
+      
+      if (btn) btn.classList.add('active');
+      if (panel) panel.classList.add('active');
+      if (fileBadge && filename) fileBadge.textContent = filename;
+    }
+
+    function copyActiveCode() {
+      const activePanel = document.querySelector('.code-snippet-panel.active code');
+      if (activePanel) {
+        const text = activePanel.innerText;
+        // Strip the leading 2-digit line numbers
+        const cleanText = text.replace(/^\d{2}\s?/gm, '');
+        navigator.clipboard.writeText(cleanText).then(() => {
+          showToast('Code snippet copied to clipboard');
+        });
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initTelemetryChart);
+    } else {
+      initTelemetryChart();
+    }
+  </script>
+
+</body>
+
+</html>

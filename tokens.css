@@ -1,0 +1,372 @@
+/**
+ * 啸宇 · XIAOYU DESIGN SYSTEM TOKENS
+ * Specification Version: 1.3 (Release)
+ * Archetype: The Mindful Craftsman / High-Precision Modernist
+ * Where Horological Precision meets High-Tech Rigor and Taoist Flow
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Zhi+Mang+Xing&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap');
+
+:root {
+  /* ==========================================================================
+     01 · CANVASES & SURFACES
+     ========================================================================== */
+  --canvas-bg: #F8F7F4;                    /* Warm Alabaster: Primary drafting sheet */
+  --canvas-light: #F8F7F4;                 /* Backwards-compatible alias */
+  --canvas-card: rgba(255, 255, 255, 0.88); /* Vellum Cardstock: Semi-translucent */
+  --canvas-card-solid: #FFFFFF;            /* Pure Crisp Card */
+  --canvas-header: rgba(248, 247, 244, 0.92);
+  --canvas-surface-elevated: #FFFFFF;
+  --canvas-surface-recessed: #F2F0EB;
+  --canvas-dark: #121417;                  /* Fixed dark graphite tone */
+
+  /* Architectural Drafting Dot Matrix (Light Theme ONLY - Subtle, Understated Cadence) */
+  --grid-dot-color: rgba(28, 30, 33, 0.055);
+  --grid-dot-size: 16px;                   /* Strict 16px Cartesian dot-matrix */
+  --grid-dot-pattern: radial-gradient(var(--grid-dot-color) 0.75px, transparent 0);
+
+  /* Dark Surface Dot Matrix */
+  --grid-dot-dark-color: rgba(255, 255, 255, 0.07);
+  --grid-dot-dark-pattern: radial-gradient(var(--grid-dot-dark-color) 1px, transparent 0);
+
+  /* ==========================================================================
+     02 · INKS & TYPOGRAPHY COLORS
+     ========================================================================== */
+  --ink-primary: #1C1E21;                  /* Deep Ink: Primary headings, logo & emphasis */
+  --ink-secondary: #555A64;                /* Balanced Charcoal: Body prose & explanation */
+  --ink-muted: #8D99AE;                    /* Titanium Slate: Metadata, tags, telemetry keys */
+  --ink-faint: #B4B9C4;                    /* Faint Hairline Ink: Subtle indicators */
+
+  /* Inks for Graphite Slate (Dark Context) */
+  --ink-dark-primary: #F8F7F4;
+  --ink-dark-secondary: #A6ADBA;
+  --ink-dark-muted: #6C7280;
+
+  /* ==========================================================================
+     03 · CALIBRATED ACCENTS
+     ========================================================================== */
+  /* Matcha Sage: Vitality, Solarpunk Growth, Interactive Flow */
+  --accent-sage: #768E65;
+  --accent-sage-soft: #F0F4ED;
+  --accent-sage-border: #CAD7C4;
+  --accent-sage-deep: #3B532D;
+
+  /* Vintage Cognac: Horological Heritage, Craft, Timestamps */
+  --accent-cognac: #9A6735;
+  --accent-cognac-soft: #FAF4EE;
+  --accent-cognac-border: #E8D3C0;
+  --accent-cognac-deep: #5A391A;
+
+  /* ==========================================================================
+     04 · HAIRLINES & BORDERS (1px Strict Disciplines)
+     ========================================================================== */
+  --border-hairline: #E2E4E9;              /* 1px Light Hairline: Structural precision */
+  --border-subtle: #ECEEF2;                /* 1px Faint Divider */
+  --border-hover: #CBD0D8;                 /* Interactive state */
+  --border-dark: #23272F;                  /* Hairline on Graphite Slate */
+  --border-dark-subtle: #1F2228;
+
+  /* ==========================================================================
+     05 · QUAD-TIER TYPOGRAPHY STACK
+     ========================================================================== */
+  /* Tier 1: Identity Mark - Pure Unboxed Wet-Ink Calligraphy (Wu Wei) */
+  --font-calligraphy: 'Zhi Mang Xing', cursive;
+
+  /* Tier 2: Editorial Serif - High-Contrast Precision & Philosophy */
+  --font-serif: 'Newsreader', 'Canela', Georgia, serif;
+
+  /* Tier 3: Body & UI Grotesque - Geometric Clarity with Human Warmth */
+  --font-sans: 'Satoshi', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Tier 4: Telemetry & Machine Specs - Mechanical Monospace */
+  --font-mono: 'JetBrains Mono', 'Berkeley Mono', 'SF Mono', monospace;
+
+  /* ==========================================================================
+     06 · SPATIAL SYSTEM (8px Baseline / 4px Micro-Increments)
+     ========================================================================== */
+  --space-0: 0px;
+  --space-1: 4px;                          /* Micro-step */
+  --space-2: 8px;                          /* Base unit */
+  --space-3: 12px;
+  --space-4: 16px;                         /* Dot-grid cadence */
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+
+  /* ==========================================================================
+     07 · HOROLOGICAL RADII & TOLERANCES
+     ========================================================================== */
+  --radius-sharp: 0px;                     /* Architectural hairlines */
+  --radius-micro: 2px;                     /* Precision pills, badges, inputs, buttons */
+  --radius-card: 3px;                      /* Architectural cards */
+
+  /* ==========================================================================
+     08 · TRANSITIONS & LATENCY (Deliberate & Frictionless)
+     ========================================================================== */
+  --ease-deliberate: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-instant: 120ms;
+  --duration-smooth: 220ms;
+  --duration-calm: 350ms;
+
+  /* Subtle horological shadows (tonal depth over heavy blur) */
+  --shadow-hairline: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  /* ==========================================================================
+     09 · SYNTAX HIGHLIGHTING & CODE THEME TOKENS
+     ========================================================================== */
+  --syn-bg: #F4F1EA;                        /* Warm Alabaster drafting code ground */
+  --syn-border: #E2E4E9;                    /* 1px Hairline terminal border */
+  --syn-header-bg: #ECE8DE;                 /* Terminal window titlebar */
+  --syn-text: #1C1E21;                      /* Base plain text & identifiers */
+  --syn-comment: #8D99AE;                   /* Titanium Slate muted comment (italic) */
+  --syn-keyword: #9A6735;                   /* Vintage Cognac: def, func, return, const, package */
+  --syn-function: #5A754B;                  /* Matcha Sage: functions, methods, calls */
+  --syn-string: #A36B28;                    /* Warm ocher parchment: string literals */
+  --syn-type: #3B647A;                      /* Deep titanium slate: types, classes, structs */
+  --syn-number: #B25832;                    /* Terracotta: integers, floats, booleans */
+  --syn-operator: #6B7280;                  /* Faint hairline operators: =, :=, =>, + */
+  --syn-property: #4B5563;                  /* Object properties & attributes */
+  --syn-tag: #5A754B;                       /* HTML/XML tags */
+  --syn-attr: #9A6735;                      /* HTML/CSS attributes */
+  --syn-linenumber: #B0B7C3;                /* Neutral gutter numbers */
+}
+
+/* ==========================================================================
+   09 · THEME ADAPTATION & DARK CANVAS SPECIFICATION
+   ========================================================================== */
+[data-theme="dark"] {
+  --theme: dark;
+  --canvas-bg: #121417;                    /* Primary dark drafting sheet */
+  --canvas-light: #121417;                 /* Backwards-compatible alias */
+  --canvas-card: rgba(24, 27, 34, 0.82);   /* Translucent smoked vellum card */
+  --canvas-card-solid: #181B21;            /* Solid dark card */
+  --canvas-header: rgba(18, 20, 23, 0.92); /* Dark frosted header */
+  --canvas-surface-elevated: #20242D;
+  --canvas-surface-recessed: #13151A;
+
+  /* Text & Inks in Dark Context */
+  --ink-primary: #F8F7F4;                  /* Crisp warm alabaster white */
+  --ink-secondary: #A6ADBA;                /* Crisp slate silver */
+  --ink-muted: #7E8696;                    /* Muted titanium */
+  --ink-faint: #3B414E;                    /* Subtle hairline ink */
+
+  /* Hairlines in Dark Context */
+  --border-hairline: #242933;              /* Razor-sharp 1px dark hairline */
+  --border-subtle: #1C2028;                /* Recessed hairline divider */
+  --border-hover: #3E4656;
+  --border-dark: #2A303C;
+
+  /* Accents in Dark Context */
+  --accent-sage: #8DB477;                  /* Luminous Matcha Sage */
+  --accent-sage-soft: rgba(141, 180, 119, 0.14);
+  --accent-sage-border: rgba(141, 180, 119, 0.32);
+  --accent-sage-deep: #C0E8AA;
+
+  --accent-cognac: #C68E56;                /* Luminous warm cognac */
+  --accent-cognac-soft: rgba(198, 142, 86, 0.14);
+  --accent-cognac-border: rgba(198, 142, 86, 0.32);
+  --accent-cognac-deep: #F0BC8A;
+
+  /* Strict Grid Removal in Dark Mode */
+  --grid-dot-pattern: none;
+
+  /* Horological shadows for dark elevation */
+  --shadow-hairline: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --shadow-card: 0 2px 10px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.5), 0 2px 6px rgba(0, 0, 0, 0.3);
+
+  /* Syntax Highlighting in Dark Mode */
+  --syn-bg: #0E1116;                        /* Authentic deep terminal black */
+  --syn-border: #242933;                    /* Razor-sharp 1px dark hairline */
+  --syn-header-bg: #141820;                 /* Deep slate terminal titlebar */
+  --syn-text: #E6EDF3;                      /* Crisp warm alabaster identifier */
+  --syn-comment: #7E8696;                   /* Muted titanium comment (italic) */
+  --syn-keyword: #C68E56;                   /* Luminous Vintage Cognac: def, func, return */
+  --syn-function: #8DB477;                  /* Luminous Matcha Sage: functions, calls */
+  --syn-string: #E0BA76;                    /* Warm ocher parchment: string literals */
+  --syn-type: #88C0D0;                      /* Horizon slate blue: types, interfaces */
+  --syn-number: #E09F67;                    /* Luminous terracotta: numbers, booleans */
+  --syn-operator: #8B949E;                  /* Hairline operators: =, :=, =>, + */
+  --syn-property: #A6ADBA;                  /* Properties & attributes */
+  --syn-tag: #8DB477;                       /* HTML tags in sage */
+  --syn-attr: #C68E56;                      /* HTML/CSS attributes in cognac */
+  --syn-linenumber: #484F58;                /* Gutter numbers */
+}
+
+/* ==========================================================================
+   BASE STYLES & RESETS
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--canvas-bg);
+  background-image: var(--grid-dot-pattern);
+  background-size: var(--grid-dot-size) var(--grid-dot-size);
+  color: var(--ink-primary);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.6;
+  transition: background-color var(--duration-smooth) ease, color var(--duration-smooth) ease;
+}
+
+/* 
+ * Dark Theme: Aesthetic, Subtle & High Quality Grainy / Blurred Film Texture
+ * Grid is strictly removed. No macro gradient. Seamless 512px tile with fixed viewport attachment.
+ */
+[data-theme="dark"] body {
+  background-color: #121417;
+  background-image: url('dark-grain.png');
+  background-size: 512px 512px;
+  background-repeat: repeat;
+  background-attachment: fixed;
+}
+
+/* Selection aesthetics */
+::selection {
+  background-color: var(--accent-sage-soft);
+  color: var(--accent-sage-deep);
+}
+
+/* ==========================================================================
+   REUSABLE UTILITY CLASSES
+   ========================================================================== */
+
+/* Unboxed Calligraphic Signature */
+.brand-signature {
+  font-family: var(--font-calligraphy);
+  font-size: 32px;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: var(--accent-sage);
+  user-select: none;
+  transition: color var(--duration-instant) ease;
+}
+
+.brand-signature:hover {
+  color: var(--accent-sage-deep);
+}
+
+/* Editorial Heading */
+.brand-heading {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--ink-primary);
+}
+
+/* Telemetry Readout */
+.brand-mono {
+  font-family: var(--font-mono);
+  letter-spacing: 0.05em;
+}
+
+/* Status Pill */
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--accent-sage-soft);
+  color: var(--accent-sage-deep);
+  border: 1px solid var(--accent-sage-border);
+  padding: 4px 10px;
+  border-radius: var(--radius-micro);
+  transition: all var(--duration-smooth) ease;
+}
+
+.status-pulse {
+  width: 6px;
+  height: 6px;
+  background-color: var(--accent-sage);
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px var(--accent-sage-border);
+  animation: pulseGlow 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.9); }
+}
+
+/* Precision Hairline Divider */
+.hairline-divider {
+  border: 0;
+  height: 1px;
+  background-color: var(--border-hairline);
+  margin: var(--space-6) 0;
+}
+
+/* Precision Button Primary */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: var(--ink-primary);
+  color: var(--canvas-bg);
+  border: 1px solid var(--ink-primary);
+  padding: 10px 20px;
+  border-radius: var(--radius-micro);
+  transition: all var(--duration-smooth) var(--ease-deliberate);
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  opacity: 0.92;
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-1px);
+}
+
+/* Precision Button Secondary */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: var(--canvas-card);
+  color: var(--ink-primary);
+  border: 1px solid var(--border-hairline);
+  padding: 10px 20px;
+  border-radius: var(--radius-micro);
+  transition: all var(--duration-smooth) var(--ease-deliberate);
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+}
+
+.btn-secondary:hover {
+  background: var(--canvas-card-solid);
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-hairline);
+  transform: translateY(-1px);
+}
