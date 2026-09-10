@@ -50,12 +50,14 @@ header.site-header {
     line-height: 1;
     color: var(--accent-sage);
     letter-spacing: 0.05em;
-    transition: color 0.2s ease, transform 0.2s ease;
+    opacity: var(--calligraphy-opacity, 0.85);
+    transition: color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
     display: inline-block;
 }
 
 .brand-identity:hover .brand-calligraphy-nav {
     color: var(--accent-sage-deep);
+    opacity: 1;
     transform: scale(1.04);
 }
 

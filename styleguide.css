@@ -1,5 +1,5 @@
 /* 啸宇 · Living Styleguide & Spec Sheet Styles */
-@import url('tokens.css?v=2.4');
+@import url('tokens.css?v=2.5');
 
 /* -------------------------------------------------------------
        SPECIFICATION DOCUMENT LAYOUT & NAVIGATION
@@ -65,12 +65,14 @@
       line-height: 1;
       color: var(--accent-sage);
       text-decoration: none;
-      transition: color var(--duration-instant) ease, transform var(--duration-instant) ease;
+      opacity: var(--calligraphy-opacity, 0.85);
+      transition: color var(--duration-instant) ease, transform var(--duration-instant) ease, opacity var(--duration-instant) ease;
       display: inline-block;
     }
 
     .telemetry-mark:hover {
       color: var(--accent-sage-deep);
+      opacity: 1;
       transform: scale(1.05);
     }
 
@@ -259,7 +261,14 @@
       color: var(--accent-sage);
       letter-spacing: 0.05em;
       user-select: none;
-      transition: color var(--duration-instant) ease;
+      display: inline-block;
+      opacity: var(--calligraphy-opacity, 0.85);
+      transition: color var(--duration-instant) ease, opacity var(--duration-instant) ease;
+    }
+
+    [data-theme="dark"] .unboxed-mark-lg {
+      opacity: 1;
+      color: var(--accent-sage);
     }
 
     .identity-meta {
@@ -496,6 +505,8 @@
       user-select: none;
       padding-right: var(--space-6);
       border-right: 1px solid var(--border-hairline);
+      opacity: var(--calligraphy-opacity, 0.85);
+      transition: opacity var(--duration-instant) ease;
     }
 
     .tao-content h4 {
@@ -612,16 +623,23 @@
 
     .surface-sample.light-canvas {
       background-color: var(--canvas-bg);
-      background-image: var(--grid-dot-pattern);
-      background-size: var(--grid-dot-size) var(--grid-dot-size);
+      background-image: 
+        linear-gradient(var(--canvas-light-scrim, rgba(248, 247, 244, 0.40)), var(--canvas-light-scrim, rgba(248, 247, 244, 0.40))),
+        url('fine-paper.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       color: var(--ink-primary);
     }
 
     .surface-sample.dark-canvas {
-      background-color: #121417;
-      background-image: url('dark-grain.png');
-      background-size: 512px 512px;
-      background-repeat: repeat;
+      background-color: #000000;
+      background-image: 
+        linear-gradient(var(--canvas-dark-scrim, rgba(0, 0, 0, 0.32)), var(--canvas-dark-scrim, rgba(0, 0, 0, 0.32))),
+        url('black-sand.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       color: #F8F7F4;
       border-color: var(--border-hairline);
     }
@@ -697,6 +715,7 @@
       line-height: 1.2;
       color: var(--accent-sage);
       margin-bottom: var(--space-3);
+      opacity: var(--calligraphy-opacity, 0.85);
     }
 
     .specimen-display-serif {
@@ -1604,7 +1623,7 @@
 
     /* =============================================================
        PRINT & MONOGRAPH PDF EXPORT SPECIFICATION
-       Full-bleed canvas (zero sheet margins), dark-grain preservation,
+       Full-bleed canvas (zero sheet margins), dark texture preservation,
        generous editorial side margins, clean per-page pagination,
        and strict page-break-inside avoid protection.
        ============================================================= */
@@ -1626,7 +1645,7 @@
         background-color: #F8F7F4 !important;
       }
       [data-theme="dark"] {
-        background-color: #121417 !important;
+        background-color: #000000 !important;
       }
 
       body {
@@ -1635,19 +1654,25 @@
         margin: 0 !important;
         padding: 0 !important;
         background-color: #F8F7F4 !important;
-        background-image: radial-gradient(rgba(28, 30, 33, 0.04) 0.65px, transparent 0) !important;
-        background-size: 16px 16px !important;
-        background-repeat: repeat !important;
+        background-image: 
+          linear-gradient(rgba(248, 247, 244, 0.40), rgba(248, 247, 244, 0.40)),
+          url('fine-paper.jpg') !important;
+        background-size: cover !important;
+        background-position: center center !important;
+        background-repeat: no-repeat !important;
         background-attachment: scroll !important;
         color: #1C1E21 !important;
       }
 
-      /* Dark mode: 100% full-bleed graphite slate with high-res grain texture */
+      /* Dark mode: 100% full-bleed pitch black with high-res black sand texture */
       [data-theme="dark"] body {
-        background-color: #121417 !important;
-        background-image: url('dark-grain.png') !important;
-        background-size: 512px 512px !important;
-        background-repeat: repeat !important;
+        background-color: #000000 !important;
+        background-image: 
+          linear-gradient(rgba(0, 0, 0, 0.32), rgba(0, 0, 0, 0.32)),
+          url('black-sand.jpeg') !important;
+        background-size: cover !important;
+        background-position: center center !important;
+        background-repeat: no-repeat !important;
         background-attachment: scroll !important;
         color: #F8F7F4 !important;
       }

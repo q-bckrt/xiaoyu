@@ -14,6 +14,7 @@
      ========================================================================== */
   --canvas-bg: #F8F7F4;                    /* Warm Alabaster: Primary drafting sheet */
   --canvas-light: #F8F7F4;                 /* Backwards-compatible alias */
+  --canvas-light-scrim: rgba(248, 247, 244, 0.40); /* Balanced overlay: preserves fine-paper texture while keeping alabaster clarity */
   --canvas-card: rgba(255, 255, 255, 0.88); /* Vellum Cardstock: Semi-translucent */
   --canvas-card-solid: #FFFFFF;            /* Pure Crisp Card */
   --canvas-header: rgba(248, 247, 244, 0.92);
@@ -51,6 +52,9 @@
   --accent-sage-soft: #F0F4ED;
   --accent-sage-border: #CAD7C4;
   --accent-sage-deep: #3B532D;
+
+  /* Calligraphic Logo Opacity: Subtle transparency in light theme to look written on paper */
+  --calligraphy-opacity: 0.85;
 
   /* Vintage Cognac: Horological Heritage, Craft, Timestamps */
   --accent-cognac: #9A6735;
@@ -142,13 +146,14 @@
    ========================================================================== */
 [data-theme="dark"] {
   --theme: dark;
-  --canvas-bg: #121417;                    /* Primary dark drafting sheet */
-  --canvas-light: #121417;                 /* Backwards-compatible alias */
+  --canvas-bg: #000000;                    /* Primary dark drafting sheet: Pure Pitch Black */
+  --canvas-light: #000000;                 /* Backwards-compatible alias */
+  --canvas-dark-scrim: rgba(0, 0, 0, 0.32); /* Balanced overlay: preserves sand texture while grounding in pure black */
   --canvas-card: rgba(24, 27, 34, 0.82);   /* Translucent smoked vellum card */
   --canvas-card-solid: #181B21;            /* Solid dark card */
-  --canvas-header: rgba(18, 20, 23, 0.92); /* Dark frosted header */
+  --canvas-header: rgba(0, 0, 0, 0.88);    /* Dark frosted header */
   --canvas-surface-elevated: #20242D;
-  --canvas-surface-recessed: #13151A;
+  --canvas-surface-recessed: #0e1014;
 
   /* Text & Inks in Dark Context */
   --ink-primary: #F8F7F4;                  /* Crisp warm alabaster white */
@@ -167,6 +172,9 @@
   --accent-sage-soft: rgba(141, 180, 119, 0.14);
   --accent-sage-border: rgba(141, 180, 119, 0.32);
   --accent-sage-deep: #C0E8AA;
+
+  /* Solid calligraphy in dark mode */
+  --calligraphy-opacity: 1;
 
   --accent-cognac: #C68E56;                /* Luminous warm cognac */
   --accent-cognac-soft: rgba(198, 142, 86, 0.14);
@@ -217,8 +225,13 @@ body {
   margin: 0;
   padding: 0;
   background-color: var(--canvas-bg);
-  background-image: var(--grid-dot-pattern);
-  background-size: var(--grid-dot-size) var(--grid-dot-size);
+  background-image: 
+    linear-gradient(var(--canvas-light-scrim, rgba(248, 247, 244, 0.40)), var(--canvas-light-scrim, rgba(248, 247, 244, 0.40))),
+    url('fine-paper.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   color: var(--ink-primary);
   font-family: var(--font-sans);
   font-size: 15px;
@@ -227,14 +240,21 @@ body {
 }
 
 /* 
- * Dark Theme: Aesthetic, Subtle & High Quality Grainy / Blurred Film Texture
- * Grid is strictly removed. No macro gradient. Seamless 512px tile with fixed viewport attachment.
+ * Dark Theme: Aesthetic, Subtle & High Quality Black Sand Texture
+ * Grid is strictly removed. Pure black (#000000) canvas with transparent black-sand image.
  */
+[data-theme="dark"] {
+  background-color: #000000;
+}
+
 [data-theme="dark"] body {
-  background-color: #121417;
-  background-image: url('dark-grain.png');
-  background-size: 512px 512px;
-  background-repeat: repeat;
+  background-color: #000000;
+  background-image: 
+    linear-gradient(var(--canvas-dark-scrim, rgba(0, 0, 0, 0.32)), var(--canvas-dark-scrim, rgba(0, 0, 0, 0.32))),
+    url('black-sand.jpeg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
   background-attachment: fixed;
 }
 
@@ -256,7 +276,9 @@ body {
   letter-spacing: 0.04em;
   color: var(--accent-sage);
   user-select: none;
-  transition: color var(--duration-instant) ease;
+  display: inline-block;
+  opacity: var(--calligraphy-opacity, 0.85);
+  transition: color var(--duration-instant) ease, opacity var(--duration-instant) ease;
 }
 
 .brand-signature:hover {
