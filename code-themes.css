@@ -1,0 +1,870 @@
+/**
+ * 啸宇 · XIAOYU DESIGN SYSTEM (TAO)
+ * Code Themes Laboratory & Experimental Syntax Sandbox
+ */
+
+/* ==========================================================================
+   01 · THEME DEFINITIONS (CSS CUSTOM PROPERTIES)
+   ========================================================================== */
+
+/* Theme 1: Canonical Tao Drafting (Alabaster & Obsidian) */
+[data-code-theme="canonical"] {
+  --th-bg: #F4F1EA;
+  --th-border: #E2DFD6;
+  --th-header-bg: #ECE7DC;
+  --th-text: #1C1E21;
+  --th-comment: #8D99AE;
+  --th-keyword: #9A6735;
+  --th-function: #5A754B;
+  --th-string: #A36B28;
+  --th-type: #3B647A;
+  --th-number: #B25832;
+  --th-operator: #6B7280;
+  --th-property: #4B5563;
+  --th-tag: #5A754B;
+  --th-attr: #9A6735;
+  --th-linenumber: #A8B1C0;
+  --th-selection: rgba(154, 103, 53, 0.18);
+  --th-cursor: #9A6735;
+}
+
+[data-theme="dark"] [data-code-theme="canonical"],
+[data-code-theme="canonical"].force-dark {
+  --th-bg: #0E1116;
+  --th-border: #242933;
+  --th-header-bg: #141820;
+  --th-text: #E6EDF3;
+  --th-comment: #7E8696;
+  --th-keyword: #C68E56;
+  --th-function: #8DB477;
+  --th-string: #E0BA76;
+  --th-type: #88C0D0;
+  --th-number: #E09F67;
+  --th-operator: #8B949E;
+  --th-property: #A6ADBA;
+  --th-tag: #8DB477;
+  --th-attr: #C68E56;
+  --th-linenumber: #484F58;
+  --th-selection: rgba(198, 142, 86, 0.25);
+  --th-cursor: #C68E56;
+}
+
+/* Theme 2: Horological Escapement (Blued Steel, Brass & Ruby) */
+[data-code-theme="escapement"] {
+  --th-bg: #F5F4F0;
+  --th-border: #E0DDD5;
+  --th-header-bg: #ECE9E1;
+  --th-text: #1E2229;
+  --th-comment: #7B8594;
+  --th-keyword: #23527C;     /* Blued Steel */
+  --th-function: #A67C2E;    /* Watchmaker Brass */
+  --th-string: #8C6F4B;      /* Aged Vellum */
+  --th-type: #9E3248;        /* Synthetic Ruby */
+  --th-number: #B35836;      /* Polished Copper */
+  --th-operator: #5A6472;
+  --th-property: #3B4452;
+  --th-tag: #23527C;
+  --th-attr: #A67C2E;
+  --th-linenumber: #A4ACB9;
+  --th-selection: rgba(35, 82, 124, 0.16);
+  --th-cursor: #23527C;
+}
+
+[data-theme="dark"] [data-code-theme="escapement"],
+[data-code-theme="escapement"].force-dark {
+  --th-bg: #101216;
+  --th-border: #262B35;
+  --th-header-bg: #161A22;
+  --th-text: #E5E9F0;
+  --th-comment: #6E7681;
+  --th-keyword: #5D9CEC;     /* Luminous Blued Steel */
+  --th-function: #E5C07B;    /* Luminous Horological Brass */
+  --th-string: #D19A66;      /* Sand Vellum */
+  --th-type: #E06C75;        /* Ruby Jewel */
+  --th-number: #F08D49;      /* Copper Wheel */
+  --th-operator: #8892B0;
+  --th-property: #ABB2BF;
+  --th-tag: #5D9CEC;
+  --th-attr: #E5C07B;
+  --th-linenumber: #4B5263;
+  --th-selection: rgba(93, 156, 236, 0.24);
+  --th-cursor: #5D9CEC;
+}
+
+/* Theme 3: Solarpunk Bamboo (Organic Moss, Amber & Celadon) */
+[data-code-theme="bamboo"] {
+  --th-bg: #F3F5F0;
+  --th-border: #D8DFD4;
+  --th-header-bg: #E7ECE3;
+  --th-text: #1C241E;
+  --th-comment: #7F8E81;
+  --th-keyword: #2D5A3A;     /* Deep Bamboo */
+  --th-function: #9E6E2E;    /* Sunlit Amber */
+  --th-string: #8A6B32;      /* Earth Ochre */
+  --th-type: #286B66;        /* Celadon Teal */
+  --th-number: #A85834;      /* Terracotta Clay */
+  --th-operator: #5A695E;
+  --th-property: #3B4B3F;
+  --th-tag: #2D5A3A;
+  --th-attr: #9E6E2E;
+  --th-linenumber: #9FAEA1;
+  --th-selection: rgba(45, 90, 58, 0.16);
+  --th-cursor: #2D5A3A;
+}
+
+[data-theme="dark"] [data-code-theme="bamboo"],
+[data-code-theme="bamboo"].force-dark {
+  --th-bg: #0E1410;
+  --th-border: #1E2E22;
+  --th-header-bg: #141F18;
+  --th-text: #E3EBE4;
+  --th-comment: #65776A;
+  --th-keyword: #78C288;     /* Luminous Young Bamboo */
+  --th-function: #E2B462;    /* Amber Blossom */
+  --th-string: #D4A76A;      /* Dried Reed */
+  --th-type: #56B6C2;        /* Luminous Celadon */
+  --th-number: #E57C58;      /* Warm Terracotta */
+  --th-operator: #819888;
+  --th-property: #A8BCAE;
+  --th-tag: #78C288;
+  --th-attr: #E2B462;
+  --th-linenumber: #3D4F42;
+  --th-selection: rgba(120, 194, 136, 0.22);
+  --th-cursor: #78C288;
+}
+
+/* Theme 4: Xuan Paper & Cinnabar Seal (Calligraphic Ink Wash) */
+[data-code-theme="xuan"] {
+  --th-bg: #F7F4EC;
+  --th-border: #E5DFC8;
+  --th-header-bg: #EEE8D5;
+  --th-text: #191B1F;
+  --th-comment: #8A8E95;
+  --th-keyword: #A83226;     /* Cinnabar Seal (朱砂) */
+  --th-function: #2B3835;    /* Pine Soot Ink (松烟墨) */
+  --th-string: #7A5E38;      /* Aged Tea Stain */
+  --th-type: #5E503F;        /* Bronze Inscription */
+  --th-number: #9C442A;      /* Iron Red */
+  --th-operator: #63666A;
+  --th-property: #3B3E44;
+  --th-tag: #A83226;
+  --th-attr: #7A5E38;
+  --th-linenumber: #B0A894;
+  --th-selection: rgba(168, 50, 38, 0.15);
+  --th-cursor: #A83226;
+}
+
+[data-theme="dark"] [data-code-theme="xuan"],
+[data-code-theme="xuan"].force-dark {
+  --th-bg: #111215;
+  --th-border: #2A2A30;
+  --th-header-bg: #18191E;
+  --th-text: #E8E6E3;
+  --th-comment: #6E7179;
+  --th-keyword: #E85B4D;     /* Luminous Cinnabar Vermilion */
+  --th-function: #98C379;    /* Jade Spring Ink */
+  --th-string: #D99B61;      /* Golden Silk */
+  --th-type: #C8AE7D;        /* Gilded Bronze */
+  --th-number: #F27A59;      /* Red Ochre */
+  --th-operator: #8E929C;
+  --th-property: #B7B8BE;
+  --th-tag: #E85B4D;
+  --th-attr: #D99B61;
+  --th-linenumber: #4B4D54;
+  --th-selection: rgba(232, 91, 77, 0.22);
+  --th-cursor: #E85B4D;
+}
+
+/* Theme 5: Titanium Monolith (Minimalist Monochromatic + Accent) */
+[data-code-theme="monolith"] {
+  --th-bg: #FAFAFA;
+  --th-border: #E5E5E5;
+  --th-header-bg: #F0F0F0;
+  --th-text: #161616;
+  --th-comment: #949494;
+  --th-keyword: #111111;     /* High-contrast bold black */
+  --th-function: #9A6735;    /* Sole Cognac Accent */
+  --th-string: #636363;      /* Mid graphite */
+  --th-type: #3B3B3B;        /* Heavy graphite */
+  --th-number: #757575;      /* Slate */
+  --th-operator: #757575;
+  --th-property: #424242;
+  --th-tag: #111111;
+  --th-attr: #9A6735;
+  --th-linenumber: #BBBBBB;
+  --th-selection: rgba(154, 103, 53, 0.16);
+  --th-cursor: #9A6735;
+}
+
+[data-theme="dark"] [data-code-theme="monolith"],
+[data-code-theme="monolith"].force-dark {
+  --th-bg: #0D0E10;
+  --th-border: #222428;
+  --th-header-bg: #141518;
+  --th-text: #EAEAEA;
+  --th-comment: #63666E;
+  --th-keyword: #FFFFFF;     /* Pure titanium white */
+  --th-function: #8DB477;    /* Sole Luminous Sage Accent */
+  --th-string: #A0A4AC;      /* Silver mist */
+  --th-type: #C7CBD2;        /* Pale titanium */
+  --th-number: #8E939D;      /* Medium slate */
+  --th-operator: #858992;
+  --th-property: #B2B6BE;
+  --th-tag: #FFFFFF;
+  --th-attr: #8DB477;
+  --th-linenumber: #44474E;
+  --th-selection: rgba(141, 180, 119, 0.22);
+  --th-cursor: #8DB477;
+}
+
+/* ==========================================================================
+   02 · PAGE LAYOUT & HEADER
+   ========================================================================== */
+body.code-lab-page {
+  background-color: var(--canvas-bg);
+  background-image: var(--grid-dot-pattern);
+  background-size: var(--grid-dot-size) var(--grid-dot-size);
+  color: var(--ink-primary);
+  font-family: var(--font-sans);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.lab-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--canvas-header);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-hairline);
+  padding: var(--space-3) var(--space-6);
+}
+
+.lab-header-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.lab-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  text-decoration: none;
+  color: inherit;
+}
+
+.lab-calligraphy {
+  font-family: var(--font-calligraphy);
+  font-size: 26px;
+  color: var(--ink-primary);
+  opacity: var(--calligraphy-opacity);
+  line-height: 1;
+}
+
+.lab-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.lab-title {
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ink-primary);
+}
+
+.lab-badge {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent-cognac);
+  text-transform: uppercase;
+}
+
+.lab-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.lab-btn {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 6px 13px;
+  border-radius: var(--radius-micro);
+  border: 1px solid var(--border-hairline);
+  background: var(--canvas-card-solid);
+  color: var(--ink-secondary);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all var(--duration-instant) ease;
+}
+
+.lab-btn:hover {
+  border-color: var(--ink-primary);
+  color: var(--ink-primary);
+}
+
+.lab-btn.primary {
+  background: var(--ink-primary);
+  color: var(--canvas-bg);
+  border-color: var(--ink-primary);
+}
+
+.lab-btn.primary:hover {
+  background: var(--accent-cognac);
+  border-color: var(--accent-cognac);
+}
+
+/* ==========================================================================
+   03 · MAIN CONTAINER
+   ========================================================================== */
+.lab-main {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: var(--space-6);
+  width: 100%;
+  box-sizing: border-box;
+  flex: 1;
+}
+
+.lab-intro-banner {
+  background: var(--canvas-card);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-card);
+  padding: var(--space-5) var(--space-6);
+  margin-bottom: var(--space-6);
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.lab-intro-text h1 {
+  font-family: var(--font-sans);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink-primary);
+  margin: 0 0 6px 0;
+}
+
+.lab-intro-text p {
+  font-size: 13.5px;
+  color: var(--ink-secondary);
+  margin: 0;
+  max-width: 780px;
+  line-height: 1.5;
+}
+
+.lab-stats-pills {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.lab-stat-pill {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 5px 11px;
+  border-radius: var(--radius-micro);
+  background: var(--canvas-surface-recessed);
+  border: 1px solid var(--border-hairline);
+  color: var(--ink-secondary);
+}
+
+/* ==========================================================================
+   04 · THEME SELECTOR CAROUSEL / CARDS
+   ========================================================================== */
+.theme-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+@media (max-width: 1180px) {
+  .theme-cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .theme-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.theme-card-btn {
+  text-align: left;
+  background: var(--canvas-card);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-card);
+  padding: var(--space-4);
+  cursor: pointer;
+  transition: all var(--duration-instant) ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 120px;
+}
+
+.theme-card-btn:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.theme-card-btn.active {
+  border-color: var(--accent-cognac);
+  background: var(--canvas-card-solid);
+  box-shadow: 0 2px 8px rgba(154, 103, 53, 0.15);
+}
+
+.theme-card-btn.active::after {
+  content: 'ACTIVE';
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-family: var(--font-mono);
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent-cognac);
+  background: rgba(154, 103, 53, 0.1);
+  padding: 2px 6px;
+  border-radius: 2px;
+}
+
+.theme-card-idx {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  font-weight: 700;
+  color: var(--ink-muted);
+  letter-spacing: 0.08em;
+  margin-bottom: 4px;
+}
+
+.theme-card-title {
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--ink-primary);
+  margin-bottom: 4px;
+}
+
+.theme-card-desc {
+  font-size: 11px;
+  color: var(--ink-secondary);
+  line-height: 1.4;
+  margin-bottom: var(--space-3);
+  flex: 1;
+}
+
+.theme-palette-preview {
+  display: flex;
+  gap: 5px;
+  margin-top: auto;
+}
+
+.palette-swatch-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  display: inline-block;
+}
+
+/* ==========================================================================
+   05 · CODE PLAYGROUND & TOOLBAR
+   ========================================================================== */
+.code-stage-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--canvas-card);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-micro) var(--radius-micro) 0 0;
+  padding: var(--space-3) var(--space-4);
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  border-bottom: none;
+}
+
+.toolbar-group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.toolbar-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  margin-right: 4px;
+}
+
+.lang-tab-btn {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: var(--radius-micro);
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--ink-secondary);
+  cursor: pointer;
+  transition: all var(--duration-instant) ease;
+}
+
+.lang-tab-btn:hover {
+  color: var(--ink-primary);
+  background: var(--canvas-surface-recessed);
+}
+
+.lang-tab-btn.active {
+  background: var(--canvas-card-solid);
+  border-color: var(--border-hairline);
+  color: var(--ink-primary);
+  font-weight: 700;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.toolbar-select {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: var(--radius-micro);
+  border: 1px solid var(--border-hairline);
+  background: var(--canvas-card-solid);
+  color: var(--ink-primary);
+  cursor: pointer;
+  outline: none;
+}
+
+/* Code Playground Terminal Window */
+.code-playground-window {
+  background: var(--th-bg);
+  border: 1px solid var(--th-border);
+  border-radius: 0 0 var(--radius-card) var(--radius-card);
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  margin-bottom: var(--space-6);
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.terminal-titlebar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  background: var(--th-header-bg);
+  border-bottom: 1px solid var(--th-border);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--th-text);
+  user-select: none;
+}
+
+.terminal-dots {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.terminal-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.75;
+}
+
+.terminal-dot.red { background: #E06C75; }
+.terminal-dot.yellow { background: #E5C07B; }
+.terminal-dot.green { background: #98C379; }
+
+.terminal-file-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  opacity: 0.9;
+}
+
+.terminal-meta-pills {
+  display: flex;
+  gap: 8px;
+}
+
+.terminal-pill {
+  font-size: 9.5px;
+  padding: 2px 7px;
+  border-radius: 2px;
+  background: rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="dark"] .terminal-pill,
+.force-dark .terminal-pill {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Split View Comparison Grid */
+.split-view-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5);
+  margin-bottom: var(--space-6);
+}
+
+@media (max-width: 960px) {
+  .split-view-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Code Editor Stage & Typography */
+.code-editor-body {
+  padding: 20px 24px;
+  margin: 0;
+  overflow-x: auto;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+  font-size: var(--code-font-size, 13.5px);
+  line-height: var(--code-line-height, 1.65);
+  color: var(--th-text);
+  tab-size: 2;
+  white-space: pre;
+}
+
+.code-line {
+  display: flex;
+  min-height: 1.65em;
+  position: relative;
+}
+
+.code-line:hover {
+  background: rgba(128, 128, 128, 0.05);
+}
+
+.code-gutter-num {
+  width: 44px;
+  padding-right: 18px;
+  text-align: right;
+  color: var(--th-linenumber);
+  user-select: none;
+  flex-shrink: 0;
+  font-weight: 400;
+}
+
+.code-line-content {
+  flex: 1;
+}
+
+/* Syntax Token Classes */
+.tok-k { color: var(--th-keyword); font-weight: 600; }
+.tok-f { color: var(--th-function); font-weight: 500; }
+.tok-s { color: var(--th-string); }
+.tok-t { color: var(--th-type); font-weight: 500; }
+.tok-n { color: var(--th-number); }
+.tok-c { color: var(--th-comment); font-style: italic; }
+.tok-o { color: var(--th-operator); }
+.tok-p { color: var(--th-property); }
+.tok-tag { color: var(--th-tag); font-weight: 600; }
+.tok-attr { color: var(--th-attr); }
+.tok-punct { color: var(--th-operator); }
+
+/* Interactive Hover Tooltip for Tokens */
+.tok-interactive {
+  cursor: help;
+  position: relative;
+  border-radius: 2px;
+  transition: background 0.1s ease;
+}
+
+.tok-interactive:hover {
+  background: rgba(128, 128, 128, 0.18);
+  outline: 1px dotted var(--accent-cognac);
+}
+
+/* ==========================================================================
+   06 · TOKEN PALETTE MATRIX & EXPORT
+   ========================================================================== */
+.palette-matrix-box {
+  background: var(--canvas-card);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-card);
+  padding: var(--space-5);
+  margin-bottom: var(--space-6);
+}
+
+.matrix-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-4);
+}
+
+.matrix-title {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ink-primary);
+}
+
+.matrix-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-3);
+}
+
+.matrix-item {
+  background: var(--canvas-surface-recessed);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-micro);
+  padding: var(--space-3);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: all var(--duration-instant) ease;
+}
+
+.matrix-item:hover {
+  border-color: var(--accent-cognac);
+  background: var(--canvas-card-solid);
+}
+
+.matrix-swatch {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  flex-shrink: 0;
+}
+
+.matrix-item-info {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.matrix-item-name {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--ink-primary);
+}
+
+.matrix-item-hex {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--ink-muted);
+}
+
+/* ==========================================================================
+   07 · EXPORT MODAL
+   ========================================================================== */
+.export-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-5);
+}
+
+.export-modal-backdrop.open {
+  display: flex;
+}
+
+.export-modal-card {
+  background: var(--canvas-card-solid);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-card);
+  max-width: 680px;
+  width: 100%;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.export-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-4) var(--space-5);
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.export-modal-title {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.export-modal-close {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: var(--ink-secondary);
+}
+
+.export-modal-body {
+  padding: var(--space-5);
+  overflow-y: auto;
+  flex: 1;
+}
+
+.export-modal-footer {
+  padding: var(--space-4) var(--space-5);
+  border-top: 1px solid var(--border-hairline);
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-3);
+}
+
+/* Token Hover Tooltip Pill */
+#token-info-pill {
+  position: fixed;
+  z-index: 2000;
+  pointer-events: none;
+  background: #1C1E21;
+  color: #F8F7F4;
+  border: 1px solid #3B4452;
+  border-radius: 4px;
+  padding: 6px 10px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+  display: none;
+}

@@ -2150,66 +2150,180 @@
     }
 
     /* -------------------------------------------------------------
-       06 · VERBAL IDENTITY & EDITORIAL LEXICON
+       06 · VERBAL IDENTITY & PHILOSOPHICAL CODEX
        ------------------------------------------------------------- */
-    .lexicon-comparison-grid {
+    .tonal-dualities-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-6);
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-5);
       margin-bottom: var(--space-6);
     }
 
-    .lexicon-card {
+    .duality-card {
+      background: var(--canvas-card);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-card);
+      padding: var(--space-5);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: border-color var(--duration-instant) ease;
+    }
+
+    .duality-card:hover {
+      border-color: var(--border-hover);
+    }
+
+    .duality-meta {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--accent-sage-deep);
+      margin-bottom: var(--space-2);
+    }
+
+    .duality-title {
+      font-family: var(--font-sans);
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--ink-primary);
+      margin-bottom: 6px;
+      letter-spacing: -0.01em;
+    }
+
+    .duality-desc {
+      font-size: 12.5px;
+      line-height: 1.55;
+      color: var(--ink-secondary);
+      margin-bottom: var(--space-4);
+    }
+
+    .duality-contrast-box {
+      background: var(--canvas-surface-recessed);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-micro);
+      padding: var(--space-3) var(--space-4);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .contrast-row {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .contrast-badge {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .contrast-badge.conventional {
+      color: var(--ink-muted);
+    }
+
+    .contrast-badge.tao {
+      color: var(--accent-sage-deep);
+    }
+
+    .contrast-text {
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .contrast-text.conventional {
+      color: var(--ink-muted);
+      opacity: 0.8;
+      font-style: italic;
+    }
+
+    .contrast-text.tao {
+      color: var(--ink-primary);
+      font-weight: 500;
+    }
+
+    /* Curated Lexical Registers */
+    .lexicon-registers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-5);
+      margin-bottom: var(--space-6);
+    }
+
+    .register-card {
       background: var(--canvas-card);
       border: 1px solid var(--border-hairline);
       border-radius: var(--radius-card);
       padding: var(--space-5);
     }
 
-    .lexicon-header {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: var(--space-4);
+    .register-header {
       display: flex;
-      align-items: center;
-      gap: var(--space-2);
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: var(--space-3);
+      border-bottom: 1px solid var(--border-hairline);
+      padding-bottom: var(--space-2);
     }
 
-    .lexicon-card.embrace .lexicon-header {
-      color: var(--accent-sage-deep);
+    .register-title {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--ink-primary);
+      text-transform: uppercase;
     }
 
-    .lexicon-card.discard .lexicon-header {
-      color: #D9534F;
+    .register-scope {
+      font-family: var(--font-mono);
+      font-size: 9.5px;
+      color: var(--ink-muted);
     }
 
-    .lexicon-chips {
+    .register-chips {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 7px;
     }
 
-    .lex-chip {
+    .register-chip {
       font-family: var(--font-mono);
-      font-size: 11.5px;
-      padding: 5px 11px;
+      font-size: 11px;
+      padding: 4px 9px;
       border-radius: var(--radius-micro);
+      background: var(--canvas-surface-recessed);
+      color: var(--ink-secondary);
+      border: 1px solid var(--border-hairline);
+      transition: all var(--duration-instant) ease;
     }
 
-    .lex-chip.chip-embrace {
-      background: var(--accent-sage-soft);
+    .register-chip:hover {
+      border-color: var(--accent-sage);
+      color: var(--ink-primary);
+      background: var(--canvas-card-solid);
+    }
+
+    .register-chip.highlight {
+      border-color: var(--accent-sage-border);
       color: var(--accent-sage-deep);
-      border: 1px solid var(--accent-sage-border);
+      background: var(--accent-sage-soft);
     }
 
-    .lex-chip.chip-discard {
-      background: rgba(217, 83, 79, 0.1);
-      color: #E26D6D;
-      border: 1px solid rgba(217, 83, 79, 0.25);
-      text-decoration: line-through;
+    .copywriting-cadence-box {
+      background: var(--canvas-card);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-card);
+      padding: var(--space-6);
+      backdrop-filter: blur(6px);
     }
 
     /* -------------------------------------------------------------
@@ -2295,6 +2409,8 @@
       .surfaces-comparison,
       .card-demo-grid,
       .demo-controls-grid,
+      .tonal-dualities-grid,
+      .lexicon-registers-grid,
       .lexicon-comparison-grid {
         grid-template-columns: 1fr;
       }
@@ -2790,6 +2906,10 @@
       .code-theme-card,
       .syntax-tokens-grid,
       .syntax-token-item,
+      .tonal-dualities-grid,
+      .duality-card,
+      .lexicon-registers-grid,
+      .register-card,
       .lexicon-card,
       .lexicon-comparison-grid,
       .copywriting-cadence-box,

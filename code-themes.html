@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>啸宇 · TAO | Code Themes Laboratory (Experimental)</title>
+  <meta name="description" content="Interactive code syntax theme laboratory for the XiaoYu TAO design system. Experiment with horological, botanical, calligraphic, and minimalist syntax palettes.">
+
+  <!-- Core TAO Tokens & Styling -->
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="code-themes.css">
+
+  <!-- Zero-Flash Dark Mode Initialization -->
+  <script>
+    (function () {
+      const saved = localStorage.getItem('xiaoyu_theme');
+      const pref = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', saved || pref);
+    })();
+  </script>
+</head>
+<body class="code-lab-page">
+
+  <!-- LAB NAVIGATION HEADER -->
+  <header class="lab-header">
+    <div class="lab-header-inner">
+      <a href="index.html" class="lab-brand" title="Return to XiaoYu TAO Specification">
+        <span class="lab-calligraphy">啸宇</span>
+        <div class="lab-title-group">
+          <span class="lab-title">TAO · Syntax Laboratory</span>
+          <span class="lab-badge">EXPERIMENTAL FORK</span>
+        </div>
+      </a>
+
+      <div class="lab-nav-actions">
+        <a href="index.html" class="lab-btn">← TAO Specification</a>
+        <a href="portfolio.html" class="lab-btn">Portfolio</a>
+        <button type="button" class="lab-btn" id="theme-toggle-btn" onclick="toggleGlobalTheme()" title="Toggle Dark / Light Canvas">
+          <span id="theme-toggle-icon">☾</span>
+          <span id="theme-toggle-label">DARK</span>
+        </button>
+        <button type="button" class="lab-btn primary" id="btn-export-tokens">
+          <span>↓</span>
+          <span>EXPORT TOKENS</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN LABORATORY CONTAINER -->
+  <main class="lab-main">
+
+    <!-- INTRO BANNER -->
+    <section class="lab-intro-banner">
+      <div class="lab-intro-text">
+        <h1>Code Syntax Themes for TAO</h1>
+        <p>
+          In the TAO design language, code is treated as an architectural drawing and horological blueprint. Syntax highlighting must illuminate structural hierarchy, minimize cognitive noise, and harmonize with our tactile alabaster drafting paper and obsidian canvas.
+        </p>
+      </div>
+      <div class="lab-stats-pills">
+        <div class="lab-stat-pill">5 THEMES</div>
+        <div class="lab-stat-pill">DUAL POLARITY (LIGHT/DARK)</div>
+        <div class="lab-stat-pill">SPLIT-VIEW COMPARE</div>
+      </div>
+    </section>
+
+    <!-- 01 · THEME CARDS SELECTOR -->
+    <div class="theme-cards-grid">
+      <!-- Theme 1 -->
+      <button type="button" class="theme-card-btn active" data-theme-id="canonical">
+        <div>
+          <div class="theme-card-idx">01 // CANONICAL</div>
+          <div class="theme-card-title">Tao Drafting Alabaster</div>
+          <div class="theme-card-desc">The foundational baseline: Vintage cognac keywords, matcha sage calls, and horizon slate types.</div>
+        </div>
+        <div class="theme-palette-preview">
+          <span class="palette-swatch-dot" style="background: #9A6735;" title="Cognac Keyword"></span>
+          <span class="palette-swatch-dot" style="background: #5A754B;" title="Matcha Sage Function"></span>
+          <span class="palette-swatch-dot" style="background: #3B647A;" title="Horizon Slate Type"></span>
+          <span class="palette-swatch-dot" style="background: #B25832;" title="Terracotta Number"></span>
+          <span class="palette-swatch-dot" style="background: #8D99AE;" title="Titanium Slate Comment"></span>
+        </div>
+      </button>
+
+      <!-- Theme 2 -->
+      <button type="button" class="theme-card-btn" data-theme-id="escapement">
+        <div>
+          <div class="theme-card-idx">02 // HOROLOGY</div>
+          <div class="theme-card-title">Horological Escapement</div>
+          <div class="theme-card-desc">Haute horlogerie: Thermally blued steel hands, brushed brass train wheels, and synthetic ruby bearing accents.</div>
+        </div>
+        <div class="theme-palette-preview">
+          <span class="palette-swatch-dot" style="background: #23527C;" title="Blued Steel Keyword"></span>
+          <span class="palette-swatch-dot" style="background: #A67C2E;" title="Brushed Brass Function"></span>
+          <span class="palette-swatch-dot" style="background: #9E3248;" title="Synthetic Ruby Type"></span>
+          <span class="palette-swatch-dot" style="background: #B35836;" title="Copper Number"></span>
+          <span class="palette-swatch-dot" style="background: #7B8594;" title="Silver Graphite Comment"></span>
+        </div>
+      </button>
+
+      <!-- Theme 3 -->
+      <button type="button" class="theme-card-btn" data-theme-id="bamboo">
+        <div>
+          <div class="theme-card-idx">03 // SOLARPUNK</div>
+          <div class="theme-card-title">Solarpunk Bamboo</div>
+          <div class="theme-card-desc">Organic botanical vitality: Fresh bamboo shoot green, sunlit warm amber, and calm celadon porcelain.</div>
+        </div>
+        <div class="theme-palette-preview">
+          <span class="palette-swatch-dot" style="background: #2D5A3A;" title="Deep Bamboo Keyword"></span>
+          <span class="palette-swatch-dot" style="background: #9E6E2E;" title="Sunlit Amber Function"></span>
+          <span class="palette-swatch-dot" style="background: #286B66;" title="Celadon Teal Type"></span>
+          <span class="palette-swatch-dot" style="background: #A85834;" title="Clay Terracotta Number"></span>
+          <span class="palette-swatch-dot" style="background: #7F8E81;" title="Moss Slate Comment"></span>
+        </div>
+      </button>
+
+      <!-- Theme 4 -->
+      <button type="button" class="theme-card-btn" data-theme-id="xuan">
+        <div>
+          <div class="theme-card-idx">04 // INK WASH</div>
+          <div class="theme-card-title">Xuan &amp; Cinnabar Seal</div>
+          <div class="theme-card-desc">Calligraphic tradition: Vermilion cinnabar seal stamps (朱砂), deep pine soot ink, and aged tea parchment.</div>
+        </div>
+        <div class="theme-palette-preview">
+          <span class="palette-swatch-dot" style="background: #A83226;" title="Cinnabar Seal Keyword"></span>
+          <span class="palette-swatch-dot" style="background: #2B3835;" title="Pine Soot Ink Function"></span>
+          <span class="palette-swatch-dot" style="background: #5E503F;" title="Bronze Type"></span>
+          <span class="palette-swatch-dot" style="background: #7A5E38;" title="Tea Stain String"></span>
+          <span class="palette-swatch-dot" style="background: #8A8E95;" title="Washed Ink Comment"></span>
+        </div>
+      </button>
+
+      <!-- Theme 5 -->
+      <button type="button" class="theme-card-btn" data-theme-id="monolith">
+        <div>
+          <div class="theme-card-idx">05 // MONOLITH</div>
+          <div class="theme-card-title">Titanium Monolith</div>
+          <div class="theme-card-desc">Minimalist Rams/Braun restraint: Strict grayscale titanium values with a single warm cognac focal callout.</div>
+        </div>
+        <div class="theme-palette-preview">
+          <span class="palette-swatch-dot" style="background: #111111;" title="High-Contrast Keyword"></span>
+          <span class="palette-swatch-dot" style="background: #9A6735;" title="Sole Cognac Accent"></span>
+          <span class="palette-swatch-dot" style="background: #3B3B3B;" title="Titanium Type"></span>
+          <span class="palette-swatch-dot" style="background: #636363;" title="Mid Slate String"></span>
+          <span class="palette-swatch-dot" style="background: #949494;" title="Muted Slate Comment"></span>
+        </div>
+      </button>
+    </div>
+
+    <!-- 02 · CODE PLAYGROUND STAGE & CONTROLS -->
+    <div class="code-stage-toolbar">
+      <!-- Language Tabs -->
+      <div class="toolbar-group">
+        <span class="toolbar-label">SPECIMEN:</span>
+        <button type="button" class="lang-tab-btn active" data-lang="typescript">TypeScript</button>
+        <button type="button" class="lang-tab-btn" data-lang="python">Python</button>
+        <button type="button" class="lang-tab-btn" data-lang="rust">Rust</button>
+        <button type="button" class="lang-tab-btn" data-lang="html_css">HTML/CSS</button>
+      </div>
+
+      <!-- Controls: Split View & Sizing -->
+      <div class="toolbar-group">
+        <button type="button" class="lab-btn" id="btn-toggle-split">SIDE-BY-SIDE SPLIT</button>
+        
+        <select class="toolbar-select" id="compare-theme-select" title="Theme to compare against in split view">
+          <option value="canonical">Compare: Canonical</option>
+          <option value="escapement" selected>Compare: Escapement</option>
+          <option value="bamboo">Compare: Bamboo</option>
+          <option value="xuan">Compare: Xuan &amp; Cinnabar</option>
+          <option value="monolith">Compare: Monolith</option>
+        </select>
+
+        <select class="toolbar-select" id="code-size-select" title="Code Font Size">
+          <option value="12.5">12.5px</option>
+          <option value="13.5" selected>13.5px</option>
+          <option value="14.5">14.5px</option>
+        </select>
+
+        <select class="toolbar-select" id="code-lh-select" title="Code Line Height">
+          <option value="1.5">Compact (1.5)</option>
+          <option value="1.65" selected>Drafting (1.65)</option>
+          <option value="1.85">Relaxed (1.85)</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Playground Mount Point -->
+    <div id="playground-mount"></div>
+
+    <!-- 03 · TOKEN PALETTE MATRIX -->
+    <section class="palette-matrix-box">
+      <div class="matrix-header">
+        <div>
+          <span class="lab-badge">TOKEN CALIBRATION</span>
+          <div class="matrix-title">Active Syntax Token Color Matrix</div>
+        </div>
+        <span style="font-family: var(--font-mono); font-size: 11px; color: var(--ink-muted);">Click any card to copy hex value</span>
+      </div>
+      <div class="matrix-grid" id="token-matrix-grid">
+        <!-- Rendered dynamically by code-themes.js -->
+      </div>
+    </section>
+
+    <!-- 04 · THEMATIC RATIONALE NOTES -->
+    <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-5); margin-bottom: var(--space-8);">
+      <div style="background: var(--canvas-card); border: 1px solid var(--border-hairline); border-radius: var(--radius-card); padding: var(--space-5);">
+        <h3 style="font-family: var(--font-sans); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-primary); margin-bottom: 8px;">
+          ✦ Horological Discipline in Syntax
+        </h3>
+        <p style="font-size: 13px; line-height: 1.6; color: var(--ink-secondary); margin: 0;">
+          Conventional syntax themes use jarring high-contrast primary colors (saturated neon pink, cyan, yellow) that cause retinal fatigue. In TAO, syntax tokens are tuned like watchmaker alloys: thermally blued steel, brass wheels, and titanium bridges that respect sustained focus over hours of deep work.
+        </p>
+      </div>
+
+      <div style="background: var(--canvas-card); border: 1px solid var(--border-hairline); border-radius: var(--radius-card); padding: var(--space-5);">
+        <h3 style="font-family: var(--font-sans); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-primary); margin-bottom: 8px;">
+          ✦ Taoist Equilibrium (留白 &amp; Restraint)
+        </h3>
+        <p style="font-size: 13px; line-height: 1.6; color: var(--ink-secondary); margin: 0;">
+          Not every symbol demands attention. Operators and punctuation remain quiet hairline ink, while comments adopt a muted titanium slate that recedes into the drafting plane until intentionally read. Whitespace is an active structural element.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- EXPORT MODAL -->
+  <div class="export-modal-backdrop" id="export-modal">
+    <div class="export-modal-card">
+      <div class="export-modal-header">
+        <span class="export-modal-title">Export CSS Tokens for tokens.css</span>
+        <button type="button" class="export-modal-close" id="btn-close-modal">&times;</button>
+      </div>
+      <div class="export-modal-body">
+        <p style="font-size: 12.5px; color: var(--ink-secondary); margin-top: 0;">
+          Copy and paste these CSS Custom Properties into <code>tokens.css</code> to adopt the active code theme across your whole project:
+        </p>
+        <pre class="code-editor-body" style="background: var(--canvas-surface-recessed); border: 1px solid var(--border-hairline); border-radius: var(--radius-micro); padding: 14px; font-size: 12px;"><code id="export-code-snippet"></code></pre>
+      </div>
+      <div class="export-modal-footer">
+        <button type="button" class="lab-btn primary" id="btn-modal-copy">COPY TO CLIPBOARD</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Global Dark/Light Mode Switcher Helper -->
+  <script>
+    function toggleGlobalTheme() {
+      const current = document.documentElement.getAttribute('data-theme') || 'light';
+      const next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('xiaoyu_theme', next);
+
+      const icon = document.getElementById('theme-toggle-icon');
+      const label = document.getElementById('theme-toggle-label');
+      if (icon) icon.textContent = next === 'dark' ? '☼' : '☾';
+      if (label) label.textContent = next === 'dark' ? 'LIGHT' : 'DARK';
+    }
+
+    // Sync button on load
+    (function () {
+      const current = document.documentElement.getAttribute('data-theme');
+      const icon = document.getElementById('theme-toggle-icon');
+      const label = document.getElementById('theme-toggle-label');
+      if (icon) icon.textContent = current === 'dark' ? '☼' : '☾';
+      if (label) label.textContent = current === 'dark' ? 'LIGHT' : 'DARK';
+    })();
+  </script>
+
+  <!-- Laboratory Logic -->
+  <script src="code-themes.js"></script>
+
+</body>
+</html>
