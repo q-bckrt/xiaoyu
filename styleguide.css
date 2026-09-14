@@ -499,6 +499,121 @@
       color: var(--accent-cognac);
     }
 
+    /* Foundations Specimen Box Styles (Room 02 Central Feature) */
+    .canvas-duo-preview {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3);
+    }
+
+    .canvas-specimen-swatch {
+      padding: 8px 12px;
+      border-radius: var(--radius-micro);
+      border: 1px solid var(--border-hairline);
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      transition: transform var(--duration-fast) ease;
+    }
+
+    .canvas-specimen-swatch:hover {
+      transform: translateY(-1px);
+    }
+
+    .canvas-specimen-swatch.alabaster {
+      background: #f5f2eb;
+      color: #1a1c1b;
+      border-color: rgba(26, 28, 27, 0.15);
+    }
+
+    .canvas-specimen-swatch.slate {
+      background: #141716;
+      color: #e6e4df;
+      border-color: rgba(230, 228, 223, 0.15);
+    }
+
+    .swatch-name {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .swatch-hex {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      opacity: 0.7;
+    }
+
+    .foundations-type-matrix {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 6px;
+    }
+
+    .type-specimen-chip {
+      background: var(--canvas-card);
+      border: 1px solid var(--border-hairline);
+      padding: 6px 10px;
+      border-radius: var(--radius-micro);
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .type-chip-label {
+      font-family: var(--font-mono);
+      font-size: 9.5px;
+      color: var(--ink-muted);
+      letter-spacing: 0.08em;
+    }
+
+    .type-chip-sample {
+      font-size: 13px;
+      color: var(--ink-primary);
+      font-weight: 500;
+    }
+
+    .type-chip-sample.calligraphy {
+      font-family: var(--font-calligraphy);
+      font-size: 15px;
+      color: var(--accent-sage);
+    }
+
+    .type-chip-sample.serif {
+      font-family: var(--font-serif);
+      font-style: italic;
+    }
+
+    .type-chip-sample.sans {
+      font-family: var(--font-sans);
+      font-weight: 600;
+    }
+
+    .type-chip-sample.mono {
+      font-family: var(--font-mono);
+      font-size: 11px;
+    }
+
+    .grid-matrix-preview-chip {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--canvas-card);
+      border: 1px solid var(--border-hairline);
+      padding: 8px 12px;
+      border-radius: var(--radius-micro);
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      color: var(--ink-secondary);
+    }
+
+    .grid-matrix-preview-chip .matrix-status {
+      color: var(--accent-cognac);
+      font-weight: 700;
+    }
+
     .preview-sound-trigger {
       display: flex;
       align-items: center;
