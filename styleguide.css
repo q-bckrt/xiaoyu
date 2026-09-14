@@ -3031,6 +3031,286 @@
       gap: var(--space-2);
     }
 
+    /* ==========================================================================
+       05 · Horological Rotary Dials & Knurled Potentiometers
+       ========================================================================== */
+    .rotary-stage-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: var(--space-4);
+      margin-top: var(--space-3);
+    }
+
+    .rotary-card-box {
+      background: var(--canvas-card-solid);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-card);
+      padding: var(--space-4) var(--space-5);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .rotary-dial-assembly {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: var(--space-4) 0;
+      position: relative;
+    }
+
+    .rotary-dial-bezel-wrap {
+      position: relative;
+      width: 220px;
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+    }
+
+    .rotary-dial-svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .rotary-svg-bg-track {
+      transition: stroke var(--duration-fast) ease;
+    }
+
+    .rotary-svg-active-arc {
+      transition: stroke-dashoffset 0.05s linear;
+      filter: drop-shadow(0 0 4px rgba(154, 103, 53, 0.45));
+    }
+
+    .rotary-dial-scale {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .dial-scale-mark {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      font-family: var(--font-mono);
+      font-size: 8.5px;
+      font-weight: 600;
+      color: var(--ink-muted);
+      letter-spacing: 0.04em;
+      transform: rotate(var(--angle)) translateY(-96px) rotate(calc(-1 * var(--angle)));
+      width: 32px;
+      margin-left: -16px;
+      text-align: center;
+    }
+
+    /* Native Accessible Range Overlay */
+    .rotary-range-input {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: grab;
+      z-index: 10;
+      margin: 0;
+    }
+
+    .rotary-range-input:active {
+      cursor: grabbing;
+    }
+
+    /* Physical Machined Knob Rotor */
+    .rotary-knob-rotor {
+      position: absolute;
+      width: 116px;
+      height: 116px;
+      border-radius: 50%;
+      background: var(--canvas-card-solid);
+      border: 1px solid var(--border-color);
+      box-shadow: 
+        0 10px 24px rgba(0, 0, 0, 0.16),
+        0 2px 6px rgba(0, 0, 0, 0.08),
+        inset 0 1px 2px rgba(255, 255, 255, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      transition: transform 0.04s linear;
+    }
+
+    /* Perimeter Knurl Texture Rim */
+    .rotary-knurl-rim {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: repeating-conic-gradient(
+        from 0deg,
+        var(--border-hairline) 0deg 2deg,
+        var(--canvas-surface-recessed) 2deg 4deg
+      );
+      opacity: 0.9;
+      mask: radial-gradient(circle, transparent 48px, black 49px);
+      -webkit-mask: radial-gradient(circle, transparent 48px, black 49px);
+    }
+
+    .stepped-fluted-rim {
+      background: repeating-conic-gradient(
+        from 0deg,
+        var(--border-color) 0deg 8deg,
+        var(--canvas-card-solid) 8deg 16deg
+      );
+      mask: radial-gradient(circle, transparent 46px, black 47px);
+      -webkit-mask: radial-gradient(circle, transparent 46px, black 47px);
+    }
+
+    /* Concentric Machined Face */
+    .rotary-concentric-face {
+      position: absolute;
+      inset: 6px;
+      border-radius: 50%;
+      background: 
+        radial-gradient(circle, transparent 0%, rgba(0, 0, 0, 0.03) 100%),
+        repeating-radial-gradient(
+          circle at 50% 50%,
+          var(--canvas-surface-recessed) 0px,
+          var(--canvas-surface-recessed) 1.5px,
+          var(--canvas-card-solid) 1.5px,
+          var(--canvas-card-solid) 3px
+        );
+      border: 1px solid var(--border-hairline);
+    }
+
+    /* Engraved Cognac Index Hairline */
+    .rotary-index-hairline {
+      position: absolute;
+      top: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 38px;
+      background: var(--accent-cognac);
+      border-radius: 1px;
+      z-index: 2;
+      box-shadow: 0 0 5px rgba(154, 103, 53, 0.5);
+    }
+
+    .rotary-index-pip {
+      position: absolute;
+      top: -3px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent-cognac);
+      border: 1px solid #FFFFFF;
+      box-shadow: 0 0 4px rgba(154, 103, 53, 0.8);
+    }
+
+    /* Stepped Pointer Arrow */
+    .stepped-pointer-arrow {
+      position: absolute;
+      top: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-bottom: 32px solid var(--accent-sage);
+      z-index: 2;
+      filter: drop-shadow(0 0 3px rgba(118, 142, 101, 0.4));
+    }
+
+    /* Center Axis Jewel / Bearing */
+    .rotary-center-jewel {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #9A6735 0%, #68421E 60%, #3B240F 100%);
+      border: 1.5px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .rotary-center-jewel.ruby-jewel {
+      background: radial-gradient(circle at 35% 35%, #BA324E 0%, #8A1E35 60%, #4D0F1D 100%);
+    }
+
+    .center-jewel-slot {
+      width: 8px;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.6);
+    }
+
+    /* 8 Stepped Stations Detent Ring */
+    .stepped-stations-ring {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .station-detent-btn {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 38px;
+      height: 24px;
+      margin-left: -19px;
+      margin-top: -12px;
+      border: 1px solid var(--border-hairline);
+      background: var(--canvas-card-solid);
+      border-radius: 3px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transform: rotate(var(--st-angle)) translateY(-94px) rotate(calc(-1 * var(--st-angle)));
+      font-family: var(--font-mono);
+      cursor: pointer;
+      pointer-events: auto;
+      transition: all var(--duration-fast) ease;
+      padding: 1px 0;
+    }
+
+    .station-detent-btn .st-num {
+      font-size: 7px;
+      color: var(--ink-muted);
+      line-height: 1;
+    }
+
+    .station-detent-btn .st-lbl {
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--ink-secondary);
+      line-height: 1.1;
+    }
+
+    .station-detent-btn:hover {
+      border-color: var(--accent-sage);
+      transform: rotate(var(--st-angle)) translateY(-96px) rotate(calc(-1 * var(--st-angle))) scale(1.05);
+    }
+
+    .station-detent-btn.active {
+      border-color: var(--accent-sage);
+      background: rgba(118, 142, 101, 0.12);
+      box-shadow: 0 0 8px rgba(118, 142, 101, 0.25);
+    }
+
+    .station-detent-btn.active .st-lbl {
+      color: var(--accent-sage);
+    }
+
     /* Live Telemetry Chart Stage */
     .chart-demo-stage {
       background: #0E1116;

@@ -83,12 +83,16 @@
           <span class="nav-num">06</span>
           <span>Precision Sliders</span>
         </a>
-        <a href="#c-chart" class="nav-item">
+        <a href="#c-rotary" class="nav-item">
           <span class="nav-num">07</span>
+          <span>Rotary Knobs &amp; Dials</span>
+        </a>
+        <a href="#c-chart" class="nav-item">
+          <span class="nav-num">08</span>
           <span>Telemetry Graph</span>
         </a>
         <a href="#c-audio" class="nav-item">
-          <span class="nav-num">08</span>
+          <span class="nav-num">09</span>
           <span>Web Audio DSP Player</span>
         </a>
       </nav>
@@ -751,10 +755,171 @@
             </div>
           </div>
 
-          <!-- Component 7: Live Systems Telemetry Graph (ApexCharts) -->
+          <!-- Component 7: Horological Rotary Dials & Knurled Potentiometers -->
+          <div class="component-group" id="c-rotary">
+            <div class="component-header">
+              <span class="component-title">07 · Horological Rotary Dials &amp; Knurled Potentiometers (Continuous Dial &amp; Stepped Detent Selector)</span>
+              <button class="snippet-toggle-btn" onclick="toggleSnippet('snippet-rotary')">VIEW CODE</button>
+            </div>
+            <div class="component-stage">
+              <div class="rotary-stage-grid">
+
+                <!-- Variant 1: 300° Continuous Vernier Rotary Potentiometer -->
+                <div class="rotary-card-box">
+                  <div class="slider-header">
+                    <div>
+                      <span class="slider-type-tag" style="color: var(--accent-cognac); border-color: rgba(184, 115, 51, 0.35);">01 · CONTINUOUS ROTARY DIAL</span>
+                      <span>300° SWEEP // SUB-DEGREE VERNIER RESOLUTION</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: var(--space-2);">
+                      <span class="schematic-pill-tag active" id="rotary-status-pill">● ACTIVE ENGAGEMENT</span>
+                      <span class="slider-val-readout" id="rotary-primary-readout" style="color: var(--accent-cognac); font-weight: 700;">185.4° · 0.618 λ</span>
+                    </div>
+                  </div>
+
+                  <!-- Rotary Dial Assembly -->
+                  <div class="rotary-dial-assembly" id="rotary-pot-assembly">
+                    <div class="rotary-dial-bezel-wrap" id="rotary-bezel-wrap">
+                      <!-- SVG Dial Face & Radial Graduation Bezel -->
+                      <svg class="rotary-dial-svg" viewBox="0 0 220 220" width="220" height="220" aria-hidden="true">
+                        <!-- Outer Track Ring (300° arc, radius 88, circ 552.9, arc 460.8, gap 92.1, start 120deg) -->
+                        <circle class="rotary-svg-bg-track" cx="110" cy="110" r="88" fill="none" stroke="var(--border-hairline)" stroke-width="2" stroke-dasharray="460.77 552.92" stroke-dashoffset="0" transform="rotate(120 110 110)" />
+                        <!-- Active Arc Progress Sweep -->
+                        <circle class="rotary-svg-active-arc" id="rotary-active-arc" cx="110" cy="110" r="88" fill="none" stroke="var(--accent-cognac)" stroke-width="3" stroke-dasharray="460.77 552.92" stroke-dashoffset="176.0" transform="rotate(120 110 110)" stroke-linecap="round" />
+                      </svg>
+
+                      <!-- Radial Graduation Numbers & Ticks -->
+                      <div class="rotary-dial-scale">
+                        <span class="dial-scale-mark" style="--angle: -150deg;">0°</span>
+                        <span class="dial-scale-mark" style="--angle: -90deg;">60°</span>
+                        <span class="dial-scale-mark" style="--angle: -30deg;">120°</span>
+                        <span class="dial-scale-mark" style="--angle: 30deg;">180°</span>
+                        <span class="dial-scale-mark" style="--angle: 90deg;">240°</span>
+                        <span class="dial-scale-mark" style="--angle: 150deg;">300°</span>
+                      </div>
+
+                      <!-- Native Accessible Range Input Overlaid -->
+                      <input type="range" class="rotary-range-input" min="0" max="300" step="0.5" value="185.4" id="rotary-pot-input" aria-label="300° Continuous Vernier Rotary Dial" title="Drag, scroll, or use arrow keys to rotate">
+
+                      <!-- Physical Machined Knob Rotor (Rotates with value) -->
+                      <div class="rotary-knob-rotor" id="rotary-pot-rotor" style="transform: rotate(35.4deg);">
+                        <!-- Perimeter Knurl Ring -->
+                        <div class="rotary-knurl-rim"></div>
+                        <!-- Concentric Machined Face -->
+                        <div class="rotary-concentric-face"></div>
+                        <!-- Engraved Cognac Index Hairline with Luminous Pip -->
+                        <div class="rotary-index-hairline">
+                          <div class="rotary-index-pip"></div>
+                        </div>
+                        <!-- Center Jewel Axis (Ruby / Titanium Bearing) -->
+                        <div class="rotary-center-jewel">
+                          <div class="center-jewel-slot"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Rotary Telemetry Footer -->
+                  <div class="vernier-telemetry-footer">
+                    <span>ANGULAR DISPLACEMENT: <strong id="rotary-angle-metric">185.4°</strong></span>
+                    <span>ATTENUATION: <strong id="rotary-attenuation-metric">-4.18 dB</strong></span>
+                    <span>CALIBRATED COUPLING: <strong id="rotary-total-metric" style="color: var(--ink-primary);">0.618 λ (61.8%)</strong></span>
+                  </div>
+                </div>
+
+                <!-- Variant 2: 8-Position Stepped Escapement Selector -->
+                <div class="rotary-card-box">
+                  <div class="slider-header">
+                    <div>
+                      <span class="slider-type-tag" style="color: var(--accent-sage); border-color: rgba(118, 142, 101, 0.35);">02 · STEPPED ESCAPEMENT SELECTOR</span>
+                      <span>8-STATION CHRONOGRAPH DETENT // TACTILE SNAPPING</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: var(--space-2);">
+                      <span class="schematic-pill-tag active" id="escapement-status-pill" style="color: var(--accent-sage); border-color: rgba(118, 142, 101, 0.3);">● STATION LOCK</span>
+                      <span class="slider-val-readout" id="escapement-val-readout" style="color: var(--accent-sage); font-weight: 700;">STATION IV · 8x CADENCE</span>
+                    </div>
+                  </div>
+
+                  <!-- Stepped Selector Assembly -->
+                  <div class="rotary-dial-assembly" id="stepped-selector-assembly">
+                    <div class="rotary-dial-bezel-wrap stepped-bezel-wrap">
+                      <!-- 8 Station Detent Badges -->
+                      <div class="stepped-stations-ring" id="stepped-stations-ring">
+                        <button type="button" class="station-detent-btn" data-step="0" style="--st-angle: -135deg;"><span class="st-num">I</span><span class="st-lbl">1x</span></button>
+                        <button type="button" class="station-detent-btn" data-step="1" style="--st-angle: -90deg;"><span class="st-num">II</span><span class="st-lbl">2x</span></button>
+                        <button type="button" class="station-detent-btn" data-step="2" style="--st-angle: -45deg;"><span class="st-num">III</span><span class="st-lbl">4x</span></button>
+                        <button type="button" class="station-detent-btn active" data-step="3" style="--st-angle: 0deg;"><span class="st-num">IV</span><span class="st-lbl">8x</span></button>
+                        <button type="button" class="station-detent-btn" data-step="4" style="--st-angle: 45deg;"><span class="st-num">V</span><span class="st-lbl">16x</span></button>
+                        <button type="button" class="station-detent-btn" data-step="5" style="--st-angle: 90deg;"><span class="st-num">VI</span><span class="st-lbl">32x</span></button>
+                        <button type="button" class="station-detent-btn" data-step="6" style="--st-angle: 135deg;"><span class="st-num">VII</span><span class="st-lbl">64x</span></button>
+                        <button type="button" class="station-detent-btn" data-step="7" style="--st-angle: 180deg;"><span class="st-num">VIII</span><span class="st-lbl">SYNC</span></button>
+                      </div>
+
+                      <!-- Native Accessible Input for Stepped Dial -->
+                      <input type="range" class="rotary-range-input" min="0" max="7" step="1" value="3" id="stepped-selector-input" aria-label="8-Position Stepped Escapement Selector">
+
+                      <!-- Stepped Pointer Knob Rotor -->
+                      <div class="rotary-knob-rotor stepped-rotor" id="stepped-selector-rotor" style="transform: rotate(0deg);">
+                        <div class="rotary-knurl-rim stepped-fluted-rim"></div>
+                        <div class="rotary-concentric-face"></div>
+                        <div class="stepped-pointer-arrow"></div>
+                        <div class="rotary-center-jewel ruby-jewel">
+                          <div class="center-jewel-slot"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Stepped Selector Telemetry Footer -->
+                  <div class="vernier-telemetry-footer">
+                    <span>DETENT REGISTER: <strong id="stepped-station-metric">STATION IV / VIII</strong></span>
+                    <span>CLOCK MULTIPLIER: <strong id="stepped-clock-metric">8x (86.4 kHz)</strong></span>
+                    <span>ESCAPEMENT TORQUE: <strong id="stepped-torque-metric" style="color: var(--ink-primary);">18.2 mN·m [LOCKED]</strong></span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="component-code-block" id="snippet-rotary">
+              <button class="copy-code-btn" onclick="copySnippetText('snippet-rotary')">COPY HTML</button>
+              <pre>&lt;!-- 1. 300° Continuous Vernier Rotary Dial --&gt;
+&lt;div class="rotary-dial-assembly"&gt;
+  &lt;div class="rotary-dial-bezel-wrap"&gt;
+    &lt;svg class="rotary-dial-svg" viewBox="0 0 220 220"&gt;
+      &lt;circle class="rotary-svg-bg-track" cx="110" cy="110" r="88" /&gt;
+      &lt;circle class="rotary-svg-active-arc" cx="110" cy="110" r="88" /&gt;
+    &lt;/svg&gt;
+    &lt;input type="range" class="rotary-range-input" min="0" max="300" step="0.5" value="185.4"&gt;
+    &lt;div class="rotary-knob-rotor" style="transform: rotate(35.4deg);"&gt;
+      &lt;div class="rotary-knurl-rim"&gt;&lt;/div&gt;
+      &lt;div class="rotary-concentric-face"&gt;&lt;/div&gt;
+      &lt;div class="rotary-index-hairline"&gt;&lt;div class="rotary-index-pip"&gt;&lt;/div&gt;&lt;/div&gt;
+      &lt;div class="rotary-center-jewel"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- 2. 8-Position Stepped Escapement Selector --&gt;
+&lt;div class="rotary-dial-assembly"&gt;
+  &lt;div class="rotary-dial-bezel-wrap stepped-bezel-wrap"&gt;
+    &lt;div class="stepped-stations-ring"&gt;
+      &lt;button class="station-detent-btn" data-step="0"&gt;1x&lt;/button&gt;
+      &lt;!-- Stations 1x through SYNC --&gt;
+    &lt;/div&gt;
+    &lt;input type="range" class="rotary-range-input" min="0" max="7" step="1" value="3"&gt;
+    &lt;div class="rotary-knob-rotor stepped-rotor"&gt;
+      &lt;div class="stepped-pointer-arrow"&gt;&lt;/div&gt;
+      &lt;div class="rotary-center-jewel ruby-jewel"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+            </div>
+          </div>
+
+          <!-- Component 8: Live Systems Telemetry Graph (ApexCharts) -->
           <div class="component-group" id="c-chart">
             <div class="component-header">
-              <span class="component-title">07 · Real-Time Systems Telemetry Graph (ApexCharts)</span>
+              <span class="component-title">08 · Real-Time Systems Telemetry Graph (ApexCharts)</span>
               <button class="snippet-toggle-btn" onclick="toggleSnippet('snippet-chart')">VIEW CODE</button>
             </div>
             <div class="component-stage">
@@ -792,10 +957,10 @@
             </div>
           </div>
 
-          <!-- Component 8: Tao Synthesized DSP Audio Player -->
+          <!-- Component 9: Tao Synthesized DSP Audio Player -->
           <div class="component-group" id="c-audio">
             <div class="component-header">
-              <span class="component-title">08 · Tao Synthesized Web Audio DSP Player (Ambient Escapement)</span>
+              <span class="component-title">09 · Tao Synthesized Web Audio DSP Player (Ambient Escapement)</span>
               <button class="snippet-toggle-btn" onclick="toggleSnippet('snippet-audio')">VIEW CODE</button>
             </div>
             <div class="component-stage">
@@ -1084,6 +1249,152 @@
       });
       // Initial calibration
       updateVernierCaliper(parseFloat(vernierInput.value));
+    }
+
+    // 1d. Physical Horological Rotary Knobs & Dials Logic
+    const rotaryInput = document.getElementById('rotary-pot-input');
+    const rotaryRotor = document.getElementById('rotary-pot-rotor');
+    const rotaryArc = document.getElementById('rotary-active-arc');
+    const rotaryBezelWrap = document.getElementById('rotary-bezel-wrap');
+    const rotaryPrimaryReadout = document.getElementById('rotary-primary-readout');
+    const rotaryAngleMetric = document.getElementById('rotary-angle-metric');
+    const rotaryAttenuationMetric = document.getElementById('rotary-attenuation-metric');
+    const rotaryTotalMetric = document.getElementById('rotary-total-metric');
+    let lastRotaryClick = 185.4;
+
+    function playRotaryClickSound(freq = 1600, duration = 0.007, gainLevel = 0.015) {
+      try {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContextClass) return;
+        if (!window.horoClickCtx) {
+          window.horoClickCtx = new AudioContextClass();
+        }
+        if (window.horoClickCtx.state === 'suspended') {
+          window.horoClickCtx.resume();
+        }
+        const osc = window.horoClickCtx.createOscillator();
+        const gain = window.horoClickCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, window.horoClickCtx.currentTime);
+        gain.gain.setValueAtTime(gainLevel, window.horoClickCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, window.horoClickCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(window.horoClickCtx.destination);
+        osc.start();
+        osc.stop(window.horoClickCtx.currentTime + duration);
+      } catch (e) {}
+    }
+
+    if (rotaryInput && rotaryRotor) {
+      function updateContinuousRotary(val) {
+        val = Math.max(0, Math.min(300, val));
+        rotaryInput.value = val;
+        // Rotation: 0 is -150deg, 150 is 0deg, 300 is +150deg
+        const rotAngle = val - 150;
+        rotaryRotor.style.transform = `rotate(${rotAngle.toFixed(1)}deg)`;
+
+        // SVG Arc stroke-dashoffset: 460.77 is empty, 0 is full 300deg
+        const totalArc = 460.77;
+        const offset = totalArc * (1 - (val / 300));
+        if (rotaryArc) {
+          rotaryArc.style.strokeDashoffset = offset.toFixed(2);
+        }
+
+        const lambda = (val / 300).toFixed(3);
+        const degStr = val.toFixed(1);
+        const pctStr = ((val / 300) * 100).toFixed(1);
+        const atten = ((1 - val / 300) * 12).toFixed(2);
+
+        if (rotaryPrimaryReadout) rotaryPrimaryReadout.textContent = `${degStr}° · ${lambda} λ`;
+        if (rotaryAngleMetric) rotaryAngleMetric.textContent = `${degStr}°`;
+        if (rotaryAttenuationMetric) rotaryAttenuationMetric.textContent = `-${atten} dB`;
+        if (rotaryTotalMetric) rotaryTotalMetric.textContent = `${lambda} λ (${pctStr}%)`;
+
+        // Acoustic mechanical escapement tick every 5 degrees
+        if (Math.abs(val - lastRotaryClick) >= 5.0) {
+          playRotaryClickSound(1650, 0.006, 0.012);
+          lastRotaryClick = val;
+        }
+      }
+
+      rotaryInput.addEventListener('input', (e) => {
+        updateContinuousRotary(parseFloat(e.target.value));
+      });
+
+      // Mouse wheel support for fine precision scrolling
+      if (rotaryBezelWrap) {
+        rotaryBezelWrap.addEventListener('wheel', (e) => {
+          e.preventDefault();
+          const delta = e.deltaY < 0 ? 2.5 : -2.5;
+          const current = parseFloat(rotaryInput.value) || 0;
+          updateContinuousRotary(current + delta);
+        }, { passive: false });
+      }
+
+      // Initial calibration
+      updateContinuousRotary(parseFloat(rotaryInput.value) || 185.4);
+    }
+
+    // 1e. 8-Position Stepped Escapement Selector Logic
+    const steppedInput = document.getElementById('stepped-selector-input');
+    const steppedRotor = document.getElementById('stepped-selector-rotor');
+    const steppedValReadout = document.getElementById('escapement-val-readout');
+    const steppedStationMetric = document.getElementById('stepped-station-metric');
+    const steppedClockMetric = document.getElementById('stepped-clock-metric');
+    const steppedTorqueMetric = document.getElementById('stepped-torque-metric');
+    const stationDetentBtns = document.querySelectorAll('.station-detent-btn');
+
+    const STEPPED_STATIONS = [
+      { step: 0, angle: -135, roman: 'I', label: '1x', clock: '10.8 kHz', torque: '12.4 mN·m' },
+      { step: 1, angle: -90, roman: 'II', label: '2x', clock: '21.6 kHz', torque: '14.0 mN·m' },
+      { step: 2, angle: -45, roman: 'III', label: '4x', clock: '43.2 kHz', torque: '16.5 mN·m' },
+      { step: 3, angle: 0, roman: 'IV', label: '8x', clock: '86.4 kHz', torque: '18.2 mN·m' },
+      { step: 4, angle: 45, roman: 'V', label: '16x', clock: '172.8 kHz', torque: '20.1 mN·m' },
+      { step: 5, angle: 90, roman: 'VI', label: '32x', clock: '345.6 kHz', torque: '22.8 mN·m' },
+      { step: 6, angle: 135, roman: 'VII', label: '64x', clock: '691.2 kHz', torque: '25.0 mN·m' },
+      { step: 7, angle: 180, roman: 'VIII', label: 'SYNC', clock: '1.382 MHz', torque: '28.4 mN·m' }
+    ];
+
+    if (steppedInput && steppedRotor) {
+      function setSteppedStation(stepIndex, playAudio = true) {
+        stepIndex = Math.max(0, Math.min(7, Math.round(stepIndex)));
+        steppedInput.value = stepIndex;
+        const config = STEPPED_STATIONS[stepIndex];
+
+        steppedRotor.style.transform = `rotate(${config.angle}deg)`;
+
+        // Highlight active station button
+        stationDetentBtns.forEach((btn, idx) => {
+          if (idx === stepIndex) {
+            btn.classList.add('active');
+          } else {
+            btn.classList.remove('active');
+          }
+        });
+
+        if (steppedValReadout) steppedValReadout.textContent = `STATION ${config.roman} · ${config.label} CADENCE`;
+        if (steppedStationMetric) steppedStationMetric.textContent = `STATION ${config.roman} / VIII`;
+        if (steppedClockMetric) steppedClockMetric.textContent = `${config.label} (${config.clock})`;
+        if (steppedTorqueMetric) steppedTorqueMetric.textContent = `${config.torque} [LOCKED]`;
+
+        if (playAudio) {
+          playRotaryClickSound(750, 0.016, 0.025);
+        }
+      }
+
+      steppedInput.addEventListener('input', (e) => {
+        setSteppedStation(parseInt(e.target.value, 10), true);
+      });
+
+      stationDetentBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const step = parseInt(btn.getAttribute('data-step'), 10);
+          setSteppedStation(step, true);
+        });
+      });
+
+      // Initial state
+      setSteppedStation(3, false);
     }
 
     // 2. Tao Synthesized Web Audio DSP Player Engine
