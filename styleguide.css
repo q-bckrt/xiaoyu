@@ -652,6 +652,43 @@
       }
     }
 
+    /* Homepage Manifesto Transition Divider */
+    .manifesto-homepage-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      margin: var(--space-12) 0 var(--space-10) 0;
+      scroll-margin-top: 76px;
+    }
+
+    .manifesto-homepage-divider::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 50%;
+      height: 1px;
+      background: var(--border-hairline);
+      z-index: 1;
+    }
+
+    .manifesto-divider-badge {
+      position: relative;
+      z-index: 2;
+      background: var(--canvas-bg);
+      padding: 6px 18px;
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-micro);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      color: var(--accent-cognac);
+      text-transform: uppercase;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+    }
+
     .room-portal-card {
       background: var(--canvas-card);
       border: 1px solid var(--border-hairline);
