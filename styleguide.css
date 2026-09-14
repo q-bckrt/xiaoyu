@@ -247,8 +247,8 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: clamp(16px, 4vw, 42px);
-      margin: 0 auto var(--space-6) auto;
+      gap: clamp(24px, 5vw, 60px);
+      margin: var(--space-4) auto var(--space-8) auto;
       max-width: 100%;
     }
 
@@ -262,27 +262,27 @@
 
     .diptych-calligraphy {
       font-family: var(--font-calligraphy);
-      font-size: clamp(60px, 9.5vw, 112px);
+      font-size: clamp(84px, 13vw, 156px);
       color: var(--accent-sage);
-      line-height: 0.95;
-      margin-bottom: 8px;
+      line-height: 0.9;
+      margin-bottom: 10px;
       opacity: var(--calligraphy-opacity, 0.9);
       user-select: none;
-      filter: drop-shadow(0 2px 16px rgba(118, 142, 101, 0.14));
+      filter: drop-shadow(0 2px 20px rgba(118, 142, 101, 0.16));
       transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
     }
 
     .diptych-calligraphy:hover {
       transform: scale(1.03) translateY(-2px);
-      filter: drop-shadow(0 4px 24px rgba(118, 142, 101, 0.24));
+      filter: drop-shadow(0 4px 28px rgba(118, 142, 101, 0.26));
     }
 
     .diptych-prefix {
       font-family: var(--font-mono);
-      font-size: clamp(11px, 1.4vw, 14px);
+      font-size: clamp(12px, 1.6vw, 16px);
       font-weight: 600;
-      letter-spacing: 0.32em;
-      text-indent: 0.32em;
+      letter-spacing: 0.34em;
+      text-indent: 0.34em;
       text-transform: uppercase;
       color: var(--accent-cognac);
       opacity: 0.92;
@@ -292,7 +292,7 @@
 
     .diptych-divider {
       width: 1px;
-      height: clamp(75px, 11vw, 125px);
+      height: clamp(100px, 15vw, 180px);
       background: var(--border-hairline);
       opacity: 0.85;
       flex-shrink: 0;
@@ -306,11 +306,11 @@
 
     .diptych-title {
       font-family: var(--font-display);
-      font-size: clamp(62px, 11vw, 120px);
+      font-size: clamp(88px, 14.5vw, 172px);
       font-weight: 200;
-      letter-spacing: 0.16em;
-      text-indent: 0.16em;
-      line-height: 0.95;
+      letter-spacing: 0.14em;
+      text-indent: 0.14em;
+      line-height: 0.92;
       color: var(--ink-primary);
       text-transform: uppercase;
       margin: 0;
@@ -318,8 +318,8 @@
     }
 
     .diptych-title:hover {
-      letter-spacing: 0.20em;
-      text-indent: 0.20em;
+      letter-spacing: 0.18em;
+      text-indent: 0.18em;
     }
 
     /* Backwards compatibility for standalone brand-title */
