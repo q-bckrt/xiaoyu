@@ -13,7 +13,7 @@
       position: relative;
     }
 
-    /* Grid Overlay Canvas for Live Alignment Inspection */
+    /* Grid Background Canvas - Baseline Cadence & Drafting Ground (Strictly Background) */
     #grid-inspector-overlay {
       position: fixed;
       top: 0;
@@ -21,7 +21,7 @@
       right: 0;
       bottom: 0;
       pointer-events: none;
-      z-index: 9999;
+      z-index: 0;
       opacity: 0;
       transition: opacity 0.25s ease;
       background-image: 
@@ -32,6 +32,12 @@
 
     #grid-inspector-overlay.active {
       opacity: 1;
+    }
+
+    [data-theme="dark"] #grid-inspector-overlay {
+      background-image: 
+        linear-gradient(to right, rgba(118, 142, 101, 0.11) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(118, 142, 101, 0.11) 1px, transparent 1px);
     }
 
     /* Floating Telemetry & Tool Bar */
@@ -192,6 +198,8 @@
       max-width: 1200px;
       margin: 0 auto;
       padding: var(--space-8) var(--space-6) var(--space-12) var(--space-6);
+      position: relative;
+      z-index: 1;
     }
 
     /* Unframed & Bold Monumental Header */
@@ -439,10 +447,11 @@
       grid-template-columns: 1.15fr 0.85fr;
       gap: var(--space-8);
       align-items: stretch;
-      background: var(--canvas-card);
+      background: var(--canvas-card-solid);
       border: 1px solid var(--border-hairline);
       border-radius: var(--radius-card);
       position: relative;
+      z-index: 1;
       overflow: hidden;
     }
 
@@ -816,7 +825,7 @@
     }
 
     .room-portal-card {
-      background: var(--canvas-card);
+      background: var(--canvas-card-solid);
       border: 1px solid var(--border-hairline);
       border-radius: var(--radius-card);
       padding: var(--space-6);
@@ -828,6 +837,7 @@
       min-height: 240px;
       transition: all var(--duration-smooth) ease;
       position: relative;
+      z-index: 1;
       overflow: hidden;
     }
 
@@ -922,6 +932,8 @@
       display: grid;
       grid-template-columns: var(--spec-sidebar-w) 1fr;
       gap: var(--space-10);
+      position: relative;
+      z-index: 1;
     }
 
     /* Sidebar Navigation */
@@ -1210,7 +1222,7 @@
     }
 
     .pillar-card {
-      background: var(--canvas-card);
+      background: var(--canvas-card-solid);
       border: 1px solid var(--border-hairline);
       border-top: 3px solid var(--border-hairline);
       padding: var(--space-5);
@@ -1218,6 +1230,8 @@
       backdrop-filter: blur(6px);
       box-shadow: var(--shadow-hairline);
       transition: transform var(--duration-smooth) var(--ease-deliberate), border-color var(--duration-smooth) ease, box-shadow var(--duration-smooth) ease;
+      position: relative;
+      z-index: 1;
     }
 
     .pillar-card:hover {

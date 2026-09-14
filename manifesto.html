@@ -22,8 +22,8 @@
 </head>
 <body>
 
-  <!-- 8px Grid Inspection Overlay -->
-  <div id="grid-inspector-overlay" aria-hidden="true"></div>
+  <!-- 8px Grid Background Canvas (On by default, strictly in background) -->
+  <div id="grid-inspector-overlay" class="active" aria-hidden="true"></div>
 
   <!-- UNIVERSAL TELEMETRY NAVIGATION BAR -->
   <div class="telemetry-bar">
@@ -41,7 +41,7 @@
     </nav>
 
     <div class="telemetry-tools">
-      <button class="tool-btn" id="btn-toggle-grid" title="Toggle 8px Baseline Cadence Overlay">
+      <button class="tool-btn active" id="btn-toggle-grid" title="Toggle 8px Baseline Cadence Overlay">
         <span>GRID (8PX)</span>
       </button>
       <button class="tool-btn" id="theme-toggle" title="Toggle Light / Dark Surface Theme">
@@ -178,13 +178,19 @@
 
   <!-- Interactive Logic for Manifesto -->
   <script>
-    // 8px Grid Inspection Overlay Toggle
+    // 8px Grid Background Cadence (Default: On)
     const gridBtn = document.getElementById('btn-toggle-grid');
     const gridOverlay = document.getElementById('grid-inspector-overlay');
     if (gridBtn && gridOverlay) {
+      const savedGrid = localStorage.getItem('xiaoyu_grid_enabled');
+      if (savedGrid === 'false') {
+        gridOverlay.classList.remove('active');
+        gridBtn.classList.remove('active');
+      }
       gridBtn.addEventListener('click', () => {
-        gridOverlay.classList.toggle('active');
-        gridBtn.classList.toggle('active');
+        const isActive = gridOverlay.classList.toggle('active');
+        gridBtn.classList.toggle('active', isActive);
+        localStorage.setItem('xiaoyu_grid_enabled', isActive ? 'true' : 'false');
       });
     }
 
