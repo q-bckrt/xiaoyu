@@ -511,9 +511,10 @@
     }
 
     .room-portal-featured .room-portal-title {
-      font-size: 28px;
-      font-weight: 700;
-      letter-spacing: -0.01em;
+      font-family: var(--font-serif);
+      font-size: 30px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
       margin: var(--space-2) 0 var(--space-2) 0;
       color: var(--ink-primary);
     }
@@ -905,10 +906,10 @@
     }
 
     .room-portal-title {
-      font-family: var(--font-sans);
-      font-size: 20px;
-      font-weight: 700;
-      letter-spacing: -0.01em;
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -0.015em;
       color: var(--ink-primary);
       margin: 0 0 6px 0;
     }
