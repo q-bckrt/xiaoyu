@@ -779,16 +779,31 @@
 
                   <!-- Rotary Dial Assembly -->
                   <div class="rotary-dial-assembly" id="rotary-pot-assembly">
-                    <div class="rotary-dial-bezel-wrap" id="rotary-bezel-wrap">
-                      <!-- SVG Dial Face & Radial Graduation Bezel -->
-                      <svg class="rotary-dial-svg" viewBox="0 0 220 220" width="220" height="220" aria-hidden="true">
-                        <!-- Outer Track Ring (300° arc, radius 88, circ 552.9, arc 460.8, gap 92.1, start 120deg) -->
-                        <circle class="rotary-svg-bg-track" cx="110" cy="110" r="88" fill="none" stroke="var(--border-hairline)" stroke-width="2" stroke-dasharray="460.77 552.92" stroke-dashoffset="0" transform="rotate(120 110 110)" />
+                    <div class="rotary-dial-bezel-wrap" id="rotary-bezel-wrap" title="Drag vertically/horizontally or scroll mouse wheel to adjust">
+                      <!-- SVG Dial Face & Radial Graduation Bezel (250x250) -->
+                      <svg class="rotary-dial-svg" viewBox="0 0 250 250" width="250" height="250" aria-hidden="true">
+                        <!-- Outer Track Ring (300° arc, radius 86, circ 540.35, arc 450.29, gap 90.06, start 120deg) -->
+                        <circle class="rotary-svg-bg-track" cx="125" cy="125" r="86" fill="none" stroke="var(--border-hairline)" stroke-width="1.5" stroke-dasharray="450.29 540.35" stroke-dashoffset="0" transform="rotate(120 125 125)" />
                         <!-- Active Arc Progress Sweep -->
-                        <circle class="rotary-svg-active-arc" id="rotary-active-arc" cx="110" cy="110" r="88" fill="none" stroke="var(--accent-cognac)" stroke-width="3" stroke-dasharray="460.77 552.92" stroke-dashoffset="176.0" transform="rotate(120 110 110)" stroke-linecap="round" />
+                        <circle class="rotary-svg-active-arc" id="rotary-active-arc" cx="125" cy="125" r="86" fill="none" stroke="var(--accent-cognac)" stroke-width="3" stroke-dasharray="450.29 540.35" stroke-dashoffset="172.0" transform="rotate(120 125 125)" stroke-linecap="round" />
+
+                        <!-- Major Graduation Tick Lines (r86 to r92) -->
+                        <line x1="125" y1="39" x2="125" y2="33" stroke="var(--ink-muted)" stroke-width="1.5" transform="rotate(-150 125 125)" />
+                        <line x1="125" y1="39" x2="125" y2="33" stroke="var(--ink-muted)" stroke-width="1.5" transform="rotate(-90 125 125)" />
+                        <line x1="125" y1="39" x2="125" y2="33" stroke="var(--ink-muted)" stroke-width="1.5" transform="rotate(-30 125 125)" />
+                        <line x1="125" y1="39" x2="125" y2="33" stroke="var(--ink-muted)" stroke-width="1.5" transform="rotate(30 125 125)" />
+                        <line x1="125" y1="39" x2="125" y2="33" stroke="var(--ink-muted)" stroke-width="1.5" transform="rotate(90 125 125)" />
+                        <line x1="125" y1="39" x2="125" y2="33" stroke="var(--ink-muted)" stroke-width="1.5" transform="rotate(150 125 125)" />
+
+                        <!-- Minor intermediate ticks (r86 to r89) -->
+                        <line x1="125" y1="39" x2="125" y2="36" stroke="var(--border-hairline)" stroke-width="1" transform="rotate(-120 125 125)" />
+                        <line x1="125" y1="39" x2="125" y2="36" stroke="var(--border-hairline)" stroke-width="1" transform="rotate(-60 125 125)" />
+                        <line x1="125" y1="39" x2="125" y2="36" stroke="var(--border-hairline)" stroke-width="1" transform="rotate(0 125 125)" />
+                        <line x1="125" y1="39" x2="125" y2="36" stroke="var(--border-hairline)" stroke-width="1" transform="rotate(60 125 125)" />
+                        <line x1="125" y1="39" x2="125" y2="36" stroke="var(--border-hairline)" stroke-width="1" transform="rotate(120 125 125)" />
                       </svg>
 
-                      <!-- Radial Graduation Numbers & Ticks -->
+                      <!-- Radial Graduation Station Numbers (Outside ticks at r110) -->
                       <div class="rotary-dial-scale">
                         <span class="dial-scale-mark" style="--angle: -150deg;">0°</span>
                         <span class="dial-scale-mark" style="--angle: -90deg;">60°</span>
@@ -799,7 +814,7 @@
                       </div>
 
                       <!-- Native Accessible Range Input Overlaid -->
-                      <input type="range" class="rotary-range-input" min="0" max="300" step="0.5" value="185.4" id="rotary-pot-input" aria-label="300° Continuous Vernier Rotary Dial" title="Drag, scroll, or use arrow keys to rotate">
+                      <input type="range" class="rotary-range-input" min="0" max="300" step="0.5" value="185.4" id="rotary-pot-input" aria-label="300° Continuous Vernier Rotary Dial" title="Drag vertically/horizontally or scroll to adjust">
 
                       <!-- Physical Machined Knob Rotor (Rotates with value) -->
                       <div class="rotary-knob-rotor" id="rotary-pot-rotor" style="transform: rotate(35.4deg);">
@@ -842,27 +857,57 @@
 
                   <!-- Stepped Selector Assembly -->
                   <div class="rotary-dial-assembly" id="stepped-selector-assembly">
-                    <div class="rotary-dial-bezel-wrap stepped-bezel-wrap">
-                      <!-- 8 Station Detent Badges -->
+                    <div class="rotary-dial-bezel-wrap stepped-bezel-wrap" id="stepped-bezel-wrap" title="Drag vertically/horizontally, scroll, or click stations">
+                      <!-- SVG Dial Face & Precision Engraved Detent Ring -->
+                      <svg class="rotary-dial-svg" viewBox="0 0 250 250" width="250" height="250" aria-hidden="true">
+                        <!-- Outer Hairline Circle -->
+                        <circle cx="125" cy="125" r="88" fill="none" stroke="var(--border-hairline)" stroke-width="1.5" />
+                        <!-- Inner Concentric Hairline Circle -->
+                        <circle cx="125" cy="125" r="74" fill="none" stroke="var(--border-subtle)" stroke-width="1" stroke-dasharray="3 3" />
+                        
+                        <!-- 8 Radial Station Detent Ticks (r74 to r88) -->
+                        <line id="svg-detent-tick-0" x1="125" y1="51" x2="125" y2="37" stroke="var(--border-hairline)" stroke-width="1.5" transform="rotate(-135 125 125)" />
+                        <line id="svg-detent-tick-1" x1="125" y1="51" x2="125" y2="37" stroke="var(--border-hairline)" stroke-width="1.5" transform="rotate(-90 125 125)" />
+                        <line id="svg-detent-tick-2" x1="125" y1="51" x2="125" y2="37" stroke="var(--border-hairline)" stroke-width="1.5" transform="rotate(-45 125 125)" />
+                        <line id="svg-detent-tick-3" x1="125" y1="51" x2="125" y2="37" stroke="var(--accent-sage)" stroke-width="2.5" transform="rotate(0 125 125)" />
+                        <line id="svg-detent-tick-4" x1="125" y1="51" x2="125" y2="37" stroke="var(--border-hairline)" stroke-width="1.5" transform="rotate(45 125 125)" />
+                        <line id="svg-detent-tick-5" x1="125" y1="51" x2="125" y2="37" stroke="var(--border-hairline)" stroke-width="1.5" transform="rotate(90 125 125)" />
+                        <line id="svg-detent-tick-6" x1="125" y1="51" x2="125" y2="37" stroke="var(--border-hairline)" stroke-width="1.5" transform="rotate(135 125 125)" />
+                        <line id="svg-detent-tick-7" x1="125" y1="51" x2="125" y2="37" stroke="var(--border-hairline)" stroke-width="1.5" transform="rotate(180 125 125)" />
+
+                        <!-- Minor Intermediate Detent Pips (r81) -->
+                        <circle cx="125" cy="44" r="1.2" fill="var(--ink-faint)" transform="rotate(-112.5 125 125)" />
+                        <circle cx="125" cy="44" r="1.2" fill="var(--ink-faint)" transform="rotate(-67.5 125 125)" />
+                        <circle cx="125" cy="44" r="1.2" fill="var(--ink-faint)" transform="rotate(-22.5 125 125)" />
+                        <circle cx="125" cy="44" r="1.2" fill="var(--ink-faint)" transform="rotate(22.5 125 125)" />
+                        <circle cx="125" cy="44" r="1.2" fill="var(--ink-faint)" transform="rotate(67.5 125 125)" />
+                        <circle cx="125" cy="44" r="1.2" fill="var(--ink-faint)" transform="rotate(112.5 125 125)" />
+                        <circle cx="125" cy="44" r="1.2" fill="var(--ink-faint)" transform="rotate(157.5 125 125)" />
+                        <circle cx="125" cy="44" r="1.2" fill="var(--ink-faint)" transform="rotate(-157.5 125 125)" />
+                      </svg>
+
+                      <!-- 8 Station Engraved Tags (Clean typography directly on dial perimeter, no clunky boxes) -->
                       <div class="stepped-stations-ring" id="stepped-stations-ring">
-                        <button type="button" class="station-detent-btn" data-step="0" style="--st-angle: -135deg;"><span class="st-num">I</span><span class="st-lbl">1x</span></button>
-                        <button type="button" class="station-detent-btn" data-step="1" style="--st-angle: -90deg;"><span class="st-num">II</span><span class="st-lbl">2x</span></button>
-                        <button type="button" class="station-detent-btn" data-step="2" style="--st-angle: -45deg;"><span class="st-num">III</span><span class="st-lbl">4x</span></button>
-                        <button type="button" class="station-detent-btn active" data-step="3" style="--st-angle: 0deg;"><span class="st-num">IV</span><span class="st-lbl">8x</span></button>
-                        <button type="button" class="station-detent-btn" data-step="4" style="--st-angle: 45deg;"><span class="st-num">V</span><span class="st-lbl">16x</span></button>
-                        <button type="button" class="station-detent-btn" data-step="5" style="--st-angle: 90deg;"><span class="st-num">VI</span><span class="st-lbl">32x</span></button>
-                        <button type="button" class="station-detent-btn" data-step="6" style="--st-angle: 135deg;"><span class="st-num">VII</span><span class="st-lbl">64x</span></button>
-                        <button type="button" class="station-detent-btn" data-step="7" style="--st-angle: 180deg;"><span class="st-num">VIII</span><span class="st-lbl">SYNC</span></button>
+                        <button type="button" class="stepped-station-tag" data-step="0" style="--st-angle: -135deg;"><span class="st-roman">I</span><span class="st-mult">1x</span></button>
+                        <button type="button" class="stepped-station-tag" data-step="1" style="--st-angle: -90deg;"><span class="st-roman">II</span><span class="st-mult">2x</span></button>
+                        <button type="button" class="stepped-station-tag" data-step="2" style="--st-angle: -45deg;"><span class="st-roman">III</span><span class="st-mult">4x</span></button>
+                        <button type="button" class="stepped-station-tag active" data-step="3" style="--st-angle: 0deg;"><span class="st-roman">IV</span><span class="st-mult">8x</span></button>
+                        <button type="button" class="stepped-station-tag" data-step="4" style="--st-angle: 45deg;"><span class="st-roman">V</span><span class="st-mult">16x</span></button>
+                        <button type="button" class="stepped-station-tag" data-step="5" style="--st-angle: 90deg;"><span class="st-roman">VI</span><span class="st-mult">32x</span></button>
+                        <button type="button" class="stepped-station-tag" data-step="6" style="--st-angle: 135deg;"><span class="st-roman">VII</span><span class="st-mult">64x</span></button>
+                        <button type="button" class="stepped-station-tag" data-step="7" style="--st-angle: 180deg;"><span class="st-roman">VIII</span><span class="st-mult">SYNC</span></button>
                       </div>
 
                       <!-- Native Accessible Input for Stepped Dial -->
                       <input type="range" class="rotary-range-input" min="0" max="7" step="1" value="3" id="stepped-selector-input" aria-label="8-Position Stepped Escapement Selector">
 
-                      <!-- Stepped Pointer Knob Rotor -->
+                      <!-- Stepped Fluted Knob Rotor with Luminous Sage Hairline -->
                       <div class="rotary-knob-rotor stepped-rotor" id="stepped-selector-rotor" style="transform: rotate(0deg);">
                         <div class="rotary-knurl-rim stepped-fluted-rim"></div>
                         <div class="rotary-concentric-face"></div>
-                        <div class="stepped-pointer-arrow"></div>
+                        <div class="stepped-index-hairline">
+                          <div class="stepped-index-pip"></div>
+                        </div>
                         <div class="rotary-center-jewel ruby-jewel">
                           <div class="center-jewel-slot"></div>
                         </div>
@@ -882,12 +927,12 @@
             </div>
             <div class="component-code-block" id="snippet-rotary">
               <button class="copy-code-btn" onclick="copySnippetText('snippet-rotary')">COPY HTML</button>
-              <pre>&lt;!-- 1. 300° Continuous Vernier Rotary Dial --&gt;
+              <pre>&lt;!-- 1. 300° Continuous Vernier Rotary Dial (Supports 2D Drag &amp; Calibrated Scroll) --&gt;
 &lt;div class="rotary-dial-assembly"&gt;
-  &lt;div class="rotary-dial-bezel-wrap"&gt;
-    &lt;svg class="rotary-dial-svg" viewBox="0 0 220 220"&gt;
-      &lt;circle class="rotary-svg-bg-track" cx="110" cy="110" r="88" /&gt;
-      &lt;circle class="rotary-svg-active-arc" cx="110" cy="110" r="88" /&gt;
+  &lt;div class="rotary-dial-bezel-wrap" id="rotary-bezel-wrap"&gt;
+    &lt;svg class="rotary-dial-svg" viewBox="0 0 250 250"&gt;
+      &lt;circle class="rotary-svg-bg-track" cx="125" cy="125" r="86" /&gt;
+      &lt;circle class="rotary-svg-active-arc" cx="125" cy="125" r="86" /&gt;
     &lt;/svg&gt;
     &lt;input type="range" class="rotary-range-input" min="0" max="300" step="0.5" value="185.4"&gt;
     &lt;div class="rotary-knob-rotor" style="transform: rotate(35.4deg);"&gt;
@@ -899,16 +944,20 @@
   &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;!-- 2. 8-Position Stepped Escapement Selector --&gt;
+&lt;!-- 2. 8-Position Stepped Escapement Selector (Laser Detent Ring &amp; Fluted Grip) --&gt;
 &lt;div class="rotary-dial-assembly"&gt;
-  &lt;div class="rotary-dial-bezel-wrap stepped-bezel-wrap"&gt;
+  &lt;div class="rotary-dial-bezel-wrap stepped-bezel-wrap" id="stepped-bezel-wrap"&gt;
+    &lt;svg class="rotary-dial-svg" viewBox="0 0 250 250"&gt;
+      &lt;!-- Concentric reference circles &amp; 8 laser detent ticks --&gt;
+    &lt;/svg&gt;
     &lt;div class="stepped-stations-ring"&gt;
-      &lt;button class="station-detent-btn" data-step="0"&gt;1x&lt;/button&gt;
-      &lt;!-- Stations 1x through SYNC --&gt;
+      &lt;button class="stepped-station-tag" data-step="0"&gt;&lt;span class="st-roman"&gt;I&lt;/span&gt;&lt;span class="st-mult"&gt;1x&lt;/span&gt;&lt;/button&gt;
+      &lt;!-- Stations I (1x) through VIII (SYNC) --&gt;
     &lt;/div&gt;
     &lt;input type="range" class="rotary-range-input" min="0" max="7" step="1" value="3"&gt;
     &lt;div class="rotary-knob-rotor stepped-rotor"&gt;
-      &lt;div class="stepped-pointer-arrow"&gt;&lt;/div&gt;
+      &lt;div class="rotary-knurl-rim stepped-fluted-rim"&gt;&lt;/div&gt;
+      &lt;div class="stepped-index-hairline"&gt;&lt;div class="stepped-index-pip"&gt;&lt;/div&gt;&lt;/div&gt;
       &lt;div class="rotary-center-jewel ruby-jewel"&gt;&lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
@@ -1285,16 +1334,17 @@
       } catch (e) {}
     }
 
+    // --- DIAL 1: 300° CONTINUOUS VERNIER ROTARY DIAL ---
     if (rotaryInput && rotaryRotor) {
-      function updateContinuousRotary(val) {
+      function updateContinuousRotary(val, playAudio = true) {
         val = Math.max(0, Math.min(300, val));
-        rotaryInput.value = val;
+        rotaryInput.value = val.toFixed(1);
         // Rotation: 0 is -150deg, 150 is 0deg, 300 is +150deg
         const rotAngle = val - 150;
         rotaryRotor.style.transform = `rotate(${rotAngle.toFixed(1)}deg)`;
 
-        // SVG Arc stroke-dashoffset: 460.77 is empty, 0 is full 300deg
-        const totalArc = 460.77;
+        // SVG Arc stroke-dashoffset: 450.29 is empty, 0 is full 300deg (circumference 540.35 at r=86)
+        const totalArc = 450.29;
         const offset = totalArc * (1 - (val / 300));
         if (rotaryArc) {
           rotaryArc.style.strokeDashoffset = offset.toFixed(2);
@@ -1311,7 +1361,7 @@
         if (rotaryTotalMetric) rotaryTotalMetric.textContent = `${lambda} λ (${pctStr}%)`;
 
         // Acoustic mechanical escapement tick every 5 degrees
-        if (Math.abs(val - lastRotaryClick) >= 5.0) {
+        if (playAudio && Math.abs(val - lastRotaryClick) >= 4.5) {
           playRotaryClickSound(1650, 0.006, 0.012);
           lastRotaryClick = val;
         }
@@ -1321,28 +1371,74 @@
         updateContinuousRotary(parseFloat(e.target.value));
       });
 
-      // Mouse wheel support for fine precision scrolling
+      // Industry-standard Multi-Axis (Vertical & Horizontal) Pointer Drag
       if (rotaryBezelWrap) {
+        let isDragging = false;
+        let startX = 0;
+        let startY = 0;
+        let startVal = 0;
+
+        rotaryBezelWrap.addEventListener('pointerdown', (e) => {
+          if (e.button !== 0) return;
+          isDragging = true;
+          startX = e.clientX;
+          startY = e.clientY;
+          startVal = parseFloat(rotaryInput.value) || 0;
+          rotaryBezelWrap.setPointerCapture(e.pointerId);
+          rotaryBezelWrap.classList.add('is-dragging');
+          rotaryInput.focus({ preventScroll: true });
+        });
+
+        rotaryBezelWrap.addEventListener('pointermove', (e) => {
+          if (!isDragging) return;
+          // Moving mouse UP (startY - e.clientY > 0) or RIGHT (e.clientX - startX > 0) increases value
+          const dy = startY - e.clientY;
+          const dx = e.clientX - startX;
+          const sensitivity = e.shiftKey ? 0.25 : 1.25; // Shift enables fine vernier precision
+          const delta = (dy + dx * 0.75) * sensitivity;
+          updateContinuousRotary(startVal + delta);
+        });
+
+        const stopDrag = (e) => {
+          if (!isDragging) return;
+          isDragging = false;
+          rotaryBezelWrap.classList.remove('is-dragging');
+          try { rotaryBezelWrap.releasePointerCapture(e.pointerId); } catch(err) {}
+        };
+
+        rotaryBezelWrap.addEventListener('pointerup', stopDrag);
+        rotaryBezelWrap.addEventListener('pointercancel', stopDrag);
+
+        // Calibrated Smooth Mouse Wheel & Trackpad Scrolling
         rotaryBezelWrap.addEventListener('wheel', (e) => {
           e.preventDefault();
-          const delta = e.deltaY < 0 ? 2.5 : -2.5;
+          let delta = e.deltaY;
+          if (e.deltaMode === 1) delta *= 16;
+          else if (e.deltaMode === 2) delta *= 100;
+
+          // Invert so wheel UP increases value; apply calibrated damping
+          const speed = e.shiftKey ? 0.03 : 0.16;
+          const change = -delta * speed;
+          // Clamp per tick to prevent erratic spinning on macOS inertial fling
+          const clampedChange = Math.max(-12, Math.min(12, change));
           const current = parseFloat(rotaryInput.value) || 0;
-          updateContinuousRotary(current + delta);
+          updateContinuousRotary(current + clampedChange);
         }, { passive: false });
       }
 
       // Initial calibration
-      updateContinuousRotary(parseFloat(rotaryInput.value) || 185.4);
+      updateContinuousRotary(parseFloat(rotaryInput.value) || 185.4, false);
     }
 
-    // 1e. 8-Position Stepped Escapement Selector Logic
+    // --- DIAL 2: 8-POSITION STEPPED ESCAPEMENT SELECTOR ---
     const steppedInput = document.getElementById('stepped-selector-input');
     const steppedRotor = document.getElementById('stepped-selector-rotor');
+    const steppedBezelWrap = document.getElementById('stepped-bezel-wrap');
     const steppedValReadout = document.getElementById('escapement-val-readout');
     const steppedStationMetric = document.getElementById('stepped-station-metric');
     const steppedClockMetric = document.getElementById('stepped-clock-metric');
     const steppedTorqueMetric = document.getElementById('stepped-torque-metric');
-    const stationDetentBtns = document.querySelectorAll('.station-detent-btn');
+    const steppedStationTags = document.querySelectorAll('.stepped-station-tag');
 
     const STEPPED_STATIONS = [
       { step: 0, angle: -135, roman: 'I', label: '1x', clock: '10.8 kHz', torque: '12.4 mN·m' },
@@ -1363,14 +1459,28 @@
 
         steppedRotor.style.transform = `rotate(${config.angle}deg)`;
 
-        // Highlight active station button
-        stationDetentBtns.forEach((btn, idx) => {
+        // Highlight active station tag directly on the dial ring
+        steppedStationTags.forEach((tag, idx) => {
           if (idx === stepIndex) {
-            btn.classList.add('active');
+            tag.classList.add('active');
           } else {
-            btn.classList.remove('active');
+            tag.classList.remove('active');
           }
         });
+
+        // Update 8 laser detent ticks in SVG
+        for (let i = 0; i < 8; i++) {
+          const tick = document.getElementById(`svg-detent-tick-${i}`);
+          if (tick) {
+            if (i === stepIndex) {
+              tick.setAttribute('stroke', 'var(--accent-sage)');
+              tick.setAttribute('stroke-width', '2.5');
+            } else {
+              tick.setAttribute('stroke', 'var(--border-hairline)');
+              tick.setAttribute('stroke-width', '1.5');
+            }
+          }
+        }
 
         if (steppedValReadout) steppedValReadout.textContent = `STATION ${config.roman} · ${config.label} CADENCE`;
         if (steppedStationMetric) steppedStationMetric.textContent = `STATION ${config.roman} / VIII`;
@@ -1386,12 +1496,81 @@
         setSteppedStation(parseInt(e.target.value, 10), true);
       });
 
-      stationDetentBtns.forEach((btn) => {
-        btn.addEventListener('click', () => {
+      // Direct station click on dial ring tags
+      steppedStationTags.forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
           const step = parseInt(btn.getAttribute('data-step'), 10);
           setSteppedStation(step, true);
         });
       });
+
+      // Multi-Axis (Vertical & Horizontal) Pointer Drag for Stepped Selector
+      if (steppedBezelWrap) {
+        let isSteppedDragging = false;
+        let startX = 0;
+        let startY = 0;
+        let startStep = 3;
+
+        steppedBezelWrap.addEventListener('pointerdown', (e) => {
+          if (e.button !== 0) return;
+          if (e.target.closest('.stepped-station-tag')) return; // Allow direct station tag clicks
+          isSteppedDragging = true;
+          startX = e.clientX;
+          startY = e.clientY;
+          startStep = parseInt(steppedInput.value, 10) || 0;
+          steppedBezelWrap.setPointerCapture(e.pointerId);
+          steppedBezelWrap.classList.add('is-dragging');
+          steppedInput.focus({ preventScroll: true });
+        });
+
+        steppedBezelWrap.addEventListener('pointermove', (e) => {
+          if (!isSteppedDragging) return;
+          const dy = startY - e.clientY;
+          const dx = e.clientX - startX;
+          const delta = dy + dx * 0.75;
+          // Detent snapping: advance 1 station per ~26px of drag
+          const stepDelta = Math.round(delta / 26);
+          const targetStep = Math.max(0, Math.min(7, startStep + stepDelta));
+          if (targetStep !== parseInt(steppedInput.value, 10)) {
+            setSteppedStation(targetStep, true);
+          }
+        });
+
+        const stopSteppedDrag = (e) => {
+          if (!isSteppedDragging) return;
+          isSteppedDragging = false;
+          steppedBezelWrap.classList.remove('is-dragging');
+          try { steppedBezelWrap.releasePointerCapture(e.pointerId); } catch(err) {}
+        };
+
+        steppedBezelWrap.addEventListener('pointerup', stopSteppedDrag);
+        steppedBezelWrap.addEventListener('pointercancel', stopSteppedDrag);
+
+        // Calibrated Detent Wheel & Trackpad Scrolling
+        let steppedWheelAccum = 0;
+        let steppedWheelTimer = null;
+        steppedBezelWrap.addEventListener('wheel', (e) => {
+          e.preventDefault();
+          let delta = e.deltaY;
+          if (e.deltaMode === 1) delta *= 16;
+          else if (e.deltaMode === 2) delta *= 100;
+
+          steppedWheelAccum += -delta;
+          const THRESHOLD = 30; // Clean detent threshold for trackpad gestures
+          if (Math.abs(steppedWheelAccum) >= THRESHOLD) {
+            const dir = steppedWheelAccum > 0 ? 1 : -1;
+            const current = parseInt(steppedInput.value, 10) || 0;
+            const target = Math.max(0, Math.min(7, current + dir));
+            if (target !== current) {
+              setSteppedStation(target, true);
+            }
+            steppedWheelAccum = 0;
+          }
+          clearTimeout(steppedWheelTimer);
+          steppedWheelTimer = setTimeout(() => { steppedWheelAccum = 0; }, 180);
+        }, { passive: false });
+      }
 
       // Initial state
       setSteppedStation(3, false);

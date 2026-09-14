@@ -3052,6 +3052,11 @@
       justify-content: space-between;
     }
 
+    .rotary-card-box .slider-val-readout {
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
     .rotary-dial-assembly {
       display: flex;
       justify-content: center;
@@ -3062,12 +3067,18 @@
 
     .rotary-dial-bezel-wrap {
       position: relative;
-      width: 220px;
-      height: 220px;
+      width: 250px;
+      height: 250px;
       display: flex;
       align-items: center;
       justify-content: center;
       user-select: none;
+      touch-action: none;
+      cursor: grab;
+    }
+
+    .rotary-dial-bezel-wrap.is-dragging {
+      cursor: grabbing;
     }
 
     .rotary-dial-svg {
@@ -3084,7 +3095,7 @@
     }
 
     .rotary-svg-active-arc {
-      transition: stroke-dashoffset 0.05s linear;
+      transition: stroke-dashoffset 0.04s linear;
       filter: drop-shadow(0 0 4px rgba(154, 103, 53, 0.45));
     }
 
@@ -3099,37 +3110,34 @@
       left: 50%;
       top: 50%;
       font-family: var(--font-mono);
-      font-size: 8.5px;
+      font-size: 9px;
       font-weight: 600;
       color: var(--ink-muted);
       letter-spacing: 0.04em;
-      transform: rotate(var(--angle)) translateY(-96px) rotate(calc(-1 * var(--angle)));
+      transform: rotate(var(--angle)) translateY(-110px) rotate(calc(-1 * var(--angle)));
       width: 32px;
       margin-left: -16px;
       text-align: center;
+      line-height: 1;
     }
 
-    /* Native Accessible Range Overlay */
+    /* Native Accessible Range Overlay (Keyboard focusable, pointer handled by bezel wrap) */
     .rotary-range-input {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
       opacity: 0;
-      cursor: grab;
-      z-index: 10;
+      pointer-events: none;
+      z-index: 1;
       margin: 0;
-    }
-
-    .rotary-range-input:active {
-      cursor: grabbing;
     }
 
     /* Physical Machined Knob Rotor */
     .rotary-knob-rotor {
       position: absolute;
-      width: 116px;
-      height: 116px;
+      width: 110px;
+      height: 110px;
       border-radius: 50%;
       background: var(--canvas-card-solid);
       border: 1px solid var(--border-color);
@@ -3155,18 +3163,18 @@
         var(--canvas-surface-recessed) 2deg 4deg
       );
       opacity: 0.9;
-      mask: radial-gradient(circle, transparent 48px, black 49px);
-      -webkit-mask: radial-gradient(circle, transparent 48px, black 49px);
+      mask: radial-gradient(circle, transparent 46px, black 47px);
+      -webkit-mask: radial-gradient(circle, transparent 46px, black 47px);
     }
 
     .stepped-fluted-rim {
       background: repeating-conic-gradient(
         from 0deg,
-        var(--border-color) 0deg 8deg,
-        var(--canvas-card-solid) 8deg 16deg
+        var(--border-color) 0deg 7.5deg,
+        var(--canvas-card-solid) 7.5deg 15deg
       );
-      mask: radial-gradient(circle, transparent 46px, black 47px);
-      -webkit-mask: radial-gradient(circle, transparent 46px, black 47px);
+      mask: radial-gradient(circle, transparent 45px, black 46px);
+      -webkit-mask: radial-gradient(circle, transparent 45px, black 46px);
     }
 
     /* Concentric Machined Face */
@@ -3193,7 +3201,7 @@
       left: 50%;
       transform: translateX(-50%);
       width: 2px;
-      height: 38px;
+      height: 36px;
       background: var(--accent-cognac);
       border-radius: 1px;
       z-index: 2;
@@ -3213,19 +3221,31 @@
       box-shadow: 0 0 4px rgba(154, 103, 53, 0.8);
     }
 
-    /* Stepped Pointer Arrow */
-    .stepped-pointer-arrow {
+    /* Stepped Index Hairline with Matcha Sage Pip */
+    .stepped-index-hairline {
       position: absolute;
       top: 6px;
       left: 50%;
       transform: translateX(-50%);
-      width: 0;
-      height: 0;
-      border-left: 5px solid transparent;
-      border-right: 5px solid transparent;
-      border-bottom: 32px solid var(--accent-sage);
+      width: 2px;
+      height: 36px;
+      background: var(--accent-sage);
+      border-radius: 1px;
       z-index: 2;
-      filter: drop-shadow(0 0 3px rgba(118, 142, 101, 0.4));
+      box-shadow: 0 0 5px rgba(118, 142, 101, 0.5);
+    }
+
+    .stepped-index-pip {
+      position: absolute;
+      top: -3px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent-sage);
+      border: 1px solid #FFFFFF;
+      box-shadow: 0 0 4px rgba(118, 142, 101, 0.8);
     }
 
     /* Center Axis Jewel / Bearing */
@@ -3253,61 +3273,57 @@
       background: rgba(255, 255, 255, 0.6);
     }
 
-    /* 8 Stepped Stations Detent Ring */
+    /* 8 Stepped Stations Engraved Dial Ring */
     .stepped-stations-ring {
       position: absolute;
       inset: 0;
       pointer-events: none;
     }
 
-    .station-detent-btn {
+    .stepped-station-tag {
       position: absolute;
       left: 50%;
       top: 50%;
-      width: 38px;
-      height: 24px;
-      margin-left: -19px;
-      margin-top: -12px;
-      border: 1px solid var(--border-hairline);
-      background: var(--canvas-card-solid);
-      border-radius: 3px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      transform: rotate(var(--st-angle)) translateY(-94px) rotate(calc(-1 * var(--st-angle)));
+      width: 34px;
+      margin-left: -17px;
+      text-align: center;
+      transform: rotate(var(--st-angle)) translateY(-108px) rotate(calc(-1 * var(--st-angle)));
       font-family: var(--font-mono);
       cursor: pointer;
       pointer-events: auto;
-      transition: all var(--duration-fast) ease;
-      padding: 1px 0;
+      z-index: 5;
+      transition: color var(--duration-fast) ease, transform var(--duration-fast) ease;
+      background: transparent;
+      border: none;
+      padding: 0;
     }
 
-    .station-detent-btn .st-num {
-      font-size: 7px;
+    .stepped-station-tag .st-roman {
+      font-size: 7.5px;
+      display: block;
       color: var(--ink-muted);
       line-height: 1;
+      margin-bottom: 1px;
+      transition: color var(--duration-fast) ease;
     }
 
-    .station-detent-btn .st-lbl {
-      font-size: 9px;
+    .stepped-station-tag .st-mult {
+      font-size: 9.5px;
       font-weight: 700;
       color: var(--ink-secondary);
-      line-height: 1.1;
+      line-height: 1;
+      display: block;
+      transition: color var(--duration-fast) ease;
     }
 
-    .station-detent-btn:hover {
-      border-color: var(--accent-sage);
-      transform: rotate(var(--st-angle)) translateY(-96px) rotate(calc(-1 * var(--st-angle))) scale(1.05);
+    .stepped-station-tag:hover .st-mult,
+    .stepped-station-tag.active .st-mult {
+      color: var(--accent-sage);
+      text-shadow: 0 0 6px rgba(118, 142, 101, 0.4);
     }
 
-    .station-detent-btn.active {
-      border-color: var(--accent-sage);
-      background: rgba(118, 142, 101, 0.12);
-      box-shadow: 0 0 8px rgba(118, 142, 101, 0.25);
-    }
-
-    .station-detent-btn.active .st-lbl {
+    .stepped-station-tag:hover .st-roman,
+    .stepped-station-tag.active .st-roman {
       color: var(--accent-sage);
     }
 
