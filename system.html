@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>啸宇 · TAO | 02 · The Design System &amp; Foundations</title>
+  <meta name="description" content="Technical specifications for the Xiaoyu TAO design system: Warm Alabaster drafting paper vs. Graphite Slate, quad-tier typography scale, and 16px Cartesian dot-matrix rules.">
+
+  <!-- Design System Tokens & Stylesheet -->
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="styleguide.css">
+
+  <!-- Zero-Flash Dark Mode Initialization -->
+  <script>
+    (function () {
+      const saved = localStorage.getItem('xiaoyu_theme');
+      const pref = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', saved || pref);
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- 8px Grid Inspection Overlay -->
+  <div id="grid-inspector-overlay" aria-hidden="true"></div>
+
+  <!-- UNIVERSAL TELEMETRY NAVIGATION BAR -->
+  <div class="telemetry-bar">
+    <div class="telemetry-left">
+      <a href="index.html" class="telemetry-mark" title="Return to Atelier Gateway">啸宇</a>
+      <span class="telemetry-tag">XIAOYU TAO</span>
+    </div>
+
+    <!-- 4 Rooms Universal Links -->
+    <nav class="telemetry-nav" aria-label="Rooms">
+      <a href="manifesto.html" class="nav-room-link">01 · MANIFESTO</a>
+      <a href="system.html" class="nav-room-link active">02 · SYSTEM</a>
+      <a href="components.html" class="nav-room-link">03 · COMPONENTS</a>
+      <a href="themes.html" class="nav-room-link">04 · THEMES</a>
+    </nav>
+
+    <div class="telemetry-tools">
+      <button class="tool-btn" id="btn-toggle-grid" title="Toggle 8px Baseline Cadence Overlay">
+        <span>GRID (8PX)</span>
+      </button>
+      <button class="tool-btn" id="theme-toggle" title="Toggle Light / Dark Surface Theme">
+        <span id="theme-indicator-icon">☾</span>
+        <span id="theme-indicator-text">DARK MODE</span>
+      </button>
+      <a href="portfolio.html" class="tool-btn">
+        <span>PORTFOLIO →</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- SPEC CONTAINER WITH SIDEBAR -->
+  <div class="spec-container">
+
+    <!-- Sticky Table of Contents -->
+    <aside class="spec-sidebar">
+      <div class="sidebar-header">
+        <h2 class="sidebar-title">02 · The System</h2>
+        <div class="sidebar-subtitle">Foundations &amp; Metrics</div>
+      </div>
+
+      <nav class="spec-nav">
+        <a href="#overview" class="nav-item active">
+          <span class="nav-num">00</span>
+          <span>System Overview</span>
+        </a>
+        <a href="#colors" class="nav-item">
+          <span class="nav-num">01</span>
+          <span>Color &amp; Surfaces</span>
+        </a>
+        <a href="#dual-canvases" class="nav-item">
+          <span class="nav-num">02</span>
+          <span>Dual Canvases</span>
+        </a>
+        <a href="#typography" class="nav-item">
+          <span class="nav-num">03</span>
+          <span>Quad-Tier Typography</span>
+        </a>
+        <a href="#type-table" class="nav-item">
+          <span class="nav-num">04</span>
+          <span>Typography Rules</span>
+        </a>
+        <a href="#spatial" class="nav-item">
+          <span class="nav-num">05</span>
+          <span>Spatial Cadence (8px)</span>
+        </a>
+        <a href="#tokens-architecture" class="nav-item">
+          <span class="nav-num">06</span>
+          <span>Token Architecture</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="components.html" class="sidebar-link-btn">
+          <span>Next: 03 · Components</span>
+          <span>→</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content Stream -->
+    <main class="spec-main">
+
+      <!-- 00 · COVER OVERVIEW -->
+      <header class="spec-cover" id="overview">
+        <div class="cover-top">
+          <div class="identity-lockup">
+            <span class="unboxed-mark-lg">啸宇</span>
+            <div class="identity-meta">
+              <h1 class="brand-title">Xiaoyu TAO</h1>
+              <div class="brand-tagline">Room 02 · The Design System &amp; Foundations</div>
+            </div>
+          </div>
+          <div class="release-badge">SPEC. V1.3 · RELEASE</div>
+        </div>
+
+        <div class="cover-statement">
+          “Structure before decoration. Precision before flair.<br>Every hairline and metric is calibrated to deliberate intent.”
+        </div>
+
+        <p class="cover-description">
+          The foundation of <strong>Xiaoyu TAO</strong> consists of strict chromatic tokens, a four-tier typographic voice, dual tactile canvases (archival drafting paper and terminal slate), and an unshifting 16px Cartesian dot-matrix.
+        </p>
+      </header>
+
+      <!-- 01 · COLOR PALETTE & SURFACES -->
+      <section class="spec-section" id="colors">
+        <div class="section-header">
+          <div class="section-title">
+            <span class="section-idx">01</span>
+            <span>Color Palette &amp; Surfaces</span>
+          </div>
+          <div class="section-label">CHROMATIC HARMONY</div>
+        </div>
+
+        <p class="section-intro">
+          Our palette pairs natural archival tones (Warm Alabaster drafting paper) with deep technical slate (Graphite Slate) and two deliberate accents: Matcha Sage for organic vitality, and Vintage Cognac for horological craft. Click any swatch to copy its token.
+        </p>
+
+        <div class="color-swatches-grid">
+          <!-- Warm Alabaster -->
+          <div class="swatch-card" onclick="copyTokenValue('--canvas-light: #F8F7F4;', 'Warm Alabaster token copied')">
+            <div class="swatch-preview with-border" style="background: #F8F7F4;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Warm Alabaster</div>
+              <div class="swatch-role">LIGHT CANVAS / DRAFTING VELLUM</div>
+              <div class="swatch-meta">
+                <span>#F8F7F4</span>
+                <span class="swatch-copy-hint">COPY</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Graphite Slate -->
+          <div class="swatch-card" onclick="copyTokenValue('--canvas-dark: #121417;', 'Graphite Slate token copied')">
+            <div class="swatch-preview" style="background: #121417;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Graphite Slate</div>
+              <div class="swatch-role">DARK CANVAS / TERMINAL</div>
+              <div class="swatch-meta">
+                <span>#121417</span>
+                <span class="swatch-copy-hint">COPY</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Deep Ink -->
+          <div class="swatch-card" onclick="copyTokenValue('--ink-primary: #1C1E21;', 'Deep Ink token copied')">
+            <div class="swatch-preview" style="background: #1C1E21;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Deep Ink</div>
+              <div class="swatch-role">PRIMARY INK / HEADINGS</div>
+              <div class="swatch-meta">
+                <span>#1C1E21</span>
+                <span class="swatch-copy-hint">COPY</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Secondary Ink -->
+          <div class="swatch-card" onclick="copyTokenValue('--ink-secondary: #555A64;', 'Secondary Ink token copied')">
+            <div class="swatch-preview" style="background: #555A64;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Balanced Charcoal</div>
+              <div class="swatch-role">BODY PROSE / CAPTIONS</div>
+              <div class="swatch-meta">
+                <span>#555A64</span>
+                <span class="swatch-copy-hint">COPY</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Matcha Sage -->
+          <div class="swatch-card" onclick="copyTokenValue('--accent-sage: #768E65;', 'Matcha Sage token copied')">
+            <div class="swatch-preview" style="background: #768E65;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Matcha Sage</div>
+              <div class="swatch-role">ORGANIC VITALITY / SAGE</div>
+              <div class="swatch-meta">
+                <span>#768E65</span>
+                <span class="swatch-copy-hint">COPY</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Vintage Cognac -->
+          <div class="swatch-card" onclick="copyTokenValue('--accent-cognac: #9A6735;', 'Vintage Cognac token copied')">
+            <div class="swatch-preview" style="background: var(--accent-cognac);"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Vintage Cognac</div>
+              <div class="swatch-role">HOROLOGICAL CRAFT / COGNAC</div>
+              <div class="swatch-meta">
+                <span>#9A6735 / #C68E56</span>
+                <span class="swatch-copy-hint">COPY</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Titanium Slate / Hairline -->
+          <div class="swatch-card" onclick="copyTokenValue('--border-hairline: #E2E4E9;', 'Titanium Slate token copied')">
+            <div class="swatch-preview with-border" style="background: #E2E4E9;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Titanium Slate</div>
+              <div class="swatch-role">HAIRLINES &amp; DIVIDERS (1PX)</div>
+              <div class="swatch-meta">
+                <span>#E2E4E9</span>
+                <span class="swatch-copy-hint">COPY</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cartesian Grid Dot -->
+          <div class="swatch-card" onclick="copyTokenValue('--grid-dot-color: #DCD8CE;', 'Grid Dot token copied')">
+            <div class="swatch-preview with-border" style="background-color: #F8F7F4; background-image: radial-gradient(#DCD8CE 1.5px, transparent 0); background-size: 16px 16px;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Cartesian Dot Matrix</div>
+              <div class="swatch-role">16PX ARCHITECTURAL GRID</div>
+              <div class="swatch-meta">
+                <span>#DCD8CE</span>
+                <span class="swatch-copy-hint">COPY</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dual Surface Demonstration Sandbox -->
+        <div id="dual-canvases" style="margin-top: var(--space-6);">
+          <h4 style="font-family: var(--font-sans); font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: var(--space-3);">
+            Surface Harmony: Warm Drafting Paper vs. Graphite Terminal
+          </h4>
+          <div class="surfaces-comparison">
+            <!-- Light Canvas Sample -->
+            <div class="surface-sample light-canvas">
+              <div class="surface-badge">Surface · Light (Warm Alabaster)</div>
+              <h3 style="font-family: var(--font-serif); font-size: 20px; font-weight: 400; color: #1C1E21; margin-bottom: 8px;">
+                Architectural Drafting Paper
+              </h3>
+              <p style="font-size: 13.5px; color: #555A64; margin-bottom: 16px; line-height: 1.55;">
+                Tactile, warm vellum depth rendered with a subtle 16px dot matrix. Conveys stillness, clarity, and mindful composition.
+              </p>
+              <div style="display: flex; gap: 8px; align-items: center;">
+                <span class="status-pill">
+                  <span class="status-pulse"></span>
+                  <span>SYSTEM HEALTH: 100%</span>
+                </span>
+                <a href="#" class="btn-primary" style="font-size: 11px; padding: 6px 12px;">Explore →</a>
+              </div>
+            </div>
+
+            <!-- Dark Canvas Sample -->
+            <div class="surface-sample dark-canvas">
+              <div class="surface-badge">Surface · Dark (Graphite Slate)</div>
+              <h3 style="font-family: var(--font-serif); font-size: 20px; font-weight: 400; color: #F8F7F4; margin-bottom: 8px;">
+                Quiet Slate Terminal
+              </h3>
+              <p style="font-size: 13.5px; color: #A6ADBA; margin-bottom: 16px; line-height: 1.55;">
+                A deep, low-glare slate surface for code, technical data, and deep focus, framed by crisp 1px borders.
+              </p>
+              <div style="display: flex; gap: 8px; align-items: center;">
+                <span style="font-family: var(--font-mono); font-size: 11px; background: rgba(118, 142, 101, 0.15); color: #8DB976; border: 1px solid rgba(118, 142, 101, 0.4); padding: 4px 10px; border-radius: 2px;">
+                  SYS::OK · 0.12ms
+                </span>
+                <button class="btn-secondary" style="font-size: 11px; padding: 6px 12px;">Inspect</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 02 · QUAD-TIER TYPOGRAPHIC SYSTEM -->
+      <section class="spec-section" id="typography">
+        <div class="section-header">
+          <div class="section-title">
+            <span class="section-idx">02</span>
+            <span>Quad-Tier Typographic System</span>
+          </div>
+          <div class="section-label">EASTERN CALLIGRAPHY &amp; MODERN TYPE</div>
+        </div>
+
+        <p class="section-intro">
+          Four typographic voices working in harmony. Each fulfills a distinct role, balancing calligraphic organic flow, literary reflection, modern geometric structure, and technical precision.
+        </p>
+
+        <div class="type-specimen-stack">
+          <!-- Tier 1: Identity Mark -->
+          <div class="type-specimen-box">
+            <div class="specimen-header">
+              <span class="tier-badge">TIER 1 · IDENTITY MARK</span>
+              <span class="tier-meta">Zhi Mang Xing (志莽行书) · Calligraphic Signature</span>
+            </div>
+            <div style="display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap;">
+              <div class="specimen-display-calligraphy" style="font-size: 46px; line-height: 1;">啸宇</div>
+              <div style="font-family: var(--font-serif); font-style: italic; font-size: 18px; color: var(--ink-secondary);">
+                The Mindful Craftsman
+              </div>
+            </div>
+            <p style="font-size: 13px; color: var(--ink-secondary); margin: 0; margin-top: 8px;">
+              <strong>Application &amp; Scope:</strong> Reserved strictly for the Chinese signature mark (啸宇). The dynamic ink brushstrokes evoke traditional Eastern calligraphy, cutting naturally across the modern digital grid.
+            </p>
+          </div>
+
+          <!-- Tier 2: Editorial Serif -->
+          <div class="type-specimen-box">
+            <div class="specimen-header">
+              <span class="tier-badge">TIER 2 · EDITORIAL SERIF</span>
+              <span class="tier-meta">Newsreader · Literary Warmth &amp; Heritage</span>
+            </div>
+            <div class="specimen-display-serif">“Elegance is the quiet elimination of friction until only clarity remains.”</div>
+            <p style="font-size: 13px; color: var(--ink-secondary); margin: 0;">
+              <strong>Application:</strong> Primary page headlines (H1/H2), philosophy callouts, manifesto quotes, and key statements.
+            </p>
+          </div>
+
+          <!-- Tier 3: Body & UI Sans -->
+          <div class="type-specimen-box">
+            <div class="specimen-header">
+              <span class="tier-badge">TIER 3 · BODY / UI SANS</span>
+              <span class="tier-meta">Satoshi · Geometric Modernism</span>
+            </div>
+            <div class="specimen-display-sans">
+              High performance stems from steady composure. When code, craft, and intent converge without friction, effort turns into effortless flow. Built with clean proportions and comfortable reading contrast.
+            </div>
+            <p style="font-size: 13px; color: var(--ink-secondary); margin: 0;">
+              <strong>Application:</strong> Body prose, navigation links, button text, form inputs, and card copy.
+            </p>
+          </div>
+
+          <!-- Tier 4: Technical & Data Mono -->
+          <div class="type-specimen-box">
+            <div class="specimen-header">
+              <span class="tier-badge">TIER 4 · TECHNICAL &amp; DATA MONO</span>
+              <span class="tier-meta">JetBrains Mono · Technical Precision</span>
+            </div>
+            <div class="specimen-display-mono">
+              <span style="color: #6C7280;">[SYSTEM]</span> &nbsp;<span style="color: #8DB477;">STATUS: OPTIMAL</span> &nbsp;·&nbsp; <span style="color: #C68E56;">LATENCY: 0.12ms</span> &nbsp;·&nbsp; <span style="color: #E2E8F0;">GRID: 8px</span> &nbsp;·&nbsp; <span style="color: #8DB477;">WU_WEI: TRUE</span>
+            </div>
+            <p style="font-size: 13px; color: var(--ink-secondary); margin: 0; margin-top: 10px;">
+              <strong>Application:</strong> Code snippets, data tables, metrics readouts, timestamps, and technical indicators.
+            </p>
+          </div>
+        </div>
+
+        <!-- Typography Token Hierarchy Table -->
+        <div id="type-table" style="margin-top: var(--space-6);">
+          <h4 style="font-family: var(--font-sans); font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: var(--space-3);">
+            Typographic Scale &amp; Rules Specification
+          </h4>
+          <table class="type-rules-table">
+            <thead>
+              <tr>
+                <th>ROLE / TOKEN</th>
+                <th>FONT FAMILY</th>
+                <th>SIZE / LINE HEIGHT</th>
+                <th>TRACKING</th>
+                <th>WEIGHT / STYLE</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="type-token-name">Personal Mark</td>
+                <td>Zhi Mang Xing</td>
+                <td>32px – 72px / 1.0</td>
+                <td>0.04em</td>
+                <td>Regular (Calligraphy)</td>
+              </tr>
+              <tr>
+                <td class="type-token-name">Display Headline (H1)</td>
+                <td>Newsreader</td>
+                <td>36px – 54px / 1.15</td>
+                <td>-0.025em</td>
+                <td>400 / Italic accents</td>
+              </tr>
+              <tr>
+                <td class="type-token-name">Section Title (H2)</td>
+                <td>Newsreader</td>
+                <td>22px – 28px / 1.25</td>
+                <td>-0.015em</td>
+                <td>400 Regular</td>
+              </tr>
+              <tr>
+                <td class="type-token-name">Body Prose</td>
+                <td>Satoshi</td>
+                <td>15px / 1.6</td>
+                <td>Normal</td>
+                <td>400 Regular</td>
+              </tr>
+              <tr>
+                <td class="type-token-name">Buttons &amp; Actions</td>
+                <td>Satoshi</td>
+                <td>13px / 1.0</td>
+                <td>0.08em (Uppercase)</td>
+                <td>700 Bold</td>
+              </tr>
+              <tr>
+                <td class="type-token-name">Code &amp; Metrics</td>
+                <td>JetBrains Mono</td>
+                <td>10.5px – 12px / 1.5</td>
+                <td>0.06em</td>
+                <td>500 Medium</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 03 · SPATIAL CADENCE & 8PX GRID -->
+      <section class="spec-section" id="spatial">
+        <div class="section-header">
+          <div class="section-title">
+            <span class="section-idx">03</span>
+            <span>8px Baseline Grid &amp; Spatial Cadence</span>
+          </div>
+          <div class="section-label">GEOMETRIC DISCIPLINE &amp; MA (留白)</div>
+        </div>
+
+        <p class="section-intro">
+          All layout dimensions adhere strictly to an 8px base grid, subdivided into 4px micro-increments. Borders never exceed 1px solid. The canvas texture consists of an unshifting 16px Cartesian dot-matrix, balanced by deliberate negative space (留白 · <em>Ma</em>) that lets elements breathe with natural equilibrium.
+        </p>
+
+        <div class="grid-demo-box">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="font-family: var(--font-mono); font-size: 12px; font-weight: 600; color: var(--ink-primary);">
+              SPATIAL PROGRESSION SCALE (BASE 8PX)
+            </div>
+            <div style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-sage);">
+              MICRO-SUBDIVISION: 4PX
+            </div>
+          </div>
+
+          <div class="space-scale-display">
+            <div class="space-scale-row">
+              <span style="color: var(--ink-primary); font-weight: 500;">--space-1</span>
+              <span style="color: var(--ink-muted);">4px</span>
+              <div class="space-bar" style="width: 4px;"></div>
+            </div>
+            <div class="space-scale-row">
+              <span style="color: var(--ink-primary); font-weight: 500;">--space-2</span>
+              <span style="color: var(--ink-muted);">8px</span>
+              <div class="space-bar" style="width: 8px;"></div>
+            </div>
+            <div class="space-scale-row">
+              <span style="color: var(--ink-primary); font-weight: 500;">--space-3</span>
+              <span style="color: var(--ink-muted);">12px</span>
+              <div class="space-bar" style="width: 12px;"></div>
+            </div>
+            <div class="space-scale-row">
+              <span style="color: var(--ink-primary); font-weight: 500;">--space-4</span>
+              <span style="color: var(--ink-muted);">16px</span>
+              <div class="space-bar" style="width: 16px;"></div>
+            </div>
+            <div class="space-scale-row">
+              <span style="color: var(--ink-primary); font-weight: 500;">--space-6</span>
+              <span style="color: var(--ink-muted);">24px</span>
+              <div class="space-bar" style="width: 24px;"></div>
+            </div>
+            <div class="space-scale-row">
+              <span style="color: var(--ink-primary); font-weight: 500;">--space-8</span>
+              <span style="color: var(--ink-muted);">32px</span>
+              <div class="space-bar" style="width: 32px;"></div>
+            </div>
+            <div class="space-scale-row">
+              <span style="color: var(--ink-primary); font-weight: 500;">--space-12</span>
+              <span style="color: var(--ink-muted);">48px</span>
+              <div class="space-bar" style="width: 48px;"></div>
+            </div>
+            <div class="space-scale-row">
+              <span style="color: var(--ink-primary); font-weight: 500;">--space-16</span>
+              <span style="color: var(--ink-muted);">64px</span>
+              <div class="space-bar" style="width: 64px;"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 04 · TOKEN ARCHITECTURE -->
+      <section class="spec-section" id="tokens-architecture">
+        <div class="section-header">
+          <div class="section-title">
+            <span class="section-idx">04</span>
+            <span>Design Tokens Architecture</span>
+          </div>
+          <div class="section-label">TOKENS.CSS IMPLEMENTATION</div>
+        </div>
+
+        <p class="section-intro">
+          All values across the TAO ecosystem are strictly declared in <code>tokens.css</code> as CSS Custom Properties. The architecture separates <strong>Primitive Values</strong> (exact hex scales, fixed pixel steps) from <strong>Semantic Tokens</strong> (active canvas, ink priorities, elevation surfaces).
+        </p>
+
+        <div style="background: var(--canvas-card); border: 1px solid var(--border-hairline); border-radius: var(--radius-card); padding: var(--space-5);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4); flex-wrap: wrap; gap: var(--space-3);">
+            <div>
+              <span style="font-family: var(--font-mono); font-size: 10px; font-weight: 700; color: var(--accent-cognac); text-transform: uppercase;">ATOMIC SPECIFICATION</span>
+              <h4 style="font-family: var(--font-sans); font-size: 15px; font-weight: 700; margin: 2px 0 0 0;">Importing tokens.css</h4>
+            </div>
+            <button class="tool-btn" onclick="navigator.clipboard.writeText('<link rel=\'stylesheet\' href=\'tokens.css\'>').then(() => showToast('Tokens link snippet copied to clipboard!'))">
+              <span>COPY IMPORT SNIPPET</span>
+            </button>
+          </div>
+          <pre class="code-terminal">&lt;link rel="stylesheet" href="tokens.css"&gt;</pre>
+        </div>
+      </section>
+
+      <!-- ROOM FOOTER NAVIGATION -->
+      <footer style="margin-top: var(--space-10); padding-top: var(--space-6); border-top: 1px solid var(--border-hairline); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-4);">
+        <a href="manifesto.html" class="tool-btn" style="text-decoration:none;">← Room 01 · Manifesto</a>
+        <a href="components.html" class="tool-btn" style="text-decoration:none; background: var(--ink-primary); color: var(--canvas-bg); font-weight: 600;">
+          <span>Room 03 · Component Library</span>
+          <span>→</span>
+        </a>
+      </footer>
+
+    </main>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="copy-toast"></div>
+
+  <!-- Interactive Logic for System -->
+  <script>
+    // 8px Grid Inspection Overlay Toggle
+    const gridBtn = document.getElementById('btn-toggle-grid');
+    const gridOverlay = document.getElementById('grid-inspector-overlay');
+    if (gridBtn && gridOverlay) {
+      gridBtn.addEventListener('click', () => {
+        gridOverlay.classList.toggle('active');
+        gridBtn.classList.toggle('active');
+      });
+    }
+
+    // Light / Dark Theme Switcher with localStorage sync
+    const themeBtn = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-indicator-icon');
+    const themeText = document.getElementById('theme-indicator-text');
+
+    function updateThemeUI(theme) {
+      if (themeIcon) themeIcon.textContent = theme === 'dark' ? '☼' : '☾';
+      if (themeText) themeText.textContent = theme === 'dark' ? 'LIGHT MODE' : 'DARK MODE';
+    }
+
+    if (themeBtn) {
+      updateThemeUI(document.documentElement.getAttribute('data-theme') || 'light');
+      themeBtn.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('xiaoyu_theme', newTheme);
+        updateThemeUI(newTheme);
+      });
+    }
+
+    // Copy Token Value with Toast
+    function copyTokenValue(tokenStr, message) {
+      navigator.clipboard.writeText(tokenStr).then(() => {
+        showToast(message || 'Token copied to clipboard');
+      });
+    }
+
+    function showToast(text) {
+      const toast = document.getElementById('copy-toast');
+      if (toast) {
+        toast.textContent = text;
+        toast.classList.add('visible');
+        setTimeout(() => toast.classList.remove('visible'), 2400);
+      }
+    }
+
+    // ScrollSpy for Sidebar Links
+    const sections = document.querySelectorAll('header.spec-cover, section.spec-section');
+    const navLinks = document.querySelectorAll('aside.spec-sidebar .nav-item');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (pageYOffset >= sectionTop - 120) {
+          current = section.getAttribute('id');
+        }
+      });
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

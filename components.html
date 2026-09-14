@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>啸宇 · TAO | 03 · Living Component Library</title>
+  <meta name="description" content="Production-grade component library for the Xiaoyu TAO design system. Tactile controls, vernier range sliders, synthesized Web Audio DSP player, and ApexCharts telemetry.">
+
+  <!-- Design System Tokens & Stylesheet -->
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="styleguide.css">
+
+  <!-- ApexCharts CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+  <!-- Zero-Flash Dark Mode Initialization -->
+  <script>
+    (function () {
+      const saved = localStorage.getItem('xiaoyu_theme');
+      const pref = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', saved || pref);
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- 8px Grid Inspection Overlay -->
+  <div id="grid-inspector-overlay" aria-hidden="true"></div>
+
+  <!-- UNIVERSAL TELEMETRY NAVIGATION BAR -->
+  <div class="telemetry-bar">
+    <div class="telemetry-left">
+      <a href="index.html" class="telemetry-mark" title="Return to Atelier Gateway">啸宇</a>
+      <span class="telemetry-tag">XIAOYU TAO</span>
+    </div>
+
+    <!-- 4 Rooms Universal Links -->
+    <nav class="telemetry-nav" aria-label="Rooms">
+      <a href="manifesto.html" class="nav-room-link">01 · MANIFESTO</a>
+      <a href="system.html" class="nav-room-link">02 · SYSTEM</a>
+      <a href="components.html" class="nav-room-link active">03 · COMPONENTS</a>
+      <a href="themes.html" class="nav-room-link">04 · THEMES</a>
+    </nav>
+
+    <div class="telemetry-tools">
+      <button class="tool-btn" id="btn-toggle-grid" title="Toggle 8px Baseline Cadence Overlay">
+        <span>GRID (8PX)</span>
+      </button>
+      <button class="tool-btn" id="theme-toggle" title="Toggle Light / Dark Surface Theme">
+        <span id="theme-indicator-icon">☾</span>
+        <span id="theme-indicator-text">DARK MODE</span>
+      </button>
+      <a href="portfolio.html" class="tool-btn">
+        <span>PORTFOLIO →</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- SPEC CONTAINER WITH SIDEBAR -->
+  <div class="spec-container">
+
+    <!-- Sticky Table of Contents -->
+    <aside class="spec-sidebar">
+      <div class="sidebar-header">
+        <h2 class="sidebar-title">03 · Components</h2>
+        <div class="sidebar-subtitle">Living Library &amp; Controls</div>
+      </div>
+
+      <nav class="spec-nav">
+        <a href="#c-navbar" class="nav-item active">
+          <span class="nav-num">01</span>
+          <span>System Navbar</span>
+        </a>
+        <a href="#c-cards" class="nav-item">
+          <span class="nav-num">02</span>
+          <span>Artifact Cards</span>
+        </a>
+        <a href="#c-tables" class="nav-item">
+          <span class="nav-num">03</span>
+          <span>Telemetry Tables</span>
+        </a>
+        <a href="#c-buttons" class="nav-item">
+          <span class="nav-num">04</span>
+          <span>Buttons &amp; Inputs</span>
+        </a>
+        <a href="#c-switches" class="nav-item">
+          <span class="nav-num">05</span>
+          <span>Switches &amp; Radios</span>
+        </a>
+        <a href="#c-sliders" class="nav-item">
+          <span class="nav-num">06</span>
+          <span>Precision Sliders</span>
+        </a>
+        <a href="#c-chart" class="nav-item">
+          <span class="nav-num">07</span>
+          <span>Telemetry Graph</span>
+        </a>
+        <a href="#c-audio" class="nav-item">
+          <span class="nav-num">08</span>
+          <span>Web Audio DSP Player</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="themes.html" class="sidebar-link-btn">
+          <span>Next: 04 · Themes</span>
+          <span>→</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content Stream -->
+    <main class="spec-main">
+
+      <!-- COVER OVERVIEW -->
+      <header class="spec-cover" id="overview">
+        <div class="cover-top">
+          <div class="identity-lockup">
+            <span class="unboxed-mark-lg">啸宇</span>
+            <div class="identity-meta">
+              <h1 class="brand-title">Xiaoyu TAO</h1>
+              <div class="brand-tagline">Room 03 · Living Component Library &amp; Interactive Controls</div>
+            </div>
+          </div>
+          <div class="release-badge">SPEC. V1.3 · RELEASE</div>
+        </div>
+
+        <div class="cover-statement">
+          “Tactile precision in every state.<br>Components engineered with 1px hairlines and deterministic mechanical cadence.”
+        </div>
+
+        <p class="cover-description">
+          Every component in the TAO library is fully interactive and production-grade. Toggle <strong>VIEW CODE</strong> on any component to inspect and copy the markup.
+        </p>
+      </header>
+
+      <!-- LIVING COMPONENT SHOWCASE -->
+      <section class="spec-section" style="padding-top: 0;">
+        <div class="component-showcase">
+
+          <!-- Component 1: Complete System Navbar -->
+          <div class="component-group" id="c-navbar">
+            <div class="component-header">
+              <span class="component-title">01 · Complete System Navbar (Brand, Navigation, Actions &amp; Mobile Trigger)</span>
+              <button class="snippet-toggle-btn" onclick="toggleSnippet('snippet-header')">VIEW CODE</button>
+            </div>
+            <div class="component-stage">
+              <div class="demo-navbar">
+                <div class="demo-nav-left">
+                  <span class="brand-signature" style="font-size: 26px;">啸宇</span>
+                  <div class="demo-nav-meta">
+                    <span class="demo-nav-brand">XIAOYU</span>
+                    <span class="demo-nav-sub">TAO // V1.3</span>
+                  </div>
+                </div>
+                <nav class="demo-nav-links">
+                  <a href="#principles" class="demo-nav-link active">Principles</a>
+                  <a href="#surfaces" class="demo-nav-link">Surfaces</a>
+                  <a href="#components" class="demo-nav-link">Components</a>
+                  <a href="#telemetry" class="demo-nav-link">Telemetry</a>
+                </nav>
+                <div class="demo-nav-right">
+                  <div class="status-pill">
+                    <span class="status-pulse"></span>
+                    <span>ENGAGEMENTS · OPEN</span>
+                  </div>
+                  <button class="demo-nav-hamburger" aria-label="Toggle Navigation Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="component-code-block" id="snippet-header">
+              <button class="copy-code-btn" onclick="copySnippetText('snippet-header')">COPY HTML</button>
+              <pre>&lt;!-- Balanced System Navbar Pattern --&gt;
+&lt;header class="system-navbar"&gt;
+  &lt;div class="nav-brand-lockup"&gt;
+    &lt;span class="brand-signature"&gt;啸宇&lt;/span&gt;
+    &lt;div class="brand-titles"&gt;
+      &lt;span class="brand-name"&gt;XIAOYU&lt;/span&gt;
+      &lt;span class="brand-version"&gt;TAO // V1.3&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;nav class="nav-links"&gt;
+    &lt;a href="#principles" class="active"&gt;Principles&lt;/a&gt;
+    &lt;a href="#surfaces"&gt;Surfaces&lt;/a&gt;
+    &lt;a href="#components"&gt;Components&lt;/a&gt;
+    &lt;a href="#telemetry"&gt;Telemetry&lt;/a&gt;
+  &lt;/nav&gt;
+  
+  &lt;div class="nav-actions"&gt;
+    &lt;div class="status-pill"&gt;
+      &lt;span class="status-pulse"&gt;&lt;/span&gt;
+      &lt;span&gt;ENGAGEMENTS · OPEN&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;button class="nav-hamburger" aria-label="Toggle Menu"&gt;
+      &lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/header&gt;</pre>
+            </div>
+          </div>
+
+          <!-- Component 2: Artifact Cards (3 Distinct Archetypes) -->
+          <div class="component-group" id="c-cards">
+            <div class="component-header">
+              <span class="component-title">02 · Artifact Cards (Metric KPI, Media Showcase &amp; Spec Action)</span>
+              <button class="snippet-toggle-btn" onclick="toggleSnippet('snippet-cards')">VIEW CODE</button>
+            </div>
+            <div class="component-stage">
+              <div class="card-demo-grid">
+                <!-- Card 1: Telemetry & Metric KPI Card -->
+                <div class="demo-card metric-card">
+                  <div class="demo-card-top">
+                    <span class="card-metric-meta">TELEMETRY_LATENCY</span>
+                    <span class="t-accent-pill t-accent-sage"><span class="t-pulse-dot"></span>NOMINAL</span>
+                  </div>
+                  <div class="card-metric-display">&lt; 16.6ms</div>
+                  <p class="demo-card-desc" style="margin-bottom: 8px;">
+                    60.0 FPS frame-time cadence target with zero memory heap allocation.
+                  </p>
+                  <div class="card-metric-bar">
+                    <div class="card-metric-fill" style="width: 28%;"></div>
+                  </div>
+                  <div class="demo-pill-row">
+                    <span class="demo-tech-pill">120HZ DISPATCH</span>
+                    <span class="demo-tech-pill">JITTER &lt; 0.02MS</span>
+                    <span class="demo-tech-pill">WEBGL ACCEL</span>
+                  </div>
+                </div>
+
+                <!-- Card 2: Media / Technical Preview Card -->
+                <div class="demo-card demo-card-media">
+                  <div class="demo-card-media-preview">
+                    <svg viewBox="0 0 320 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                      <defs>
+                        <linearGradient id="mediaCardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" stop-color="var(--accent-sage)" stop-opacity="0.28"/>
+                          <stop offset="100%" stop-color="var(--accent-cognac)" stop-opacity="0.12"/>
+                        </linearGradient>
+                      </defs>
+                      <line x1="0" y1="30" x2="320" y2="30" stroke="var(--border-hairline)" stroke-width="1" stroke-dasharray="3,3"/>
+                      <line x1="0" y1="60" x2="320" y2="60" stroke="var(--border-hairline)" stroke-width="1"/>
+                      <line x1="0" y1="90" x2="320" y2="90" stroke="var(--border-hairline)" stroke-width="1" stroke-dasharray="3,3"/>
+                      <line x1="80" y1="0" x2="80" y2="120" stroke="var(--border-hairline)" stroke-width="1" stroke-dasharray="3,3"/>
+                      <line x1="160" y1="0" x2="160" y2="120" stroke="var(--border-hairline)" stroke-width="1"/>
+                      <line x1="240" y1="0" x2="240" y2="120" stroke="var(--border-hairline)" stroke-width="1" stroke-dasharray="3,3"/>
+                      <path d="M 10,90 Q 70,15 130,65 T 230,55 T 310,35" fill="none" stroke="var(--accent-sage)" stroke-width="2"/>
+                      <path d="M 10,90 Q 70,15 130,65 T 230,55 T 310,35 L 310,120 L 10,120 Z" fill="url(#mediaCardGrad)"/>
+                      <circle cx="160" cy="58" r="4" fill="var(--accent-cognac)"/>
+                      <circle cx="160" cy="58" r="9" fill="none" stroke="var(--accent-cognac)" stroke-width="1" stroke-opacity="0.6"/>
+                      <text x="176" y="61" fill="var(--ink-muted)" font-family="var(--font-mono)" font-size="9" letter-spacing="0.1em">44.1kHz · ESCAPEMENT</text>
+                    </svg>
+                    <span class="demo-media-tag">MEDIA // DSP</span>
+                  </div>
+                  <div class="demo-card-top">
+                    <h3 class="demo-card-title">Komorebi · Ambient DSP</h3>
+                    <span class="demo-card-badge">2026 · AUDIO</span>
+                  </div>
+                  <p class="demo-card-desc">
+                    Acoustic micro-resonator synthesized in real-time with Web Audio oscillator banks.
+                  </p>
+                  <div class="demo-pill-row">
+                    <span class="demo-tech-pill">WEB AUDIO</span>
+                    <span class="demo-tech-pill">DSP SYNTH</span>
+                    <span class="demo-tech-pill">44.1KHZ</span>
+                  </div>
+                </div>
+
+                <!-- Card 3: Artifact Spec & Action Card -->
+                <div class="demo-card action-card">
+                  <div class="demo-card-top">
+                    <h3 class="demo-card-title">Project Lily · Optical MIDI</h3>
+                    <span class="demo-card-badge" style="color: var(--accent-cognac);">HARDWARE</span>
+                  </div>
+                  <p class="demo-card-desc">
+                    Bespoke optical keyboard chassis with bare-metal firmware and mechanical feel.
+                  </p>
+                  <table class="card-spec-table">
+                    <tbody>
+                      <tr>
+                        <td class="card-spec-key">ENCLOSURE</td>
+                        <td class="card-spec-val">Brushed 6061-T6 Aluminum</td>
+                      </tr>
+                      <tr>
+                        <td class="card-spec-key">SAMPLING</td>
+                        <td class="card-spec-val">1000 Hz Optical Scan</td>
+                      </tr>
+                      <tr>
+                        <td class="card-spec-key">LATENCY</td>
+                        <td class="card-spec-val">&lt; 0.8ms USB-C MIDI</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class="demo-card-footer">
+                    <a href="#artifacts" class="demo-card-link">Explore Artifact →</a>
+                    <span class="demo-card-footer-meta">REV 2.1 // OPEN CAD</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="component-code-block" id="snippet-cards">
+              <button class="copy-code-btn" onclick="copySnippetText('snippet-cards')">COPY HTML</button>
+              <pre>&lt;!-- 1. Telemetry &amp; Metric KPI Card --&gt;
+&lt;article class="artifact-card metric-card"&gt;
+  &lt;div class="card-top"&gt;
+    &lt;span class="metric-label"&gt;LATENCY_BUDGET&lt;/span&gt;
+    &lt;span class="status-pill"&gt;NOMINAL&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="card-metric-display"&gt;&amp;lt; 16.6ms&lt;/div&gt;
+  &lt;p class="card-desc"&gt;60.0 FPS cadence target.&lt;/p&gt;
+  &lt;div class="metric-bar"&gt;&lt;div class="metric-fill" style="width: 28%;"&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/article&gt;
+
+&lt;!-- 2. Media / Showcase Card --&gt;
+&lt;article class="artifact-card with-media"&gt;
+  &lt;div class="media-container"&gt;
+    &lt;img src="preview.jpg" alt="Preview" /&gt;
+    &lt;span class="media-tag"&gt;MEDIA // DSP&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="card-top"&gt;
+    &lt;h3 class="card-title"&gt;Komorebi · Ambient DSP&lt;/h3&gt;
+  &lt;/div&gt;
+  &lt;p class="card-desc"&gt;Synthesized acoustic resonator.&lt;/p&gt;
+&lt;/article&gt;
+
+&lt;!-- 3. Artifact Spec &amp; Action Card --&gt;
+&lt;article class="artifact-card action-card"&gt;
+  &lt;div class="card-top"&gt;
+    &lt;h3 class="card-title"&gt;Project Lily · Optical MIDI&lt;/h3&gt;
+  &lt;/div&gt;
+  &lt;p class="card-desc"&gt;Bespoke optical keyboard chassis.&lt;/p&gt;
+  &lt;table class="spec-table"&gt;...&lt;/table&gt;
+&lt;/article&gt;</pre>
+            </div>
+          </div>
+
+          <!-- Component 3: Data Table -->
+          <div class="component-group" id="c-tables">
+            <div class="component-header">
+              <span class="component-title">03 · Data &amp; Telemetry Tables (Multi-Column Stream &amp; Spec Pairing)</span>
+              <button class="snippet-toggle-btn" onclick="toggleSnippet('snippet-table')">VIEW CODE</button>
+            </div>
+            <div class="component-stage">
+              <!-- Multi-Column Stream Table -->
+              <div class="demo-table-wrapper">
+                <div class="demo-table-toolbar">
+                  <div class="demo-table-title">
+                    <span class="t-pulse-dot"></span>
+                    <span>REAL-TIME PIPELINE TELEMETRY // MULTI-COLUMN STREAM</span>
+                  </div>
+                  <span class="demo-table-meta">4 NODES ACTIVE · 1PX HAIRLINES · LEFT ALIGNED</span>
+                </div>
+                <table class="demo-grid-table">
+                  <thead>
+                    <tr>
+                      <th>SERVICE / MODULE</th>
+                      <th>STREAM TYPE</th>
+                      <th>CADENCE</th>
+                      <th>LATENCY</th>
+                      <th>STATUS</th>
+                      <th style="text-align: right;">LAST DISPATCH</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="cell-primary">core.telemetry.v2</td>
+                      <td>Spatial Coordinate Stream</td>
+                      <td>120 Hz</td>
+                      <td><span class="t-accent-pill t-accent-sage"><span class="t-pulse-dot"></span>4.2ms</span></td>
+                      <td><span class="badge-status-online">STREAMING</span></td>
+                      <td class="cell-mono-num" style="text-align: right;">11:54:02.812</td>
+                    </tr>
+                    <tr>
+                      <td class="cell-primary">dsp.escapement.audio</td>
+                      <td>Horological Oscillator</td>
+                      <td>4 Hz / 1100 Hz</td>
+                      <td><span class="t-accent-pill t-accent-sage"><span class="t-pulse-dot"></span>0.8ms</span></td>
+                      <td><span class="badge-status-online">SYNTHESIZED</span></td>
+                      <td class="cell-mono-num" style="text-align: right;">11:54:02.845</td>
+                    </tr>
+                    <tr>
+                      <td class="cell-primary">midi.optical.keys</td>
+                      <td>Bare-Metal Firmware</td>
+                      <td>1000 Hz</td>
+                      <td><span class="t-accent-pill t-accent-cognac">&lt; 1.0ms</span></td>
+                      <td><span class="badge-status-online">POLLING</span></td>
+                      <td class="cell-mono-num" style="text-align: right;">11:54:02.910</td>
+                    </tr>
+                    <tr>
+                      <td class="cell-primary">solarpunk.cadence.clock</td>
+                      <td>Frame Render Loop Target</td>
+                      <td>60 FPS Nominal</td>
+                      <td><span class="t-accent-pill t-accent-sage"><span class="t-pulse-dot"></span>16.6ms</span></td>
+                      <td><span class="badge-status-online">NOMINAL</span></td>
+                      <td class="cell-mono-num" style="text-align: right;">11:54:02.990</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Compact Key-Value Spec Variant -->
+              <div class="demo-telemetry-box">
+                <div style="font-family: var(--font-mono); font-size: 10px; font-weight: 600; letter-spacing: 0.1em; color: var(--ink-muted); text-transform: uppercase; margin-bottom: 10px;">
+                  COMPACT KEY-VALUE SPECIFICATION PAIRING
+                </div>
+                <table class="demo-telemetry-table">
+                  <tbody>
+                    <tr>
+                      <td class="demo-t-key">BRAND IDENTITY</td>
+                      <td class="demo-t-val">
+                        <span class="t-accent-pill t-accent-sage">啸宇</span> (Zhi Mang Xing Calligraphy)
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="demo-t-key">GRID CADENCE</td>
+                      <td class="demo-t-val">
+                        <span class="t-accent-pill t-accent-cognac">8PX BASELINE</span> / 1px Hairlines
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="demo-t-key">CORE METHOD</td>
+                      <td class="demo-t-val">Wu Wei · Systematic Restraint</td>
+                    </tr>
+                    <tr>
+                      <td class="demo-t-key">LATENCY BUDGET</td>
+                      <td class="demo-t-val">
+                        <span class="t-accent-pill t-accent-sage"><span class="t-pulse-dot"></span>&lt; 16.6ms</span> 60 FPS Target
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="demo-t-key">HOROLOGICAL ACCENT</td>
+                      <td class="demo-t-val">
+                        <span class="t-accent-pill t-accent-cognac">VINTAGE COGNAC</span> #9A6735
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="component-code-block" id="snippet-table">
+              <button class="copy-code-btn" onclick="copySnippetText('snippet-table')">COPY HTML</button>
+              <pre>&lt;!-- Multi-Column Telemetry Table --&gt;
+&lt;table class="grid-table"&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;SERVICE / MODULE&lt;/th&gt;
+      &lt;th&gt;STREAM TYPE&lt;/th&gt;
+      &lt;th&gt;LATENCY&lt;/th&gt;
+      &lt;th&gt;STATUS&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td class="cell-primary"&gt;core.telemetry.v2&lt;/td&gt;
+      &lt;td&gt;Spatial Coordinate Stream&lt;/td&gt;
+      &lt;td&gt;&lt;span class="t-accent-pill t-accent-sage"&gt;4.2ms&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;span class="badge-status-online"&gt;STREAMING&lt;/span&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</pre>
+            </div>
+          </div>
+
+          <!-- Component 4: Interactive Buttons & Form Controls -->
+          <div class="component-group" id="c-buttons">
+            <div class="component-header">
+              <span class="component-title">04 · Interactive Buttons &amp; Form Controls</span>
+              <button class="snippet-toggle-btn" onclick="toggleSnippet('snippet-controls')">VIEW CODE</button>
+            </div>
+            <div class="component-stage">
+              <div style="display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin-bottom: 24px;">
+                <button class="btn-primary">Primary Action →</button>
+                <button class="btn-secondary">Secondary Action</button>
+                <a href="#" style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: #FFFFFF; background: var(--accent-sage); padding: 8px 14px; border-radius: 2px; text-decoration: none;">
+                  Confirm Action →
+                </a>
+                <span style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-cognac); border-bottom: 1px solid var(--accent-cognac); padding-bottom: 1px; cursor: pointer;">
+                  Text Link ↗
+                </span>
+              </div>
+
+              <div class="demo-controls-grid">
+                <div class="demo-field-group">
+                  <label class="demo-label">API_ENDPOINT</label>
+                  <input type="text" class="demo-input" value="https://api.xiaoyu.dev/v1" placeholder="Enter endpoint...">
+                </div>
+                <div class="demo-field-group">
+                  <label class="demo-label">CATEGORY</label>
+                  <input type="text" class="demo-input" value="Systems Architecture" readonly>
+                </div>
+              </div>
+            </div>
+            <div class="component-code-block" id="snippet-controls">
+              <button class="copy-code-btn" onclick="copySnippetText('snippet-controls')">COPY HTML</button>
+              <pre>&lt;!-- Standard Buttons --&gt;
+&lt;button class="btn-primary"&gt;Primary Action →&lt;/button&gt;
+&lt;button class="btn-secondary"&gt;Secondary Action&lt;/button&gt;
+
+&lt;!-- Clean Input Field --&gt;
+&lt;div class="field-group"&gt;
+  &lt;label class="brand-mono label"&gt;FIELD_LABEL&lt;/label&gt;
+  &lt;input type="text" class="demo-input" placeholder="Value..." /&gt;
+&lt;/div&gt;</pre>
+            </div>
+          </div>
+
+          <!-- Component 5: Form Switches, Checkboxes & Radios -->
+          <div class="component-group" id="c-switches">
+            <div class="component-header">
+              <span class="component-title">05 · Form Switches, Checkboxes &amp; Radios</span>
+              <button class="snippet-toggle-btn" onclick="toggleSnippet('snippet-switches')">VIEW CODE</button>
+            </div>
+            <div class="component-stage">
+              <div class="controls-matrix-grid">
+                <!-- Column 1: Switches -->
+                <div class="controls-matrix-col">
+                  <div class="controls-matrix-header">01 · SWITCHES</div>
+                  <div class="controls-vertical-stack">
+                    <label class="horo-switch-label">
+                      <input type="checkbox" checked style="display:none;" id="sw-telemetry">
+                      <span class="horo-switch"></span>
+                      <span>TELEMETRY_FEED</span>
+                    </label>
+                    <label class="horo-switch-label">
+                      <input type="checkbox" checked style="display:none;" id="sw-haptics">
+                      <span class="horo-switch"></span>
+                      <span>SUB_16MS_SYNC</span>
+                    </label>
+                    <label class="horo-switch-label">
+                      <input type="checkbox" style="display:none;" id="sw-overclock">
+                      <span class="horo-switch"></span>
+                      <span>OPTICAL_MIDI</span>
+                    </label>
+                  </div>
+                </div>
+
+                <!-- Column 2: Checkboxes -->
+                <div class="controls-matrix-col">
+                  <div class="controls-matrix-header">02 · CHECKBOXES</div>
+                  <div class="controls-vertical-stack">
+                    <label class="horo-checkbox-label">
+                      <input type="checkbox" checked class="horo-check-input" id="chk-hw">
+                      <span class="horo-checkbox-box"></span>
+                      <span>HARDWARE_ACCEL</span>
+                    </label>
+                    <label class="horo-checkbox-label">
+                      <input type="checkbox" checked class="horo-check-input" id="chk-aa">
+                      <span class="horo-checkbox-box"></span>
+                      <span>SUBPIXEL_AA</span>
+                    </label>
+                    <label class="horo-checkbox-label">
+                      <input type="checkbox" class="horo-check-input" id="chk-solar">
+                      <span class="horo-checkbox-box"></span>
+                      <span>SOLAR_CADENCE</span>
+                    </label>
+                  </div>
+                </div>
+
+                <!-- Column 3: Radios -->
+                <div class="controls-matrix-col">
+                  <div class="controls-matrix-header">03 · RADIO SELECTION</div>
+                  <div class="controls-vertical-stack">
+                    <label class="horo-radio-label">
+                      <input type="radio" name="fps-group" checked class="horo-radio-input" id="rad-60">
+                      <span class="horo-radio-dot"></span>
+                      <span>60 FPS (16.6ms)</span>
+                    </label>
+                    <label class="horo-radio-label">
+                      <input type="radio" name="fps-group" class="horo-radio-input" id="rad-120">
+                      <span class="horo-radio-dot"></span>
+                      <span>120 FPS (8.3ms)</span>
+                    </label>
+                    <label class="horo-radio-label">
+                      <input type="radio" name="fps-group" class="horo-radio-input" id="rad-vsync">
+                      <span class="horo-radio-dot"></span>
+                      <span>UNLOCKED V-SYNC</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="component-code-block" id="snippet-switches">
+              <button class="copy-code-btn" onclick="copySnippetText('snippet-switches')">COPY HTML</button>
+              <pre>&lt;!-- Switches Column --&gt;
+&lt;label class="horo-switch-label"&gt;
+  &lt;input type="checkbox" checked style="display:none;" /&gt;
+  &lt;span class="horo-switch"&gt;&lt;/span&gt;
+  &lt;span&gt;TELEMETRY_FEED&lt;/span&gt;
+&lt;/label&gt;
+
+&lt;!-- Checkboxes Column --&gt;
+&lt;label class="horo-checkbox-label"&gt;
+  &lt;input type="checkbox" checked class="horo-check-input" /&gt;
+  &lt;span class="horo-checkbox-box"&gt;&lt;/span&gt;
+  &lt;span&gt;HARDWARE_ACCEL&lt;/span&gt;
+&lt;/label&gt;
+
+&lt;!-- Radio Column --&gt;
+&lt;label class="horo-radio-label"&gt;
+  &lt;input type="radio" name="cadence" checked class="horo-radio-input" /&gt;
+  &lt;span class="horo-radio-dot"&gt;&lt;/span&gt;
+  &lt;span&gt;60 FPS (16.6ms)&lt;/span&gt;
+&lt;/label&gt;</pre>
+            </div>
+          </div>
+
+          <!-- Component 6: Calibrated Range Sliders (3 Distinct Variants) -->
+          <div class="component-group" id="c-sliders">
+            <div class="component-header">
+              <span class="component-title">06 · Range Sliders (Minimal, Calibrated Fill &amp; Precision Vernier)</span>
+              <button class="snippet-toggle-btn" onclick="toggleSnippet('snippet-slider')">VIEW CODE</button>
+            </div>
+            <div class="component-stage">
+              <div class="slider-variants-stack">
+                <!-- Variant 1: Pure Minimalist Baseline (No Color Fill) -->
+                <div class="slider-demo-box">
+                  <div class="slider-header">
+                    <div>
+                      <span class="slider-type-tag">01 · MINIMAL</span>
+                      <span>DISPATCH_FREQUENCY_HZ</span>
+                    </div>
+                    <span class="slider-val-readout" id="slider-min-readout">60 FPS · 16.6ms</span>
+                  </div>
+                  <input type="range" class="horo-range-input horo-range-minimal" min="15" max="144" value="60" id="slider-min-input" aria-label="Dispatch Frequency Baseline Slider">
+                </div>
+
+                <!-- Variant 2: Active Color Fill Track -->
+                <div class="slider-demo-box">
+                  <div class="slider-header">
+                    <div>
+                      <span class="slider-type-tag">02 · CALIBRATED FILL</span>
+                      <span>BUFFER_CAPACITY_MB</span>
+                    </div>
+                    <span class="slider-val-readout" id="slider-fill-readout">64 MB / 128 MB</span>
+                  </div>
+                  <input type="range" class="horo-range-input horo-range-fill" min="0" max="128" value="64" id="slider-fill-input" aria-label="Buffer Capacity Fill Slider">
+                </div>
+
+                <!-- Variant 3: Precision Graduated Engineering Instrument -->
+                <div class="slider-demo-box">
+                  <div class="slider-header">
+                    <div>
+                      <span class="slider-type-tag">03 · VERNIER INSTRUMENT</span>
+                      <span>HOROLOGICAL_TOLERANCE_MM</span>
+                    </div>
+                    <span class="slider-val-readout" id="slider-grad-readout">± 0.025 mm</span>
+                  </div>
+                  <div class="slider-instrument-wrap">
+                    <input type="range" class="horo-range-input horo-range-graduated" min="0" max="100" value="25" id="slider-grad-input" aria-label="Horological Tolerance Graduated Slider">
+                    <div class="slider-ticks-scale" aria-hidden="true">
+                      <div class="tick-node major"><div class="tick-line"></div><span class="tick-label">0.00</span></div>
+                      <div class="tick-node"><div class="tick-line"></div></div>
+                      <div class="tick-node semi"><div class="tick-line"></div><span class="tick-label">.025</span></div>
+                      <div class="tick-node"><div class="tick-line"></div></div>
+                      <div class="tick-node major"><div class="tick-line"></div><span class="tick-label">.050</span></div>
+                      <div class="tick-node"><div class="tick-line"></div></div>
+                      <div class="tick-node semi"><div class="tick-line"></div><span class="tick-label">.075</span></div>
+                      <div class="tick-node"><div class="tick-line"></div></div>
+                      <div class="tick-node major"><div class="tick-line"></div><span class="tick-label">.100</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="component-code-block" id="snippet-slider">
+              <button class="copy-code-btn" onclick="copySnippetText('snippet-slider')">COPY HTML</button>
+              <pre>&lt;!-- 1. Minimal Baseline --&gt;
+&lt;input type="range" class="horo-range-input horo-range-minimal" min="15" max="144" value="60"&gt;
+
+&lt;!-- 2. Active Calibrated Fill (Updates --slider-fill dynamically) --&gt;
+&lt;input type="range" class="horo-range-input horo-range-fill" min="0" max="128" value="64"&gt;
+
+&lt;!-- 3. Precision Vernier Instrument with Tick Scale --&gt;
+&lt;div class="slider-instrument-wrap"&gt;
+  &lt;input type="range" class="horo-range-input horo-range-graduated" min="0" max="100" value="25"&gt;
+  &lt;div class="slider-ticks-scale"&gt;
+    &lt;div class="tick-node major"&gt;&lt;div class="tick-line"&gt;&lt;/div&gt;&lt;span class="tick-label"&gt;0.00&lt;/span&gt;&lt;/div&gt;
+    &lt;div class="tick-node"&gt;&lt;div class="tick-line"&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="tick-node semi"&gt;&lt;div class="tick-line"&gt;&lt;/div&gt;&lt;span class="tick-label"&gt;.050&lt;/span&gt;&lt;/div&gt;
+    &lt;div class="tick-node"&gt;&lt;div class="tick-line"&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="tick-node major"&gt;&lt;div class="tick-line"&gt;&lt;/div&gt;&lt;span class="tick-label"&gt;.100&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+            </div>
+          </div>
+
+          <!-- Component 7: Live Systems Telemetry Graph (ApexCharts) -->
+          <div class="component-group" id="c-chart">
+            <div class="component-header">
+              <span class="component-title">07 · Real-Time Systems Telemetry Graph (ApexCharts)</span>
+              <button class="snippet-toggle-btn" onclick="toggleSnippet('snippet-chart')">VIEW CODE</button>
+            </div>
+            <div class="component-stage">
+              <div class="chart-demo-stage">
+                <div class="chart-header">
+                  <div class="chart-title">
+                    <span class="t-pulse-dot"></span>
+                    <span>PIPELINE_THROUGHPUT_MONITOR // DUAL_STREAM</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+                    <div class="chart-type-selector">
+                      <button class="chart-type-btn active" data-type="area" onclick="setTelemetryChartType('area')">AREA STREAM</button>
+                      <button class="chart-type-btn" data-type="bar" onclick="setTelemetryChartType('bar')">BAR DISTRIBUTION</button>
+                      <button class="chart-type-btn" data-type="line" onclick="setTelemetryChartType('line')">LINE CADENCE</button>
+                    </div>
+                    <div class="chart-metrics">
+                      <span class="t-accent-pill t-accent-sage">NOMINAL CADENCE</span>
+                    </div>
+                  </div>
+                </div>
+                <div id="apex-telemetry-chart" style="min-height: 220px;"></div>
+              </div>
+            </div>
+            <div class="component-code-block" id="snippet-chart">
+              <button class="copy-code-btn" onclick="copySnippetText('snippet-chart')">COPY HTML</button>
+              <pre>&lt;!-- ApexCharts Stage Integration --&gt;
+&lt;div id="telemetry-chart"&gt;&lt;/div&gt;
+&lt;script&gt;
+  new ApexCharts(document.getElementById('telemetry-chart'), {
+    chart: { type: 'area', height: 220, background: 'transparent' },
+    colors: ['#768E65', '#9A6735'],
+    stroke: { curve: 'smooth', width: 2 }
+  }).render();
+&lt;/script&gt;</pre>
+            </div>
+          </div>
+
+          <!-- Component 8: Tao Synthesized DSP Audio Player -->
+          <div class="component-group" id="c-audio">
+            <div class="component-header">
+              <span class="component-title">08 · Tao Synthesized Web Audio DSP Player (Ambient Escapement)</span>
+              <button class="snippet-toggle-btn" onclick="toggleSnippet('snippet-audio')">VIEW CODE</button>
+            </div>
+            <div class="component-stage">
+              <div class="audio-demo-container">
+                <!-- Track Info Header -->
+                <div class="player-header">
+                  <div class="player-track-info">
+                    <div class="player-eq-badge" id="player-eq-badge" title="Equalizer stream">
+                      <span class="eq-bar"></span>
+                      <span class="eq-bar"></span>
+                      <span class="eq-bar"></span>
+                      <span class="eq-bar"></span>
+                    </div>
+                    <div>
+                      <div class="player-track-title">Komorebi · Ambient Escapement Resonator</div>
+                      <div class="player-track-sub">Harmonic Drone + 4Hz Watchmaker Balance Tick (Pure Web Audio DSP)</div>
+                    </div>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 10px;">
+                    <span class="t-accent-pill t-accent-sage" id="player-status-badge">STANDBY</span>
+                    <span class="player-time-display" id="player-time">00:00 / 01:24</span>
+                  </div>
+                </div>
+
+                <!-- Waveform Scrubber -->
+                <div class="player-scrubber-container">
+                  <div class="player-scrubber-track" id="player-scrubber-track" title="Click to seek">
+                    <div class="player-scrubber-fill" id="player-scrubber-fill" style="width: 0%;"></div>
+                    <div class="player-scrubber-thumb" id="player-scrubber-thumb" style="left: 0%;"></div>
+                  </div>
+                  <div class="player-timeline-ticks">
+                    <span>0:00</span>
+                    <span>0:21</span>
+                    <span>0:42</span>
+                    <span>1:03</span>
+                    <span>1:24</span>
+                  </div>
+                </div>
+
+                <!-- Transport & Controls Bar -->
+                <div class="player-controls-bar">
+                  <div class="player-transport-btns">
+                    <button class="player-btn player-btn-main" id="player-toggle-btn" aria-label="Play or Pause audio">
+                      <span id="player-icon-play">▶</span>
+                    </button>
+                    <button class="player-btn player-btn-secondary" id="player-reset-btn" aria-label="Reset track" title="Reset">
+                      ↺
+                    </button>
+                  </div>
+
+                  <div class="player-preset-selector">
+                    <button class="player-preset-btn active" data-preset="escapement">4Hz ESCAPEMENT</button>
+                    <button class="player-preset-btn" data-preset="solarpunk">432Hz HARMONIC</button>
+                    <button class="player-preset-btn" data-preset="chime">ORGANIC CHIME</button>
+                  </div>
+
+                  <div class="player-volume-group">
+                    <span>VOL</span>
+                    <input type="range" class="player-volume-slider" id="player-volume-slider" min="0" max="1" step="0.05" value="0.7" title="Master Volume">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="component-code-block" id="snippet-audio">
+              <button class="copy-code-btn" onclick="copySnippetText('snippet-audio')">COPY HTML</button>
+              <pre>&lt;!-- Tao Synthesized DSP Audio Player --&gt;
+&lt;div class="tao-audio-player"&gt;
+  &lt;div class="player-header"&gt;
+    &lt;div class="player-track-info"&gt;
+      &lt;div class="player-eq-badge"&gt;...&lt;/div&gt;
+      &lt;div class="player-track-title"&gt;Track Title&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="player-time"&gt;00:00 / 01:24&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="player-scrubber-track"&gt;
+    &lt;div class="player-scrubber-fill"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="player-controls-bar"&gt;
+    &lt;button class="player-btn-main"&gt;▶&lt;/button&gt;
+    &lt;div class="preset-selector"&gt;...&lt;/div&gt;
+    &lt;input type="range" class="volume-slider" /&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ROOM FOOTER NAVIGATION -->
+      <footer style="margin-top: var(--space-10); padding-top: var(--space-6); border-top: 1px solid var(--border-hairline); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-4);">
+        <a href="system.html" class="tool-btn" style="text-decoration:none;">← Room 02 · The System</a>
+        <a href="themes.html" class="tool-btn" style="text-decoration:none; background: var(--ink-primary); color: var(--canvas-bg); font-weight: 600;">
+          <span>Room 04 · Themes &amp; Ecosystem</span>
+          <span>→</span>
+        </a>
+      </footer>
+
+    </main>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="copy-toast"></div>
+
+  <!-- Interactive Logic for Components -->
+  <script>
+    // 8px Grid Inspection Overlay Toggle
+    const gridBtn = document.getElementById('btn-toggle-grid');
+    const gridOverlay = document.getElementById('grid-inspector-overlay');
+    if (gridBtn && gridOverlay) {
+      gridBtn.addEventListener('click', () => {
+        gridOverlay.classList.toggle('active');
+        gridBtn.classList.toggle('active');
+      });
+    }
+
+    // Light / Dark Theme Switcher with localStorage sync
+    const themeBtn = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-indicator-icon');
+    const themeText = document.getElementById('theme-indicator-text');
+
+    function updateThemeUI(theme) {
+      if (themeIcon) themeIcon.textContent = theme === 'dark' ? '☼' : '☾';
+      if (themeText) themeText.textContent = theme === 'dark' ? 'LIGHT MODE' : 'DARK MODE';
+    }
+
+    if (themeBtn) {
+      updateThemeUI(document.documentElement.getAttribute('data-theme') || 'light');
+      themeBtn.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('xiaoyu_theme', newTheme);
+        updateThemeUI(newTheme);
+        if (telemetryChart) {
+          telemetryChart.destroy();
+          initTelemetryChart();
+        }
+      });
+    }
+
+    function showToast(text) {
+      const toast = document.getElementById('copy-toast');
+      if (toast) {
+        toast.textContent = text;
+        toast.classList.add('visible');
+        setTimeout(() => toast.classList.remove('visible'), 2400);
+      }
+    }
+
+    // Toggle Snippet View
+    function toggleSnippet(id) {
+      const el = document.getElementById(id);
+      if (el) el.classList.toggle('visible');
+    }
+
+    // Copy Code Snippet Text
+    function copySnippetText(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        const pre = el.querySelector('pre');
+        if (pre) {
+          navigator.clipboard.writeText(pre.innerText).then(() => {
+            showToast('Code snippet copied to clipboard');
+          });
+        }
+      }
+    }
+
+    // ScrollSpy for Sidebar Links
+    const sections = document.querySelectorAll('.component-group');
+    const navLinks = document.querySelectorAll('aside.spec-sidebar .nav-item');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (pageYOffset >= sectionTop - 120) {
+          current = section.getAttribute('id');
+        }
+      });
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // 1. Calibrated Range Slider Logic (3 Distinct Variants)
+    const sliderMin = document.getElementById('slider-min-input');
+    const readoutMin = document.getElementById('slider-min-readout');
+    if (sliderMin && readoutMin) {
+      sliderMin.addEventListener('input', (e) => {
+        const fps = e.target.value;
+        const ms = (1000 / fps).toFixed(1);
+        readoutMin.textContent = `${fps} FPS · ${ms}ms`;
+      });
+    }
+
+    const sliderFill = document.getElementById('slider-fill-input');
+    const readoutFill = document.getElementById('slider-fill-readout');
+    function updateSliderTrackFill(slider) {
+      if (!slider) return;
+      const min = parseFloat(slider.min) || 0;
+      const max = parseFloat(slider.max) || 100;
+      const val = parseFloat(slider.value) || 0;
+      const pct = ((val - min) / (max - min)) * 100;
+      slider.style.setProperty('--slider-fill', `${pct}%`);
+    }
+
+    if (sliderFill && readoutFill) {
+      updateSliderTrackFill(sliderFill);
+      sliderFill.addEventListener('input', (e) => {
+        const val = e.target.value;
+        readoutFill.textContent = `${val} MB / 128 MB`;
+        updateSliderTrackFill(e.target);
+      });
+    }
+
+    const sliderGrad = document.getElementById('slider-grad-input');
+    const readoutGrad = document.getElementById('slider-grad-readout');
+    if (sliderGrad && readoutGrad) {
+      sliderGrad.addEventListener('input', (e) => {
+        const val = parseFloat(e.target.value);
+        const mm = (val * 0.001).toFixed(3);
+        readoutGrad.textContent = `± ${mm} mm`;
+      });
+    }
+
+    // 2. Tao Synthesized Web Audio DSP Player Engine
+    let taoAudioCtx = null;
+    let taoOscNode = null;
+    let taoOscHarmonic = null;
+    let taoGainNode = null;
+    let taoTickInterval = null;
+    let isTaoAudioPlaying = false;
+    let taoPlayheadSeconds = 0;
+    const taoTotalSeconds = 84;
+    let taoTimerInterval = null;
+    let currentPreset = 'escapement';
+
+    function initTaoAudio() {
+      if (!taoAudioCtx) {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (AudioCtx) taoAudioCtx = new AudioCtx();
+      }
+      if (taoAudioCtx && taoAudioCtx.state === 'suspended') {
+        taoAudioCtx.resume();
+      }
+    }
+
+    function startTaoAudioDSP() {
+      initTaoAudio();
+      if (!taoAudioCtx) return;
+      const masterVol = parseFloat(document.getElementById('player-volume-slider')?.value || '0.7');
+
+      taoGainNode = taoAudioCtx.createGain();
+      taoGainNode.gain.setValueAtTime(masterVol * 0.10, taoAudioCtx.currentTime);
+      taoGainNode.connect(taoAudioCtx.destination);
+
+      const baseFreq = currentPreset === 'solarpunk' ? 216 : (currentPreset === 'chime' ? 324 : 108);
+      taoOscNode = taoAudioCtx.createOscillator();
+      taoOscNode.type = 'sine';
+      taoOscNode.frequency.setValueAtTime(baseFreq, taoAudioCtx.currentTime);
+
+      const droneGain = taoAudioCtx.createGain();
+      droneGain.gain.setValueAtTime(0.04, taoAudioCtx.currentTime);
+      taoOscNode.connect(droneGain);
+      droneGain.connect(taoGainNode);
+      taoOscNode.start();
+
+      taoOscHarmonic = taoAudioCtx.createOscillator();
+      taoOscHarmonic.type = 'triangle';
+      taoOscHarmonic.frequency.setValueAtTime(baseFreq * 1.5, taoAudioCtx.currentTime);
+
+      const harmonicGain = taoAudioCtx.createGain();
+      harmonicGain.gain.setValueAtTime(0.02, taoAudioCtx.currentTime);
+      taoOscHarmonic.connect(harmonicGain);
+      harmonicGain.connect(taoGainNode);
+      taoOscHarmonic.start();
+
+      const tickRate = currentPreset === 'escapement' ? 250 : 500;
+      taoTickInterval = setInterval(() => {
+        if (!taoAudioCtx || !isTaoAudioPlaying) return;
+        try {
+          const tickOsc = taoAudioCtx.createOscillator();
+          const tickGain = taoAudioCtx.createGain();
+          tickOsc.type = 'sine';
+          const tickFreq = currentPreset === 'chime' ? 880 : 1100;
+          tickOsc.frequency.setValueAtTime(tickFreq, taoAudioCtx.currentTime);
+          tickOsc.frequency.exponentialRampToValueAtTime(140, taoAudioCtx.currentTime + 0.02);
+          tickGain.gain.setValueAtTime(0.05 * masterVol, taoAudioCtx.currentTime);
+          tickGain.gain.exponentialRampToValueAtTime(0.0001, taoAudioCtx.currentTime + 0.02);
+          tickOsc.connect(tickGain);
+          tickGain.connect(taoGainNode);
+          tickOsc.start();
+          tickOsc.stop(taoAudioCtx.currentTime + 0.02);
+        } catch(e) {}
+      }, tickRate);
+    }
+
+    function stopTaoAudioDSP() {
+      if (taoTickInterval) { clearInterval(taoTickInterval); taoTickInterval = null; }
+      try {
+        if (taoOscNode) { taoOscNode.stop(); taoOscNode.disconnect(); taoOscNode = null; }
+        if (taoOscHarmonic) { taoOscHarmonic.stop(); taoOscHarmonic.disconnect(); taoOscHarmonic = null; }
+      } catch(e) {}
+    }
+
+    function formatTaoTime(sec) {
+      const m = Math.floor(sec / 60);
+      const s = Math.floor(sec % 60);
+      return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+    }
+
+    function updateTaoPlayerUI() {
+      const timeEl = document.getElementById('player-time');
+      const fillEl = document.getElementById('player-scrubber-fill');
+      const thumbEl = document.getElementById('player-scrubber-thumb');
+      const pct = Math.min(100, (taoPlayheadSeconds / taoTotalSeconds) * 100);
+
+      if (timeEl) timeEl.textContent = `${formatTaoTime(taoPlayheadSeconds)} / ${formatTaoTime(taoTotalSeconds)}`;
+      if (fillEl) fillEl.style.width = `${pct}%`;
+      if (thumbEl) thumbEl.style.left = `${pct}%`;
+    }
+
+    function toggleTaoAudioPlay() {
+      const playIcon = document.getElementById('player-icon-play');
+      const eqBadge = document.getElementById('player-eq-badge');
+      const statusBadge = document.getElementById('player-status-badge');
+
+      if (!isTaoAudioPlaying) {
+        isTaoAudioPlaying = true;
+        startTaoAudioDSP();
+        if (playIcon) playIcon.textContent = '❚❚';
+        if (eqBadge) eqBadge.classList.add('playing');
+        if (statusBadge) {
+          statusBadge.textContent = 'PLAYING · 44.1kHz';
+          statusBadge.className = 't-accent-pill t-accent-sage';
+        }
+
+        taoTimerInterval = setInterval(() => {
+          taoPlayheadSeconds += 1;
+          if (taoPlayheadSeconds >= taoTotalSeconds) {
+            resetTaoAudio();
+          } else {
+            updateTaoPlayerUI();
+          }
+        }, 1000);
+      } else {
+        isTaoAudioPlaying = false;
+        stopTaoAudioDSP();
+        if (playIcon) playIcon.textContent = '▶';
+        if (eqBadge) eqBadge.classList.remove('playing');
+        if (statusBadge) {
+          statusBadge.textContent = 'PAUSED';
+          statusBadge.className = 't-accent-pill t-accent-cognac';
+        }
+        if (taoTimerInterval) {
+          clearInterval(taoTimerInterval);
+          taoTimerInterval = null;
+        }
+      }
+    }
+
+    function resetTaoAudio() {
+      isTaoAudioPlaying = false;
+      stopTaoAudioDSP();
+      taoPlayheadSeconds = 0;
+      updateTaoPlayerUI();
+
+      const playIcon = document.getElementById('player-icon-play');
+      const eqBadge = document.getElementById('player-eq-badge');
+      const statusBadge = document.getElementById('player-status-badge');
+
+      if (playIcon) playIcon.textContent = '▶';
+      if (eqBadge) eqBadge.classList.remove('playing');
+      if (statusBadge) {
+        statusBadge.textContent = 'STANDBY';
+        statusBadge.className = 't-accent-pill t-accent-sage';
+      }
+      if (taoTimerInterval) {
+        clearInterval(taoTimerInterval);
+        taoTimerInterval = null;
+      }
+    }
+
+    const playToggleBtn = document.getElementById('player-toggle-btn');
+    if (playToggleBtn) playToggleBtn.addEventListener('click', toggleTaoAudioPlay);
+
+    const resetBtn = document.getElementById('player-reset-btn');
+    if (resetBtn) resetBtn.addEventListener('click', resetTaoAudio);
+
+    const scrubberTrack = document.getElementById('player-scrubber-track');
+    if (scrubberTrack) {
+      scrubberTrack.addEventListener('click', (e) => {
+        const rect = scrubberTrack.getBoundingClientRect();
+        const clickRatio = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+        taoPlayheadSeconds = Math.round(clickRatio * taoTotalSeconds);
+        updateTaoPlayerUI();
+      });
+    }
+
+    const volSlider = document.getElementById('player-volume-slider');
+    if (volSlider) {
+      volSlider.addEventListener('input', (e) => {
+        if (taoGainNode && taoAudioCtx) {
+          const val = parseFloat(e.target.value);
+          taoGainNode.gain.setValueAtTime(val * 0.10, taoAudioCtx.currentTime);
+        }
+      });
+    }
+
+    document.querySelectorAll('.player-preset-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.player-preset-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentPreset = btn.getAttribute('data-preset');
+        if (isTaoAudioPlaying) {
+          stopTaoAudioDSP();
+          startTaoAudioDSP();
+        }
+        showToast(`Preset: ${btn.textContent}`);
+      });
+    });
+
+    // 3. Live Telemetry Graph (ApexCharts)
+    let telemetryChart = null;
+    function initTelemetryChart() {
+      const chartEl = document.getElementById('apex-telemetry-chart');
+      if (!chartEl || typeof ApexCharts === 'undefined') return;
+
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      const sageColor = isDark ? '#8DB477' : '#768E65';
+      const cognacColor = isDark ? '#C68E56' : '#9A6735';
+
+      const options = {
+        chart: {
+          type: 'area',
+          height: 220,
+          toolbar: { show: false },
+          animations: { enabled: true, easing: 'easeinout', speed: 600 },
+          background: 'transparent',
+          fontFamily: 'var(--font-mono, monospace)'
+        },
+        series: [
+          {
+            name: 'Frame Cadence (FPS)',
+            data: [42.1, 56.4, 51.8, 62.5, 47.9, 58.6, 64.2, 53.0, 61.7, 65.4, 57.8, 60.0]
+          },
+          {
+            name: 'Buffer Memory (MB)',
+            data: [14.5, 21.2, 18.0, 26.4, 19.3, 24.8, 29.5, 22.1, 27.6, 33.2, 28.4, 30.1]
+          }
+        ],
+        colors: [sageColor, cognacColor],
+        dataLabels: { enabled: false },
+        stroke: { curve: 'smooth', width: [2, 1.5] },
+        fill: {
+          type: 'gradient',
+          gradient: {
+            shadeIntensity: 1,
+            opacityFrom: 0.35,
+            opacityTo: 0.02,
+            stops: [0, 95, 100]
+          }
+        },
+        grid: {
+          borderColor: 'rgba(255, 255, 255, 0.07)',
+          strokeDashArray: 3,
+          xaxis: { lines: { show: false } },
+          yaxis: { lines: { show: true } }
+        },
+        xaxis: {
+          categories: ['T-11s', 'T-10s', 'T-9s', 'T-8s', 'T-7s', 'T-6s', 'T-5s', 'T-4s', 'T-3s', 'T-2s', 'T-1s', 'NOW'],
+          labels: { style: { colors: '#6C7280', fontSize: '10px' } },
+          axisBorder: { show: false },
+          axisTicks: { show: false }
+        },
+        yaxis: {
+          labels: {
+            style: { colors: '#6C7280', fontSize: '10px' },
+            formatter: (val) => val.toFixed(1)
+          }
+        },
+        tooltip: {
+          theme: 'dark',
+          style: { fontSize: '11px', fontFamily: 'var(--font-mono)' }
+        },
+        legend: {
+          position: 'top',
+          horizontalAlign: 'right',
+          labels: { colors: '#A6ADBA' },
+          fontFamily: 'var(--font-mono)',
+          fontSize: '11px',
+          markers: { radius: 2 }
+        }
+      };
+
+      telemetryChart = new ApexCharts(chartEl, options);
+      telemetryChart.render();
+    }
+
+    function setTelemetryChartType(newType) {
+      if (!telemetryChart) return;
+      document.querySelectorAll('.chart-type-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-type') === newType);
+      });
+
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      const sageColor = isDark ? '#8DB477' : '#768E65';
+      const cognacColor = isDark ? '#C68E56' : '#9A6735';
+
+      let newOptions = { chart: { type: newType } };
+      if (newType === 'bar') {
+        newOptions.plotOptions = { bar: { columnWidth: '38%', borderRadius: 2 } };
+        newOptions.fill = { opacity: 0.85 };
+        newOptions.stroke = { show: false };
+        newOptions.dataLabels = { enabled: false };
+      } else if (newType === 'line') {
+        newOptions.fill = { opacity: 1 };
+        newOptions.stroke = { curve: 'straight', width: 2 };
+        newOptions.dataLabels = { enabled: false };
+      } else {
+        newOptions.fill = {
+          type: 'gradient',
+          gradient: { shadeIntensity: 1, opacityFrom: 0.35, opacityTo: 0.02, stops: [0, 95, 100] }
+        };
+        newOptions.stroke = { curve: 'smooth', width: [2, 1.5] };
+        newOptions.dataLabels = { enabled: false };
+      }
+
+      telemetryChart.updateOptions(newOptions, true, true);
+    }
+
+    // Initialize chart on DOM load
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(initTelemetryChart, 100);
+    });
+  </script>
+
+</body>
+</html>

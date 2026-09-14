@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>啸宇 · TAO | 04 · Themes, Obsidian &amp; Ecosystem</title>
+  <meta name="description" content="Ecosystem tools and themes for the Xiaoyu TAO design system. Five calibrated code syntax themes, Obsidian workspace themes, terminal palettes, and project quickstart.">
+
+  <!-- Core TAO Tokens & Stylesheet -->
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="styleguide.css">
+  <link rel="stylesheet" href="code-themes.css">
+
+  <!-- Zero-Flash Dark Mode Initialization -->
+  <script>
+    (function () {
+      const saved = localStorage.getItem('xiaoyu_theme');
+      const pref = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', saved || pref);
+    })();
+  </script>
+</head>
+<body class="code-lab-page">
+
+  <!-- 8px Grid Inspection Overlay -->
+  <div id="grid-inspector-overlay" aria-hidden="true"></div>
+
+  <!-- UNIVERSAL TELEMETRY NAVIGATION BAR -->
+  <div class="telemetry-bar">
+    <div class="telemetry-left">
+      <a href="index.html" class="telemetry-mark" title="Return to Atelier Gateway">啸宇</a>
+      <span class="telemetry-tag">XIAOYU TAO</span>
+    </div>
+
+    <!-- 4 Rooms Universal Links -->
+    <nav class="telemetry-nav" aria-label="Rooms">
+      <a href="manifesto.html" class="nav-room-link">01 · MANIFESTO</a>
+      <a href="system.html" class="nav-room-link">02 · SYSTEM</a>
+      <a href="components.html" class="nav-room-link">03 · COMPONENTS</a>
+      <a href="themes.html" class="nav-room-link active">04 · THEMES</a>
+    </nav>
+
+    <div class="telemetry-tools">
+      <button class="tool-btn" id="btn-toggle-grid" title="Toggle 8px Baseline Cadence Overlay">
+        <span>GRID (8PX)</span>
+      </button>
+      <button class="tool-btn" id="theme-toggle" title="Toggle Light / Dark Surface Theme">
+        <span id="theme-indicator-icon">☾</span>
+        <span id="theme-indicator-text">DARK MODE</span>
+      </button>
+      <button type="button" class="tool-btn" id="btn-export-tokens" style="background: var(--ink-primary); color: var(--canvas-bg);">
+        <span>↓ EXPORT CSS</span>
+      </button>
+      <a href="portfolio.html" class="tool-btn">
+        <span>PORTFOLIO →</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- SPEC CONTAINER WITH SIDEBAR -->
+  <div class="spec-container">
+
+    <!-- Sticky Table of Contents -->
+    <aside class="spec-sidebar">
+      <div class="sidebar-header">
+        <h2 class="sidebar-title">04 · Themes</h2>
+        <div class="sidebar-subtitle">Ecosystem &amp; Tools</div>
+      </div>
+
+      <nav class="spec-nav">
+        <a href="#overview" class="nav-item active">
+          <span class="nav-num">00</span>
+          <span>Room Overview</span>
+        </a>
+        <a href="#code-lab" class="nav-item">
+          <span class="nav-num">01</span>
+          <span>Code Syntax Themes</span>
+        </a>
+        <a href="#token-matrix-section" class="nav-item">
+          <span class="nav-num">02</span>
+          <span>Color Matrix</span>
+        </a>
+        <a href="#obsidian-theme" class="nav-item">
+          <span class="nav-num">03</span>
+          <span>Obsidian Theme</span>
+        </a>
+        <a href="#quickstart" class="nav-item">
+          <span class="nav-num">04</span>
+          <span>Project Quickstart</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="index.html" class="sidebar-link-btn">
+          <span>← Atelier Gateway</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content Stream -->
+    <main class="spec-main">
+
+      <!-- COVER OVERVIEW -->
+      <header class="spec-cover" id="overview">
+        <div class="cover-top">
+          <div class="identity-lockup">
+            <span class="unboxed-mark-lg">啸宇</span>
+            <div class="identity-meta">
+              <h1 class="brand-title">Xiaoyu TAO</h1>
+              <div class="brand-tagline">Room 04 · Themes, Obsidian &amp; Ecosystem</div>
+            </div>
+          </div>
+          <div class="release-badge">SPEC. V1.3 · RELEASE</div>
+        </div>
+
+        <div class="cover-statement">
+          “Extend the atelier into your daily tools.<br>Calibrated syntax palettes, Obsidian markdown spaces, and terminal themes.”
+        </div>
+
+        <p class="cover-description">
+          The TAO aesthetic extends beyond the browser. Explore five code syntax themes, compare them side-by-side, inspect Obsidian themes, or copy the production-ready tokens snippet.
+        </p>
+      </header>
+
+      <!-- 01 · CODE SYNTAX LABORATORY -->
+      <section class="spec-section" id="code-lab">
+        <div class="section-header">
+          <div class="section-title">
+            <span class="section-idx">01</span>
+            <span>Code Syntax Themes Laboratory</span>
+          </div>
+          <div class="section-label">5 CALIBRATED PALETTES</div>
+        </div>
+
+        <p class="section-intro">
+          In TAO, code is treated as an architectural drawing and horological blueprint. Select a theme below to preview across languages or toggle <strong>SIDE-BY-SIDE SPLIT</strong> to compare two themes simultaneously.
+        </p>
+
+        <!-- Theme Selector Cards Grid -->
+        <div class="theme-cards-grid">
+          <!-- Theme 1 -->
+          <button type="button" class="theme-card-btn active" data-theme-id="canonical">
+            <div>
+              <div class="theme-card-idx">01 // CANONICAL</div>
+              <div class="theme-card-title">Tao Drafting Alabaster</div>
+              <div class="theme-card-desc">The foundational baseline: Vintage cognac keywords, matcha sage calls, and horizon slate types.</div>
+            </div>
+            <div class="theme-palette-preview">
+              <span class="palette-swatch-dot" style="background: #9A6735;" title="Cognac Keyword"></span>
+              <span class="palette-swatch-dot" style="background: #5A754B;" title="Matcha Sage Function"></span>
+              <span class="palette-swatch-dot" style="background: #3B647A;" title="Horizon Slate Type"></span>
+              <span class="palette-swatch-dot" style="background: #B25832;" title="Terracotta Number"></span>
+              <span class="palette-swatch-dot" style="background: #8D99AE;" title="Titanium Slate Comment"></span>
+            </div>
+          </button>
+
+          <!-- Theme 2 -->
+          <button type="button" class="theme-card-btn" data-theme-id="escapement">
+            <div>
+              <div class="theme-card-idx">02 // HOROLOGY</div>
+              <div class="theme-card-title">Horological Escapement</div>
+              <div class="theme-card-desc">Haute horlogerie: Thermally blued steel hands, brushed brass train wheels, and synthetic ruby bearing accents.</div>
+            </div>
+            <div class="theme-palette-preview">
+              <span class="palette-swatch-dot" style="background: #23527C;" title="Blued Steel Keyword"></span>
+              <span class="palette-swatch-dot" style="background: #A67C2E;" title="Brushed Brass Function"></span>
+              <span class="palette-swatch-dot" style="background: #9E3248;" title="Synthetic Ruby Type"></span>
+              <span class="palette-swatch-dot" style="background: #B35836;" title="Copper Number"></span>
+              <span class="palette-swatch-dot" style="background: #7B8594;" title="Silver Graphite Comment"></span>
+            </div>
+          </button>
+
+          <!-- Theme 3 -->
+          <button type="button" class="theme-card-btn" data-theme-id="bamboo">
+            <div>
+              <div class="theme-card-idx">03 // SOLARPUNK</div>
+              <div class="theme-card-title">Solarpunk Bamboo</div>
+              <div class="theme-card-desc">Organic botanical vitality: Fresh bamboo shoot green, sunlit warm amber, and calm celadon porcelain.</div>
+            </div>
+            <div class="theme-palette-preview">
+              <span class="palette-swatch-dot" style="background: #2D5A3A;" title="Deep Bamboo Keyword"></span>
+              <span class="palette-swatch-dot" style="background: #9E6E2E;" title="Sunlit Amber Function"></span>
+              <span class="palette-swatch-dot" style="background: #286B66;" title="Celadon Teal Type"></span>
+              <span class="palette-swatch-dot" style="background: #A85834;" title="Clay Terracotta Number"></span>
+              <span class="palette-swatch-dot" style="background: #7F8E81;" title="Moss Slate Comment"></span>
+            </div>
+          </button>
+
+          <!-- Theme 4 -->
+          <button type="button" class="theme-card-btn" data-theme-id="xuan">
+            <div>
+              <div class="theme-card-idx">04 // INK WASH</div>
+              <div class="theme-card-title">Xuan &amp; Cinnabar Seal</div>
+              <div class="theme-card-desc">Calligraphic tradition: Vermilion cinnabar seal stamps (朱砂), deep pine soot ink, and aged tea parchment.</div>
+            </div>
+            <div class="theme-palette-preview">
+              <span class="palette-swatch-dot" style="background: #A83226;" title="Cinnabar Seal Keyword"></span>
+              <span class="palette-swatch-dot" style="background: #2B3835;" title="Pine Soot Ink Function"></span>
+              <span class="palette-swatch-dot" style="background: #5E503F;" title="Bronze Type"></span>
+              <span class="palette-swatch-dot" style="background: #7A5E38;" title="Tea Stain String"></span>
+              <span class="palette-swatch-dot" style="background: #8A8E95;" title="Washed Ink Comment"></span>
+            </div>
+          </button>
+
+          <!-- Theme 5 -->
+          <button type="button" class="theme-card-btn" data-theme-id="monolith">
+            <div>
+              <div class="theme-card-idx">05 // MONOLITH</div>
+              <div class="theme-card-title">Titanium Monolith</div>
+              <div class="theme-card-desc">Minimalist Rams/Braun restraint: Strict grayscale titanium values with a single warm cognac focal callout.</div>
+            </div>
+            <div class="theme-palette-preview">
+              <span class="palette-swatch-dot" style="background: #111111;" title="High-Contrast Keyword"></span>
+              <span class="palette-swatch-dot" style="background: #9A6735;" title="Sole Cognac Accent"></span>
+              <span class="palette-swatch-dot" style="background: #3B3B3B;" title="Titanium Type"></span>
+              <span class="palette-swatch-dot" style="background: #636363;" title="Mid Slate String"></span>
+              <span class="palette-swatch-dot" style="background: #949494;" title="Muted Slate Comment"></span>
+            </div>
+          </button>
+        </div>
+
+        <!-- Code Stage Toolbar -->
+        <div class="code-stage-toolbar">
+          <div class="toolbar-group">
+            <span class="toolbar-label">SPECIMEN:</span>
+            <button type="button" class="lang-tab-btn active" data-lang="typescript">TypeScript</button>
+            <button type="button" class="lang-tab-btn" data-lang="python">Python</button>
+            <button type="button" class="lang-tab-btn" data-lang="rust">Rust</button>
+            <button type="button" class="lang-tab-btn" data-lang="html_css">HTML/CSS</button>
+          </div>
+
+          <div class="toolbar-group">
+            <button type="button" class="lab-btn" id="btn-toggle-split">SIDE-BY-SIDE SPLIT</button>
+            
+            <select class="toolbar-select" id="compare-theme-select" title="Theme to compare against in split view">
+              <option value="canonical">Compare: Canonical</option>
+              <option value="escapement" selected>Compare: Escapement</option>
+              <option value="bamboo">Compare: Bamboo</option>
+              <option value="xuan">Compare: Xuan &amp; Cinnabar</option>
+              <option value="monolith">Compare: Monolith</option>
+            </select>
+
+            <select class="toolbar-select" id="code-size-select" title="Code Font Size">
+              <option value="12.5">12.5px</option>
+              <option value="13.5" selected>13.5px</option>
+              <option value="14.5">14.5px</option>
+            </select>
+
+            <select class="toolbar-select" id="code-lh-select" title="Code Line Height">
+              <option value="1.5">Compact (1.5)</option>
+              <option value="1.65" selected>Drafting (1.65)</option>
+              <option value="1.85">Relaxed (1.85)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Playground Window Mount Point -->
+        <div id="playground-mount"></div>
+      </section>
+
+      <!-- 02 · TOKEN COLOR MATRIX -->
+      <section class="spec-section" id="token-matrix-section">
+        <div class="section-header">
+          <div class="section-title">
+            <span class="section-idx">02</span>
+            <span>Active Syntax Token Color Matrix</span>
+          </div>
+          <div class="section-label">CLICK ANY ITEM TO COPY HEX</div>
+        </div>
+
+        <p class="section-intro">
+          Dynamic tokens reflecting the currently selected theme. Click any card below to copy its exact hex code.
+        </p>
+
+        <div class="matrix-grid" id="token-matrix-grid">
+          <!-- Rendered dynamically by code-themes.js -->
+        </div>
+      </section>
+
+      <!-- 03 · OBSIDIAN THEME CONCEPT -->
+      <section class="spec-section" id="obsidian-theme">
+        <div class="section-header">
+          <div class="section-title">
+            <span class="section-idx">03</span>
+            <span>Obsidian Markdown Workspace Theme</span>
+          </div>
+          <div class="section-label">PKM &amp; SECOND BRAIN</div>
+        </div>
+
+        <p class="section-intro">
+          Bring the stillness of XiaoYu TAO into your daily writing and thought garden in Obsidian. Grounded in Warm Alabaster drafting vellum, Newsreader serif headers, and discreet JetBrains Mono code blocks.
+        </p>
+
+        <!-- Obsidian Mockup Preview Card -->
+        <div style="background: var(--canvas-card); border: 1px solid var(--border-hairline); border-radius: var(--radius-card); padding: var(--space-6); backdrop-filter: blur(8px);">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: var(--space-4); border-bottom: 1px solid var(--border-hairline); padding-bottom: var(--space-3);">
+            <div>
+              <span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-cognac); font-weight: 700; text-transform: uppercase;">OBSIDIAN COMMUNITY THEME SPEC</span>
+              <h4 style="font-family: var(--font-sans); font-size: 16px; font-weight: 700; color: var(--ink-primary); margin: 4px 0 0 0;">xiaoyu-tao.css</h4>
+            </div>
+            <span style="font-family: var(--font-mono); font-size: 11px; color: var(--ink-muted);">Version 1.0 // Ready to Drop</span>
+          </div>
+
+          <!-- Note Mockup -->
+          <div style="background: var(--canvas-surface-recessed); border: 1px solid var(--border-hairline); border-radius: var(--radius-micro); padding: var(--space-5); font-family: var(--font-sans);">
+            <div style="font-family: var(--font-mono); font-size: 10.5px; color: var(--ink-muted); margin-bottom: 8px;">
+              📁 /vault/philosophy/<strong>wu-wei-systems.md</strong>
+            </div>
+            <h2 style="font-family: var(--font-serif); font-size: 22px; font-weight: 400; color: var(--ink-primary); margin: 0 0 10px 0;">
+              On the Equilibrium of Horological Software
+            </h2>
+            <p style="font-size: 13.5px; line-height: 1.6; color: var(--ink-secondary); margin: 0 0 14px 0;">
+              Software design should echo the master horologist’s bench: no extraneous screws, no decorative plastic, only the essential gear train moving with deliberate friction-free grace. In Obsidian, this manifests as quiet typography, faint 1px hairlines, and spacious margins (留白).
+            </p>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+              <span class="register-chip highlight">#philosophy</span>
+              <span class="register-chip">#horology</span>
+              <span class="register-chip">#solarpunk</span>
+              <span class="register-chip">#wu-wei</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 04 · PROJECT QUICKSTART -->
+      <section class="spec-section" id="quickstart">
+        <div class="section-header">
+          <div class="section-title">
+            <span class="section-idx">04</span>
+            <span>Project Quickstart &amp; Codex</span>
+          </div>
+          <div class="section-label">IMPLEMENTATION &amp; RULES</div>
+        </div>
+
+        <p class="section-intro">
+          How to initiate any project using the Xiaoyu TAO design language. Three essential steps to preserve the spirit and integrity of the system.
+        </p>
+
+        <div class="quickstart-box">
+          <div class="quickstart-step">
+            <div class="step-title">
+              <span class="step-badge">STEP 1</span>
+              <span>Import tokens.css in your HTML &lt;head&gt;</span>
+            </div>
+            <p style="font-size: 13px; color: var(--ink-secondary); margin-bottom: 6px;">
+              Place this snippet inside your <code>&lt;head&gt;</code> element to load all fonts, tokens, and utility resets:
+            </p>
+            <pre class="code-terminal">&lt;link rel="stylesheet" href="tokens.css"&gt;</pre>
+          </div>
+
+          <div class="quickstart-step">
+            <div class="step-title">
+              <span class="step-badge">STEP 2</span>
+              <span>Apply the 16px Cartesian Dot Matrix to your Body</span>
+            </div>
+            <p style="font-size: 13px; color: var(--ink-secondary); margin-bottom: 6px;">
+              Your <code>body</code> element will inherit the canvas color and subtle dot grid defined in <code>tokens.css</code>:
+            </p>
+            <pre class="code-terminal">body {
+  background-color: var(--canvas-light);
+  background-image: var(--grid-dot-pattern);
+  background-size: var(--grid-dot-size) var(--grid-dot-size);
+  color: var(--ink-primary);
+  font-family: var(--font-sans);
+}</pre>
+          </div>
+
+          <div class="quickstart-step">
+            <div class="step-title">
+              <span class="step-badge">STEP 3</span>
+              <span>Respect the 8px Spatial Baseline and 1px Hairlines</span>
+            </div>
+            <p style="font-size: 13px; color: var(--ink-secondary); margin-bottom: 6px;">
+              Never use rounded corners above 4px. Never exceed 1px solid borders. Ground spacing in <code>--space-2</code> (8px), <code>--space-4</code> (16px), or <code>--space-6</code> (24px).
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ROOM FOOTER NAVIGATION -->
+      <footer style="margin-top: var(--space-10); padding-top: var(--space-6); border-top: 1px solid var(--border-hairline); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-4);">
+        <a href="components.html" class="tool-btn" style="text-decoration:none;">← Room 03 · Components</a>
+        <a href="index.html" class="tool-btn" style="text-decoration:none; background: var(--ink-primary); color: var(--canvas-bg); font-weight: 600;">
+          <span>Atelier Gateway</span>
+          <span>→</span>
+        </a>
+      </footer>
+
+    </main>
+  </div>
+
+  <!-- EXPORT MODAL -->
+  <div class="export-modal-backdrop" id="export-modal">
+    <div class="export-modal-card">
+      <div class="export-modal-header">
+        <span class="export-modal-title">Export CSS Tokens for tokens.css</span>
+        <button type="button" class="export-modal-close" id="btn-close-modal">&times;</button>
+      </div>
+      <div class="export-modal-body">
+        <p style="font-size: 12.5px; color: var(--ink-secondary); margin-top: 0;">
+          Copy and paste these CSS Custom Properties into <code>tokens.css</code> to adopt the active code theme across your whole project:
+        </p>
+        <pre class="code-editor-body" style="background: var(--canvas-surface-recessed); border: 1px solid var(--border-hairline); border-radius: var(--radius-micro); padding: 14px; font-size: 12px;"><code id="export-code-snippet"></code></pre>
+      </div>
+      <div class="export-modal-footer">
+        <button type="button" class="lab-btn primary" id="btn-modal-copy">COPY TO CLIPBOARD</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="copy-toast"></div>
+
+  <!-- Interactive Logic for Themes -->
+  <script>
+    // 8px Grid Inspection Overlay Toggle
+    const gridBtn = document.getElementById('btn-toggle-grid');
+    const gridOverlay = document.getElementById('grid-inspector-overlay');
+    if (gridBtn && gridOverlay) {
+      gridBtn.addEventListener('click', () => {
+        gridOverlay.classList.toggle('active');
+        gridBtn.classList.toggle('active');
+      });
+    }
+
+    // Light / Dark Theme Switcher with localStorage sync
+    const themeBtn = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-indicator-icon');
+    const themeText = document.getElementById('theme-indicator-text');
+
+    function updateThemeUI(theme) {
+      if (themeIcon) themeIcon.textContent = theme === 'dark' ? '☼' : '☾';
+      if (themeText) themeText.textContent = theme === 'dark' ? 'LIGHT MODE' : 'DARK MODE';
+    }
+
+    if (themeBtn) {
+      updateThemeUI(document.documentElement.getAttribute('data-theme') || 'light');
+      themeBtn.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('xiaoyu_theme', newTheme);
+        updateThemeUI(newTheme);
+      });
+    }
+
+    function showToast(text) {
+      const toast = document.getElementById('copy-toast');
+      if (toast) {
+        toast.textContent = text;
+        toast.classList.add('visible');
+        setTimeout(() => toast.classList.remove('visible'), 2400);
+      }
+    }
+
+    // ScrollSpy for Sidebar Links
+    const sections = document.querySelectorAll('header.spec-cover, section.spec-section');
+    const navLinks = document.querySelectorAll('aside.spec-sidebar .nav-item');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (pageYOffset >= sectionTop - 120) {
+          current = section.getAttribute('id');
+        }
+      });
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
+
+  <!-- Laboratory Logic Engine -->
+  <script src="code-themes.js"></script>
+
+</body>
+</html>

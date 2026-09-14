@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>啸宇 · TAO | 01 · The Manifesto &amp; Philosophy</title>
+  <meta name="description" content="The philosophical foundation and verbal identity of the Xiaoyu TAO design language. Four enduring pillars uniting horological precision, Solarpunk vitality, and Taoist flow.">
+
+  <!-- Design System Tokens & Stylesheet -->
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="styleguide.css">
+
+  <!-- Zero-Flash Dark Mode Initialization -->
+  <script>
+    (function () {
+      const saved = localStorage.getItem('xiaoyu_theme');
+      const pref = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', saved || pref);
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- 8px Grid Inspection Overlay -->
+  <div id="grid-inspector-overlay" aria-hidden="true"></div>
+
+  <!-- UNIVERSAL TELEMETRY NAVIGATION BAR -->
+  <div class="telemetry-bar">
+    <div class="telemetry-left">
+      <a href="index.html" class="telemetry-mark" title="Return to Atelier Gateway">啸宇</a>
+      <span class="telemetry-tag">XIAOYU TAO</span>
+    </div>
+
+    <!-- 4 Rooms Universal Links -->
+    <nav class="telemetry-nav" aria-label="Rooms">
+      <a href="manifesto.html" class="nav-room-link active">01 · MANIFESTO</a>
+      <a href="system.html" class="nav-room-link">02 · SYSTEM</a>
+      <a href="components.html" class="nav-room-link">03 · COMPONENTS</a>
+      <a href="themes.html" class="nav-room-link">04 · THEMES</a>
+    </nav>
+
+    <div class="telemetry-tools">
+      <button class="tool-btn" id="btn-toggle-grid" title="Toggle 8px Baseline Cadence Overlay">
+        <span>GRID (8PX)</span>
+      </button>
+      <button class="tool-btn" id="theme-toggle" title="Toggle Light / Dark Surface Theme">
+        <span id="theme-indicator-icon">☾</span>
+        <span id="theme-indicator-text">DARK MODE</span>
+      </button>
+      <a href="portfolio.html" class="tool-btn">
+        <span>PORTFOLIO →</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- SPEC CONTAINER WITH SIDEBAR -->
+  <div class="spec-container">
+
+    <!-- Sticky Table of Contents -->
+    <aside class="spec-sidebar">
+      <div class="sidebar-header">
+        <h2 class="sidebar-title">01 · Manifesto</h2>
+        <div class="sidebar-subtitle">Philosophy &amp; Verbal Codex</div>
+      </div>
+
+      <nav class="spec-nav">
+        <a href="#overview" class="nav-item active">
+          <span class="nav-num">00</span>
+          <span>Atelier Overview</span>
+        </a>
+        <a href="#pillars" class="nav-item">
+          <span class="nav-num">01</span>
+          <span>The Four Pillars</span>
+        </a>
+        <a href="#calligraphy" class="nav-item">
+          <span class="nav-num">02</span>
+          <span>Unboxed Calligraphy</span>
+        </a>
+        <a href="#lexicon" class="nav-item">
+          <span class="nav-num">03</span>
+          <span>Verbal Identity</span>
+        </a>
+        <a href="#cadence" class="nav-item">
+          <span class="nav-num">04</span>
+          <span>Writing with Composure</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="system.html" class="sidebar-link-btn">
+          <span>Next: 02 · System</span>
+          <span>→</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content Stream -->
+    <main class="spec-main">
+
+      <!-- 00 · OVERVIEW COVER -->
+      <header class="spec-cover" id="overview">
+        <div class="cover-top">
+          <div class="identity-lockup">
+            <span class="unboxed-mark-lg">啸宇</span>
+            <div class="identity-meta">
+              <h1 class="brand-title">Xiaoyu TAO</h1>
+              <div class="brand-tagline">Room 01 · The Manifesto &amp; Philosophical Codex</div>
+            </div>
+          </div>
+          <div class="release-badge">SPEC. V1.3 · RELEASE</div>
+        </div>
+
+        <div class="cover-statement">
+          “High performance stems from <em>steady composure</em>.<br>Building resilient systems with precision and mindful flow.”
+        </div>
+
+        <p class="cover-description">
+          <strong>Xiaoyu TAO</strong> is an opinionated design language and visual codex synthesizing high-precision engineering, understated elegance, and Taoist flow (无为 · Wu Wei). It treats language, space, and motion as instruments of calibrated thought.
+        </p>
+      </header>
+
+      <!-- 01 · THE FOUR PILLARS -->
+      <section class="spec-section" id="pillars">
+        <div class="section-header">
+          <div class="section-title">
+            <span class="section-idx">01</span>
+            <span>The Four Pillars</span>
+          </div>
+          <div class="section-label">PHILOSOPHY &amp; SPIRIT</div>
+        </div>
+
+        <p class="section-intro">
+          Our archetype is <strong>The Mindful Craftsman</strong>. Four enduring concepts shape how we design, build, and compose every digital interface.
+        </p>
+
+        <div class="pillars-grid" style="display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: var(--space-4) !important;">
+          <div class="pillar-card pillar-elegance">
+            <div class="pillar-number">PILLAR 01</div>
+            <h3 class="pillar-title">Understated Elegance</h3>
+            <p class="pillar-body">
+              True elegance is quiet. We eliminate decorative clutter, gratuitous visual noise, and vanity badges. What remains is intentional typography, purposeful composition, and room for thought to breathe.
+            </p>
+            <div class="pillar-tagline">EXPRESSION: Monochromatic warmth, quiet visual hierarchy, and zero gratuitous ornament.</div>
+          </div>
+
+          <div class="pillar-card pillar-craft">
+            <div class="pillar-number">PILLAR 02</div>
+            <h3 class="pillar-title">High-Precision Craft</h3>
+            <p class="pillar-body">
+              Clear data presentation, geometric rigor, and mechanical precision. Inspired by fine horology: 1px hairlines, disciplined 8px baseline alignment, and responsive interactions that honor the user’s tempo.
+            </p>
+            <div class="pillar-tagline">EXPRESSION: Disciplined grid cadence, crisp monospace data, and deterministic layouts.</div>
+          </div>
+
+          <div class="pillar-card pillar-zen">
+            <div class="pillar-number">PILLAR 03</div>
+            <h3 class="pillar-title">Zen &amp; Taoist Flow (无为 · Wu Wei)</h3>
+            <p class="pillar-body">
+              Effortless action through deep alignment. We embrace intentional negative space (留白 · <em>Ma</em>) and steady composure. Software should never fight the user; it should flow naturally like water finding its course.
+            </p>
+            <div class="pillar-tagline">EXPRESSION: Free-flowing Zhi Mang Xing calligraphy, generous white space, and frictionless motion.</div>
+          </div>
+
+          <div class="pillar-card pillar-vitality">
+            <div class="pillar-number">PILLAR 04</div>
+            <h3 class="pillar-title">Organic Vitality</h3>
+            <p class="pillar-body">
+              Grounded in solarpunk optimism and natural equilibrium. Engineering lean, efficient digital systems that respect human attention, device resources, and software longevity over fleeting trends.
+            </p>
+            <div class="pillar-tagline">EXPRESSION: Matcha Sage (#768E65) accents, life-giving status pulses, and tactile drafting paper tones.</div>
+          </div>
+        </div>
+
+        <!-- The Calligraphy Philosophy Box -->
+        <div class="tao-callout-box" id="calligraphy">
+          <div class="tao-seal" title="啸宇">啸宇</div>
+          <div class="tao-content">
+            <h4>THE SPIRIT OF THE UNBOXED CALLIGRAPHY (无为 · WU WEI)</h4>
+            <p>
+              The signature mark <strong>啸宇</strong> is rendered in traditional running script (行书) and deliberately left unboxed—free of badge borders, enclosing frames, or rigid containers. In Taoist thought, to box the organic is to stifle its life. Here, wet calligraphic ink flows freely through the precise geometric grid of the digital interface, uniting ancient spirit with modern precision.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 02 · VERBAL IDENTITY & PHILOSOPHICAL CODEX -->
+      <section class="spec-section" id="lexicon">
+        <div class="section-header">
+          <div class="section-title">
+            <span class="section-idx">02</span>
+            <span>Verbal Identity &amp; Philosophical Codex</span>
+          </div>
+          <div class="section-label">VOICE, POSTURE &amp; LEXICON</div>
+        </div>
+
+        <p class="section-intro">
+          Our verbal identity is an instrument of precision: grounded in empirical clarity, architectural composure, and horological rigor. We cultivate quiet authority through concrete substance and intentional breathing room (留白), rejecting performative hype, urgency, and transient buzzwords.
+        </p>
+
+        <!-- 1. Tonal Calibration: 3 Postural Dualities -->
+        <div class="tonal-dualities-grid">
+          <!-- Duality 1 -->
+          <div class="duality-card">
+            <div>
+              <div class="duality-meta">
+                <span>01</span>
+                <span>//</span>
+                <span>POSTURAL DUALITY</span>
+              </div>
+              <div class="duality-title">Empirical Substance</div>
+              <p class="duality-desc">
+                Ground every claim in observable metrics, tolerances, or architectural realities. Let mechanical execution earn trust rather than decorative superlatives.
+              </p>
+            </div>
+            <div class="duality-contrast-box">
+              <div class="contrast-row">
+                <span class="contrast-badge conventional">Conventional Posturing</span>
+                <span class="contrast-text conventional">"Revolutionary, game-changing engine that supercharges your speed."</span>
+              </div>
+              <div class="contrast-row">
+                <span class="contrast-badge tao">XiaoYu Tao Calibration</span>
+                <span class="contrast-text tao">"Deterministic sub-millisecond dispatch cadence with dual-stream caching."</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Duality 2 -->
+          <div class="duality-card">
+            <div>
+              <div class="duality-meta">
+                <span>02</span>
+                <span>//</span>
+                <span>POSTURAL DUALITY</span>
+              </div>
+              <div class="duality-title">Composed Cadence</div>
+              <p class="duality-desc">
+                Communicate with steady unhurried rhythm and active negative space (留白). Never fabricate artificial urgency, breathless calls-to-action, or emotional alarmism.
+              </p>
+            </div>
+            <div class="duality-contrast-box">
+              <div class="contrast-row">
+                <span class="contrast-badge conventional">Conventional Posturing</span>
+                <span class="contrast-text conventional">"Hurry, don’t miss out on unlocking this ultimate 10x superpower!"</span>
+              </div>
+              <div class="contrast-row">
+                <span class="contrast-badge tao">XiaoYu Tao Calibration</span>
+                <span class="contrast-text tao">"Engineered for durable lifecycle resilience and cognitive composure."</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Duality 3 -->
+          <div class="duality-card">
+            <div>
+              <div class="duality-meta">
+                <span>03</span>
+                <span>//</span>
+                <span>POSTURAL DUALITY</span>
+              </div>
+              <div class="duality-title">Mechanical Lucidity</div>
+              <p class="duality-desc">
+                Respect the reader’s intelligence as a peer craftsman. Name tools, states, and components by their structural function rather than marketing metaphors.
+              </p>
+            </div>
+            <div class="duality-contrast-box">
+              <div class="contrast-row">
+                <span class="contrast-badge conventional">Conventional Posturing</span>
+                <span class="contrast-text conventional">"Our proprietary smart-magic cloud black box does everything."</span>
+              </div>
+              <div class="contrast-row">
+                <span class="contrast-badge tao">XiaoYu Tao Calibration</span>
+                <span class="contrast-text tao">"A synchronized telemetry bus with verifiable horological tolerances."</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Curated Lexical Registers -->
+        <div class="lexicon-registers-grid">
+          <!-- Register 1: Architectural -->
+          <div class="register-card">
+            <div class="register-header">
+              <span class="register-title">Architectural Register</span>
+              <span class="register-scope">SPACE &amp; PROPORTION</span>
+            </div>
+            <div class="register-chips">
+              <span class="register-chip highlight">Cadence</span>
+              <span class="register-chip">Equilibrium</span>
+              <span class="register-chip highlight">留白 (Liu Bai)</span>
+              <span class="register-chip">Foundation</span>
+              <span class="register-chip">Tolerances</span>
+              <span class="register-chip">Cartesian Grid</span>
+              <span class="register-chip">Composition</span>
+              <span class="register-chip">Symmetry</span>
+            </div>
+          </div>
+
+          <!-- Register 2: Instrumental -->
+          <div class="register-card">
+            <div class="register-header">
+              <span class="register-title">Instrumental Register</span>
+              <span class="register-scope">HOROLOGY &amp; SYSTEMS</span>
+            </div>
+            <div class="register-chips">
+              <span class="register-chip highlight">Deterministic</span>
+              <span class="register-chip">Telemetry</span>
+              <span class="register-chip">Calibrated</span>
+              <span class="register-chip highlight">Escapement</span>
+              <span class="register-chip">Resonance</span>
+              <span class="register-chip">Fidelity</span>
+              <span class="register-chip">Harmonics</span>
+              <span class="register-chip">Kinetic</span>
+            </div>
+          </div>
+
+          <!-- Register 3: Philosophical -->
+          <div class="register-card">
+            <div class="register-header">
+              <span class="register-title">Philosophical Register</span>
+              <span class="register-scope">TAO &amp; EQUILIBRIUM</span>
+            </div>
+            <div class="register-chips">
+              <span class="register-chip highlight">Wu Wei (无为)</span>
+              <span class="register-chip">Composure</span>
+              <span class="register-chip">Restraint</span>
+              <span class="register-chip">Intentionality</span>
+              <span class="register-chip highlight">Quietude</span>
+              <span class="register-chip">Clarity</span>
+              <span class="register-chip">Durable</span>
+              <span class="register-chip">Reverence</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Editorial Codex: Writing with Composure & Cadence -->
+        <div class="copywriting-cadence-box" id="cadence">
+          <h4 style="font-family: var(--font-sans); font-size: 13.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-primary); margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+            <span style="color: var(--accent-sage-deep);">✦</span>
+            <span>Writing with Composure &amp; Cadence</span>
+          </h4>
+          <p style="font-size: 13.5px; line-height: 1.65; color: var(--ink-secondary); margin: 0 0 14px 0;">
+            Sentences are structured with classical balance, empirical precision, and quiet confidence. Where a technical metric exists (latency, bandwidth, tolerances), state the metric with quiet clarity. Where craftsmanship exists, let the harmony of typography, whitespace (留白), and execution speak for themselves.
+          </p>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-4); border-top: 1px solid var(--border-hairline); padding-top: var(--space-4);">
+            <div>
+              <div style="font-family: var(--font-mono); font-size: 10px; font-weight: 700; color: var(--ink-primary); margin-bottom: 4px; text-transform: uppercase;">01 · Grounded Metrics</div>
+              <div style="font-size: 12px; color: var(--ink-muted); line-height: 1.45;">Exact numbers and physical units carry inherent authority. Avoid vague qualifiers like "very" or "ultra".</div>
+            </div>
+            <div>
+              <div style="font-family: var(--font-mono); font-size: 10px; font-weight: 700; color: var(--ink-primary); margin-bottom: 4px; text-transform: uppercase;">02 · Active Negative Space</div>
+              <div style="font-size: 12px; color: var(--ink-muted); line-height: 1.45;">Allow paragraphs room to breathe. Uncluttered layout signals confidence in the message's necessity.</div>
+            </div>
+            <div>
+              <div style="font-family: var(--font-mono); font-size: 10px; font-weight: 700; color: var(--ink-primary); margin-bottom: 4px; text-transform: uppercase;">03 · Peer Dignity</div>
+              <div style="font-size: 12px; color: var(--ink-muted); line-height: 1.45;">Address the user as a fellow designer, engineer, or thinker—with unhurried respect and zero patronizing gimmicks.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ROOM FOOTER NAVIGATION -->
+      <footer style="margin-top: var(--space-10); padding-top: var(--space-6); border-top: 1px solid var(--border-hairline); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-4);">
+        <a href="index.html" class="tool-btn" style="text-decoration:none;">← Atelier Gateway</a>
+        <a href="system.html" class="tool-btn" style="text-decoration:none; background: var(--ink-primary); color: var(--canvas-bg); font-weight: 600;">
+          <span>Room 02 · The Design System</span>
+          <span>→</span>
+        </a>
+      </footer>
+
+    </main>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="copy-toast"></div>
+
+  <!-- Interactive Logic for Manifesto -->
+  <script>
+    // 8px Grid Inspection Overlay Toggle
+    const gridBtn = document.getElementById('btn-toggle-grid');
+    const gridOverlay = document.getElementById('grid-inspector-overlay');
+    if (gridBtn && gridOverlay) {
+      gridBtn.addEventListener('click', () => {
+        gridOverlay.classList.toggle('active');
+        gridBtn.classList.toggle('active');
+      });
+    }
+
+    // Light / Dark Theme Switcher with localStorage sync
+    const themeBtn = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-indicator-icon');
+    const themeText = document.getElementById('theme-indicator-text');
+
+    function updateThemeUI(theme) {
+      if (themeIcon) themeIcon.textContent = theme === 'dark' ? '☼' : '☾';
+      if (themeText) themeText.textContent = theme === 'dark' ? 'LIGHT MODE' : 'DARK MODE';
+    }
+
+    if (themeBtn) {
+      updateThemeUI(document.documentElement.getAttribute('data-theme') || 'light');
+      themeBtn.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('xiaoyu_theme', newTheme);
+        updateThemeUI(newTheme);
+      });
+    }
+
+    // ScrollSpy for Sidebar Links
+    const sections = document.querySelectorAll('header.spec-cover, section.spec-section');
+    const navLinks = document.querySelectorAll('aside.spec-sidebar .nav-item');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (pageYOffset >= sectionTop - 120) {
+          current = section.getAttribute('id');
+        }
+      });
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

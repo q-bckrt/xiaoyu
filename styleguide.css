@@ -84,6 +84,55 @@
       padding-left: var(--space-3);
     }
 
+    /* Top Universal Rooms Navigation */
+    .telemetry-nav {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .nav-room-link {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--ink-secondary);
+      text-decoration: none;
+      padding: 5px 11px;
+      border-radius: var(--radius-micro);
+      border: 1px solid transparent;
+      transition: all var(--duration-instant) ease;
+      letter-spacing: 0.04em;
+    }
+
+    .nav-room-link:hover {
+      color: var(--ink-primary);
+      background: var(--canvas-surface-recessed);
+      border-color: var(--border-hairline);
+    }
+
+    .nav-room-link.active {
+      color: var(--accent-cognac);
+      background: var(--canvas-card-solid);
+      border-color: var(--border-hairline);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+      font-weight: 700;
+    }
+
+    @media (max-width: 900px) {
+      .telemetry-bar {
+        height: auto;
+        padding: 8px var(--space-4);
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .telemetry-nav {
+        order: 3;
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 4px;
+      }
+    }
+
     .telemetry-tools {
       display: flex;
       align-items: center;
@@ -104,6 +153,7 @@
       align-items: center;
       gap: 6px;
       transition: all var(--duration-instant) ease;
+      text-decoration: none;
     }
 
     .tool-btn:hover {
@@ -117,7 +167,213 @@
       border-color: var(--ink-primary);
     }
 
-    /* Master Container with Sticky Sub-Navigation */
+    /* =============================================================
+       ATELIER GATEWAY COVER PAGE STYLING (Option B)
+       ============================================================= */
+    .atelier-cover-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: var(--space-8) var(--space-6) var(--space-12) var(--space-6);
+    }
+
+    .atelier-hero-block {
+      text-align: center;
+      margin-bottom: var(--space-10);
+      padding: var(--space-8) var(--space-6);
+      background: var(--canvas-card);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-card);
+      backdrop-filter: blur(12px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .atelier-calligraphy-giant {
+      font-family: var(--font-calligraphy);
+      font-size: 80px;
+      color: var(--accent-sage);
+      line-height: 1;
+      margin-bottom: var(--space-3);
+      opacity: var(--calligraphy-opacity, 0.85);
+      display: inline-block;
+      transition: transform var(--duration-smooth) ease;
+    }
+
+    .atelier-calligraphy-giant:hover {
+      transform: scale(1.04);
+    }
+
+    .atelier-hero-badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      color: var(--accent-cognac);
+      background: rgba(154, 103, 53, 0.08);
+      padding: 3px 10px;
+      border-radius: var(--radius-micro);
+      border: 1px solid rgba(154, 103, 53, 0.2);
+      margin-bottom: var(--space-3);
+      text-transform: uppercase;
+    }
+
+    .atelier-brand-title {
+      font-family: var(--font-sans);
+      font-size: 34px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--ink-primary);
+      margin: 0 0 var(--space-2) 0;
+    }
+
+    .atelier-brand-subtitle {
+      font-family: var(--font-serif);
+      font-size: 18px;
+      font-style: italic;
+      color: var(--ink-secondary);
+      margin: 0 0 var(--space-4) 0;
+    }
+
+    .atelier-ethos-lead {
+      font-size: 14.5px;
+      line-height: 1.7;
+      color: var(--ink-secondary);
+      max-width: 680px;
+      margin: 0 auto var(--space-6) auto;
+    }
+
+    .atelier-telemetry-stats {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+    .atelier-stat-badge {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      padding: 5px 12px;
+      background: var(--canvas-surface-recessed);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-micro);
+      color: var(--ink-secondary);
+    }
+
+    /* 4 Rooms Grid */
+    .atelier-rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-6);
+      margin-bottom: var(--space-10);
+    }
+
+    @media (max-width: 768px) {
+      .atelier-rooms-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .room-portal-card {
+      background: var(--canvas-card);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-card);
+      padding: var(--space-6);
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 240px;
+      transition: all var(--duration-smooth) ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .room-portal-card:hover {
+      border-color: var(--accent-cognac);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    }
+
+    .room-card-top {
+      margin-bottom: var(--space-4);
+    }
+
+    .room-meta-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--space-3);
+    }
+
+    .room-idx-badge {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--accent-cognac);
+      text-transform: uppercase;
+    }
+
+    .room-specimen-pill {
+      font-family: var(--font-mono);
+      font-size: 9.5px;
+      color: var(--ink-muted);
+      background: var(--canvas-surface-recessed);
+      padding: 2px 7px;
+      border-radius: 2px;
+      border: 1px solid var(--border-hairline);
+    }
+
+    .room-portal-title {
+      font-family: var(--font-sans);
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--ink-primary);
+      margin: 0 0 6px 0;
+    }
+
+    .room-portal-desc {
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--ink-secondary);
+      margin: 0;
+    }
+
+    .room-action-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: var(--space-4);
+      border-top: 1px solid var(--border-hairline);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--ink-secondary);
+    }
+
+    .room-portal-card:hover .room-action-footer {
+      color: var(--accent-cognac);
+    }
+
+    .room-arrow {
+      transition: transform var(--duration-instant) ease;
+    }
+
+    .room-portal-card:hover .room-arrow {
+      transform: translateX(4px);
+    }
+
+    /* Atelier Footer */
+    .atelier-footer {
+      text-align: center;
+      padding: var(--space-6) 0;
+      border-top: 1px solid var(--border-hairline);
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      color: var(--ink-muted);
+    }
     .spec-container {
       max-width: 1240px;
       margin: 0 auto;
