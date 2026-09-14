@@ -920,6 +920,128 @@
       margin: 0;
     }
 
+    /* Micro-Schematic Wireframe Previews for Rooms 03 & 04 */
+    .room-schematic-preview {
+      margin: var(--space-4) 0;
+      padding: var(--space-3) var(--space-4);
+      background: var(--canvas-surface-recessed);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      pointer-events: none;
+      transition: border-color var(--duration-smooth) ease, background var(--duration-smooth) ease;
+    }
+
+    .room-portal-card:hover .room-schematic-preview {
+      border-color: var(--border-hover);
+      background: var(--canvas-bg);
+    }
+
+    .schematic-controls-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-3);
+      margin-bottom: var(--space-2);
+    }
+
+    .schematic-caliper-track {
+      flex: 1;
+      position: relative;
+      height: 18px;
+      display: flex;
+      align-items: center;
+    }
+
+    .schematic-caliper-line {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--border-color);
+    }
+
+    .schematic-caliper-ticks {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 8px;
+      background-image: repeating-linear-gradient(
+        90deg,
+        var(--ink-faint) 0px,
+        var(--ink-faint) 1px,
+        transparent 1px,
+        transparent 6px
+      );
+      opacity: 0.6;
+    }
+
+    .schematic-caliper-thumb {
+      position: absolute;
+      left: 62%;
+      transform: translateX(-50%);
+      width: 9px;
+      height: 14px;
+      background: var(--accent-cognac);
+      border-radius: 1px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    }
+
+    .schematic-pill-tag {
+      font-size: 9.5px;
+      padding: 1px 6px;
+      border-radius: 2px;
+      background: var(--canvas-card-solid);
+      border: 1px solid var(--border-hairline);
+      color: var(--ink-secondary);
+      white-space: nowrap;
+    }
+
+    .schematic-pill-tag.active {
+      color: var(--accent-sage);
+      border-color: rgba(118, 142, 101, 0.35);
+      font-weight: 600;
+    }
+
+    .schematic-secondary-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 9.5px;
+      color: var(--ink-muted);
+      border-top: 1px dashed var(--border-subtle);
+      padding-top: var(--space-2);
+    }
+
+    .schematic-code-preview {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      line-height: 1.5;
+      margin-bottom: var(--space-2);
+    }
+
+    .schematic-code-line {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .code-keyword { color: var(--accent-cognac); font-weight: 600; }
+    .code-fn { color: var(--accent-sage); font-weight: 600; }
+    .code-prop { color: var(--ink-secondary); }
+    .code-val { color: var(--ink-primary); font-weight: 600; }
+    .code-comment { color: var(--ink-muted); opacity: 0.8; font-style: italic; }
+
+    .schematic-tag-pill {
+      font-size: 9.5px;
+      color: var(--ink-secondary);
+      background: var(--canvas-card-solid);
+      border: 1px solid var(--border-hairline);
+      padding: 1px 6px;
+      border-radius: 2px;
+    }
+
     .room-action-footer {
       display: flex;
       justify-content: space-between;
@@ -1306,6 +1428,49 @@
     }
     .pillar-card.pillar-vitality:hover {
       border-top-color: var(--accent-sage);
+    }
+
+    .pillar-card-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--space-2);
+    }
+
+    .pillar-card-top-row .pillar-number {
+      margin-bottom: 0;
+    }
+
+    .pillar-glyph {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      border-radius: var(--radius-sm);
+      background: var(--canvas-surface-recessed);
+      border: 1px solid var(--border-subtle);
+      color: var(--ink-muted);
+      transition: all var(--duration-smooth) var(--ease-deliberate);
+      flex-shrink: 0;
+    }
+
+    .pillar-card:hover .pillar-glyph {
+      transform: scale(1.08);
+      border-color: var(--border-hover);
+    }
+
+    .pillar-card.pillar-elegance .pillar-glyph {
+      color: var(--ink-secondary);
+    }
+    .pillar-card.pillar-craft .pillar-glyph {
+      color: var(--accent-cognac);
+    }
+    .pillar-card.pillar-zen .pillar-glyph {
+      color: var(--ink-primary);
+    }
+    .pillar-card.pillar-vitality .pillar-glyph {
+      color: var(--accent-sage);
     }
 
     .pillar-number {

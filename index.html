@@ -105,7 +105,19 @@
 
       <div class="pillars-grid" style="display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: var(--space-4) !important;">
         <div class="pillar-card pillar-elegance">
-          <div class="pillar-number">PILLAR 01</div>
+          <div class="pillar-card-top-row">
+            <span class="pillar-number">PILLAR 01</span>
+            <span class="pillar-glyph" title="Concentric Golden Ratio Proportions" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9" stroke-dasharray="2 2" opacity="0.6"/>
+                <circle cx="12" cy="12" r="4.5"/>
+                <line x1="12" y1="1" x2="12" y2="4"/>
+                <line x1="12" y1="20" x2="12" y2="23"/>
+                <line x1="1" y1="12" x2="4" y2="12"/>
+                <line x1="20" y1="12" x2="23" y2="12"/>
+              </svg>
+            </span>
+          </div>
           <h3 class="pillar-title">Understated Elegance</h3>
           <p class="pillar-body">
             True elegance is quiet. Eliminating decorative clutter, gratuitous visual noise, and vanity badges. What remains is intentional typography, purposeful composition, and room for thought to breathe.
@@ -114,7 +126,19 @@
         </div>
 
         <div class="pillar-card pillar-craft">
-          <div class="pillar-number">PILLAR 02</div>
+          <div class="pillar-card-top-row">
+            <span class="pillar-number">PILLAR 02</span>
+            <span class="pillar-glyph" title="Horological Crosshair Vernier Index" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="8"/>
+                <line x1="12" y1="2" x2="12" y2="6"/>
+                <line x1="12" y1="18" x2="12" y2="22"/>
+                <line x1="2" y1="12" x2="6" y2="12"/>
+                <line x1="18" y1="12" x2="22" y2="12"/>
+                <circle cx="12" cy="12" r="1.5" fill="currentColor"/>
+              </svg>
+            </span>
+          </div>
           <h3 class="pillar-title">High-Precision Craft</h3>
           <p class="pillar-body">
             Clear data presentation, geometric rigor, and mechanical precision. Inspired by fine horology: 1px hairlines, disciplined 8px baseline alignment, and responsive interactions that honor the user’s tempo.
@@ -123,7 +147,16 @@
         </div>
 
         <div class="pillar-card pillar-zen">
-          <div class="pillar-number">PILLAR 03</div>
+          <div class="pillar-card-top-row">
+            <span class="pillar-number">PILLAR 03</span>
+            <span class="pillar-glyph" title="Taoist Ensō &amp; Fluid Harmonic Meridian" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M 12 3 A 9 9 0 1 1 4.5 8.5"/>
+                <path d="M 6.5 13.5 C 8.5 11, 10.5 11, 12 13.5 C 13.5 16, 15.5 16, 17.5 13.5"/>
+                <circle cx="12" cy="7" r="1.2" fill="currentColor"/>
+              </svg>
+            </span>
+          </div>
           <h3 class="pillar-title">Zen &amp; Taoist Flow (无为 · Wu Wei)</h3>
           <p class="pillar-body">
             Effortless action through deep alignment. Embracing intentional negative space (留白 · <em>Ma</em>) and steady composure. Software should never fight the user; it should flow naturally like water finding its course.
@@ -132,7 +165,16 @@
         </div>
 
         <div class="pillar-card pillar-vitality">
-          <div class="pillar-number">PILLAR 04</div>
+          <div class="pillar-card-top-row">
+            <span class="pillar-number">PILLAR 04</span>
+            <span class="pillar-glyph" title="Solar Curve &amp; Organic Pulse Node" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M 5 19 C 5 19, 8 7, 19 5 C 19 5, 17 16, 5 19 Z"/>
+                <line x1="5" y1="19" x2="13" y2="11"/>
+                <circle cx="19" cy="5" r="1.5" fill="currentColor"/>
+              </svg>
+            </span>
+          </div>
           <h3 class="pillar-title">Organic Vitality</h3>
           <p class="pillar-body">
             Grounded in solarpunk optimism and natural equilibrium. Engineering lean, efficient digital systems that respect human attention, device resources, and software longevity over fleeting trends.
@@ -244,6 +286,21 @@
             <p class="room-portal-desc">
               Production-grade tactile controls. Calibrated navigation bars, artifact cards, mechanical switches, 3 precision range sliders (including vernier caliper), Web Audio DSP player, and telemetry graphs.
             </p>
+            <div class="room-schematic-preview" aria-hidden="true">
+              <div class="schematic-controls-row">
+                <div class="schematic-caliper-track">
+                  <div class="schematic-caliper-ticks"></div>
+                  <div class="schematic-caliper-line"></div>
+                  <div class="schematic-caliper-thumb"></div>
+                </div>
+                <span class="schematic-pill-tag active">0.618 λ</span>
+                <span class="schematic-pill-tag active">● ON</span>
+              </div>
+              <div class="schematic-secondary-row">
+                <span>VERNIER CALIPER // DSP ENGINE</span>
+                <span>32 CONTROLS</span>
+              </div>
+            </div>
           </div>
           <div class="room-action-footer">
             <span>03 · LAUNCH LIBRARY</span>
@@ -262,6 +319,20 @@
             <p class="room-portal-desc">
               Extend TAO into your daily workflow. Five calibrated code syntax themes with split-view comparison, Obsidian theme, and quickstart.
             </p>
+            <div class="room-schematic-preview" aria-hidden="true">
+              <div class="schematic-code-preview">
+                <div class="schematic-code-line">
+                  <span class="code-comment">// TAOIST FLOW · 无为</span>
+                </div>
+                <div class="schematic-code-line">
+                  <span class="code-keyword">const</span> <span class="code-prop">flow</span> = <span class="code-fn">calibrate</span>({ <span class="code-prop">grid</span>: <span class="code-val">8</span> });
+                </div>
+              </div>
+              <div class="schematic-secondary-row">
+                <span>SYNTAX HIGHLIGHTER</span>
+                <span class="schematic-tag-pill">[[Obsidian Vault]]</span>
+              </div>
+            </div>
           </div>
           <div class="room-action-footer">
             <span>04 · BROWSE THEMES</span>
