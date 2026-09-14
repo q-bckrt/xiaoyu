@@ -95,9 +95,10 @@
     }
 
     .telemetry-tag .brand-subject {
-      font-size: 11.5px;
-      font-weight: 700;
-      letter-spacing: 0.06em;
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 300;
+      letter-spacing: 0.14em;
       color: var(--ink-primary);
     }
 
@@ -242,32 +243,40 @@
     }
 
     .atelier-brand-title {
-      font-family: var(--font-sans);
       color: var(--ink-primary);
       margin: 0 0 var(--space-3) 0;
       display: flex;
-      align-items: baseline;
-      justify-content: center;
-      gap: 0.3em;
-      flex-wrap: wrap;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
     }
 
     .atelier-brand-prefix {
       font-family: var(--font-mono);
-      font-size: clamp(15px, 2vw, 20px);
+      font-size: clamp(13px, 1.6vw, 16px);
       font-weight: 600;
-      letter-spacing: 0.28em;
+      letter-spacing: 0.32em;
+      text-indent: 0.32em;
       text-transform: uppercase;
       color: var(--accent-cognac);
-      opacity: 0.95;
+      opacity: 0.9;
     }
 
     .atelier-brand-main {
-      font-size: clamp(56px, 9vw, 100px);
-      font-weight: 900;
-      letter-spacing: -0.035em;
+      font-family: var(--font-display);
+      font-size: clamp(62px, 10.5vw, 116px);
+      font-weight: 200;
+      letter-spacing: 0.14em;
+      text-indent: 0.14em;
       line-height: 0.95;
       color: var(--ink-primary);
+      text-transform: uppercase;
+      transition: letter-spacing 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity var(--duration-fast) ease;
+    }
+
+    .atelier-brand-main:hover {
+      letter-spacing: 0.18em;
+      text-indent: 0.18em;
     }
 
     .atelier-brand-subtitle {
