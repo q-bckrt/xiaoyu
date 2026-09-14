@@ -180,22 +180,8 @@ impl BalanceSpring {
         string: '#E0BA76', number: '#E09F67', comment: '#7E8696'
       }
     },
-    escapement: {
-      name: '02 · Horological Escapement',
-      ethos: 'Haute horlogerie: thermally blued steel hands, brushed brass gear trains, and synthetic ruby jewels.',
-      light: {
-        bg: '#F5F4F0', border: '#E0DDD5', text: '#1E2229',
-        keyword: '#23527C', function: '#A67C2E', type: '#9E3248',
-        string: '#8C6F4B', number: '#B35836', comment: '#7B8594'
-      },
-      dark: {
-        bg: '#101216', border: '#262B35', text: '#E5E9F0',
-        keyword: '#5D9CEC', function: '#E5C07B', type: '#E06C75',
-        string: '#D19A66', number: '#F08D49', comment: '#6E7681'
-      }
-    },
     bamboo: {
-      name: '03 · Solarpunk Bamboo',
+      name: '02 · Bamboo & Sunlit Amber',
       ethos: 'Organic botanical vitality: deep bamboo greens, sunlit warm amber, and calm celadon porcelain.',
       light: {
         bg: '#FAF8F5', border: '#E2DDD5', text: '#1C201D',
@@ -206,6 +192,20 @@ impl BalanceSpring {
         bg: '#0A0C0B', border: '#1B1E1C', text: '#E4E8E5',
         keyword: '#78C288', function: '#E2B462', type: '#56B6C2',
         string: '#D4A76A', number: '#E57C58', comment: '#68766C'
+      }
+    },
+    escapement: {
+      name: '03 · Horological Escapement',
+      ethos: 'Haute horlogerie: thermally blued steel hands, brushed brass gear trains, and synthetic ruby jewels.',
+      light: {
+        bg: '#F5F4F0', border: '#E0DDD5', text: '#1E2229',
+        keyword: '#23527C', function: '#A67C2E', type: '#9E3248',
+        string: '#8C6F4B', number: '#B35836', comment: '#7B8594'
+      },
+      dark: {
+        bg: '#101216', border: '#262B35', text: '#E5E9F0',
+        keyword: '#5D9CEC', function: '#E5C07B', type: '#E06C75',
+        string: '#D19A66', number: '#F08D49', comment: '#6E7681'
       }
     },
     xuan: {
@@ -323,7 +323,7 @@ impl BalanceSpring {
 
   // --- 4. State Management ---
   let activeTheme = 'canonical';
-  let compareTheme = 'escapement';
+  let compareTheme = 'bamboo';
   let activeLang = 'typescript';
   let isSplitView = false;
   let codeFontSize = 13.5;

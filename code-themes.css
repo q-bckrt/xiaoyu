@@ -49,49 +49,7 @@
   --th-cursor: #C68E56;
 }
 
-/* Theme 2: Horological Escapement (Blued Steel, Brass & Ruby) */
-[data-code-theme="escapement"] {
-  --th-bg: #F5F4F0;
-  --th-border: #E0DDD5;
-  --th-header-bg: #ECE9E1;
-  --th-text: #1E2229;
-  --th-comment: #7B8594;
-  --th-keyword: #23527C;     /* Blued Steel */
-  --th-function: #A67C2E;    /* Watchmaker Brass */
-  --th-string: #8C6F4B;      /* Aged Vellum */
-  --th-type: #9E3248;        /* Synthetic Ruby */
-  --th-number: #B35836;      /* Polished Copper */
-  --th-operator: #5A6472;
-  --th-property: #3B4452;
-  --th-tag: #23527C;
-  --th-attr: #A67C2E;
-  --th-linenumber: #A4ACB9;
-  --th-selection: rgba(35, 82, 124, 0.16);
-  --th-cursor: #23527C;
-}
-
-[data-theme="dark"] [data-code-theme="escapement"],
-[data-code-theme="escapement"].force-dark {
-  --th-bg: #101216;
-  --th-border: #262B35;
-  --th-header-bg: #161A22;
-  --th-text: #E5E9F0;
-  --th-comment: #6E7681;
-  --th-keyword: #5D9CEC;     /* Luminous Blued Steel */
-  --th-function: #E5C07B;    /* Luminous Horological Brass */
-  --th-string: #D19A66;      /* Sand Vellum */
-  --th-type: #E06C75;        /* Ruby Jewel */
-  --th-number: #F08D49;      /* Copper Wheel */
-  --th-operator: #8892B0;
-  --th-property: #ABB2BF;
-  --th-tag: #5D9CEC;
-  --th-attr: #E5C07B;
-  --th-linenumber: #4B5263;
-  --th-selection: rgba(93, 156, 236, 0.24);
-  --th-cursor: #5D9CEC;
-}
-
-/* Theme 3: Solarpunk Bamboo (Organic Moss, Amber & Celadon) */
+/* Theme 2: Bamboo & Sunlit Amber (Organic Moss, Amber & Celadon) */
 [data-code-theme="bamboo"] {
   --th-bg: #FAF8F5;          /* Clean Warm Vellum White / Beige */
   --th-border: #E2DDD5;      /* Crisp Warm Neutral Hairline */
@@ -131,6 +89,48 @@
   --th-linenumber: #3B423D;
   --th-selection: rgba(120, 194, 136, 0.20);
   --th-cursor: #78C288;
+}
+
+/* Theme 3: Horological Escapement (Blued Steel, Brass & Ruby) */
+[data-code-theme="escapement"] {
+  --th-bg: #F5F4F0;
+  --th-border: #E0DDD5;
+  --th-header-bg: #ECE9E1;
+  --th-text: #1E2229;
+  --th-comment: #7B8594;
+  --th-keyword: #23527C;     /* Blued Steel */
+  --th-function: #A67C2E;    /* Watchmaker Brass */
+  --th-string: #8C6F4B;      /* Aged Vellum */
+  --th-type: #9E3248;        /* Synthetic Ruby */
+  --th-number: #B35836;      /* Polished Copper */
+  --th-operator: #5A6472;
+  --th-property: #3B4452;
+  --th-tag: #23527C;
+  --th-attr: #A67C2E;
+  --th-linenumber: #A4ACB9;
+  --th-selection: rgba(35, 82, 124, 0.16);
+  --th-cursor: #23527C;
+}
+
+[data-theme="dark"] [data-code-theme="escapement"],
+[data-code-theme="escapement"].force-dark {
+  --th-bg: #101216;
+  --th-border: #262B35;
+  --th-header-bg: #161A22;
+  --th-text: #E5E9F0;
+  --th-comment: #6E7681;
+  --th-keyword: #5D9CEC;     /* Luminous Blued Steel */
+  --th-function: #E5C07B;    /* Luminous Horological Brass */
+  --th-string: #D19A66;      /* Sand Vellum */
+  --th-type: #E06C75;        /* Ruby Jewel */
+  --th-number: #F08D49;      /* Copper Wheel */
+  --th-operator: #8892B0;
+  --th-property: #ABB2BF;
+  --th-tag: #5D9CEC;
+  --th-attr: #E5C07B;
+  --th-linenumber: #4B5263;
+  --th-selection: rgba(93, 156, 236, 0.24);
+  --th-cursor: #5D9CEC;
 }
 
 /* Theme 4: Xuan Paper & Cinnabar Seal (Calligraphic Ink Wash) */
