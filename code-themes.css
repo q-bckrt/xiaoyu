@@ -93,11 +93,11 @@
 
 /* Theme 3: Solarpunk Bamboo (Organic Moss, Amber & Celadon) */
 [data-code-theme="bamboo"] {
-  --th-bg: #F3F5F0;
-  --th-border: #D8DFD4;
-  --th-header-bg: #E7ECE3;
-  --th-text: #1C241E;
-  --th-comment: #7F8E81;
+  --th-bg: #FAF8F5;          /* Clean Warm Vellum White / Beige */
+  --th-border: #E2DDD5;      /* Crisp Warm Neutral Hairline */
+  --th-header-bg: #EFECE4;   /* Gentle Warm Beige Header */
+  --th-text: #1C201D;
+  --th-comment: #7A847B;
   --th-keyword: #2D5A3A;     /* Deep Bamboo */
   --th-function: #9E6E2E;    /* Sunlit Amber */
   --th-string: #8A6B32;      /* Earth Ochre */
@@ -107,18 +107,18 @@
   --th-property: #3B4B3F;
   --th-tag: #2D5A3A;
   --th-attr: #9E6E2E;
-  --th-linenumber: #9FAEA1;
-  --th-selection: rgba(45, 90, 58, 0.16);
+  --th-linenumber: #A4AAA2;
+  --th-selection: rgba(45, 90, 58, 0.14);
   --th-cursor: #2D5A3A;
 }
 
 [data-theme="dark"] [data-code-theme="bamboo"],
 [data-code-theme="bamboo"].force-dark {
-  --th-bg: #0E1410;
-  --th-border: #1E2E22;
-  --th-header-bg: #141F18;
-  --th-text: #E3EBE4;
-  --th-comment: #65776A;
+  --th-bg: #0A0C0B;          /* Deep Pitch Obsidian Black */
+  --th-border: #1B1E1C;      /* Charcoal Hairline Border */
+  --th-header-bg: #121413;   /* Pure Deep Black Header */
+  --th-text: #E4E8E5;
+  --th-comment: #68766C;
   --th-keyword: #78C288;     /* Luminous Young Bamboo */
   --th-function: #E2B462;    /* Amber Blossom */
   --th-string: #D4A76A;      /* Dried Reed */
@@ -128,8 +128,8 @@
   --th-property: #A8BCAE;
   --th-tag: #78C288;
   --th-attr: #E2B462;
-  --th-linenumber: #3D4F42;
-  --th-selection: rgba(120, 194, 136, 0.22);
+  --th-linenumber: #3B423D;
+  --th-selection: rgba(120, 194, 136, 0.20);
   --th-cursor: #78C288;
 }
 

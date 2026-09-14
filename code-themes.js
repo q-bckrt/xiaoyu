@@ -198,14 +198,14 @@ impl BalanceSpring {
       name: '03 · Solarpunk Bamboo',
       ethos: 'Organic botanical vitality: deep bamboo greens, sunlit warm amber, and calm celadon porcelain.',
       light: {
-        bg: '#F3F5F0', border: '#D8DFD4', text: '#1C241E',
+        bg: '#FAF8F5', border: '#E2DDD5', text: '#1C201D',
         keyword: '#2D5A3A', function: '#9E6E2E', type: '#286B66',
-        string: '#8A6B32', number: '#A85834', comment: '#7F8E81'
+        string: '#8A6B32', number: '#A85834', comment: '#7A847B'
       },
       dark: {
-        bg: '#0E1410', border: '#1E2E22', text: '#E3EBE4',
+        bg: '#0A0C0B', border: '#1B1E1C', text: '#E4E8E5',
         keyword: '#78C288', function: '#E2B462', type: '#56B6C2',
-        string: '#D4A76A', number: '#E57C58', comment: '#65776A'
+        string: '#D4A76A', number: '#E57C58', comment: '#68766C'
       }
     },
     xuan: {
