@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>啸宇 · TAO | 03 · Living Component Library</title>
+  <title>啸宇 · TAO | 03 · Components Library</title>
   <meta name="description" content="Production-grade component library for the Xiaoyu TAO design system. Tactile controls, vernier range sliders, synthesized Web Audio DSP player, and ApexCharts telemetry.">
 
   <!-- Design System Tokens & Stylesheet -->
@@ -111,7 +111,7 @@
             <span class="unboxed-mark-lg">啸宇</span>
             <div class="identity-meta">
               <h1 class="brand-title"><span class="brand-author-prefix">Xiaoyu</span> <span class="brand-subject-title">TAO</span></h1>
-              <div class="brand-tagline">Room 03 · Living Component Library &amp; Interactive Controls</div>
+              <div class="brand-tagline">Room 03 · Components Library &amp; Interactive Controls</div>
             </div>
           </div>
           <div class="release-badge">SPEC. V1.3 · RELEASE</div>
@@ -600,10 +600,10 @@
             </div>
           </div>
 
-          <!-- Component 6: Calibrated Range Sliders (3 Distinct Variants) -->
+          <!-- Component 6: Calibrated Range Sliders (4 Distinct Variants) -->
           <div class="component-group" id="c-sliders">
             <div class="component-header">
-              <span class="component-title">06 · Range Sliders (Minimal, Calibrated Fill &amp; Precision Vernier)</span>
+              <span class="component-title">06 · Range Sliders (Minimal, Calibrated Fill &amp; Precision Vernier Caliper)</span>
               <button class="snippet-toggle-btn" onclick="toggleSnippet('snippet-slider')">VIEW CODE</button>
             </div>
             <div class="component-stage">
@@ -656,6 +656,63 @@
                     </div>
                   </div>
                 </div>
+
+                <!-- Variant 4: Physical Vernier Caliper (Machinist Beam & Sliding Jaw) -->
+                <div class="vernier-caliper-box">
+                  <div class="slider-header">
+                    <div>
+                      <span class="slider-type-tag" style="color: var(--accent-cognac); border-color: rgba(184, 115, 51, 0.35);">04 · VERNIER CALIPER BEAM</span>
+                      <span>MACHINIST_BEAM_JAW // RESOLUTION 0.001λ</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: var(--space-2);">
+                      <span class="schematic-pill-tag active" id="caliper-status-pill">● CALIBRATED</span>
+                      <span class="slider-val-readout" id="vernier-caliper-readout" style="color: var(--accent-cognac); font-weight: 700;">0.618 λ · 61.80 mm</span>
+                    </div>
+                  </div>
+
+                  <!-- Vernier Caliper Interactive Assembly -->
+                  <div class="vernier-caliper-assembly">
+                    <!-- Caliper Main Beam (Stainless / Vellum Ruler Track) -->
+                    <div class="vernier-caliper-beam" id="vernier-beam">
+                      <div class="caliper-beam-centerline"></div>
+                      <div class="caliper-beam-millimeter-ticks"></div>
+                      <div class="caliper-beam-numbers">
+                        <span>0</span>
+                        <span>10</span>
+                        <span>20</span>
+                        <span>30</span>
+                        <span>40</span>
+                        <span>50</span>
+                        <span>60</span>
+                        <span>70</span>
+                        <span>80</span>
+                        <span>90</span>
+                        <span>100</span>
+                      </div>
+                    </div>
+
+                    <!-- Native Accessible Input Overlaid Directly on Beam -->
+                    <input type="range" class="vernier-range-input" min="0" max="100" step="0.1" value="61.8" id="vernier-caliper-input" aria-label="Physical Vernier Caliper Range Slider">
+
+                    <!-- Sliding Vernier Bezel & Jaw (Tracked to slider value) -->
+                    <div class="vernier-sliding-jaw" id="vernier-jaw" style="left: 61.8%;">
+                      <div class="vernier-jaw-index-line"></div>
+                      <div class="vernier-subscale-ticks">
+                        <span>|</span><span>|</span><span>|</span><span>|</span><span>|</span>
+                      </div>
+                      <div class="vernier-jaw-thumb-knurl"></div>
+                      <div class="vernier-jaw-tag">0.618 λ</div>
+                    </div>
+                  </div>
+
+                  <!-- Sub-telemetry readout row -->
+                  <div class="vernier-telemetry-footer">
+                    <span>MAIN SCALE: <strong id="caliper-main-metric">61.0 mm</strong></span>
+                    <span>VERNIER FRACTION: <strong id="caliper-sub-metric">+0.80 mm</strong></span>
+                    <span>TOTAL APERTURE: <strong id="caliper-total-metric" style="color: var(--ink-primary);">61.800 mm (0.618 λ)</strong></span>
+                  </div>
+                </div>
+
               </div>
             </div>
             <div class="component-code-block" id="snippet-slider">
@@ -675,6 +732,20 @@
     &lt;div class="tick-node semi"&gt;&lt;div class="tick-line"&gt;&lt;/div&gt;&lt;span class="tick-label"&gt;.050&lt;/span&gt;&lt;/div&gt;
     &lt;div class="tick-node"&gt;&lt;div class="tick-line"&gt;&lt;/div&gt;&lt;/div&gt;
     &lt;div class="tick-node major"&gt;&lt;div class="tick-line"&gt;&lt;/div&gt;&lt;span class="tick-label"&gt;.100&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- 4. Physical Vernier Caliper Component (Machinist Beam &amp; Sliding Jaw) --&gt;
+&lt;div class="vernier-caliper-assembly"&gt;
+  &lt;div class="vernier-caliper-beam"&gt;
+    &lt;div class="caliper-beam-centerline"&gt;&lt;/div&gt;
+    &lt;div class="caliper-beam-millimeter-ticks"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;input type="range" class="vernier-range-input" min="0" max="100" step="0.1" value="61.8"&gt;
+  &lt;div class="vernier-sliding-jaw" style="left: 61.8%;"&gt;
+    &lt;div class="vernier-jaw-index-line"&gt;&lt;/div&gt;
+    &lt;div class="vernier-subscale-ticks"&gt;&lt;span&gt;|&lt;/span&gt;&lt;span&gt;|&lt;/span&gt;&lt;span&gt;|&lt;/span&gt;&lt;/div&gt;
+    &lt;div class="vernier-jaw-tag"&gt;0.618 λ&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre>
             </div>
@@ -958,6 +1029,61 @@
         const mm = (val * 0.001).toFixed(3);
         readoutGrad.textContent = `± ${mm} mm`;
       });
+    }
+
+    // 1c. Physical Vernier Caliper Slider Logic
+    const vernierInput = document.getElementById('vernier-caliper-input');
+    const vernierJaw = document.getElementById('vernier-jaw');
+    const vernierReadout = document.getElementById('vernier-caliper-readout');
+    const caliperMainMetric = document.getElementById('caliper-main-metric');
+    const caliperSubMetric = document.getElementById('caliper-sub-metric');
+    const caliperTotalMetric = document.getElementById('caliper-total-metric');
+    const caliperJawTag = vernierJaw ? vernierJaw.querySelector('.vernier-jaw-tag') : null;
+    let lastClickVal = 61.8;
+
+    if (vernierInput && vernierJaw) {
+      function updateVernierCaliper(val) {
+        const min = parseFloat(vernierInput.min) || 0;
+        const max = parseFloat(vernierInput.max) || 100;
+        const pct = ((val - min) / (max - min)) * 100;
+        vernierJaw.style.left = `${pct}%`;
+
+        const lambda = (val / 100).toFixed(3);
+        const mmTotal = val.toFixed(2);
+        const mainMm = Math.floor(val);
+        const subMm = (val - mainMm).toFixed(2);
+
+        if (vernierReadout) {
+          vernierReadout.textContent = `${lambda} λ · ${mmTotal} mm`;
+        }
+        if (caliperMainMetric) caliperMainMetric.textContent = `${mainMm}.0 mm`;
+        if (caliperSubMetric) caliperSubMetric.textContent = `+${subMm} mm`;
+        if (caliperTotalMetric) caliperTotalMetric.textContent = `${mmTotal} mm (${lambda} λ)`;
+        if (caliperJawTag) caliperJawTag.textContent = `${lambda} λ`;
+
+        // Subtle mechanical tick every integer mm if audio context is active
+        if (Math.abs(val - lastClickVal) >= 1.0 && taoAudioCtx && taoAudioCtx.state === 'running') {
+          try {
+            const clickOsc = taoAudioCtx.createOscillator();
+            const clickGain = taoAudioCtx.createGain();
+            clickOsc.type = 'sine';
+            clickOsc.frequency.setValueAtTime(1400, taoAudioCtx.currentTime);
+            clickGain.gain.setValueAtTime(0.012, taoAudioCtx.currentTime);
+            clickGain.gain.exponentialRampToValueAtTime(0.0001, taoAudioCtx.currentTime + 0.008);
+            clickOsc.connect(clickGain);
+            clickGain.connect(taoAudioCtx.destination);
+            clickOsc.start();
+            clickOsc.stop(taoAudioCtx.currentTime + 0.008);
+            lastClickVal = val;
+          } catch (err) {}
+        }
+      }
+
+      vernierInput.addEventListener('input', (e) => {
+        updateVernierCaliper(parseFloat(e.target.value));
+      });
+      // Initial calibration
+      updateVernierCaliper(parseFloat(vernierInput.value));
     }
 
     // 2. Tao Synthesized Web Audio DSP Player Engine
