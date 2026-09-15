@@ -921,95 +921,9 @@
                     <span>REGISTER: <strong id="stepped-station-metric">STATION IV / VIII</strong></span>
                     <span>CLOCK: <strong id="stepped-clock-metric">8x (86.4 kHz)</strong></span>
                     <span>TORQUE: <strong id="stepped-torque-metric" style="color: var(--ink-primary);">18.2 mN·m [LOCKED]</strong></span>
-                </div>
-
-                <!-- 07b: Compact Channel Strip & Micro-Controls Rack -->
-                <div class="compact-rotary-rack" id="compact-controls-rack">
-                  <div class="compact-rack-header">
-                    <div>
-                      <span class="slider-type-tag" style="color: var(--ink-primary);">03 · COMPACT CHANNEL STRIP &amp; MICRO-CONTROLS</span>
-                      <span style="font-family: var(--font-mono); font-size: 10.5px; color: var(--ink-muted);">MINIMALIST DENSE FORM FACTORS // MODULAR CONSOLE DECK</span>
-                    </div>
-                    <span class="schematic-pill-tag active">● CALIBRATED DECK</span>
-                  </div>
-
-                  <div class="compact-rack-grid">
-
-                    <!-- Micro-Unit 1: Continuous Parameter Micro-Knob (Cutoff) -->
-                    <div class="compact-control-card">
-                      <span class="compact-card-label">01 · CUTOFF</span>
-                      <div class="micro-dial-wrap" id="micro-cutoff-wrap" title="Drag vertically/horizontally or scroll to calibrate cutoff frequency">
-                        <svg class="micro-dial-svg" viewBox="0 0 68 68" aria-hidden="true">
-                          <!-- 270deg Arc: r=28, circ=175.93, arc=131.95, gap=43.98, rot=135deg -->
-                          <circle cx="34" cy="34" r="28" fill="none" stroke="var(--border-hairline)" stroke-width="1.5" stroke-dasharray="131.95 175.93" stroke-dashoffset="0" transform="rotate(135 34 34)" />
-                          <circle id="micro-cutoff-arc" cx="34" cy="34" r="28" fill="none" stroke="var(--accent-cognac)" stroke-width="2.5" stroke-dasharray="131.95 175.93" stroke-dashoffset="52.78" transform="rotate(135 34 34)" stroke-linecap="round" />
-                        </svg>
-                        <input type="range" class="rotary-range-input" min="20" max="20000" step="10" value="2400" id="micro-cutoff-input" aria-label="Compact Cutoff Micro-Knob">
-                        <div class="micro-knob-rotor" id="micro-cutoff-rotor" style="transform: rotate(27deg);">
-                          <div class="micro-knurl-rim"></div>
-                          <div class="micro-concentric-face"></div>
-                          <div class="micro-index-hairline"></div>
-                          <div class="micro-center-pin"></div>
-                        </div>
-                      </div>
-                      <span class="compact-card-val" id="micro-cutoff-val">2.40 kHz</span>
-                    </div>
-
-                    <!-- Micro-Unit 2: Continuous Parameter Micro-Knob (Resonance) -->
-                    <div class="compact-control-card">
-                      <span class="compact-card-label">02 · RESONANCE</span>
-                      <div class="micro-dial-wrap" id="micro-res-wrap" title="Drag vertically/horizontally or scroll to calibrate Q resonance">
-                        <svg class="micro-dial-svg" viewBox="0 0 68 68" aria-hidden="true">
-                          <circle cx="34" cy="34" r="28" fill="none" stroke="var(--border-hairline)" stroke-width="1.5" stroke-dasharray="131.95 175.93" stroke-dashoffset="0" transform="rotate(135 34 34)" />
-                          <circle id="micro-res-arc" cx="34" cy="34" r="28" fill="none" stroke="var(--accent-sage)" stroke-width="2.5" stroke-dasharray="131.95 175.93" stroke-dashoffset="79.17" transform="rotate(135 34 34)" stroke-linecap="round" />
-                        </svg>
-                        <input type="range" class="rotary-range-input" min="0.1" max="10.0" step="0.05" value="0.707" id="micro-res-input" aria-label="Compact Resonance Micro-Knob">
-                        <div class="micro-knob-rotor" id="micro-res-rotor" style="transform: rotate(-27deg);">
-                          <div class="micro-knurl-rim micro-fluted-rim"></div>
-                          <div class="micro-concentric-face"></div>
-                          <div class="micro-index-hairline sage-accent"></div>
-                          <div class="micro-center-pin"></div>
-                        </div>
-                      </div>
-                      <span class="compact-card-val" id="micro-res-val">0.707 Q</span>
-                    </div>
-
-                    <!-- Micro-Unit 3: 4-Way Stepped Selector (Filter Topology) -->
-                    <div class="compact-control-card">
-                      <span class="compact-card-label">03 · FILTER TYPE</span>
-                      <div class="micro-dial-wrap" id="micro-filter-wrap" title="Click detents or drag to cycle filter topology">
-                        <div class="micro-selector-marks">
-                          <button type="button" class="micro-sel-tag active" data-sel="0" style="--sel-angle: -135deg;">LP</button>
-                          <button type="button" class="micro-sel-tag" data-sel="1" style="--sel-angle: -45deg;">BP</button>
-                          <button type="button" class="micro-sel-tag" data-sel="2" style="--sel-angle: 45deg;">HP</button>
-                          <button type="button" class="micro-sel-tag" data-sel="3" style="--sel-angle: 135deg;">NT</button>
-                        </div>
-                        <input type="range" class="rotary-range-input" min="0" max="3" step="1" value="0" id="micro-filter-input" aria-label="Compact 4-Way Filter Type Selector">
-                        <div class="micro-knob-rotor" id="micro-filter-rotor" style="transform: rotate(-135deg);">
-                          <div class="micro-knurl-rim micro-fluted-rim"></div>
-                          <div class="micro-concentric-face"></div>
-                          <div class="micro-index-hairline sage-accent"></div>
-                          <div class="micro-center-pin" style="background: var(--accent-sage);"></div>
-                        </div>
-                      </div>
-                      <span class="compact-card-val" id="micro-filter-val" style="color: var(--accent-sage);">LOW PASS · 24dB</span>
-                    </div>
-
-                    <!-- Micro-Unit 4: Cylindrical Edge Thumbwheel Roller (Stereo Pan) -->
-                    <div class="compact-control-card">
-                      <span class="compact-card-label">04 · STEREO PAN</span>
-                      <div class="thumbwheel-assembly" id="thumbwheel-assembly" title="Drag horizontally or scroll wheel to adjust stereo pan">
-                        <div class="thumbwheel-slot">
-                          <div class="thumbwheel-barrel" id="thumbwheel-barrel" style="transform: translateX(0px);"></div>
-                          <div class="thumbwheel-center-index"></div>
-                        </div>
-                        <input type="range" class="rotary-range-input" min="-50" max="50" step="1" value="0" id="thumbwheel-input" aria-label="Cylindrical Edge Thumbwheel Pan Roller">
-                      </div>
-                      <span class="compact-card-val" id="thumbwheel-val">CENTER (0.0)</span>
-                    </div>
-
                   </div>
                 </div>
+
               </div>
             </div>
             <div class="component-code-block" id="snippet-rotary">
@@ -1048,29 +962,140 @@
       &lt;div class="rotary-center-jewel titanium-jewel"&gt;&lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
+&lt;/div&gt;</pre>
+            </div>
+          </div>
+
+          <!-- Component 7b: Minimalist Micro-Knobs (In their own box below) -->
+          <div class="component-group" id="c-micro-rotary">
+            <div class="component-header">
+              <span class="component-title">07b · Minimalist Micro-Knobs (42mm Knurled Dials &amp; 4-Way Selector)</span>
+              <button class="snippet-toggle-btn" onclick="toggleSnippet('snippet-micro-rotary')">VIEW CODE</button>
+            </div>
+            <div class="component-stage">
+              <div class="compact-rack-grid">
+
+                <!-- Micro-Unit 1: Continuous Parameter Micro-Knob (Cutoff) -->
+                <div class="compact-control-card">
+                  <span class="compact-card-label">01 · CUTOFF</span>
+                  <div class="micro-dial-wrap" id="micro-cutoff-wrap" title="Drag vertically/horizontally or scroll to calibrate cutoff frequency">
+                    <svg class="micro-dial-svg" viewBox="0 0 68 68" aria-hidden="true">
+                      <!-- 270deg Arc: r=28, circ=175.93, arc=131.95, gap=43.98, rot=135deg -->
+                      <circle cx="34" cy="34" r="28" fill="none" stroke="var(--border-hairline)" stroke-width="1.5" stroke-dasharray="131.95 175.93" stroke-dashoffset="0" transform="rotate(135 34 34)" />
+                      <circle id="micro-cutoff-arc" cx="34" cy="34" r="28" fill="none" stroke="var(--accent-cognac)" stroke-width="2.5" stroke-dasharray="131.95 175.93" stroke-dashoffset="52.78" transform="rotate(135 34 34)" stroke-linecap="round" />
+                    </svg>
+                    <input type="range" class="rotary-range-input" min="20" max="20000" step="10" value="2400" id="micro-cutoff-input" aria-label="Compact Cutoff Micro-Knob">
+                    <div class="micro-knob-rotor" id="micro-cutoff-rotor" style="transform: rotate(27deg);">
+                      <div class="micro-knurl-rim"></div>
+                      <div class="micro-concentric-face"></div>
+                      <div class="micro-index-hairline"></div>
+                      <div class="micro-center-pin"></div>
+                    </div>
+                  </div>
+                  <span class="compact-card-val" id="micro-cutoff-val">2.40 kHz</span>
+                </div>
+
+                <!-- Micro-Unit 2: Continuous Parameter Micro-Knob (Resonance) -->
+                <div class="compact-control-card">
+                  <span class="compact-card-label">02 · RESONANCE</span>
+                  <div class="micro-dial-wrap" id="micro-res-wrap" title="Drag vertically/horizontally or scroll to calibrate Q resonance">
+                    <svg class="micro-dial-svg" viewBox="0 0 68 68" aria-hidden="true">
+                      <circle cx="34" cy="34" r="28" fill="none" stroke="var(--border-hairline)" stroke-width="1.5" stroke-dasharray="131.95 175.93" stroke-dashoffset="0" transform="rotate(135 34 34)" />
+                      <circle id="micro-res-arc" cx="34" cy="34" r="28" fill="none" stroke="var(--accent-sage)" stroke-width="2.5" stroke-dasharray="131.95 175.93" stroke-dashoffset="79.17" transform="rotate(135 34 34)" stroke-linecap="round" />
+                    </svg>
+                    <input type="range" class="rotary-range-input" min="0.1" max="10.0" step="0.05" value="0.707" id="micro-res-input" aria-label="Compact Resonance Micro-Knob">
+                    <div class="micro-knob-rotor" id="micro-res-rotor" style="transform: rotate(-27deg);">
+                      <div class="micro-knurl-rim micro-fluted-rim"></div>
+                      <div class="micro-concentric-face"></div>
+                      <div class="micro-index-hairline sage-accent"></div>
+                      <div class="micro-center-pin"></div>
+                    </div>
+                  </div>
+                  <span class="compact-card-val" id="micro-res-val">0.707 Q</span>
+                </div>
+
+                <!-- Micro-Unit 3: 4-Way Stepped Selector (Filter Topology) -->
+                <div class="compact-control-card">
+                  <span class="compact-card-label">03 · FILTER TYPE</span>
+                  <div class="micro-dial-wrap" id="micro-filter-wrap" title="Click detents or drag to cycle filter topology">
+                    <div class="micro-selector-marks">
+                      <button type="button" class="micro-sel-tag active" data-sel="0" style="--sel-angle: -135deg;">LP</button>
+                      <button type="button" class="micro-sel-tag" data-sel="1" style="--sel-angle: -45deg;">BP</button>
+                      <button type="button" class="micro-sel-tag" data-sel="2" style="--sel-angle: 45deg;">HP</button>
+                      <button type="button" class="micro-sel-tag" data-sel="3" style="--sel-angle: 135deg;">NT</button>
+                    </div>
+                    <input type="range" class="rotary-range-input" min="0" max="3" step="1" value="0" id="micro-filter-input" aria-label="Compact 4-Way Filter Type Selector">
+                    <div class="micro-knob-rotor" id="micro-filter-rotor" style="transform: rotate(-135deg);">
+                      <div class="micro-knurl-rim micro-fluted-rim"></div>
+                      <div class="micro-concentric-face"></div>
+                      <div class="micro-index-hairline sage-accent"></div>
+                      <div class="micro-center-pin" style="background: var(--accent-sage);"></div>
+                    </div>
+                  </div>
+                  <span class="compact-card-val" id="micro-filter-val" style="color: var(--accent-sage);">LOW PASS · 24dB</span>
+                </div>
+
+              </div>
+            </div>
+            <div class="component-code-block" id="snippet-micro-rotary">
+              <button class="copy-code-btn" onclick="copySnippetText('snippet-micro-rotary')">COPY HTML</button>
+              <pre>&lt;!-- 1. Continuous Cutoff Micro-Knob (42mm Knurled Dial &amp; 270° Arc Gauge) --&gt;
+&lt;div class="compact-control-card"&gt;
+  &lt;span class="compact-card-label"&gt;01 · CUTOFF&lt;/span&gt;
+  &lt;div class="micro-dial-wrap" id="micro-cutoff-wrap"&gt;
+    &lt;svg class="micro-dial-svg" viewBox="0 0 68 68"&gt;
+      &lt;circle cx="34" cy="34" r="28" stroke="var(--border-hairline)" stroke-dasharray="131.95 175.93" transform="rotate(135 34 34)" /&gt;
+      &lt;circle id="micro-cutoff-arc" cx="34" cy="34" r="28" stroke="var(--accent-cognac)" stroke-dasharray="131.95 175.93" stroke-dashoffset="52.78" transform="rotate(135 34 34)" /&gt;
+    &lt;/svg&gt;
+    &lt;input type="range" class="rotary-range-input" min="20" max="20000" step="10" value="2400" id="micro-cutoff-input"&gt;
+    &lt;div class="micro-knob-rotor"&gt;
+      &lt;div class="micro-knurl-rim"&gt;&lt;/div&gt;
+      &lt;div class="micro-concentric-face"&gt;&lt;/div&gt;
+      &lt;div class="micro-index-hairline"&gt;&lt;/div&gt;
+      &lt;div class="micro-center-pin"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;span class="compact-card-val"&gt;2.40 kHz&lt;/span&gt;
 &lt;/div&gt;
 
-&lt;!-- 3. Compact Channel Strip Micro-Controls (Dense Rack Form Factors) --&gt;
-&lt;!-- Micro-Knob (42mm Knurled Dial &amp; 270° Bezel Gauge) --&gt;
-&lt;div class="micro-dial-wrap" id="micro-cutoff-wrap"&gt;
-  &lt;svg class="micro-dial-svg" viewBox="0 0 68 68"&gt;
-    &lt;circle cx="34" cy="34" r="28" stroke="var(--border-hairline)" stroke-dasharray="131.95 175.93" transform="rotate(135 34 34)" /&gt;
-    &lt;circle id="micro-cutoff-arc" cx="34" cy="34" r="28" stroke="var(--accent-cognac)" stroke-dasharray="131.95 175.93" stroke-dashoffset="52.78" transform="rotate(135 34 34)" /&gt;
-  &lt;/svg&gt;
-  &lt;div class="micro-knob-rotor"&gt;
-    &lt;div class="micro-knurl-rim"&gt;&lt;/div&gt;
-    &lt;div class="micro-concentric-face"&gt;&lt;/div&gt;
-    &lt;div class="micro-index-hairline"&gt;&lt;/div&gt;
-    &lt;div class="micro-center-pin"&gt;&lt;/div&gt;
+&lt;!-- 2. Continuous Resonance Micro-Knob (42mm Fluted Dial &amp; Sage Arc) --&gt;
+&lt;div class="compact-control-card"&gt;
+  &lt;span class="compact-card-label"&gt;02 · RESONANCE&lt;/span&gt;
+  &lt;div class="micro-dial-wrap" id="micro-res-wrap"&gt;
+    &lt;svg class="micro-dial-svg" viewBox="0 0 68 68"&gt;
+      &lt;circle cx="34" cy="34" r="28" stroke="var(--border-hairline)" stroke-dasharray="131.95 175.93" transform="rotate(135 34 34)" /&gt;
+      &lt;circle id="micro-res-arc" cx="34" cy="34" r="28" stroke="var(--accent-sage)" stroke-dasharray="131.95 175.93" stroke-dashoffset="79.17" transform="rotate(135 34 34)" /&gt;
+    &lt;/svg&gt;
+    &lt;input type="range" class="rotary-range-input" min="0.1" max="10.0" step="0.05" value="0.707" id="micro-res-input"&gt;
+    &lt;div class="micro-knob-rotor"&gt;
+      &lt;div class="micro-knurl-rim micro-fluted-rim"&gt;&lt;/div&gt;
+      &lt;div class="micro-concentric-face"&gt;&lt;/div&gt;
+      &lt;div class="micro-index-hairline sage-accent"&gt;&lt;/div&gt;
+      &lt;div class="micro-center-pin"&gt;&lt;/div&gt;
+    &lt;/div&gt;
   &lt;/div&gt;
+  &lt;span class="compact-card-val"&gt;0.707 Q&lt;/span&gt;
 &lt;/div&gt;
 
-&lt;!-- Cylindrical Horological Edge Roller (Thumbwheel) --&gt;
-&lt;div class="thumbwheel-assembly"&gt;
-  &lt;div class="thumbwheel-slot"&gt;
-    &lt;div class="thumbwheel-barrel"&gt;&lt;/div&gt;
-    &lt;div class="thumbwheel-center-index"&gt;&lt;/div&gt;
+&lt;!-- 3. 4-Way Stepped Filter Selector (LP / BP / HP / NT Detents) --&gt;
+&lt;div class="compact-control-card"&gt;
+  &lt;span class="compact-card-label"&gt;03 · FILTER TYPE&lt;/span&gt;
+  &lt;div class="micro-dial-wrap" id="micro-filter-wrap"&gt;
+    &lt;div class="micro-selector-marks"&gt;
+      &lt;button type="button" class="micro-sel-tag active" data-sel="0"&gt;LP&lt;/button&gt;
+      &lt;button type="button" class="micro-sel-tag" data-sel="1"&gt;BP&lt;/button&gt;
+      &lt;button type="button" class="micro-sel-tag" data-sel="2"&gt;HP&lt;/button&gt;
+      &lt;button type="button" class="micro-sel-tag" data-sel="3"&gt;NT&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;input type="range" class="rotary-range-input" min="0" max="3" step="1" value="0" id="micro-filter-input"&gt;
+    &lt;div class="micro-knob-rotor"&gt;
+      &lt;div class="micro-knurl-rim micro-fluted-rim"&gt;&lt;/div&gt;
+      &lt;div class="micro-concentric-face"&gt;&lt;/div&gt;
+      &lt;div class="micro-index-hairline sage-accent"&gt;&lt;/div&gt;
+      &lt;div class="micro-center-pin"&gt;&lt;/div&gt;
+    &lt;/div&gt;
   &lt;/div&gt;
+  &lt;span class="compact-card-val"&gt;LOW PASS · 24dB&lt;/span&gt;
 &lt;/div&gt;</pre>
             </div>
           </div>
@@ -1916,74 +1941,6 @@
         microFilterInput.addEventListener('input', (e) => setMicroFilterMode(parseInt(e.target.value, 10), true));
       }
       setMicroFilterMode(0, false);
-    }
-
-    // --- MICRO 4: HOROLOGICAL CYLINDRICAL EDGE THUMBWHEEL ROLLER ---
-    const thumbwheelAssembly = document.getElementById('thumbwheel-assembly');
-    const thumbwheelInput = document.getElementById('thumbwheel-input');
-    const thumbwheelBarrel = document.getElementById('thumbwheel-barrel');
-    const thumbwheelVal = document.getElementById('thumbwheel-val');
-    let lastWheelTick = 0;
-
-    function updateThumbwheelPan(val, playAudio = true) {
-      val = Math.max(-50, Math.min(50, Math.round(val)));
-      if (thumbwheelInput) thumbwheelInput.value = val;
-      if (thumbwheelBarrel) {
-        thumbwheelBarrel.style.transform = `translateX(${(val * 1.6).toFixed(1)}px)`;
-      }
-      if (thumbwheelVal) {
-        if (val === 0) thumbwheelVal.textContent = 'CENTER (0.0)';
-        else if (val < 0) thumbwheelVal.textContent = `L ${Math.abs(val)}`;
-        else thumbwheelVal.textContent = `R ${val}`;
-      }
-      if (playAudio && Math.abs(val - lastWheelTick) >= 4) {
-        playRotaryClickSound(2200, 0.003, 0.006);
-        lastWheelTick = val;
-      }
-    }
-
-    if (thumbwheelAssembly) {
-      let isWheelDrag = false;
-      let startX = 0, startY = 0, startPan = 0;
-      thumbwheelAssembly.addEventListener('pointerdown', (e) => {
-        if (e.button !== 0) return;
-        isWheelDrag = true;
-        startX = e.clientX; startY = e.clientY;
-        startPan = parseInt(thumbwheelInput.value, 10) || 0;
-        thumbwheelAssembly.setPointerCapture(e.pointerId);
-        thumbwheelAssembly.classList.add('is-dragging');
-        if (thumbwheelInput) thumbwheelInput.focus({ preventScroll: true });
-      });
-      thumbwheelAssembly.addEventListener('pointermove', (e) => {
-        if (!isWheelDrag) return;
-        const dx = e.clientX - startX;
-        const dy = startY - e.clientY;
-        const delta = dx + dy * 0.75;
-        const sensitivity = e.shiftKey ? 0.2 : 0.6;
-        updateThumbwheelPan(startPan + delta * sensitivity);
-      });
-      const stopWheelDrag = (e) => {
-        if (!isWheelDrag) return;
-        isWheelDrag = false;
-        thumbwheelAssembly.classList.remove('is-dragging');
-        try { thumbwheelAssembly.releasePointerCapture(e.pointerId); } catch(err){}
-      };
-      thumbwheelAssembly.addEventListener('pointerup', stopWheelDrag);
-      thumbwheelAssembly.addEventListener('pointercancel', stopWheelDrag);
-
-      thumbwheelAssembly.addEventListener('wheel', (e) => {
-        e.preventDefault();
-        let delta = e.deltaY;
-        if (e.deltaMode === 1) delta *= 16; else if (e.deltaMode === 2) delta *= 100;
-        const speed = e.shiftKey ? 0.08 : 0.25;
-        const current = parseInt(thumbwheelInput.value, 10) || 0;
-        updateThumbwheelPan(current - delta * speed);
-      }, { passive: false });
-
-      if (thumbwheelInput) {
-        thumbwheelInput.addEventListener('input', (e) => updateThumbwheelPan(parseInt(e.target.value, 10)));
-      }
-      updateThumbwheelPan(0, false);
     }
 
     // 2. Tao Synthesized Web Audio DSP Player Engine
