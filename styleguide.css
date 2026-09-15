@@ -3403,6 +3403,284 @@
       color: var(--accent-sage);
     }
 
+    /* ==========================================================================
+       Compact Channel Strip & Micro-Controls Rack
+       ========================================================================== */
+    .compact-rotary-rack {
+      margin-top: var(--space-4);
+      background: var(--canvas-card-solid);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-card);
+      padding: var(--space-4) var(--space-5);
+      position: relative;
+    }
+
+    .compact-rack-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--space-3);
+      padding-bottom: var(--space-2);
+      border-bottom: 1px dashed var(--border-subtle);
+      font-family: var(--font-mono);
+      flex-wrap: wrap;
+      gap: var(--space-2);
+    }
+
+    .compact-rack-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-3);
+    }
+
+    @media (max-width: 860px) {
+      .compact-rack-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .compact-rack-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .compact-control-card {
+      background: var(--canvas-surface-recessed);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-micro);
+      padding: var(--space-3);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 156px;
+      text-align: center;
+      position: relative;
+    }
+
+    .compact-card-label {
+      font-family: var(--font-mono);
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--ink-muted);
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .compact-card-val {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--ink-primary);
+      white-space: nowrap;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* 44px Micro Knob Wrapper */
+    .micro-dial-wrap {
+      position: relative;
+      width: 68px;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: grab;
+      touch-action: none;
+      user-select: none;
+      margin: var(--space-1) 0;
+    }
+
+    .micro-dial-wrap.is-dragging {
+      cursor: grabbing;
+    }
+
+    .micro-dial-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .micro-knob-rotor {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--canvas-card-solid);
+      border: 1px solid var(--border-color);
+      box-shadow: 
+        0 4px 10px rgba(0, 0, 0, 0.16),
+        0 1px 3px rgba(0, 0, 0, 0.08),
+        inset 0 1px 1px rgba(255, 255, 255, 0.35);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      transition: transform 0.04s linear;
+    }
+
+    .micro-knurl-rim {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: repeating-conic-gradient(
+        from 0deg,
+        var(--border-hairline) 0deg 3deg,
+        var(--canvas-surface-recessed) 3deg 6deg
+      );
+      mask: radial-gradient(circle, transparent 16px, black 17px);
+      -webkit-mask: radial-gradient(circle, transparent 16px, black 17px);
+    }
+
+    .micro-fluted-rim {
+      background: repeating-conic-gradient(
+        from 0deg,
+        var(--border-color) 0deg 15deg,
+        var(--canvas-card-solid) 15deg 30deg
+      );
+      mask: radial-gradient(circle, transparent 16px, black 17px);
+      -webkit-mask: radial-gradient(circle, transparent 16px, black 17px);
+    }
+
+    .micro-concentric-face {
+      position: absolute;
+      inset: 3px;
+      border-radius: 50%;
+      background: 
+        radial-gradient(circle, transparent 0%, rgba(0, 0, 0, 0.04) 100%),
+        repeating-radial-gradient(
+          circle at 50% 50%,
+          var(--canvas-surface-recessed) 0px,
+          var(--canvas-surface-recessed) 1.2px,
+          var(--canvas-card-solid) 1.2px,
+          var(--canvas-card-solid) 2.4px
+        );
+      border: 1px solid var(--border-subtle);
+    }
+
+    .micro-index-hairline {
+      position: absolute;
+      top: 3px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1.5px;
+      height: 12px;
+      background: var(--accent-cognac);
+      border-radius: 1px;
+      box-shadow: 0 0 3px rgba(154, 103, 53, 0.5);
+    }
+
+    .micro-index-hairline.sage-accent {
+      background: var(--accent-sage);
+      box-shadow: 0 0 3px rgba(118, 142, 101, 0.5);
+    }
+
+    .micro-center-pin {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--border-color);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      z-index: 2;
+    }
+
+    /* 4-Way Micro Selector Detents */
+    .micro-selector-marks {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .micro-sel-tag {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      font-family: var(--font-mono);
+      font-size: 8px;
+      font-weight: 700;
+      color: var(--ink-muted);
+      transform: rotate(var(--sel-angle)) translateY(-28px) rotate(calc(-1 * var(--sel-angle)));
+      width: 24px;
+      margin-left: -12px;
+      text-align: center;
+      line-height: 1;
+      cursor: pointer;
+      pointer-events: auto;
+      transition: color var(--duration-fast) ease;
+      background: transparent;
+      border: none;
+      padding: 0;
+    }
+
+    .micro-sel-tag:hover,
+    .micro-sel-tag.active {
+      color: var(--accent-sage);
+    }
+
+    /* Cylindrical Edge Thumbwheel Roller */
+    .thumbwheel-assembly {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: var(--space-2) 0;
+      cursor: grab;
+      user-select: none;
+      touch-action: none;
+      width: 100%;
+    }
+
+    .thumbwheel-assembly.is-dragging {
+      cursor: grabbing;
+    }
+
+    .thumbwheel-slot {
+      width: 104px;
+      height: 32px;
+      background: #0A0C0B;
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-micro);
+      position: relative;
+      overflow: hidden;
+      box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .thumbwheel-barrel {
+      position: absolute;
+      width: 320px;
+      height: 100%;
+      background: repeating-linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.12) 0px,
+        rgba(255, 255, 255, 0.12) 1.5px,
+        transparent 1.5px,
+        transparent 6px
+      );
+      transition: transform 0.04s linear;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
+
+    .thumbwheel-center-index {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 2px;
+      margin-left: -1px;
+      background: var(--accent-cognac);
+      box-shadow: 0 0 5px rgba(154, 103, 53, 0.8);
+      pointer-events: none;
+      z-index: 2;
+    }
+
     /* Live Telemetry Chart Stage */
     .chart-demo-stage {
       background: #0E1116;
