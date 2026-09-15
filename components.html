@@ -2142,22 +2142,53 @@
 
     // 3. Live Telemetry Graph (ApexCharts)
     let telemetryChart = null;
+    let currentTelemetryChartType = 'area';
+
     function initTelemetryChart() {
       const chartEl = document.getElementById('apex-telemetry-chart');
       if (!chartEl || typeof ApexCharts === 'undefined') return;
 
       const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-      const sageColor = isDark ? '#8DB477' : '#768E65';
-      const cognacColor = isDark ? '#C68E56' : '#9A6735';
+      const sageColor = isDark ? '#78C288' : '#2D5A3A';
+      const cognacColor = isDark ? '#E2B462' : '#9E6E2E';
+      const gridBorder = isDark ? 'rgba(255, 255, 255, 0.07)' : 'rgba(28, 30, 33, 0.08)';
+      const labelColor = isDark ? '#8C92A4' : '#686660';
+      const legendColor = isDark ? '#C0C5D0' : '#2A2825';
+
+      let fillConfig;
+      let strokeConfig;
+
+      if (currentTelemetryChartType === 'bar') {
+        fillConfig = { opacity: 0.85 };
+        strokeConfig = { show: false };
+      } else if (currentTelemetryChartType === 'line') {
+        fillConfig = { opacity: 1 };
+        strokeConfig = { curve: 'straight', width: 2 };
+      } else {
+        fillConfig = {
+          type: 'gradient',
+          gradient: {
+            shade: isDark ? 'dark' : 'light',
+            shadeIntensity: 1,
+            opacityFrom: isDark ? 0.35 : 0.28,
+            opacityTo: isDark ? 0.02 : 0.04,
+            stops: [0, 95, 100]
+          }
+        };
+        strokeConfig = { curve: 'smooth', width: [2, 1.5] };
+      }
 
       const options = {
         chart: {
-          type: 'area',
+          type: currentTelemetryChartType,
           height: 220,
           toolbar: { show: false },
           animations: { enabled: true, easing: 'easeinout', speed: 600 },
           background: 'transparent',
           fontFamily: 'var(--font-mono, monospace)'
+        },
+        theme: {
+          mode: isDark ? 'dark' : 'light'
         },
         series: [
           {
@@ -2171,82 +2202,57 @@
         ],
         colors: [sageColor, cognacColor],
         dataLabels: { enabled: false },
-        stroke: { curve: 'smooth', width: [2, 1.5] },
-        fill: {
-          type: 'gradient',
-          gradient: {
-            shadeIntensity: 1,
-            opacityFrom: 0.35,
-            opacityTo: 0.02,
-            stops: [0, 95, 100]
-          }
-        },
+        stroke: strokeConfig,
+        fill: fillConfig,
         grid: {
-          borderColor: 'rgba(255, 255, 255, 0.07)',
+          borderColor: gridBorder,
           strokeDashArray: 3,
           xaxis: { lines: { show: false } },
           yaxis: { lines: { show: true } }
         },
         xaxis: {
           categories: ['T-11s', 'T-10s', 'T-9s', 'T-8s', 'T-7s', 'T-6s', 'T-5s', 'T-4s', 'T-3s', 'T-2s', 'T-1s', 'NOW'],
-          labels: { style: { colors: '#6C7280', fontSize: '10px' } },
+          labels: { style: { colors: labelColor, fontSize: '10px' } },
           axisBorder: { show: false },
           axisTicks: { show: false }
         },
         yaxis: {
           labels: {
-            style: { colors: '#6C7280', fontSize: '10px' },
+            style: { colors: labelColor, fontSize: '10px' },
             formatter: (val) => val.toFixed(1)
           }
         },
         tooltip: {
-          theme: 'dark',
+          theme: isDark ? 'dark' : 'light',
           style: { fontSize: '11px', fontFamily: 'var(--font-mono)' }
         },
         legend: {
           position: 'top',
           horizontalAlign: 'right',
-          labels: { colors: '#A6ADBA' },
+          labels: { colors: legendColor },
           fontFamily: 'var(--font-mono)',
           fontSize: '11px',
           markers: { radius: 2 }
         }
       };
 
+      if (currentTelemetryChartType === 'bar') {
+        options.plotOptions = { bar: { columnWidth: '38%', borderRadius: 2 } };
+      }
+
+      if (telemetryChart) {
+        try { telemetryChart.destroy(); } catch (err) {}
+      }
       telemetryChart = new ApexCharts(chartEl, options);
       telemetryChart.render();
     }
 
     function setTelemetryChartType(newType) {
-      if (!telemetryChart) return;
+      currentTelemetryChartType = newType;
       document.querySelectorAll('.chart-type-btn').forEach(btn => {
         btn.classList.toggle('active', btn.getAttribute('data-type') === newType);
       });
-
-      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-      const sageColor = isDark ? '#8DB477' : '#768E65';
-      const cognacColor = isDark ? '#C68E56' : '#9A6735';
-
-      let newOptions = { chart: { type: newType } };
-      if (newType === 'bar') {
-        newOptions.plotOptions = { bar: { columnWidth: '38%', borderRadius: 2 } };
-        newOptions.fill = { opacity: 0.85 };
-        newOptions.stroke = { show: false };
-        newOptions.dataLabels = { enabled: false };
-      } else if (newType === 'line') {
-        newOptions.fill = { opacity: 1 };
-        newOptions.stroke = { curve: 'straight', width: 2 };
-        newOptions.dataLabels = { enabled: false };
-      } else {
-        newOptions.fill = {
-          type: 'gradient',
-          gradient: { shadeIntensity: 1, opacityFrom: 0.35, opacityTo: 0.02, stops: [0, 95, 100] }
-        };
-        newOptions.stroke = { curve: 'smooth', width: [2, 1.5] };
-        newOptions.dataLabels = { enabled: false };
-      }
-
-      telemetryChart.updateOptions(newOptions, true, true);
+      initTelemetryChart();
     }
 
     // Initialize chart on DOM load

@@ -3683,13 +3683,19 @@
 
     /* Live Telemetry Chart Stage */
     .chart-demo-stage {
-      background: #0E1116;
-      border: 1px solid #232936;
+      background: var(--canvas-surface-recessed);
+      border: 1px solid var(--border-hairline);
       border-radius: var(--radius-card);
       padding: var(--space-4);
       position: relative;
       overflow: hidden;
       margin-top: var(--space-4);
+      transition: background var(--duration-fast) ease, border-color var(--duration-fast) ease;
+    }
+
+    [data-theme="dark"] .chart-demo-stage {
+      background: #0E1116;
+      border-color: #232936;
     }
 
     .chart-header {
@@ -3707,17 +3713,23 @@
       display: flex;
       align-items: center;
       gap: 3px;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: var(--canvas-card-solid);
+      border: 1px solid var(--border-hairline);
       padding: 2px;
       border-radius: var(--radius-micro);
+      transition: background var(--duration-fast) ease, border-color var(--duration-fast) ease;
+    }
+
+    [data-theme="dark"] .chart-type-selector {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.12);
     }
 
     .chart-type-btn {
       font-family: var(--font-mono);
       font-size: 10px;
       letter-spacing: 0.06em;
-      color: #8C92A4;
+      color: var(--ink-secondary);
       background: transparent;
       border: none;
       padding: 3px 8px;
@@ -3727,7 +3739,7 @@
     }
 
     .chart-type-btn:hover {
-      color: #FFFFFF;
+      color: var(--ink-primary);
     }
 
     .chart-type-btn.active {
@@ -3737,14 +3749,16 @@
     }
 
     .chart-title {
-      color: #8DB477;
+      color: var(--accent-sage);
       display: flex;
       align-items: center;
       gap: 6px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
     }
 
     .chart-metrics {
-      color: #A6ADBA;
+      color: var(--ink-muted);
     }
 
     /* Component: Tao Synthesized DSP Audio Player */
