@@ -76,15 +76,11 @@
           <span class="nav-num">03</span>
           <span>Obsidian Theme</span>
         </a>
-        <a href="#quickstart" class="nav-item">
-          <span class="nav-num">04</span>
-          <span>Project Quickstart</span>
-        </a>
       </nav>
 
       <div class="sidebar-footer">
-        <a href="index.html" class="sidebar-link-btn">
-          <span>← System Overview</span>
+        <a href="index.html#quickstart" class="sidebar-link-btn">
+          <span>Project Quickstart →</span>
         </a>
       </div>
     </aside>
@@ -314,66 +310,11 @@
         </div>
       </section>
 
-      <!-- 04 · PROJECT QUICKSTART -->
-      <section class="spec-section" id="quickstart">
-        <div class="section-header">
-          <div class="section-title">
-            <span class="section-idx">04</span>
-            <span>Project Quickstart &amp; Codex</span>
-          </div>
-          <div class="section-label">IMPLEMENTATION &amp; RULES</div>
-        </div>
-
-        <p class="section-intro">
-          How to initiate any project using the Xiaoyu TAO design language. Three essential steps to preserve the spirit and integrity of the system.
-        </p>
-
-        <div class="quickstart-box">
-          <div class="quickstart-step">
-            <div class="step-title">
-              <span class="step-badge">STEP 1</span>
-              <span>Import tokens.css in your HTML &lt;head&gt;</span>
-            </div>
-            <p style="font-size: 13px; color: var(--ink-secondary); margin-bottom: 6px;">
-              Place this snippet inside your <code>&lt;head&gt;</code> element to load all fonts, tokens, and utility resets:
-            </p>
-            <pre class="code-terminal">&lt;link rel="stylesheet" href="tokens.css"&gt;</pre>
-          </div>
-
-          <div class="quickstart-step">
-            <div class="step-title">
-              <span class="step-badge">STEP 2</span>
-              <span>Apply the 16px Cartesian Dot Matrix to your Body</span>
-            </div>
-            <p style="font-size: 13px; color: var(--ink-secondary); margin-bottom: 6px;">
-              Your <code>body</code> element will inherit the canvas color and subtle dot grid defined in <code>tokens.css</code>:
-            </p>
-            <pre class="code-terminal">body {
-  background-color: var(--canvas-light);
-  background-image: var(--grid-dot-pattern);
-  background-size: var(--grid-dot-size) var(--grid-dot-size);
-  color: var(--ink-primary);
-  font-family: var(--font-sans);
-}</pre>
-          </div>
-
-          <div class="quickstart-step">
-            <div class="step-title">
-              <span class="step-badge">STEP 3</span>
-              <span>Respect the 8px Spatial Baseline and 1px Hairlines</span>
-            </div>
-            <p style="font-size: 13px; color: var(--ink-secondary); margin-bottom: 6px;">
-              Never use rounded corners above 4px. Never exceed 1px solid borders. Ground spacing in <code>--space-2</code> (8px), <code>--space-4</code> (16px), or <code>--space-6</code> (24px).
-            </p>
-          </div>
-        </div>
-      </section>
-
       <!-- ROOM FOOTER NAVIGATION -->
       <footer style="margin-top: var(--space-10); padding-top: var(--space-6); border-top: 1px solid var(--border-hairline); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-4);">
         <a href="components.html" class="tool-btn" style="text-decoration:none;">← 03 · Components</a>
-        <a href="index.html" class="tool-btn" style="text-decoration:none; background: var(--ink-primary); color: var(--canvas-bg); font-weight: 600;">
-          <span>System Overview</span>
+        <a href="index.html#quickstart" class="tool-btn" style="text-decoration:none; background: var(--ink-primary); color: var(--canvas-bg); font-weight: 600;">
+          <span>Project Quickstart</span>
           <span>→</span>
         </a>
       </footer>

@@ -465,6 +465,13 @@
       margin-bottom: var(--space-10);
     }
 
+    .atelier-quickstart-section {
+      margin-top: var(--space-12);
+      margin-bottom: var(--space-12);
+      position: relative;
+      z-index: 1;
+    }
+
     /* Featured Big Component Library Card (Same width as header) */
     .room-portal-card.room-portal-featured {
       min-height: unset;
@@ -3896,10 +3903,12 @@
        07 · PROJECT QUICKSTART & INTEGRATION
        ------------------------------------------------------------- */
     .quickstart-box {
-      background: var(--canvas-card);
+      background: var(--canvas-card-solid);
       border: 1px solid var(--border-hairline);
       border-radius: var(--radius-card);
       padding: var(--space-6);
+      backdrop-filter: blur(6px);
+      box-shadow: var(--shadow-hairline);
     }
 
     .quickstart-step {
