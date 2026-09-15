@@ -766,15 +766,15 @@
 
                 <!-- Variant 1: 300° Continuous Vernier Rotary Potentiometer -->
                 <div class="rotary-card-box">
-                  <div class="slider-header">
-                    <div>
+                  <div class="rotary-card-header">
+                    <div class="rotary-header-top-row">
                       <span class="slider-type-tag" style="color: var(--accent-cognac); border-color: rgba(184, 115, 51, 0.35);">01 · CONTINUOUS ROTARY DIAL</span>
-                      <span>300° SWEEP // SUB-DEGREE VERNIER RESOLUTION</span>
+                      <div class="rotary-readout-group">
+                        <span class="schematic-pill-tag active" id="rotary-status-pill">● ACTIVE</span>
+                        <span class="slider-val-readout" id="rotary-primary-readout" style="color: var(--accent-cognac); font-weight: 700;">185.4° · 0.618 λ</span>
+                      </div>
                     </div>
-                    <div style="display: flex; align-items: center; gap: var(--space-2);">
-                      <span class="schematic-pill-tag active" id="rotary-status-pill">● ACTIVE ENGAGEMENT</span>
-                      <span class="slider-val-readout" id="rotary-primary-readout" style="color: var(--accent-cognac); font-weight: 700;">185.4° · 0.618 λ</span>
-                    </div>
+                    <div class="rotary-header-subline">300° SWEEP // SUB-DEGREE VERNIER RESOLUTION</div>
                   </div>
 
                   <!-- Rotary Dial Assembly -->
@@ -826,7 +826,7 @@
                         <div class="rotary-index-hairline">
                           <div class="rotary-index-pip"></div>
                         </div>
-                        <!-- Center Jewel Axis (Ruby / Titanium Bearing) -->
+                        <!-- Center Jewel Axis (Cognac Bearing) -->
                         <div class="rotary-center-jewel">
                           <div class="center-jewel-slot"></div>
                         </div>
@@ -836,23 +836,23 @@
 
                   <!-- Rotary Telemetry Footer -->
                   <div class="vernier-telemetry-footer">
-                    <span>ANGULAR DISPLACEMENT: <strong id="rotary-angle-metric">185.4°</strong></span>
-                    <span>ATTENUATION: <strong id="rotary-attenuation-metric">-4.18 dB</strong></span>
-                    <span>CALIBRATED COUPLING: <strong id="rotary-total-metric" style="color: var(--ink-primary);">0.618 λ (61.8%)</strong></span>
+                    <span>DISPLACEMENT: <strong id="rotary-angle-metric">185.4°</strong></span>
+                    <span>ATTEN: <strong id="rotary-attenuation-metric">-4.18 dB</strong></span>
+                    <span>COUPLING: <strong id="rotary-total-metric" style="color: var(--ink-primary);">0.618 λ (61.8%)</strong></span>
                   </div>
                 </div>
 
                 <!-- Variant 2: 8-Position Stepped Escapement Selector -->
                 <div class="rotary-card-box">
-                  <div class="slider-header">
-                    <div>
+                  <div class="rotary-card-header">
+                    <div class="rotary-header-top-row">
                       <span class="slider-type-tag" style="color: var(--accent-sage); border-color: rgba(118, 142, 101, 0.35);">02 · STEPPED ESCAPEMENT SELECTOR</span>
-                      <span>8-STATION CHRONOGRAPH DETENT // TACTILE SNAPPING</span>
+                      <div class="rotary-readout-group">
+                        <span class="schematic-pill-tag active" id="escapement-status-pill" style="color: var(--accent-sage); border-color: rgba(118, 142, 101, 0.3);">● LOCKED</span>
+                        <span class="slider-val-readout" id="escapement-val-readout" style="color: var(--accent-sage); font-weight: 700;">STATION IV · 8x</span>
+                      </div>
                     </div>
-                    <div style="display: flex; align-items: center; gap: var(--space-2);">
-                      <span class="schematic-pill-tag active" id="escapement-status-pill" style="color: var(--accent-sage); border-color: rgba(118, 142, 101, 0.3);">● STATION LOCK</span>
-                      <span class="slider-val-readout" id="escapement-val-readout" style="color: var(--accent-sage); font-weight: 700;">STATION IV · 8x CADENCE</span>
-                    </div>
+                    <div class="rotary-header-subline">8-STATION CHRONOGRAPH DETENT // TACTILE SNAPPING</div>
                   </div>
 
                   <!-- Stepped Selector Assembly -->
@@ -908,7 +908,8 @@
                         <div class="stepped-index-hairline">
                           <div class="stepped-index-pip"></div>
                         </div>
-                        <div class="rotary-center-jewel ruby-jewel">
+                        <!-- Center Jewel Axis (Titanium Monolith Bearing Cap) -->
+                        <div class="rotary-center-jewel titanium-jewel">
                           <div class="center-jewel-slot"></div>
                         </div>
                       </div>
@@ -917,9 +918,9 @@
 
                   <!-- Stepped Selector Telemetry Footer -->
                   <div class="vernier-telemetry-footer">
-                    <span>DETENT REGISTER: <strong id="stepped-station-metric">STATION IV / VIII</strong></span>
-                    <span>CLOCK MULTIPLIER: <strong id="stepped-clock-metric">8x (86.4 kHz)</strong></span>
-                    <span>ESCAPEMENT TORQUE: <strong id="stepped-torque-metric" style="color: var(--ink-primary);">18.2 mN·m [LOCKED]</strong></span>
+                    <span>REGISTER: <strong id="stepped-station-metric">STATION IV / VIII</strong></span>
+                    <span>CLOCK: <strong id="stepped-clock-metric">8x (86.4 kHz)</strong></span>
+                    <span>TORQUE: <strong id="stepped-torque-metric" style="color: var(--ink-primary);">18.2 mN·m [LOCKED]</strong></span>
                   </div>
                 </div>
 
@@ -958,7 +959,7 @@
     &lt;div class="rotary-knob-rotor stepped-rotor"&gt;
       &lt;div class="rotary-knurl-rim stepped-fluted-rim"&gt;&lt;/div&gt;
       &lt;div class="stepped-index-hairline"&gt;&lt;div class="stepped-index-pip"&gt;&lt;/div&gt;&lt;/div&gt;
-      &lt;div class="rotary-center-jewel ruby-jewel"&gt;&lt;/div&gt;
+      &lt;div class="rotary-center-jewel titanium-jewel"&gt;&lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre>
@@ -1482,7 +1483,7 @@
           }
         }
 
-        if (steppedValReadout) steppedValReadout.textContent = `STATION ${config.roman} · ${config.label} CADENCE`;
+        if (steppedValReadout) steppedValReadout.textContent = `STATION ${config.roman} · ${config.label}`;
         if (steppedStationMetric) steppedStationMetric.textContent = `STATION ${config.roman} / VIII`;
         if (steppedClockMetric) steppedClockMetric.textContent = `${config.label} (${config.clock})`;
         if (steppedTorqueMetric) steppedTorqueMetric.textContent = `${config.torque} [LOCKED]`;

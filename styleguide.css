@@ -3050,19 +3050,86 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      min-height: 388px;
+    }
+
+    .rotary-card-header {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-bottom: var(--space-2);
+      font-family: var(--font-mono);
+    }
+
+    .rotary-header-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 20px;
+    }
+
+    .rotary-readout-group {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      flex-shrink: 0;
+    }
+
+    .rotary-header-subline {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--ink-muted);
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .rotary-card-box .slider-val-readout {
       white-space: nowrap;
       flex-shrink: 0;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* Fixed single-line 3-column telemetry footer to prevent wrapping or jumping */
+    .rotary-card-box .vernier-telemetry-footer {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr 1fr;
+      gap: var(--space-2);
+      align-items: center;
+      padding-top: var(--space-2);
+      border-top: 1px dashed var(--border-subtle);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--ink-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      min-height: 24px;
+      flex-wrap: nowrap;
+    }
+
+    .rotary-card-box .vernier-telemetry-footer span {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .rotary-card-box .vernier-telemetry-footer span:nth-child(2) {
+      text-align: center;
+    }
+
+    .rotary-card-box .vernier-telemetry-footer span:nth-child(3) {
+      text-align: right;
     }
 
     .rotary-dial-assembly {
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: var(--space-4) 0;
+      padding: var(--space-2) 0;
       position: relative;
+      flex-grow: 1;
     }
 
     .rotary-dial-bezel-wrap {
@@ -3263,8 +3330,10 @@
       justify-content: center;
     }
 
-    .rotary-center-jewel.ruby-jewel {
-      background: radial-gradient(circle at 35% 35%, #BA324E 0%, #8A1E35 60%, #4D0F1D 100%);
+    .rotary-center-jewel.titanium-jewel {
+      background: radial-gradient(circle at 35% 35%, #3D4439 0%, #232720 60%, #111410 100%);
+      border: 1.5px solid rgba(118, 142, 101, 0.4);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
     }
 
     .center-jewel-slot {
